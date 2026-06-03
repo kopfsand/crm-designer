@@ -275,8 +275,8 @@ nav.tabs button.active svg{opacity:1}
 .cl-nm{flex:1;min-width:0}
 .cl-nm .nm{font-family:'Inter';font-weight:700;font-size:18px;line-height:1.05}
 .cl-nm .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center}
-.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0;max-width:fit-content}
-.tag.o{color:var(--or);border-color:var(--orp);max-width:140px;overflow:hidden;text-overflow:ellipsis}
+.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0}
+.tag.o{background:rgba(255,90,31,.12);color:var(--or);border-color:transparent;max-width:120px;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
 .cl-rev{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
 .cl-rev .v{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;line-height:1;display:inline}
 .cl-rev .u{font-size:13px;color:var(--or);font-family:'Rubik';font-weight:700;display:inline;margin-left:3px}
@@ -286,8 +286,8 @@ nav.tabs button.active svg{opacity:1}
 .cl-stats .s .v{font-family:'Rubik';font-weight:700;font-size:15px}
 .cl-stats .s .v.debt{color:var(--or)}
 .cl-stats .s .k{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px;font-weight:700}
-.cl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px}
-.cl-foot .ph{color:var(--dim);flex:1;text-align:center}
+.cl-foot{display:flex;align-items:center;justify-content:flex-end;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px;position:relative}
+.cl-foot .ph{color:var(--dim);position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -529,12 +529,12 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .bm-card-head{padding:16px 18px 10px;display:flex;align-items:center;gap:12px}
 .bm-favicon{width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--ln2);display:grid;place-items:center;font-size:18px;flex:none;overflow:hidden}
 .bm-favicon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-.bm-title{font-family:'Inter';font-weight:700;font-size:14px;line-height:1.2;flex:1;min-width:0}
+.bm-title{font-family:'Inter';font-weight:700;font-size:14px;line-height:1.2;flex:1;min-width:0;color:var(--txt)}
 .bm-ext{font-family:'Inter';font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bm-desc{font-family:'Inter';font-size:11.5px;color:var(--dim);line-height:1.55;padding:0 18px 10px;flex:1}
 .bm-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 12px}
 .bm-cat-tag{font-family:'Inter';font-size:9.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--bg2);border:1px solid var(--ln2);color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
-.bm-open{font-family:'Inter';font-size:10px;font-weight:600;color:var(--or);display:flex;align-items:center;gap:4px}
+.bm-open{font-family:'Inter';font-size:10px;font-weight:600;color:var(--txt);display:flex;align-items:center;gap:4px}
 .bm-open svg{width:11px;height:11px}
 .bm-section-title{grid-column:1/-1;font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;display:flex;align-items:center;gap:8px}
 .bm-section-title::after{content:'';flex:1;height:1px;background:var(--ln)}
@@ -547,8 +547,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .dp-inp.open{border-color:var(--orp)}
 .dp-inp .dp-placeholder{color:var(--dim2)}
 .dp-inp .dp-icon{color:var(--dim);font-size:14px;flex:none}
-.dp-cal{position:absolute;top:calc(100% + 6px);left:0;z-index:350;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:14px 12px;box-shadow:0 20px 50px -10px #000;width:280px;animation:rise .2s both}
-.dp-cal.right{left:auto;right:0}
+.dp-cal-fixed{position:fixed;z-index:9999;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:14px 12px;box-shadow:0 20px 50px -10px #000;width:280px;animation:rise .2s both}
 .dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .dp-nav .dp-title{font-family:'Inter';font-weight:700;font-size:13px;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s}
 .dp-nav .dp-title:hover{background:var(--bg2);color:var(--or)}
@@ -804,7 +803,7 @@ input[type=number]{-moz-appearance:textfield}
   <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>Финансы</button>
   <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>Счёт</button>
   <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Контакты</button>
-  <button data-view="bookmarks" title="Закладки"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span class="tab-label">Закладки</span></button>
+  <button data-view="bookmarks" title="Закладки" style="padding:10px 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
 </nav>
 
 <!-- DASH -->
@@ -846,11 +845,28 @@ input[type=number]{-moz-appearance:textfield}
 <!-- ANALYTICS -->
 <section class="view" id="view-analytics">
   <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div>
-    <div class="an-period" id="anPeriod" style="margin-bottom:0">
-      <button class="per-btn" data-p="30" onclick="setAnPeriod('30',this)">30 дн.</button>
-      <button class="per-btn" data-p="90" onclick="setAnPeriod('90',this)">3 мес.</button>
-      <button class="per-btn" data-p="180" onclick="setAnPeriod('180',this)">Полгода</button>
-      <button class="per-btn active" data-p="all" onclick="setAnPeriod('all',this)">Всё время</button>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);white-space:nowrap">С</span>
+        <div id="dpw_an_from" class="dp-wrap" style="width:130px">
+          <div class="dp-inp" id="dpi_an_from" onclick="dpToggle('an_from','')">
+            <span id="dpi_an_from_txt" class="dp-placeholder">Начало</span>
+            <span class="dp-icon" style="font-size:12px">📅</span>
+          </div>
+          <input type="hidden" id="an_from" value="">
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);white-space:nowrap">По</span>
+        <div id="dpw_an_to" class="dp-wrap" style="width:130px">
+          <div class="dp-inp" id="dpi_an_to" onclick="dpToggle('an_to','right')">
+            <span id="dpi_an_to_txt" class="dp-placeholder">Конец</span>
+            <span class="dp-icon" style="font-size:12px">📅</span>
+          </div>
+          <input type="hidden" id="an_to" value="">
+        </div>
+      </div>
+      <button class="per-btn" onclick="resetAnRange()" title="Сбросить фильтр">✕ Все</button>
     </div>
   </div>
   <!-- KPIs -->
@@ -1598,23 +1614,37 @@ document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase
 
 /* -- ANALYTICS -- */
 /* ── Analytics period state ── */
-let anPeriod='all';
+let anDateFrom='', anDateTo='';
 
-function setAnPeriod(p, btn){
-  anPeriod=p;
-  document.querySelectorAll('.per-btn').forEach(x=>x.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+function resetAnRange(){
+  anDateFrom=''; anDateTo='';
+  // reset pickers
+  ['an_from','an_to'].forEach(id=>{
+    document.getElementById(id).value='';
+    const wrap=document.getElementById('dpw_'+id);
+    if(wrap){wrap._dpSelected='';}
+    const inp=document.getElementById('dpi_'+id);
+    if(inp) inp.innerHTML=`<span class="dp-placeholder">${id==='an_from'?'Начало':'Конец'}</span><span class="dp-icon" style="font-size:12px">📅</span>`;
+  });
   Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]);
   renderAnalytics();
 }
 
-function initPeriodBtns(){ /* no-op — handled via onclick */ }
+function setAnPeriod(p,btn){
+  // legacy — keep for safety
+  Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]);
+  renderAnalytics();
+}
+function initPeriodBtns(){}
 
 function anFilterOrders(){
-  if(anPeriod==='all') return S.orders;
-  const days=+anPeriod;
-  const cutoff=new Date(Date.now()-days*86400000);
-  return S.orders.filter(o=>o.start&&new Date(o.start)>=cutoff);
+  return S.orders.filter(o=>{
+    if(!o.start) return true;
+    const d=o.start;
+    if(anDateFrom && d < anDateFrom) return false;
+    if(anDateTo   && d > anDateTo)   return false;
+    return true;
+  });
 }
 
 function buildSvgLine(container,dataPoints,color,fillColor,H=180){
@@ -2492,13 +2522,13 @@ function dpCreate(id,value,placeholder='Выбрать дату',alignRight=fals
 }
 
 function dpToggle(id,align){
-  if(dpActive&&dpActive!==id) dpClose(dpActive);
-  const wrap=document.getElementById('dpw_'+id);
-  if(wrap.querySelector('.dp-cal')){ dpClose(id); return; }
+  if(dpActive&&dpActive!==id)dpClose(dpActive);
+  if(document.getElementById('dp-cal-'+id)){dpClose(id);return;}
   dpActive=id;
   document.getElementById('dpi_'+id).classList.add('open');
   const val=document.getElementById(id).value;
   const cur=val?new Date(val):new Date();
+  const wrap=document.getElementById('dpw_'+id);
   wrap._dpYear=cur.getFullYear();
   wrap._dpMonth=cur.getMonth();
   wrap._dpSelected=val||'';
@@ -2506,15 +2536,16 @@ function dpToggle(id,align){
 }
 
 function dpRender(id,align){
+  // remove existing
+  const old=document.getElementById('dp-cal-'+id);if(old)old.remove();
   const wrap=document.getElementById('dpw_'+id);
-  const old=wrap.querySelector('.dp-cal'); if(old) old.remove();
   const y=wrap._dpYear,m=wrap._dpMonth;
-  const today=new Date(); today.setHours(0,0,0,0);
+  const today=new Date();today.setHours(0,0,0,0);
   const first=new Date(y,m,1);
   const last=new Date(y,m+1,0);
-  let startDow=first.getDay()-1; if(startDow<0) startDow=6;
+  let startDow=first.getDay()-1;if(startDow<0)startDow=6;
   let daysHtml='';
-  for(let i=0;i<startDow;i++) daysHtml+=`<div class="dp-day empty"></div>`;
+  for(let i=0;i<startDow;i++)daysHtml+=`<div class="dp-day empty"></div>`;
   for(let d=1;d<=last.getDate();d++){
     const date=new Date(y,m,d);
     const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -2523,7 +2554,8 @@ function dpRender(id,align){
     daysHtml+=`<div class="dp-day${isSel?' selected':''}${isTod&&!isSel?' today':''}" onclick="dpSelect('${id}','${iso}','${align}')">${d}</div>`;
   }
   const cal=document.createElement('div');
-  cal.className='dp-cal'+(align==='right'?' right':'');
+  cal.id='dp-cal-'+id;
+  cal.className='dp-cal-fixed';
   cal.innerHTML=`
     <div class="dp-nav">
       <button class="dp-arr" onclick="dpShift('${id}',-1,'${align}')">◀</button>
@@ -2533,7 +2565,9 @@ function dpRender(id,align){
     <div class="dp-dow">${DOW_RU.map(d=>`<span>${d}</span>`).join('')}</div>
     <div class="dp-days">${daysHtml}</div>
     <button class="dp-clear" onclick="dpClear('${id}','${align}')">Очистить</button>`;
-  wrap.appendChild(cal);
+  document.body.appendChild(cal);
+  // position relative to input
+  dpPosition(id,align,cal);
 }
 
 function dpShift(id,dir,align){
@@ -2550,6 +2584,9 @@ function dpSelect(id,iso,align){
   document.getElementById(id).value=iso;
   document.getElementById('dpi_'+id).innerHTML=`<span>${fmtD(iso)}</span><span class="dp-icon">📅</span>`;
   dpClose(id);
+  // analytics date range
+  if(id==='an_from'){ anDateFrom=iso; Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
+  if(id==='an_to'){   anDateTo=iso;   Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
 }
 
 function dpClear(id){
@@ -2560,12 +2597,25 @@ function dpClear(id){
   dpClose(id);
 }
 
+function dpPosition(id,align,cal){
+  const inp=document.getElementById('dpi_'+id);
+  if(!inp||!cal)return;
+  const r=inp.getBoundingClientRect();
+  cal.style.top=(r.bottom+window.scrollY+6)+'px';
+  if(align==='right'){
+    cal.style.left='auto';
+    cal.style.right=(window.innerWidth-r.right)+'px';
+  } else {
+    cal.style.left=r.left+'px';
+    cal.style.right='auto';
+  }
+}
+
 function dpClose(id){
-  const wrap=document.getElementById('dpw_'+id);
-  if(!wrap) return;
-  const cal=wrap.querySelector('.dp-cal'); if(cal) cal.remove();
-  const inp=document.getElementById('dpi_'+id); if(inp) inp.classList.remove('open');
-  if(dpActive===id) dpActive=null;
+  const cal=document.getElementById('dp-cal-'+id);
+  if(cal)cal.remove();
+  const inp=document.getElementById('dpi_'+id);if(inp)inp.classList.remove('open');
+  if(dpActive===id)dpActive=null;
 }
 
 document.addEventListener('click',e=>{
