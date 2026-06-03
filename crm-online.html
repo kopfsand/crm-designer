@@ -459,7 +459,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .ins .tx span{font-size:11px;color:var(--dim);line-height:1.55}
 
 /* period filter */
-.an-period{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.an-period{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .per-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
 .per-btn:hover{color:var(--txt);border-color:var(--dim)}
 .per-btn.active{background:var(--or);color:var(--on);border-color:var(--or)}
@@ -496,7 +496,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .an-tooltip b{display:block;font-size:12px;color:var(--or)}
 
 /* metric cards */
-.an-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:0}
+.an-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 @media(max-width:700px){.an-metrics{grid-template-columns:1fr 1fr}}
 .am-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .am-card .k{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -786,14 +786,15 @@ input[type=number]{-moz-appearance:textfield}
 <!-- ANALYTICS -->
 <section class="view" id="view-analytics">
   <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div>
-    <div class="an-export"><button onclick="exportAnalyticsPDF()">⬇ PDF отчёт</button></div>
-  </div>
-  <!-- Period filter -->
-  <div class="an-period" id="anPeriod">
-    <button class="per-btn" data-p="30">30 дней</button>
-    <button class="per-btn" data-p="90">3 месяца</button>
-    <button class="per-btn" data-p="180">Полгода</button>
-    <button class="per-btn active" data-p="all">Всё время</button>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <div class="an-period" id="anPeriod" style="margin-bottom:0">
+        <button class="per-btn" data-p="30">30 дн.</button>
+        <button class="per-btn" data-p="90">3 мес.</button>
+        <button class="per-btn" data-p="180">Полгода</button>
+        <button class="per-btn active" data-p="all">Всё время</button>
+      </div>
+      <div class="an-export"><button onclick="exportAnalyticsPDF()">⬇ PDF</button></div>
+    </div>
   </div>
   <!-- KPIs -->
   <div class="g4" id="anKpis"></div>
@@ -1528,14 +1529,15 @@ document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase
 /* -- ANALYTICS -- */
 /* ── Analytics period state ── */
 let anPeriod='all';
-document.addEventListener('DOMContentLoaded',()=>{
+
+function initPeriodBtns(){
   document.querySelectorAll('.per-btn').forEach(b=>b.addEventListener('click',()=>{
     anPeriod=b.dataset.p;
     document.querySelectorAll('.per-btn').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
     renderAnalytics();
   }));
-});
+}
 
 function anFilterOrders(){
   if(anPeriod==='all') return S.orders;
@@ -1744,6 +1746,7 @@ function renderAnalytics(){
     <div class="ins"><div class="ic">📈</div><div class="tx"><b>${growth!==null?(growth>=0?`Рост +${growth}%`:`Спад ${growth}%`):'Динамика'}</b><span>${growth!==null?`Выручка ${growthMonths[1].l} vs ${growthMonths[0].l}`:'Добавьте заказы за 2+ месяца'}</span></div></div>
     <div class="ins"><div class="ic">🔁</div><div class="tx"><b>Повторные клиенты ${repeatRate}%</b><span>${repeatClients} клиентов вернулись — хороший показатель удержания</span></div></div>
     <div class="ins"><div class="ic">⏱</div><div class="tx"><b>Цикл сделки ${avgCycle} дн.</b><span>${avgCycle?`Среднее время от старта до дедлайна по ${cycleTimes.length} заказам`:'Добавьте даты начала и дедлайны'}</span></div></div>`;
+  initPeriodBtns();
 }
 
 function exportAnalyticsPDF(){
