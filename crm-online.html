@@ -147,21 +147,22 @@ function showApp(user) {
 }
 </script>
 <style>
-:root{--bg:#0c0b0a;--bg2:#131110;--card:#17150f;--card2:#1c1a15;--ln:#262219;--ln2:#322c20;--txt:#f4f0e8;--dim:#8f867a;--dim2:#5f594f;--or:#ff5a1f;--ord:#e8470f;--orp:#c33a0a;--on:#140a04;--r:20px;--rs:13px}
-[data-theme="light"]{--bg:#f5f2ec;--bg2:#ede9e0;--card:#ffffff;--card2:#f8f5ef;--ln:#ddd8ce;--ln2:#ccc5b7;--txt:#1a1714;--dim:#7a7268;--dim2:#a09890;--on:#140a04;}
+:root{--bg:#0a0a0a;--bg2:#111111;--card:#161616;--card2:#1c1c1c;--ln:#252525;--ln2:#2e2e2e;--txt:#f0ede8;--dim:#888;--dim2:#555;--or:#ff5a1f;--ord:#e8470f;--orp:#c33a0a;--on:#0a0a0a;--r:22px;--rs:16px;
+  --accent1:#ff5a1f;--accent2:#c8f23a;--accent3:#7b6ef6;--accent4:#f0c93a;--accent5:#3ab5f2}
+[data-theme="light"]{--bg:#f0ede8;--bg2:#e8e4dc;--card:#ffffff;--card2:#f5f2ec;--ln:#ddd8ce;--ln2:#ccc5b7;--txt:#0a0a0a;--dim:#666;--dim2:#999;--on:#0a0a0a;}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;background-image:radial-gradient(1100px 600px at 92% -10%,rgba(255,90,31,.1),transparent 55%)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;}
 ::selection{background:var(--or);color:var(--on)}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:8px;border:2px solid var(--bg)}::-webkit-scrollbar-thumb:hover{background:var(--orp)}
+::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:8px;border:2px solid var(--bg)}::-webkit-scrollbar-thumb:hover{background:var(--dim)}
 .shell{max-width:1200px;margin:0 auto;padding:0 22px 100px}
 
 /* header */
 header.top{display:flex;align-items:center;justify-content:space-between;padding:26px 4px 20px;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px}
-.logo{width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--or);box-shadow:0 8px 26px -8px rgba(255,90,31,.7)}
+.logo{width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--or);}
 .logo svg{width:24px;height:24px}
-.brand h1{font-family:'Inter';font-weight:800;font-size:19px;letter-spacing:.04em;text-transform:uppercase;line-height:1}
+.brand h1{font-family:'Rubik';font-weight:900;font-size:20px;letter-spacing:-.01em;text-transform:uppercase;line-height:1}
 .brand .sub{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--dim);margin-top:6px;font-weight:600}
 .hpills{display:flex;gap:8px;align-items:center}
 .pill{font-family:'Inter';font-size:11px;font-weight:600;padding:8px 13px;border-radius:11px;border:1px solid var(--ln2);color:var(--dim);background:var(--card);cursor:default}
@@ -171,49 +172,82 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .pill.act{cursor:pointer;transition:.2s}.pill.act:hover{color:var(--txt)}
 
 /* nav */
-nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:rgba(20,18,14,.8);backdrop-filter:blur(10px);margin-bottom:24px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;max-width:100%}
-nav.tabs button{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:10px 16px;border-radius:13px;display:flex;align-items:center;gap:7px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+nav.tabs{display:flex;gap:3px;padding:5px;border:1px solid var(--ln2);border-radius:20px;background:var(--card);margin-bottom:28px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,.6);overflow-x:auto;max-width:100%}
+nav.tabs button{font-family:'Inter';font-size:11px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:9px 14px;border-radius:15px;display:flex;align-items:center;gap:6px;transition:.18s;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
 @media(max-width:1100px){nav.tabs button[data-view="bookmarks"] .tab-label{display:none}}
 nav.tabs button svg{width:15px;height:15px;opacity:.7}
 nav.tabs button:hover{color:var(--txt)}
-nav.tabs button.active{background:var(--or);color:var(--on);box-shadow:0 8px 20px -8px rgba(255,90,31,.55)}
+nav.tabs button.active{background:var(--txt);color:var(--bg);box-shadow:none}
 nav.tabs button.active svg{opacity:1}
 
 .view{display:none}.view.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px;gap:12px;flex-wrap:wrap}
-.sec-head h2{font-family:'Inter';font-weight:800;font-size:28px;letter-spacing:.02em;text-transform:uppercase;line-height:.95}
-.sec-head .eye{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--or);font-weight:700;display:block;margin-bottom:7px}
+.sec-head h2{font-family:'Rubik';font-weight:900;font-size:38px;letter-spacing:-.03em;text-transform:uppercase;line-height:.9}
+.sec-head .eye{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim);font-weight:700;display:block;margin-bottom:8px}
 .sec-head .hint{font-size:12px;color:var(--dim);font-family:'Inter'}
-.sec-head .btn-add{font-family:'Inter';font-weight:700;font-size:12.5px;padding:10px 18px;border-radius:12px;background:var(--or);color:var(--on);border:none;cursor:pointer;transition:.2s;text-transform:uppercase;letter-spacing:.04em}
-.sec-head .btn-add:hover{background:var(--ord)}
+.sec-head .btn-add{font-family:'Inter';font-weight:700;font-size:12px;padding:11px 20px;border-radius:14px;background:var(--txt);color:var(--bg);border:none;cursor:pointer;transition:.2s;text-transform:uppercase;letter-spacing:.04em}
+.sec-head .btn-add:hover{background:var(--or);color:var(--on)}
 
 /* layout primitives */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
-.panel{border:1px solid var(--ln);border-radius:var(--r);background:var(--card);overflow:hidden}
+.panel{border:1px solid var(--ln2);border-radius:24px;background:var(--card);overflow:hidden}
 .ph{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 0}
-.ph .t{font-family:'Inter';font-weight:700;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase}
+.ph .t{font-family:'Rubik';font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .ph .n{font-family:'Inter';font-size:10px;color:var(--dim)}
 .pad{padding:18px 20px}
 
 /* KPI strip */
-.ks{border:1px solid var(--ln);border-radius:var(--rs);background:var(--card);padding:16px 18px}
-.ks .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:700}
-.ks .v{font-family:'Rubik';font-weight:700;font-size:24px;margin-top:8px;letter-spacing:-.03em}
+.ks{border:1px solid var(--ln2);border-radius:20px;background:var(--card);padding:20px 22px}
+.ks .k{font-family:'Inter';font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.ks .v{font-family:'Rubik';font-weight:800;font-size:32px;margin-top:10px;letter-spacing:-.04em;line-height:1}
 .ks .v .u{font-size:13px;color:var(--or)}
 .ks .s{font-size:10px;color:var(--dim);font-family:'Inter';margin-top:4px}
-.ks.hot{background:var(--or);color:var(--on)}.ks.hot .k,.ks.hot .s{color:rgba(20,10,4,.6)}.ks.hot .v .u{color:var(--on)}
+.ks.hot{background:var(--accent2);color:#0a0a0a;border-color:transparent}.ks.hot .k{color:rgba(10,10,10,.55)}.ks.hot .s{color:rgba(10,10,10,.5)}.ks.hot .v .u{color:#0a0a0a}
+/* accent card variants */
+.ks.ac1{background:var(--accent1);color:#fff;border-color:transparent}.ks.ac1 .k,.ks.ac1 .s{color:rgba(255,255,255,.6)}.ks.ac1 .v{color:#fff}
+.ks.ac2{background:var(--accent2);color:#0a0a0a;border-color:transparent}.ks.ac2 .k,.ks.ac2 .s{color:rgba(10,10,10,.55)}
+.ks.ac3{background:var(--accent3);color:#fff;border-color:transparent}.ks.ac3 .k,.ks.ac3 .s{color:rgba(255,255,255,.6)}.ks.ac3 .v{color:#fff}
+.ks.ac4{background:var(--accent4);color:#0a0a0a;border-color:transparent}.ks.ac4 .k,.ks.ac4 .s{color:rgba(10,10,10,.5)}
+/* huge display number for hero */
+.ks .v.xl{font-size:52px;line-height:.85;letter-spacing:-.05em}
+/* task card accent */
+.task{border:1px solid var(--ln2);border-radius:16px;background:var(--card);padding:14px;cursor:grab;transition:.15s;border-left-width:4px}
+/* client grid 2-col */
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.cl-grid{grid-template-columns:1fr}}
+/* bookmark card rounder */
+.bm-card{border-radius:20px}
+/* contact card rounder */
+.contact-card{border-radius:20px}
+/* expense row rounder */
+.exp-row{border-radius:14px}
+/* archive task rounder */
+.archive-task{border-radius:14px}
+/* login card rounder */
+.login-card{border-radius:32px}
+/* login button style */
+.login-btn{background:var(--txt);color:var(--bg);border-radius:16px}
+.login-btn:hover{opacity:.88;transform:translateY(-1px)}
+/* user badge */
+.user-badge{border-radius:14px}
+/* sync dot */
+.sync-dot{border-radius:12px}
+/* dp cal */
+.dp-cal-fixed{border-radius:20px}
+/* modal header */
+.modal-hd{border-radius:0}
 
 /* hero */
-.hero{background:var(--or);color:var(--on);border-radius:var(--r);padding:24px 26px 22px;position:relative;overflow:hidden}
+.hero{background:var(--accent2);color:#0a0a0a;border-radius:24px;padding:28px 30px 24px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:34px solid rgba(20,10,4,.08)}
 .hero .lab{font-family:'Inter';font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
 .hero .big{display:flex;align-items:flex-start;gap:5px;margin:12px 0 4px;position:relative;z-index:1}
-.hero .big .v{font-family:'Rubik';font-weight:700;font-size:68px;letter-spacing:-.05em;line-height:.84}
-.hero .big .c{font-family:'Rubik';font-weight:800;font-size:21px;margin-top:6px}
+.hero .big .v{font-family:'Rubik';font-weight:900;font-size:80px;letter-spacing:-.06em;line-height:.82}
+.hero .big .c{font-family:'Rubik';font-weight:900;font-size:24px;margin-top:8px}
 .hero .sub-lab{font-family:'Inter';font-size:11.5px;font-weight:600;opacity:.82;margin-bottom:16px;position:relative;z-index:1}
 .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1}
 .hs .k{font-family:'Inter';font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.68}
@@ -275,7 +309,7 @@ nav.tabs button.active svg{opacity:1}
 .cl-nm{flex:1;min-width:0}
 .cl-nm .nm{font-family:'Inter';font-weight:700;font-size:18px;line-height:1.05}
 .cl-nm .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center}
-.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0}
+.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:4px 9px;border-radius:8px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0}
 .tag.o{background:rgba(255,90,31,.12);color:var(--or);border-color:transparent;max-width:120px;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
 .cl-rev{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
 .cl-rev .v{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;line-height:1;display:inline}
@@ -318,7 +352,7 @@ nav.tabs button.active svg{opacity:1}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .chip{font-family:'Inter';font-size:10.5px;font-weight:600;color:var(--dim);background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:9px 12px;cursor:pointer;transition:.18s}
 .chip:hover{color:var(--txt);border-color:var(--ln2)}
-.chip.active{background:var(--or);color:var(--on);border-color:var(--or)}
+.chip.active{background:var(--txt);color:var(--bg);border-color:transparent}
 /* sort bar */
 .sort-bar{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .sort-bar .sl{font-family:'Inter';font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim2);margin-right:2px}
@@ -399,9 +433,9 @@ nav.tabs button.active svg{opacity:1}
 .exp-row .e-am{font-family:'Rubik';font-weight:700;font-size:14px;color:var(--txt);white-space:nowrap}
 .exp-row .e-acts{display:flex;gap:4px}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-.profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
+.profit-card{background:var(--card);border:1px solid var(--ln2);border-radius:20px;padding:20px 22px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
-.profit-card .pv{font-family:'Rubik';font-weight:700;font-size:22px;letter-spacing:-.03em}
+.profit-card .pv{font-family:'Rubik';font-weight:800;font-size:28px;letter-spacing:-.04em}
 .profit-card .ps{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:4px}
 .tax-calc{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
 .tax-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -518,9 +552,9 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 
 /* period filter */
 .an-period{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.per-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
+.per-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:7px 15px;border-radius:12px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
 .per-btn:hover{color:var(--txt);border-color:var(--dim)}
-.per-btn.active{background:var(--or);color:var(--on);border-color:var(--or)}
+.per-btn.active{background:var(--txt);color:var(--bg);border-color:transparent}
 
 /* comparison bars */
 .cmp-bars{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
@@ -556,9 +590,9 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 /* metric cards */
 .an-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 @media(max-width:700px){.an-metrics{grid-template-columns:1fr 1fr}}
-.am-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
+.am-card{background:var(--card);border:1px solid var(--ln2);border-radius:20px;padding:20px 22px}
 .am-card .k{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
-.am-card .v{font-family:'Rubik';font-weight:700;font-size:22px;letter-spacing:-.03em}
+.am-card .v{font-family:'Rubik';font-weight:800;font-size:28px;letter-spacing:-.04em}
 .am-card .s{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:4px}
 
 /* export btn */
@@ -623,7 +657,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .dp-clear:hover{color:var(--txt);border-color:var(--dim)}
 /* modal */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);padding:20px}
-.modal-box{background:var(--card);border:1px solid var(--ln2);border-radius:var(--r);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px -20px #000;animation:rise .35s both}
+.modal-box{background:var(--card);border:1px solid var(--ln2);border-radius:28px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px -20px rgba(0,0,0,.9);animation:rise .35s both}
 .modal-hd{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 13px;border-bottom:1px solid var(--ln);position:sticky;top:0;background:var(--card);z-index:2}
 .modal-hd .t{font-family:'Inter';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
 .modal-hd .x{font-family:'Inter';font-size:17px;color:var(--dim);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s}
@@ -701,7 +735,7 @@ input[type=number]{-moz-appearance:textfield}
 .gsearch-empty{padding:36px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim)}
 
 /* === CLIENT STATUS BADGES === */
-.rel-status{display:inline-flex;align-items:center;gap:5px;font-family:'Inter';font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.rel-status{display:inline-flex;align-items:center;gap:5px;font-family:'Inter';font-size:10px;font-weight:600;padding:4px 10px;border-radius:8px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
 .rel-status.active{background:rgba(123,191,106,.15);color:#7bbf6a;border:1px solid rgba(123,191,106,.3)}
 .rel-status.paused{background:rgba(214,189,106,.15);color:#d6bd6a;border:1px solid rgba(214,189,106,.3)}
 .rel-status.potential{background:rgba(127,166,201,.15);color:#7fa6c9;border:1px solid rgba(127,166,201,.3)}
@@ -1912,9 +1946,9 @@ function renderAnalytics(){
 
   // ── KPIs ──
   document.getElementById('anKpis').innerHTML=`
-    <div class="ks hot"><div class="k">Конверсия</div><div class="v">${conv}<span class="u">%</span></div><div class="s">${paid}/${orders.length} оплачены</div></div>
-    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
-    <div class="ks"><div class="k">Пиковый месяц</div><div class="v" style="font-size:18px">${busiest.l}</div><div class="s">${rub(busiest.v)}</div></div>
+    <div class="ks ac2"><div class="k">Конверсия</div><div class="v">${conv}<span class="u">%</span></div><div class="s">${paid}/${orders.length} оплачены</div></div>
+    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u" style="color:var(--or)">₽</span></div></div>
+    <div class="ks ac3"><div class="k">Пиковый месяц</div><div class="v" style="font-size:22px">${busiest.l}</div><div class="s">${rub(busiest.v)}</div></div>
     <div class="ks"><div class="k">Заказов</div><div class="v">${orders.length}</div><div class="s">${clients.length} клиентов</div></div>`;
 
   // ── Extra metrics ──
@@ -2004,9 +2038,9 @@ function renderPlanner(){
   const active=S.tasks.filter(t=>t.status!=='✅ Готово');
   document.getElementById('plKpis').innerHTML=`
     <div class="ks"><div class="k">Всего задач</div><div class="v">${S.tasks.length}</div></div>
-    <div class="ks hot"><div class="k">В работе</div><div class="v">${S.tasks.filter(t=>t.status==='🔄 В работе').length}</div></div>
-    <div class="ks"><div class="k">Срочных</div><div class="v">${S.tasks.filter(t=>t.priority==='🔴 Срочно'&&t.status!=='✅ Готово').length}</div></div>
-    <div class="ks"><div class="k">К выполнению</div><div class="v">${active.reduce((s,t)=>s+(t.estimate||0),0)}<span class="u"> ч</span></div></div>`;
+    <div class="ks ac1"><div class="k">В работе</div><div class="v">${S.tasks.filter(t=>t.status==='🔄 В работе').length}</div></div>
+    <div class="ks ac4"><div class="k">Срочных</div><div class="v">${S.tasks.filter(t=>t.priority==='🔴 Срочно'&&t.status!=='✅ Готово').length}</div></div>
+    <div class="ks"><div class="k">К выполнению</div><div class="v">${active.reduce((s,t)=>s+(t.estimate||0),0)}<span class="u" style="color:var(--dim)"> ч</span></div></div>`;
 
   document.getElementById('board').innerHTML=PCOLS.map((col,ci)=>`
     <div class="col" data-col="${col}">
@@ -2220,10 +2254,10 @@ function renderFinance(){
 
   // KPIs
   document.getElementById('finKpis').innerHTML=`
-    <div class="ks hot"><div class="k">Дебиторка</div><div class="v">${fmt(totalDebt)}<span class="u">₽</span></div></div>
+    <div class="ks ac1"><div class="k">Дебиторка</div><div class="v">${fmt(totalDebt)}<span class="u" style="color:rgba(255,255,255,.7)">₽</span></div></div>
     <div class="ks"><div class="k">Заказов</div><div class="v">${orders.length}</div><div class="s">${S.clients.length} клиентов</div></div>
-    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
-    <div class="ks"><div class="k">Конверсия</div><div class="v">${orders.length?Math.round(orders.filter(o=>(o.paid||0)>=(o.cost||0)).length/orders.length*100):0}<span class="u">%</span></div></div>`;
+    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u" style="color:var(--or)">₽</span></div></div>
+    <div class="ks ac2"><div class="k">Конверсия</div><div class="v">${orders.length?Math.round(orders.filter(o=>(o.paid||0)>=(o.cost||0)).length/orders.length*100):0}<span class="u">%</span></div></div>`;
 
   // Income chart
   const mMap={};
