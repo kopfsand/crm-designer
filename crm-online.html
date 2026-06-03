@@ -224,7 +224,7 @@ nav.tabs button.active svg{opacity:1}
 .dial-wrap{position:relative;width:220px;height:220px}
 .dial-wrap svg{position:absolute;inset:0}
 .dial-wrap .dc{position:absolute;inset:0;display:grid;place-content:center;pointer-events:none;z-index:2}
-.dial-wrap .dc .pct{font-family:'Rubik';font-weight:700;font-size:44px;letter-spacing:-.04em;line-height:1}
+.dial-wrap .dc .pct{font-family:'Rubik';font-weight:700;font-size:32px;letter-spacing:-.03em;line-height:1}
 .dial-wrap .dc .cl{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-top:4px;background:transparent}
 .dial-foot{margin-top:12px;display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
 .pill2{font-family:'Inter';font-size:10.5px;font-weight:600;padding:7px 11px;border-radius:9px;background:var(--bg2);border:1px solid var(--ln2);color:var(--dim)}
@@ -274,10 +274,10 @@ nav.tabs button.active svg{opacity:1}
 .cl-nm{flex:1;min-width:0}
 .cl-nm .nm{font-family:'Inter';font-weight:700;font-size:18px;line-height:1.05}
 .cl-nm .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center}
-.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block}
+.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;width:auto;flex-shrink:1}
 .tag.o{color:var(--or);border-color:var(--orp)}
-.cl-rev{text-align:right;display:flex;flex-direction:column;align-items:flex-end}
-.cl-rev .v{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;line-height:1}
+.cl-rev{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
+.cl-rev .v{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;line-height:1;display:inline}
 .cl-rev .u{font-size:13px;color:var(--or);font-family:'Rubik';font-weight:700;display:inline;margin-left:3px}
 .cl-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ln)}
 .cl-stats .s{padding:12px;text-align:center;border-right:1px solid var(--ln)}
@@ -285,8 +285,8 @@ nav.tabs button.active svg{opacity:1}
 .cl-stats .s .v{font-family:'Rubik';font-weight:700;font-size:15px}
 .cl-stats .s .v.debt{color:var(--or)}
 .cl-stats .s .k{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px;font-weight:700}
-.cl-foot{display:flex;align-items:center;justify-content:space-between;padding:11px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:11px}
-.cl-foot .ph{color:var(--dim)}
+.cl-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px}
+.cl-foot .ph{color:var(--dim);flex:1;text-align:center}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -450,7 +450,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .radar-wrap{padding:12px;display:grid;place-items:center}
 .insights{padding:8px 14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .ins{display:flex;gap:12px;align-items:stretch;padding:14px;border:1px solid var(--ln);border-radius:var(--rs);background:var(--card2)}
-.ins .ic{width:36px;min-height:100%;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--bg2);font-size:16px;align-self:stretch}
+.ins .ic{width:36px;height:36px;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--bg2);font-size:16px;align-self:center}
 .ins.warn .ic{background:var(--or);color:var(--on)}
 .ins .tx b{font-size:12.5px;display:block;margin-bottom:3px}
 .ins .tx span{font-size:11px;color:var(--dim);line-height:1.55}
@@ -1376,7 +1376,7 @@ function renderClients(){
         <div class="cl-ava">${c.icon}</div>
         <div class="cl-nm"><div class="nm">${esc(c.name)}</div>
           <div class="tg"><span class="tag">${c.type}</span><span class="tag o">${c.source}</span><span class="rel-status ${rsInfo.cls}">${rsInfo.l}</span></div></div>
-        <div class="cl-rev"><div class="v">${fmt(c.cost)}</div><div class="u">₽ всего</div></div>
+        <div class="cl-rev"><div style="display:flex;align-items:baseline;gap:3px;justify-content:flex-end"><div class="v">${fmt(c.cost)}</div><div class="u">₽</div></div><div class="u" style="font-size:9px;color:var(--dim);font-weight:500;margin-top:2px">всего</div></div>
       </div>
       <div class="cl-stats">
         <div class="s"><div class="v">${c.cnt}</div><div class="k">Заказов</div></div>
