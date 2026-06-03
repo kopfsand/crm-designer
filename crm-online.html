@@ -286,8 +286,9 @@ nav.tabs button.active svg{opacity:1}
 .cl-stats .s .v{font-family:'Rubik';font-weight:700;font-size:15px}
 .cl-stats .s .v.debt{color:var(--or)}
 .cl-stats .s .k{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px;font-weight:700}
-.cl-foot{display:flex;align-items:center;justify-content:flex-end;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px;position:relative}
-.cl-foot .ph{color:var(--dim);position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
+.cl-foot{display:flex;align-items:center;justify-content:center;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px;position:relative}
+.cl-foot .ph{color:var(--dim)}
+.cl-foot .acts{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -1538,7 +1539,7 @@ function renderClients(){
       <div class="cl-head">
         <div class="cl-ava">${c.icon}</div>
         <div class="cl-nm"><div class="nm">${esc(c.name)}</div>
-          <div class="tg"><span class="tag">${c.type}</span><span class="tag o">${c.source}</span><span class="rel-status ${rsInfo.cls}">${rsInfo.l}</span></div></div>
+          <div class="tg"><span class="tag">${c.type}</span><span style="font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;white-space:nowrap;background:rgba(255,90,31,.15);color:var(--or);display:inline-block;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;max-width:110px">${esc(c.source)}</span><span class="rel-status ${rsInfo.cls}">${rsInfo.l}</span></div></div>
         <div class="cl-rev"><div style="display:flex;align-items:baseline;gap:3px;justify-content:flex-end"><div class="v">${fmt(c.cost)}</div><div class="u">₽</div></div><div class="u" style="font-size:9px;color:var(--dim);font-weight:500;margin-top:2px">всего</div></div>
       </div>
       <div class="cl-stats">
