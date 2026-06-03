@@ -352,18 +352,67 @@ nav.tabs button.active svg{opacity:1}
 .col-h{display:flex;align-items:center;justify-content:space-between;padding:13px 14px 10px}
 .col-h .nm{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 .col-h .ct{font-family:'Inter';font-size:10.5px;color:var(--dim);background:var(--card);padding:3px 7px;border-radius:7px}
+.col-h .col-add{background:none;border:none;color:var(--dim);cursor:pointer;font-size:18px;line-height:1;padding:0 4px;transition:.13s}
+.col-h .col-add:hover{color:var(--or)}
 .col-body{padding:0 10px 10px;display:flex;flex-direction:column;gap:8px;min-height:30px}
 .task{border:1px solid var(--ln2);border-radius:11px;background:var(--card);padding:12px;cursor:grab;transition:.15s;border-left-width:3px}
 .task:active{cursor:grabbing}
 .task:hover{transform:translateY(-1px);box-shadow:0 10px 22px -14px #000}
 .task.drag{opacity:.35}
 .task .tt{font-weight:700;font-size:12.5px;line-height:1.3}
+.task .tn{font-size:11px;color:var(--dim);margin-top:5px;line-height:1.5}
 .task .meta{display:flex;gap:5px;align-items:center;margin-top:8px;flex-wrap:wrap}
 .task .pr{font-family:'Inter';font-size:9px;font-weight:600;padding:3px 6px;border-radius:5px;text-transform:uppercase}
 .task .ord{font-family:'Inter';font-size:9.5px;color:var(--or);margin-top:4px}
 .task .est{font-family:'Inter';font-size:9.5px;color:var(--dim);margin-left:auto}
 .task .task-acts{display:none;gap:4px;margin-top:8px;border-top:1px solid var(--ln);padding-top:8px}
 .task:hover .task-acts{display:flex}
+/* subtasks */
+.subtasks{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.subtask-row{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--dim);cursor:pointer;transition:.13s}
+.subtask-row:hover{color:var(--txt)}
+.subtask-row input[type=checkbox]{accent-color:var(--or);width:13px;height:13px;cursor:pointer;flex:none}
+.subtask-row span.done{text-decoration:line-through;opacity:.5}
+.subtask-progress{height:3px;border-radius:2px;background:var(--ln);margin-top:6px;overflow:hidden}
+.subtask-progress .bar{height:100%;background:var(--or);border-radius:2px;transition:width .3s}
+/* quick-add task input */
+.quick-add{padding:0 10px 10px}
+.quick-add input{width:100%;font-family:'Inter';font-size:12px;color:var(--txt);background:var(--bg2);border:1px solid var(--ln2);border-radius:9px;padding:8px 11px;outline:none;transition:.15s}
+.quick-add input:focus{border-color:var(--orp)}
+.quick-add input::placeholder{color:var(--dim2)}
+/* archive panel */
+.plan-archive{margin-top:0}
+.archive-toggle{font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 0;border:none;background:none;transition:.15s}
+.archive-toggle:hover{color:var(--or)}
+.archive-list{display:none;flex-direction:column;gap:6px;margin-top:8px}
+.archive-list.open{display:flex}
+.archive-task{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border:1px solid var(--ln);border-radius:10px;opacity:.65}
+.archive-task .at-nm{font-size:12px;font-weight:600;text-decoration:line-through;color:var(--dim)}
+.archive-task .at-meta{font-family:'Inter';font-size:10px;color:var(--dim2)}
+/* finance extras */
+.fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.exp-list{padding:10px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.exp-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:10px;background:var(--bg2);border:1px solid var(--ln);border-radius:10px}
+.exp-row .e-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.exp-row .e-nm{font-size:12.5px;font-weight:600}
+.exp-row .e-cat{font-family:'Inter';font-size:9.5px;color:var(--dim);margin-top:2px}
+.exp-row .e-am{font-family:'Rubik';font-weight:700;font-size:14px;color:var(--txt);white-space:nowrap}
+.exp-row .e-acts{display:flex;gap:4px}
+.fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
+.profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.profit-card .pv{font-family:'Rubik';font-weight:700;font-size:22px;letter-spacing:-.03em}
+.profit-card .ps{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:4px}
+.tax-calc{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+.tax-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tax-label{font-family:'Inter';font-size:12px;font-weight:600;color:var(--dim)}
+.tax-value{font-family:'Rubik';font-weight:700;font-size:18px;color:var(--or)}
+.tax-note{font-family:'Inter';font-size:10px;color:var(--dim2)}
+.tax-rate-btns{display:flex;gap:6px}
+.tax-rate-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:5px 11px;border-radius:7px;border:1px solid var(--ln2);background:var(--bg2);color:var(--dim);cursor:pointer;transition:.13s}
+.tax-rate-btn.active{background:var(--or);color:var(--on);border-color:var(--or)}
+.fin-period{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.exp-cat-colors{'Подписки':'#7fa6c9','Налоги':'#d6bd6a','Материалы':'#a795c9','Оборудование':'#7bbf6a','Другое':'#8f867a'}
 
 /* tracker */
 .timer-card .timer-body{padding:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
@@ -910,6 +959,13 @@ input[type=number]{-moz-appearance:textfield}
   <div class="sec-head"><div><span class="eye">Канбан</span><h2>Планер</h2></div><button class="btn-add" onclick="openTaskForm()">+ Добавить задачу</button></div>
   <div class="g4" id="plKpis"></div>
   <div class="board" id="board"></div>
+  <div class="plan-archive">
+    <button class="archive-toggle" onclick="document.getElementById('archiveList').classList.toggle('open');this.querySelector('span').textContent=document.getElementById('archiveList').classList.contains('open')?'▲ Архив завершённых':'▼ Архив завершённых'">
+      <span>▼ Архив завершённых</span>
+      <span id="archiveCnt" style="font-family:'Rubik';font-size:11px;color:var(--dim2)"></span>
+    </button>
+    <div class="archive-list" id="archiveList"></div>
+  </div>
 </section>
 
 <!-- TRACKER -->
@@ -936,12 +992,32 @@ input[type=number]{-moz-appearance:textfield}
 
 <!-- FINANCE -->
 <section class="view" id="view-finance">
-  <div class="sec-head"><div><span class="eye">Аналитика</span><h2>Финансы</h2></div></div>
+  <div class="sec-head"><div><span class="eye">Аналитика</span><h2>Финансы</h2></div>
+    <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
+  </div>
+  <!-- Period filter -->
+  <div class="fin-period" id="finPeriod">
+    <button class="per-btn" onclick="setFinPeriod(30,this)">30 дн.</button>
+    <button class="per-btn" onclick="setFinPeriod(90,this)">3 мес.</button>
+    <button class="per-btn" onclick="setFinPeriod(180,this)">Полгода</button>
+    <button class="per-btn active" onclick="setFinPeriod(0,this)">Всё время</button>
+  </div>
+  <!-- Profit summary -->
+  <div class="fin-profit" id="finProfit"></div>
+  <!-- KPIs -->
   <div class="g4" id="finKpis"></div>
+  <!-- Chart + Tax -->
   <div class="g2">
+    <div class="panel"><div class="ph"><span class="t">Доходы по месяцам</span></div><div class="area-wrap"><svg id="finArea" width="100%" height="180" preserveAspectRatio="none"></svg></div></div>
+    <div class="panel"><div class="ph"><span class="t">Налоговый калькулятор</span></div><div class="tax-calc" id="taxCalc"></div></div>
+  </div>
+  <!-- Tables -->
+  <div class="fin-grid">
     <div class="panel"><div class="ph"><span class="t">По типам работ</span></div><div class="pad"><table class="matrix" id="tyTable"></table></div></div>
     <div class="panel"><div class="ph"><span class="t">По клиентам</span></div><div class="pad"><table class="matrix" id="clTable"></table></div></div>
   </div>
+  <!-- Expenses -->
+  <div class="panel"><div class="ph"><span class="t">Расходы</span><span class="n" id="expTotal"></span></div><div class="exp-list" id="expList"></div></div>
 </section>
 
 <!-- INVOICE -->
@@ -1046,7 +1122,13 @@ input[type=number]{-moz-appearance:textfield}
 <!-- BOOKMARKS -->
 <section class="view" id="view-bookmarks">
   <div class="sec-head"><div><span class="eye">Коллекции</span><h2>Закладки</h2></div>
-    <button class="btn-add" onclick="openAddBookmarkForm()">+ Добавить</button>
+    <div style="display:flex;gap:8px">
+      <button class="ibt" onclick="openCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l6.59-6.59a1 1 0 0 0 0-1.41L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+        Категории
+      </button>
+      <button class="btn-add" onclick="openAddBookmarkForm()">+ Добавить</button>
+    </div>
   </div>
   <div class="bm-search-wrap">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
@@ -1440,19 +1522,41 @@ function deleteOrder(id){
 function openTaskForm(id=null){
   const t=id?S.tasks.find(x=>x.id===id):{};
   const PRIS=['🔴 Срочно','🟡 Важно','🟢 Обычное'];
+  const subsHtml=`<div id="subList" style="display:flex;flex-direction:column;gap:6px;margin-bottom:6px">
+    ${(t.subtasks||[]).map((s,i)=>`<div style="display:flex;gap:6px;align-items:center">
+      <input class="tx sub-inp" style="flex:1;padding:7px 10px;font-size:12px" placeholder="Подзадача…" value="${esc(s.text||'')}">
+      <button class="ibt del" onclick="this.closest('div').remove()" style="padding:6px 9px">✕</button>
+    </div>`).join('')}
+  </div>
+  <button class="ibt" onclick="addSubRow()" style="width:100%;padding:8px;font-size:12px">+ Подзадача</button>`;
   openModal(id?'Редактировать задачу':'Новая задача',`<div class="fg">
     ${fld('Задача *',inp('f_tsk','text',t.task,'true'),'full')}
+    ${fld('Описание',ta('f_tn',t.note),'full')}
     ${fld('Привязать к заказу',orderOpts('f_tod',t.orderId||''),'full')}
     ${fld('Приоритет',selOpts('f_pr',PRIS,t.priority||'🟢 Обычное'))}
     ${fld('Статус',selOpts('f_ts',PCOLS,t.status||'📥 Входящее'))}
     ${fld('Оценка (часов)',inp('f_est','number',t.estimate||1))}
-    ${fld('Заметка',ta('f_tn',t.note),'full')}
+    ${fld('Подзадачи',subsHtml,'full')}
   </div>`,()=>saveTask(id));
+}
+function addSubRow(){
+  const list=document.getElementById('subList');
+  const div=document.createElement('div');
+  div.style.cssText='display:flex;gap:6px;align-items:center';
+  div.innerHTML=`<input class="tx sub-inp" style="flex:1;padding:7px 10px;font-size:12px" placeholder="Подзадача…"><button class="ibt del" onclick="this.closest('div').remove()" style="padding:6px 9px">✕</button>`;
+  list.appendChild(div);
+  div.querySelector('input').focus();
+}
+function getSubtasks(){
+  return [...document.querySelectorAll('.sub-inp')].map(i=>i.value.trim()).filter(Boolean).map(text=>({text,done:false}));
 }
 function saveTask(editId){
   const task=gv('f_tsk');if(!task.trim()){toast('Введите задачу');return}
   const ord=S.orders.find(o=>o.id===gv('f_tod'));
-  const data={task,orderId:gv('f_tod'),orderName:ord?ord.name:'',priority:gv('f_pr'),status:gv('f_ts'),estimate:+gv('f_est')||1,note:gv('f_tn')};
+  const existSubs=editId?S.tasks.find(t=>t.id===editId)?.subtasks||[]:[];
+  // merge: keep done state for existing subs by text match
+  const newSubs=getSubtasks().map(s=>({...s,done:existSubs.find(e=>e.text===s.text)?.done||false}));
+  const data={task,orderId:gv('f_tod'),orderName:ord?ord.name:'',priority:gv('f_pr'),status:gv('f_ts'),estimate:+gv('f_est')||1,note:gv('f_tn'),subtasks:newSubs};
   if(editId){const i=S.tasks.findIndex(t=>t.id===editId);S.tasks[i]={...S.tasks[i],...data};}
   else S.tasks.push({...data,id:uid()});
   save();closeModal();renderPlanner();toast(editId?'Задача обновлена':'Задача добавлена');
@@ -1894,6 +1998,8 @@ function renderAnalytics(){
 
 /* -- PLANNER -- */
 function renderPlanner(){
+  const activeCols=PCOLS.filter(c=>c!=='✅ Готово');
+  const done=S.tasks.filter(t=>t.status==='✅ Готово');
   const counts=PCOLS.map(c=>S.tasks.filter(t=>t.status===c).length);
   const active=S.tasks.filter(t=>t.status!=='✅ Готово');
   document.getElementById('plKpis').innerHTML=`
@@ -1901,23 +2007,83 @@ function renderPlanner(){
     <div class="ks hot"><div class="k">В работе</div><div class="v">${S.tasks.filter(t=>t.status==='🔄 В работе').length}</div></div>
     <div class="ks"><div class="k">Срочных</div><div class="v">${S.tasks.filter(t=>t.priority==='🔴 Срочно'&&t.status!=='✅ Готово').length}</div></div>
     <div class="ks"><div class="k">К выполнению</div><div class="v">${active.reduce((s,t)=>s+(t.estimate||0),0)}<span class="u"> ч</span></div></div>`;
+
   document.getElementById('board').innerHTML=PCOLS.map((col,ci)=>`
     <div class="col" data-col="${col}">
-      <div class="col-h"><span class="nm">${col}</span><span class="ct">${counts[ci]}</span></div>
+      <div class="col-h">
+        <span class="nm">${col}</span>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="ct">${counts[ci]}</span>
+          <button class="col-add" onclick="quickAddFocus('${col}')" title="Быстрое добавление">＋</button>
+        </div>
+      </div>
       <div class="col-body" data-col="${col}">
-        ${S.tasks.filter(t=>t.status===col).map(t=>`
-          <div class="task" draggable="true" data-id="${t.id}" style="border-left-color:${PRCOL[t.priority]||'#888'}">
+        ${S.tasks.filter(t=>t.status===col).map(t=>{
+          const subs=t.subtasks||[];
+          const doneSubs=subs.filter(s=>s.done).length;
+          const pct=subs.length?Math.round(doneSubs/subs.length*100):0;
+          return `<div class="task" draggable="true" data-id="${t.id}" style="border-left-color:${PRCOL[t.priority]||'#888'}">
             <div class="tt">${esc(t.task)}</div>
-            <div class="meta"><span class="pr" style="background:color-mix(in srgb,${PRCOL[t.priority]||'#888'} 20%,transparent);color:${PRCOL[t.priority]||'#888'}">${t.priority}</span><span class="est">${t.estimate} ч</span></div>
+            ${t.note?`<div class="tn">${esc(t.note)}</div>`:''}
+            ${subs.length?`<div class="subtasks">${subs.slice(0,3).map((s,i)=>`
+              <label class="subtask-row" onclick="event.stopPropagation()">
+                <input type="checkbox" ${s.done?'checked':''} onchange="toggleSub('${t.id}',${i},this.checked)">
+                <span class="${s.done?'done':''}">${esc(s.text)}</span>
+              </label>`).join('')}${subs.length>3?`<div style="font-family:'Inter';font-size:9.5px;color:var(--dim2);padding-left:20px">+${subs.length-3} ещё</div>`:''}</div>
+            <div class="subtask-progress"><div class="bar" style="width:${pct}%"></div></div>`:''}
+            <div class="meta"><span class="pr" style="background:color-mix(in srgb,${PRCOL[t.priority]||'#888'} 20%,transparent);color:${PRCOL[t.priority]||'#888'}">${t.priority}</span><span class="est">${t.estimate} ч${subs.length?' · '+doneSubs+'/'+subs.length:''}</span></div>
             ${t.orderName?`<div class="ord">▸ ${esc(t.orderName)}</div>`:''}
             <div class="task-acts">
               <button class="ibt" onclick="openTaskForm('${t.id}')">✏ Ред.</button>
               <button class="ibt del" onclick="deleteTask('${t.id}')">✕ Удал.</button>
             </div>
-          </div>`).join('')}
+          </div>`;
+        }).join('')}
+      </div>
+      <div class="quick-add" id="qa_${col.replace(/\s/g,'_')}">
+        <input type="text" placeholder="Быстрая задача… (Enter)" style="display:none"
+          onkeydown="if(event.key==='Enter'&&this.value.trim()){quickAddTask(this.value.trim(),'${col}');this.value='';this.style.display='none'}if(event.key==='Escape'){this.style.display='none'}"
+          onblur="setTimeout(()=>{this.style.display='none'},150)">
       </div>
     </div>`).join('');
+
+  // Archive
+  const archiveCnt=document.getElementById('archiveCnt');
+  const archiveList=document.getElementById('archiveList');
+  if(archiveCnt) archiveCnt.textContent=done.length?`(${done.length})`:'';
+  if(archiveList) archiveList.innerHTML=done.length?done.map(t=>`
+    <div class="archive-task">
+      <div>
+        <div class="at-nm">${esc(t.task)}</div>
+        ${t.orderName?`<div class="at-meta">▸ ${esc(t.orderName)}</div>`:''}
+      </div>
+      <div style="display:flex;gap:5px;align-items:center">
+        <span style="font-family:'Inter';font-size:9.5px;color:var(--dim)">${t.priority}</span>
+        <button class="ibt" onclick="restoreTask('${t.id}')" title="Вернуть в работу" style="padding:4px 8px;font-size:11px">↩</button>
+        <button class="ibt del" onclick="deleteTask('${t.id}')" style="padding:4px 8px;font-size:11px">✕</button>
+      </div>
+    </div>`).join(''):'<div style="padding:10px;font-family:Inter;font-size:12px;color:var(--dim2)">Нет завершённых задач</div>';
+
   bindDnD();
+}
+
+function quickAddFocus(col){
+  const inp=document.querySelector(`#qa_${col.replace(/\s/g,'_')} input`);
+  if(!inp) return;
+  inp.style.display='block';
+  inp.focus();
+}
+function quickAddTask(text,col){
+  S.tasks.push({id:uid(),task:text,priority:'🟢 Обычное',status:col,estimate:1,note:'',subtasks:[],orderId:'',orderName:''});
+  save();renderPlanner();
+}
+function toggleSub(taskId,idx,done){
+  const t=S.tasks.find(x=>x.id===taskId);
+  if(t&&t.subtasks&&t.subtasks[idx]!=null){t.subtasks[idx].done=done;save();renderPlanner();}
+}
+function restoreTask(id){
+  const t=S.tasks.find(x=>x.id===id);
+  if(t){t.status='📥 Входящее';save();renderPlanner();toast('Задача возвращена');}
 }
 let dragId=null;
 function bindDnD(){
@@ -1985,19 +2151,123 @@ function setupTimer(){
 }
 
 /* -- FINANCE -- */
+/* ── Finance period filter ── */
+let finPeriodDays=0;
+function setFinPeriod(days,btn){
+  finPeriodDays=days;
+  document.querySelectorAll('#finPeriod .per-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  Object.keys(initialized).filter(k=>k==='finance').forEach(k=>delete initialized[k]);
+  renderFinance();
+}
+function finFilterOrders(){
+  if(!finPeriodDays)return S.orders;
+  const cut=new Date(Date.now()-finPeriodDays*86400000);
+  return S.orders.filter(o=>o.start&&new Date(o.start)>=cut);
+}
+function finFilterExpenses(){
+  if(!finPeriodDays)return S.expenses||[];
+  const cut=new Date(Date.now()-finPeriodDays*86400000);
+  return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=cut);
+}
+
+/* ── Expense CRUD ── */
+const EXP_CATS=['Подписки','Налоги','Материалы','Оборудование','Реклама','Другое'];
+const EXP_COLS={Подписки:'#7fa6c9',Налоги:'#d6bd6a',Материалы:'#a795c9',Оборудование:'#7bbf6a',Реклама:'#cf8a5a',Другое:'#8f867a'};
+function openExpenseForm(id=null){
+  const e=id?(S.expenses||[]).find(x=>x.id===id):{};
+  openModal(id?'Редактировать расход':'Новый расход',`<div class="fg">
+    ${fld('Название *',inp('f_enm','text',e.name||'','true'),'full')}
+    ${fld('Сумма, ₽',inp('f_eam','number',e.amount||0))}
+    ${fld('Категория',selOpts('f_ecat',EXP_CATS,e.cat||'Другое'))}
+    ${fld('Дата',dpCreate('f_edt',e.date||new Date().toISOString().slice(0,10)),'full')}
+    ${fld('Заметка',inp('f_enote','text',e.note||''),'full')}
+  </div>`,()=>{
+    const name=gv('f_enm');if(!name.trim()){toast('Введите название');return;}
+    if(!S.expenses)S.expenses=[];
+    const data={name,amount:+gv('f_eam')||0,cat:gv('f_ecat'),date:document.getElementById('f_edt').value||new Date().toISOString().slice(0,10),note:gv('f_enote')};
+    if(id){const i=S.expenses.findIndex(x=>x.id===id);S.expenses[i]={...S.expenses[i],...data};}
+    else S.expenses.push({...data,id:uid()});
+    save();closeModal();renderFinance();toast(id?'Расход обновлён':'Расход добавлен');
+  });
+}
+function deleteExpense(id){
+  if(!confirm('Удалить расход?'))return;
+  S.expenses=(S.expenses||[]).filter(e=>e.id!==id);save();renderFinance();toast('Удалено');
+}
+
+let taxRate=6;
 function renderFinance(){
-  const {totalCost,totalPaid,totalDebt,typeArr,clAgg}=agg();
+  const orders=finFilterOrders();
+  const expenses=finFilterExpenses();
+  const totalCost=orders.reduce((s,o)=>s+(o.cost||0),0);
+  const totalPaid=orders.reduce((s,o)=>s+(o.paid||0),0);
+  const totalDebt=totalCost-totalPaid;
+  const totalExp=expenses.reduce((s,e)=>s+(e.amount||0),0);
+  const profit=totalPaid-totalExp;
+
+  // type & client agg from filtered orders
+  const tMap={};
+  orders.forEach(o=>(o.types||[]).forEach(t=>{if(!tMap[t])tMap[t]={k:t,cost:0,cnt:0};tMap[t].cost+=o.cost||0;tMap[t].cnt++;}));
+  const typeArr=Object.values(tMap).sort((a,b)=>b.cost-a.cost);
+  const clAgg=S.clients.map(c=>{const os=orders.filter(o=>o.clientId===c.id);return{...c,cost:os.reduce((s,o)=>s+(o.cost||0),0),paid:os.reduce((s,o)=>s+(o.paid||0),0),debt:os.reduce((s,o)=>s+(o.cost||0)-(o.paid||0),0),cnt:os.length};}).filter(c=>c.cnt>0).sort((a,b)=>b.cost-a.cost);
+
+  // Profit cards
+  document.getElementById('finProfit').innerHTML=`
+    <div class="profit-card"><div class="pk">Выручка</div><div class="pv">${fmt(totalCost)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="ps">Оплачено ${fmt(totalPaid)} ₽</div></div>
+    <div class="profit-card"><div class="pk">Расходы</div><div class="pv" style="color:#cf5a4a">${fmt(totalExp)} <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">${expenses.length} статей</div></div>
+    <div class="profit-card" style="border-color:${profit>=0?'rgba(123,191,106,.3)':'rgba(207,90,74,.3)'}"><div class="pk">Прибыль</div><div class="pv" style="color:${profit>=0?'#7bbf6a':'#cf5a4a'}">${profit>=0?'+':''}${fmt(profit)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено − Расходы</div></div>`;
+
+  // KPIs
   document.getElementById('finKpis').innerHTML=`
-    <div class="ks hot"><div class="k">Выручка</div><div class="v">${fmt(totalCost)}<span class="u">₽</span></div></div>
-    <div class="ks"><div class="k">Оплачено</div><div class="v">${fmt(totalPaid)}<span class="u">₽</span></div><div class="s">${totalCost?Math.round(totalPaid/totalCost*100):0}%</div></div>
-    <div class="ks"><div class="k">Дебиторка</div><div class="v">${fmt(totalDebt)}<span class="u">₽</span></div></div>
-    <div class="ks"><div class="k">Заказов</div><div class="v">${S.orders.length}</div><div class="s">${S.clients.length} клиентов</div></div>`;
+    <div class="ks hot"><div class="k">Дебиторка</div><div class="v">${fmt(totalDebt)}<span class="u">₽</span></div></div>
+    <div class="ks"><div class="k">Заказов</div><div class="v">${orders.length}</div><div class="s">${S.clients.length} клиентов</div></div>
+    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
+    <div class="ks"><div class="k">Конверсия</div><div class="v">${orders.length?Math.round(orders.filter(o=>(o.paid||0)>=(o.cost||0)).length/orders.length*100):0}<span class="u">%</span></div></div>`;
+
+  // Income chart
+  const mMap={};
+  orders.forEach(o=>{if(!o.start)return;const k=new Date(o.start).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].v+=o.cost||0;});
+  expenses.forEach(e=>{if(!e.date)return;const k=new Date(e.date).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].e+=e.amount||0;});
+  const months=Object.entries(mMap).map(([l,d])=>({l,v:d.v,e:d.e}));
+  buildSvgLine(document.getElementById('finArea'),months.map(m=>({l:m.l,v:m.v})),'var(--or)','rgba(255,90,31,.25)');
+
+  // Tax calculator
+  const taxAmt=Math.round(totalPaid*taxRate/100);
+  const taxLeft=totalPaid-taxAmt-totalExp;
+  document.getElementById('taxCalc').innerHTML=`
+    <div class="tax-row"><span class="tax-label">Режим налогообложения</span>
+      <div class="tax-rate-btns">
+        <button class="tax-rate-btn${taxRate===6?' active':''}" onclick="taxRate=6;renderFinance()">СЗ 6%</button>
+        <button class="tax-rate-btn${taxRate===6&&false?' active':''}" onclick="taxRate=4;renderFinance()">НПД 4%</button>
+        <button class="tax-rate-btn${taxRate===15?' active':''}" onclick="taxRate=15;renderFinance()">УСН 15%</button>
+      </div>
+    </div>
+    <div class="tax-row"><span class="tax-label">Налог (${taxRate}% от оплаченного)</span><span class="tax-value">${fmt(taxAmt)} ₽</span></div>
+    <div class="tax-row"><span class="tax-label">Отложить на налог</span><span class="tax-value" style="color:#d6bd6a">${fmt(Math.round(totalPaid*taxRate/100))} ₽</span></div>
+    <div class="tax-row"><span class="tax-label">Остаток после налогов и расходов</span><span class="tax-value" style="color:${taxLeft>=0?'#7bbf6a':'#cf5a4a'}">${fmt(taxLeft)} ₽</span></div>
+    <div class="tax-note">Расчёт на основе оплаченных сумм за выбранный период</div>`;
+
+  // Tables
   document.getElementById('tyTable').innerHTML=`<thead><tr><th>Тип</th><th class="r">Кол</th><th class="r">Выручка</th><th class="r">%</th></tr></thead><tbody>`+
     typeArr.map(t=>`<tr><td>${t.k}</td><td class="r">${t.cnt}</td><td class="r">${fmt(t.cost)}</td><td class="r">${totalCost?Math.round(t.cost/totalCost*100):0}%</td></tr>`).join('')+
-    `<tr class="tot"><td>Итого</td><td class="r">${S.orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">100%</td></tr></tbody>`;
+    `<tr class="tot"><td>Итого</td><td class="r">${orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">100%</td></tr></tbody>`;
   document.getElementById('clTable').innerHTML=`<thead><tr><th>Клиент</th><th class="r">Кол</th><th class="r">Выручка</th><th class="r">Долг</th></tr></thead><tbody>`+
     clAgg.map(c=>`<tr><td>${c.icon} ${esc(c.name)}</td><td class="r">${c.cnt}</td><td class="r">${fmt(c.cost)}</td><td class="r" style="color:${c.debt>0?'var(--or)':'#7bbf6a'}">${c.debt>0?fmt(c.debt):'—'}</td></tr>`).join('')+
-    `<tr class="tot"><td>Итого</td><td class="r">${S.orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">${fmt(totalDebt)}</td></tr></tbody>`;
+    `<tr class="tot"><td>Итого</td><td class="r">${orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">${fmt(totalDebt)}</td></tr></tbody>`;
+
+  // Expenses list
+  const expEl=document.getElementById('expList');
+  const expTot=document.getElementById('expTotal');
+  if(expTot) expTot.textContent=expenses.length?`${fmt(totalExp)} ₽`:'';
+  if(expEl) expEl.innerHTML=expenses.length?[...expenses].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(e=>`
+    <div class="exp-row">
+      <span class="e-dot" style="background:${EXP_COLS[e.cat]||'#888'}"></span>
+      <div><div class="e-nm">${esc(e.name)}</div><div class="e-cat">${e.cat}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div></div>
+      <span class="e-am">${fmt(e.amount)} ₽</span>
+      <div class="e-acts"><button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button></div>
+    </div>`).join(''):
+    '<div style="padding:14px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">Нет расходов — добавьте первый</div>';
 }
 
 /* -- INVOICE -- */
@@ -2469,7 +2739,7 @@ function renderBookmarks(){
     cats.map(c => {
       const cnt = c==='all'?allBm.length:allBm.filter(b=>b.cat===c).length;
       return `<button class="bm-cat-btn${bmFlt.cat===c?' active':''}" onclick="bmSetCat('${c}')">
-        ${c==='all'?'🔖 Все':((CAT_ICONS[c]||'📁')+' '+c)}
+        ${c==='all'?'🔖 Все':((getCatIcon(c))+' '+c)}
         <span class="cnt">${cnt}</span>
       </button>`;
     }).join('');
@@ -2492,7 +2762,7 @@ function renderBookmarks(){
     const byCat={};
     filtered.forEach(b=>{ if(!byCat[b.cat]) byCat[b.cat]=[]; byCat[b.cat].push(b); });
     Object.entries(byCat).forEach(([cat,items])=>{
-      html+=`<div class="bm-section-title">${CAT_ICONS[cat]||'📁'} ${cat} <span style="font-family:'Rubik';font-size:11px;color:var(--dim2)">${items.length}</span></div>`;
+      html+=`<div class="bm-section-title">${getCatIcon(cat)} ${cat} <span style="font-family:'Rubik';font-size:11px;color:var(--dim2)">${items.length}</span></div>`;
       html+=items.map(b=>bmCard(b)).join('');
     });
     document.getElementById('bmGrid').innerHTML=html;
@@ -2501,9 +2771,14 @@ function renderBookmarks(){
   }
 }
 
+function getCatIcon(cat){
+  return (S.bmCats&&S.bmCats[cat]?.icon)||CAT_ICONS[cat]||'📁';
+}
+
 function bmCard(b){
   const domain = b.url?b.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]:'';
   const faviconUrl = b.url?`https://www.google.com/s2/favicons?domain=${domain}&sz=64`:'';
+  const isCustom = !!(S.bookmarks||[]).find(x=>x.id===b.id);
   return `<a class="bm-card" href="${esc(b.url||'#')}" target="_blank" rel="noopener">
     <div class="bm-card-head">
       <div class="bm-favicon">
@@ -2514,8 +2789,12 @@ function bmCard(b){
     </div>
     ${b.desc?`<div class="bm-desc">${esc(b.desc)}</div>`:''}
     <div class="bm-foot">
-      <span class="bm-cat-tag">${CAT_ICONS[b.cat]||'📁'} ${b.cat||'—'}</span>
-      <span class="bm-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Открыть</span>
+      <span class="bm-cat-tag">${getCatIcon(b.cat)} ${b.cat||'—'}</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        ${isCustom?`<button class="ibt" onclick="event.preventDefault();openAddBookmarkForm('${b.id}')" style="padding:4px 7px;font-size:11px">✏</button>
+        <button class="ibt del" onclick="event.preventDefault();deleteBookmark('${b.id}')" style="padding:4px 7px;font-size:11px">✕</button>`:''}
+        <span class="bm-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Открыть</span>
+      </div>
     </div>
   </a>`;
 }
@@ -2525,22 +2804,105 @@ function bmSetCat(cat){
   renderBookmarks();
 }
 
-function openAddBookmarkForm(){
-  const cats=[...new Set([...BM_DATA,...(S.bookmarks||[])].map(b=>b.cat))];
-  openModal('Новая закладка',`<div class="fg">
-    ${fld('Название *',inp('bm_nm','text','','true'),'full')}
-    ${fld('URL *',inp('bm_url','url','','true'),'full')}
-    ${fld('Описание',inp('bm_desc','text',''),'full')}
-    ${fld('Иконка',inp('bm_ic','text','🔖'))}
-    ${fld('Категория',`<input class="tx" id="bm_cat" list="bmCatList" placeholder="AI, Дизайн…">
+function openAddBookmarkForm(editId){
+  const bm=editId?[...BM_DATA,...(S.bookmarks||[])].find(b=>b.id===editId):{};
+  const cats=getAllCats();
+  openModal(editId?'Редактировать закладку':'Новая закладка',`<div class="fg">
+    ${fld('Название *',inp('bm_nm','text',bm.name||'','true'),'full')}
+    ${fld('URL *',inp('bm_url','url',bm.url||'','true'),'full')}
+    ${fld('Описание',inp('bm_desc','text',bm.desc||''),'full')}
+    ${fld('Иконка',inp('bm_ic','text',bm.icon||'🔖'))}
+    ${fld('Категория',`<input class="tx" id="bm_cat" list="bmCatList" value="${esc(bm.cat||'')}" placeholder="AI, Дизайн…">
       <datalist id="bmCatList">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist>`)}
   </div>`,()=>{
     const nm=gv('bm_nm'),url=gv('bm_url');
     if(!nm.trim()||!url.trim()){toast('Введите название и URL');return;}
     if(!S.bookmarks) S.bookmarks=[];
-    S.bookmarks.push({id:uid(),name:nm,url,desc:gv('bm_desc'),icon:gv('bm_ic')||'🔖',cat:gv('bm_cat')||'Другое'});
-    save();closeModal();renderBookmarks();toast('Закладка добавлена');
+    if(editId){
+      const i=S.bookmarks.findIndex(b=>b.id===editId);
+      if(i>-1) S.bookmarks[i]={...S.bookmarks[i],name:nm,url,desc:gv('bm_desc'),icon:gv('bm_ic')||'🔖',cat:gv('bm_cat')||'Другое'};
+    } else {
+      S.bookmarks.push({id:uid(),name:nm,url,desc:gv('bm_desc'),icon:gv('bm_ic')||'🔖',cat:gv('bm_cat')||'Другое'});
+    }
+    save();closeModal();renderBookmarks();toast(editId?'Закладка обновлена':'Закладка добавлена');
   });
+}
+
+function deleteBookmark(id){
+  if(!confirm('Удалить закладку?'))return;
+  S.bookmarks=(S.bookmarks||[]).filter(b=>b.id!==id);
+  save();renderBookmarks();toast('Удалено');
+}
+
+function getAllCats(){
+  return [...new Set([...BM_DATA,...(S.bookmarks||[])].map(b=>b.cat).filter(Boolean))];
+}
+
+/* ── Category Editor ── */
+function openCatEditor(){
+  renderCatEditorModal();
+}
+
+function renderCatEditorModal(){
+  const userCats=S.bmCats||{};
+  const allCats=getAllCats();
+  const body=`<div style="display:flex;flex-direction:column;gap:10px" id="catEdList">
+    ${allCats.map(cat=>{
+      const icon=userCats[cat]?.icon||CAT_ICONS[cat]||'📁';
+      const count=[...BM_DATA,...(S.bookmarks||[])].filter(b=>b.cat===cat).length;
+      return `<div style="display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:8px 12px" id="cated_${btoa(cat).replace(/=/g,'')}">
+        <input class="tx" style="font-size:18px;padding:6px;text-align:center;border-radius:8px;width:44px" value="${esc(icon)}" id="ci_${btoa(cat).replace(/=/g,'')}" title="Иконка категории">
+        <div>
+          <input class="tx" style="font-size:13px;font-weight:600;padding:6px 10px" value="${esc(cat)}" id="cn_${btoa(cat).replace(/=/g,'')}" title="Название категории">
+          <div style="font-family:'Inter';font-size:10px;color:var(--dim);margin-top:3px">${count} закладок</div>
+        </div>
+        <div style="display:flex;gap:5px">
+          <button class="ibt" onclick="saveCat('${esc(cat)}')" title="Сохранить">✓</button>
+          ${count===0?`<button class="ibt del" onclick="deleteCat('${esc(cat)}')" title="Удалить">✕</button>`:'<button class="ibt del" style="opacity:.3;cursor:not-allowed" title="Нельзя удалить — есть закладки" disabled>✕</button>'}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>
+  <div style="display:flex;gap:8px;margin-top:14px">
+    <input class="tx" id="newCatName" placeholder="Новая категория…" style="flex:1">
+    <input class="tx" id="newCatIcon" placeholder="📁" style="width:52px;text-align:center;font-size:18px">
+    <button class="ibt" onclick="addNewCat()" style="padding:10px 14px;font-weight:700">+</button>
+  </div>`;
+
+  openModal('Редактор категорий', body, null, true);
+}
+
+function saveCat(oldName){
+  const key=btoa(oldName).replace(/=/g,'');
+  const newName=document.getElementById('cn_'+key)?.value.trim();
+  const newIcon=document.getElementById('ci_'+key)?.value.trim();
+  if(!newName){toast('Введите название');return;}
+  if(!S.bmCats) S.bmCats={};
+  // update icon mapping
+  S.bmCats[newName]={icon:newIcon||CAT_ICONS[oldName]||'📁'};
+  // rename in user bookmarks
+  if(S.bookmarks) S.bookmarks=S.bookmarks.map(b=>b.cat===oldName?{...b,cat:newName}:b);
+  // update CAT_ICONS live
+  if(newIcon) CAT_ICONS[newName]=newIcon;
+  save();toast('Сохранено');renderCatEditorModal();
+}
+
+function deleteCat(name){
+  const count=[...BM_DATA,...(S.bookmarks||[])].filter(b=>b.cat===name).length;
+  if(count>0){toast('Нельзя удалить — в категории есть закладки');return;}
+  if(!confirm(`Удалить категорию «${name}»?`))return;
+  if(S.bmCats) delete S.bmCats[name];
+  save();toast('Категория удалена');renderCatEditorModal();
+}
+
+function addNewCat(){
+  const name=document.getElementById('newCatName')?.value.trim();
+  const icon=document.getElementById('newCatIcon')?.value.trim()||'📁';
+  if(!name){toast('Введите название');return;}
+  if(!S.bmCats) S.bmCats={};
+  S.bmCats[name]={icon};
+  CAT_ICONS[name]=icon;
+  save();toast('Категория добавлена');renderCatEditorModal();
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
