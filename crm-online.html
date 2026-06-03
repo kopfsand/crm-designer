@@ -934,8 +934,10 @@ input[type=number]{-moz-appearance:textfield}
 /* ================================================================
    ХРАНИЛИЩЕ — Firebase (онлайн) + localStorage (кэш/офлайн)
    ================================================================ */
+const DEFAULT_WTYPES=['Визуализация','Логотип','Фирменный стиль','Баннер','SMM','Упаковка','Веб-дизайн','Иллюстрация','Другое'];
+let WTYPES=[];
 const SK = 'crm_designer_v2';
-let S = loadLocal(); // сначала грузим локальный кэш, Firebase перезапишет
+let S = loadLocal();
 
 function loadLocal() {
   try { const d = localStorage.getItem(SK); if(d) return JSON.parse(d); } catch(e){}
@@ -1031,8 +1033,6 @@ function seed() {
    УТИЛИТЫ
    ================================================================ */
 const MONTHS=['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
-const DEFAULT_WTYPES=['Визуализация','Логотип','Фирменный стиль','Баннер','SMM','Упаковка','Веб-дизайн','Иллюстрация','Другое'];
-let WTYPES=[];
 function loadWtypes(){ WTYPES=S.wtypes&&S.wtypes.length?[...S.wtypes]:[...DEFAULT_WTYPES]; }
 
 /* ── Управление типами заказов ── */
@@ -1174,7 +1174,6 @@ function clientOpts(selId){ return selOpts(selId,S.clients.map(c=>({v:c.id,l:c.n
 function orderOpts(selId){ return selOpts(selId,[{v:'',l:'— без заказа'},...S.orders.map(o=>({v:o.id,l:o.name}))]); }
 function checksTypes(selVal=[]){
   return `<div class="checks">${WTYPES.map(t=>`<label class="chk-item"><input type="checkbox" name="wt" value="${t}"${selVal.includes(t)?' checked':''}><span>${t}</span></label>`).join('')}</div>`;
-}
 }
 function getCheckedTypes(){ return [...document.querySelectorAll('input[name=wt]:checked')].map(e=>e.value); }
 
