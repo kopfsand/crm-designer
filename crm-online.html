@@ -286,9 +286,9 @@ nav.tabs button.active svg{opacity:1}
 .cl-stats .s .v{font-family:'Rubik';font-weight:700;font-size:15px}
 .cl-stats .s .v.debt{color:var(--or)}
 .cl-stats .s .k{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px;font-weight:700}
-.cl-foot{display:flex;align-items:center;justify-content:center;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px;position:relative}
+.cl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px}
 .cl-foot .ph{color:var(--dim)}
-.cl-foot .acts{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px}
+.cl-foot .acts{display:flex;align-items:center;gap:6px}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -548,24 +548,22 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .dp-inp.open{border-color:var(--orp)}
 .dp-inp .dp-placeholder{color:var(--dim2)}
 .dp-inp .dp-icon{color:var(--dim);font-size:14px;flex:none}
-.dp-cal-fixed{position:fixed;z-index:9999;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:14px 12px;box-shadow:0 20px 50px -10px #000;width:280px;animation:rise .2s both}
-.dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.dp-nav .dp-title{font-family:'Inter';font-weight:700;font-size:13px;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s}
+.dp-cal-fixed{position:fixed;z-index:9999;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:12px;box-shadow:0 20px 50px -10px #000;width:266px;box-sizing:border-box;animation:rise .2s both}
+.dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dp-nav .dp-title{font-family:'Inter';font-weight:700;font-size:13px;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s;text-align:center;flex:1}
 .dp-nav .dp-title:hover{background:var(--bg2);color:var(--or)}
-.dp-nav .dp-arr{width:28px;height:28px;border-radius:8px;border:1px solid var(--ln2);background:var(--bg2);cursor:pointer;display:grid;place-items:center;font-size:12px;color:var(--dim);transition:.13s;flex:none}
+.dp-nav .dp-arr{width:28px;height:28px;border-radius:8px;border:1px solid var(--ln2);background:var(--bg2);cursor:pointer;display:grid;place-items:center;font-size:11px;color:var(--dim);transition:.13s;flex:none}
 .dp-nav .dp-arr:hover{color:var(--txt);border-color:var(--dim)}
-.dp-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-bottom:2px}
-.dp-dow span{font-family:'Inter';font-size:9px;font-weight:700;text-align:center;color:var(--dim2);text-transform:uppercase;padding:3px 0;width:100%}
-.dp-days{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:34px;gap:2px}
-.dp-day{height:34px;width:100%;border-radius:7px;border:none;background:transparent;cursor:pointer;font-family:'Inter';font-size:12.5px;font-weight:500;color:var(--txt);transition:.13s;display:grid;place-items:center;box-sizing:border-box}
+.dp-dow{display:grid;grid-template-columns:repeat(7,34px);gap:1px;margin-bottom:2px}
+.dp-dow span{width:34px;height:22px;font-family:'Inter';font-size:9px;font-weight:700;text-align:center;color:var(--dim2);text-transform:uppercase;display:flex;align-items:center;justify-content:center}
+.dp-days{display:grid;grid-template-columns:repeat(7,34px);grid-auto-rows:34px;gap:1px}
+.dp-day{width:34px;height:34px;border-radius:7px;border:none;background:transparent;cursor:pointer;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);transition:.13s;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
 .dp-day:hover{background:var(--bg2)}
-.dp-day.other{color:var(--dim2)}
 .dp-day.today{color:var(--or);font-weight:700}
-.dp-day.selected{background:var(--or);color:var(--on);font-weight:700}
+.dp-day.selected{background:var(--or);color:var(--on);font-weight:700;border-radius:8px}
 .dp-day.selected:hover{background:var(--ord)}
-.dp-day.empty{cursor:default;pointer-events:none}
-.dp-day.empty:hover{background:transparent}
-.dp-clear{width:100%;margin-top:10px;padding:9px;border-radius:9px;border:1px solid var(--ln2);background:transparent;color:var(--dim);font-family:'Inter';font-size:11.5px;font-weight:600;cursor:pointer;transition:.13s}
+.dp-day.empty{cursor:default;pointer-events:none;background:transparent}
+.dp-clear{width:100%;margin-top:8px;padding:8px;border-radius:9px;border:1px solid var(--ln2);background:transparent;color:var(--dim);font-family:'Inter';font-size:11.5px;font-weight:600;cursor:pointer;transition:.13s;box-sizing:border-box}
 .dp-clear:hover{color:var(--txt);border-color:var(--dim)}
 /* modal */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);padding:20px}
@@ -847,11 +845,15 @@ input[type=number]{-moz-appearance:textfield}
 <section class="view" id="view-analytics">
   <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button class="per-btn" onclick="setAnQuick(30,this)">30 дн.</button>
+      <button class="per-btn" onclick="setAnQuick(90,this)">3 мес.</button>
+      <button class="per-btn" onclick="setAnQuick(180,this)">Полгода</button>
+      <div style="width:1px;height:20px;background:var(--ln2);margin:0 2px"></div>
       <div style="display:flex;align-items:center;gap:6px">
         <span style="font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);white-space:nowrap">С</span>
-        <div id="dpw_an_from" class="dp-wrap" style="width:130px">
+        <div id="dpw_an_from" class="dp-wrap" style="width:118px">
           <div class="dp-inp" id="dpi_an_from" onclick="dpToggle('an_from','')">
-            <span id="dpi_an_from_txt" class="dp-placeholder">Начало</span>
+            <span class="dp-placeholder">Начало</span>
             <span class="dp-icon" style="font-size:12px">📅</span>
           </div>
           <input type="hidden" id="an_from" value="">
@@ -859,15 +861,15 @@ input[type=number]{-moz-appearance:textfield}
       </div>
       <div style="display:flex;align-items:center;gap:6px">
         <span style="font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);white-space:nowrap">По</span>
-        <div id="dpw_an_to" class="dp-wrap" style="width:130px">
+        <div id="dpw_an_to" class="dp-wrap" style="width:118px">
           <div class="dp-inp" id="dpi_an_to" onclick="dpToggle('an_to','right')">
-            <span id="dpi_an_to_txt" class="dp-placeholder">Конец</span>
+            <span class="dp-placeholder">Конец</span>
             <span class="dp-icon" style="font-size:12px">📅</span>
           </div>
           <input type="hidden" id="an_to" value="">
         </div>
       </div>
-      <button class="per-btn" onclick="resetAnRange()" title="Сбросить фильтр">✕ Все</button>
+      <button class="per-btn" onclick="resetAnRange()" title="Сбросить">✕</button>
     </div>
   </div>
   <!-- KPIs -->
@@ -1617,13 +1619,34 @@ document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase
 /* ── Analytics period state ── */
 let anDateFrom='', anDateTo='';
 
+function setAnQuick(days, btn){
+  const to = new Date();
+  const from = new Date(Date.now() - days*86400000);
+  anDateFrom = from.toISOString().slice(0,10);
+  anDateTo   = to.toISOString().slice(0,10);
+  // update picker displays
+  const fromWrap=document.getElementById('dpw_an_from');
+  const toWrap=document.getElementById('dpw_an_to');
+  if(fromWrap){fromWrap._dpSelected=anDateFrom;}
+  if(toWrap){toWrap._dpSelected=anDateTo;}
+  document.getElementById('an_from').value=anDateFrom;
+  document.getElementById('an_to').value=anDateTo;
+  document.getElementById('dpi_an_from').innerHTML=`<span>${fmtD(anDateFrom)}</span><span class="dp-icon" style="font-size:12px">📅</span>`;
+  document.getElementById('dpi_an_to').innerHTML=`<span>${fmtD(anDateTo)}</span><span class="dp-icon" style="font-size:12px">📅</span>`;
+  // highlight active quick btn
+  document.querySelectorAll('.per-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]);
+  renderAnalytics();
+}
+
 function resetAnRange(){
   anDateFrom=''; anDateTo='';
-  // reset pickers
+  document.querySelectorAll('.per-btn').forEach(b=>b.classList.remove('active'));
   ['an_from','an_to'].forEach(id=>{
     document.getElementById(id).value='';
     const wrap=document.getElementById('dpw_'+id);
-    if(wrap){wrap._dpSelected='';}
+    if(wrap) wrap._dpSelected='';
     const inp=document.getElementById('dpi_'+id);
     if(inp) inp.innerHTML=`<span class="dp-placeholder">${id==='an_from'?'Начало':'Конец'}</span><span class="dp-icon" style="font-size:12px">📅</span>`;
   });
@@ -2586,8 +2609,8 @@ function dpSelect(id,iso,align){
   document.getElementById('dpi_'+id).innerHTML=`<span>${fmtD(iso)}</span><span class="dp-icon">📅</span>`;
   dpClose(id);
   // analytics date range
-  if(id==='an_from'){ anDateFrom=iso; Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
-  if(id==='an_to'){   anDateTo=iso;   Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
+  if(id==='an_from'){ anDateFrom=iso; document.querySelectorAll('.per-btn').forEach(b=>b.classList.remove('active')); Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
+  if(id==='an_to'){   anDateTo=iso;   document.querySelectorAll('.per-btn').forEach(b=>b.classList.remove('active')); Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]); renderAnalytics(); }
 }
 
 function dpClear(id){
