@@ -82,7 +82,10 @@ function subscribeToData(uid) {
     const val = snapshot.val();
     if(val) {
       window._fbLoading = true;
-      Object.assign(window.S, val);
+      // полностью заменяем содержимое S, сохраняя ту же ссылку
+      Object.keys(S).forEach(k => delete S[k]);
+      Object.assign(S, val);
+      window.S = S;
       window._fbLoading = false;
       if(window.refreshAll) window.refreshAll();
     } else {
@@ -2039,7 +2042,7 @@ document.getElementById('tabs').onclick=e=>{
   document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');switchView(b.dataset.view);
 };
-function refreshAll(){ Object.keys(initialized).forEach(k=>delete initialized[k]);initialized.dash=true;renderDash(); }
+function refreshAll(){ Object.keys(initialized).forEach(k=>delete initialized[k]);initialized.dash=true;loadWtypes();renderDash(); }
 
 function animateDash(){
   document.querySelectorAll('.vb .fill').forEach(b=>b.style.height=b.dataset.h+'%');
@@ -2054,7 +2057,7 @@ function animateDial(viewId){
 
 /* init */
 window.S = S; // expose for Firebase module
-window.refreshAll = function(){ Object.keys(initialized).forEach(k=>delete initialized[k]);initialized.dash=true;loadWtypes();renderDash(); };
+window.refreshAll = refreshAll;
 loadWtypes();
 document.getElementById('today').textContent=new Date().toLocaleDateString('ru-RU',{day:'2-digit',month:'short'}).toUpperCase();
 document.getElementById('clSearch').oninput=e=>{clFlt.q=e.target.value.toLowerCase().trim();renderClients()};
