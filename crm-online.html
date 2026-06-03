@@ -173,6 +173,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 /* nav */
 nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:rgba(20,18,14,.8);backdrop-filter:blur(10px);margin-bottom:24px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;max-width:100%}
 nav.tabs button{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:10px 16px;border-radius:13px;display:flex;align-items:center;gap:7px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:1100px){nav.tabs button[data-view="bookmarks"] .tab-label{display:none}}
 nav.tabs button svg{width:15px;height:15px;opacity:.7}
 nav.tabs button:hover{color:var(--txt)}
 nav.tabs button.active{background:var(--or);color:var(--on);box-shadow:0 8px 20px -8px rgba(255,90,31,.55)}
@@ -274,8 +275,8 @@ nav.tabs button.active svg{opacity:1}
 .cl-nm{flex:1;min-width:0}
 .cl-nm .nm{font-family:'Inter';font-weight:700;font-size:18px;line-height:1.05}
 .cl-nm .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center}
-.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0}
-.tag.o{color:var(--or);border-color:var(--orp)}
+.tag{font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 8px;border-radius:6px;text-transform:uppercase;border:1px solid var(--ln2);color:var(--dim);white-space:nowrap;display:inline-block;flex-shrink:0;max-width:fit-content}
+.tag.o{color:var(--or);border-color:var(--orp);max-width:140px;overflow:hidden;text-overflow:ellipsis}
 .cl-rev{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
 .cl-rev .v{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;line-height:1;display:inline}
 .cl-rev .u{font-size:13px;color:var(--or);font-family:'Rubik';font-weight:700;display:inline;margin-left:3px}
@@ -286,7 +287,7 @@ nav.tabs button.active svg{opacity:1}
 .cl-stats .s .v.debt{color:var(--or)}
 .cl-stats .s .k{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px;font-weight:700}
 .cl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px}
-.cl-foot .ph{color:var(--dim);flex:1;text-align:left}
+.cl-foot .ph{color:var(--dim);flex:1;text-align:center}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -535,7 +536,7 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .bm-cat-tag{font-family:'Inter';font-size:9.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--bg2);border:1px solid var(--ln2);color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
 .bm-open{font-family:'Inter';font-size:10px;font-weight:600;color:var(--or);display:flex;align-items:center;gap:4px}
 .bm-open svg{width:11px;height:11px}
-.bm-section-title{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;margin-top:6px;display:flex;align-items:center;gap:8px}
+.bm-section-title{grid-column:1/-1;font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;display:flex;align-items:center;gap:8px}
 .bm-section-title::after{content:'';flex:1;height:1px;background:var(--ln)}
 .bm-empty{grid-column:1/-1;text-align:center;padding:60px 20px;font-family:'Inter';font-size:13px;color:var(--dim2)}
 
@@ -546,25 +547,25 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .dp-inp.open{border-color:var(--orp)}
 .dp-inp .dp-placeholder{color:var(--dim2)}
 .dp-inp .dp-icon{color:var(--dim);font-size:14px;flex:none}
-.dp-cal{position:absolute;top:calc(100% + 6px);left:0;z-index:350;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:14px;box-shadow:0 20px 50px -10px #000;width:264px;animation:rise .2s both}
+.dp-cal{position:absolute;top:calc(100% + 6px);left:0;z-index:350;background:var(--card);border:1px solid var(--ln2);border-radius:14px;padding:14px 12px;box-shadow:0 20px 50px -10px #000;width:280px;animation:rise .2s both}
 .dp-cal.right{left:auto;right:0}
-.dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.dp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .dp-nav .dp-title{font-family:'Inter';font-weight:700;font-size:13px;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s}
 .dp-nav .dp-title:hover{background:var(--bg2);color:var(--or)}
 .dp-nav .dp-arr{width:28px;height:28px;border-radius:8px;border:1px solid var(--ln2);background:var(--bg2);cursor:pointer;display:grid;place-items:center;font-size:12px;color:var(--dim);transition:.13s;flex:none}
 .dp-nav .dp-arr:hover{color:var(--txt);border-color:var(--dim)}
-.dp-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px}
-.dp-dow span{font-family:'Inter';font-size:9px;font-weight:700;text-align:center;color:var(--dim2);text-transform:uppercase;padding:2px 0}
-.dp-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.dp-day{height:32px;border-radius:7px;border:none;background:transparent;cursor:pointer;font-family:'Inter';font-size:12px;font-weight:500;color:var(--txt);transition:.13s;display:grid;place-items:center}
+.dp-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-bottom:2px}
+.dp-dow span{font-family:'Inter';font-size:9px;font-weight:700;text-align:center;color:var(--dim2);text-transform:uppercase;padding:3px 0;width:100%}
+.dp-days{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:34px;gap:2px}
+.dp-day{height:34px;width:100%;border-radius:7px;border:none;background:transparent;cursor:pointer;font-family:'Inter';font-size:12.5px;font-weight:500;color:var(--txt);transition:.13s;display:grid;place-items:center;box-sizing:border-box}
 .dp-day:hover{background:var(--bg2)}
 .dp-day.other{color:var(--dim2)}
 .dp-day.today{color:var(--or);font-weight:700}
 .dp-day.selected{background:var(--or);color:var(--on);font-weight:700}
 .dp-day.selected:hover{background:var(--ord)}
-.dp-day.empty{cursor:default}
+.dp-day.empty{cursor:default;pointer-events:none}
 .dp-day.empty:hover{background:transparent}
-.dp-clear{width:100%;margin-top:10px;padding:8px;border-radius:8px;border:1px solid var(--ln2);background:transparent;color:var(--dim);font-family:'Inter';font-size:11px;font-weight:600;cursor:pointer;transition:.13s}
+.dp-clear{width:100%;margin-top:10px;padding:9px;border-radius:9px;border:1px solid var(--ln2);background:transparent;color:var(--dim);font-family:'Inter';font-size:11.5px;font-weight:600;cursor:pointer;transition:.13s}
 .dp-clear:hover{color:var(--txt);border-color:var(--dim)}
 /* modal */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);padding:20px}
@@ -803,7 +804,7 @@ input[type=number]{-moz-appearance:textfield}
   <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>Финансы</button>
   <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>Счёт</button>
   <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Контакты</button>
-  <button data-view="bookmarks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Закладки</button>
+  <button data-view="bookmarks" title="Закладки"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span class="tab-label">Закладки</span></button>
 </nav>
 
 <!-- DASH -->
@@ -846,10 +847,10 @@ input[type=number]{-moz-appearance:textfield}
 <section class="view" id="view-analytics">
   <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div>
     <div class="an-period" id="anPeriod" style="margin-bottom:0">
-      <button class="per-btn" data-p="30">30 дн.</button>
-      <button class="per-btn" data-p="90">3 мес.</button>
-      <button class="per-btn" data-p="180">Полгода</button>
-      <button class="per-btn active" data-p="all">Всё время</button>
+      <button class="per-btn" data-p="30" onclick="setAnPeriod('30',this)">30 дн.</button>
+      <button class="per-btn" data-p="90" onclick="setAnPeriod('90',this)">3 мес.</button>
+      <button class="per-btn" data-p="180" onclick="setAnPeriod('180',this)">Полгода</button>
+      <button class="per-btn active" data-p="all" onclick="setAnPeriod('all',this)">Всё время</button>
     </div>
   </div>
   <!-- KPIs -->
@@ -1599,14 +1600,15 @@ document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase
 /* ── Analytics period state ── */
 let anPeriod='all';
 
-function initPeriodBtns(){
-  document.querySelectorAll('.per-btn').forEach(b=>b.addEventListener('click',()=>{
-    anPeriod=b.dataset.p;
-    document.querySelectorAll('.per-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    renderAnalytics();
-  }));
+function setAnPeriod(p, btn){
+  anPeriod=p;
+  document.querySelectorAll('.per-btn').forEach(x=>x.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  Object.keys(initialized).filter(k=>k==='analytics').forEach(k=>delete initialized[k]);
+  renderAnalytics();
 }
+
+function initPeriodBtns(){ /* no-op — handled via onclick */ }
 
 function anFilterOrders(){
   if(anPeriod==='all') return S.orders;
@@ -2419,10 +2421,8 @@ function renderBookmarks(){
     const byCat={};
     filtered.forEach(b=>{ if(!byCat[b.cat]) byCat[b.cat]=[]; byCat[b.cat].push(b); });
     Object.entries(byCat).forEach(([cat,items])=>{
-      html+=`<div class="bm-grid" style="margin-bottom:24px">`;
-      html+=`<div class="bm-section-title" style="grid-column:1/-1">${CAT_ICONS[cat]||'📁'} ${cat}</div>`;
+      html+=`<div class="bm-section-title">${CAT_ICONS[cat]||'📁'} ${cat} <span style="font-family:'Rubik';font-size:11px;color:var(--dim2)">${items.length}</span></div>`;
       html+=items.map(b=>bmCard(b)).join('');
-      html+='</div>';
     });
     document.getElementById('bmGrid').innerHTML=html;
   } else {
