@@ -289,6 +289,13 @@ nav.tabs button.active svg{opacity:1}
 .cl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-top:1px solid var(--ln);font-family:'Inter';font-size:12px;min-height:48px}
 .cl-foot .ph{color:var(--dim)}
 .cl-foot .acts{display:flex;align-items:center;gap:6px}
+.cl-info-btn{display:flex;align-items:center;gap:5px;font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);padding:5px 10px;border-radius:8px;border:1px solid var(--ln2);background:var(--bg2);cursor:pointer;transition:.15s}
+.cl-info-btn:hover{color:var(--txt);border-color:var(--dim)}
+.cl-details{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px;border-top:0px solid var(--ln);background:var(--bg2)}
+.cl.info-open .cl-details{max-height:200px;padding:12px 20px;border-top:1px solid var(--ln)}
+.cl-detail-row{display:flex;align-items:center;gap:8px;font-family:'Inter';font-size:12px;color:var(--txt);padding:3px 0}
+.cl-detail-ic{font-size:13px;width:20px;text-align:center;flex:none}
+.cl-detail-empty{color:var(--dim2);font-style:italic}
 .cl-foot .acts{display:flex;gap:5px;align-items:center}
 .cl-foot .ex{color:var(--or);font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
 .cl-orders{display:none;background:var(--bg);padding:4px 14px 12px;border-top:1px solid var(--ln)}
@@ -1549,12 +1556,22 @@ function renderClients(){
         <div class="s"><div class="v">${fmt(c.paid)}</div><div class="k">Оплачено</div></div>
         <div class="s"><div class="v ${c.debt>0?'debt':''}">${c.debt>0?fmt(c.debt):'0'}</div><div class="k">Долг ₽</div></div>
       </div>
-      <div class="cl-foot"><span class="ph">${esc(c.phone)}</span>
+      <div class="cl-foot">
+        <button class="ibt cl-info-btn" onclick="document.getElementById('cl_${c.id}').classList.toggle('info-open')" title="Подробнее о клиенте">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 12v4"/></svg>
+          Детали
+        </button>
         <div class="acts">
           <button class="ibt" onclick="openClientForm('${c.id}')">✏</button>
           <button class="ibt del" onclick="deleteClient('${c.id}')">✕</button>
           <span class="ex" onclick="document.getElementById('cl_${c.id}').classList.toggle('open')">Заказы <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="transition:.25s"><path d="M6 9l6 6 6-6"/></svg></span>
         </div>
+      </div>
+      <div class="cl-details">
+        <div class="cl-detail-row">${c.phone?`<span class="cl-detail-ic">📞</span><span>${esc(c.phone)}</span>`:'<span class="cl-detail-empty">Телефон не указан</span>'}</div>
+        <div class="cl-detail-row">${c.email?`<span class="cl-detail-ic">✉</span><span>${esc(c.email)}</span>`:'<span class="cl-detail-empty">Email не указан</span>'}</div>
+        ${c.note?`<div class="cl-detail-row"><span class="cl-detail-ic">📝</span><span style="font-style:italic;color:var(--dim)">${esc(c.note)}</span></div>`:''}
+        <div class="cl-detail-row"><span class="cl-detail-ic">📍</span><span>Источник: <b>${esc(c.source||'—')}</b></span></div>
       </div>
       <div class="cl-orders">${os.length?os.map(o=>`<div class="cl-or"><span class="d" style="background:${SCOL[o.status]||'#888'}"></span><span class="nm">${esc(o.name)}<div class="ty">${(o.types||[]).join(', ')} · ${fmtD(o.start)}</div></span><span class="am">${fmt(o.cost)} ₽</span></div>`).join(''):'<div style="padding:14px 6px;font-size:12px;color:var(--dim);font-family:Rubik">Нет заказов</div>'}</div>
     </div>`;
@@ -2642,9 +2659,14 @@ function dpClose(id){
   if(dpActive===id)dpActive=null;
 }
 
-document.addEventListener('click',e=>{
-  if(dpActive&&!e.target.closest('.dp-wrap')) dpClose(dpActive);
-},{capture:true});
+document.addEventListener('mousedown',e=>{
+  if(!dpActive) return;
+  const cal=document.getElementById('dp-cal-'+dpActive);
+  const wrap=document.getElementById('dpw_'+dpActive);
+  if(cal&&!cal.contains(e.target)&&wrap&&!wrap.contains(e.target)){
+    dpClose(dpActive);
+  }
+});
 
 const initialized={};
 function switchView(name){
