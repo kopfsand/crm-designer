@@ -508,6 +508,37 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .an-export button{font-family:'Inter';font-size:11.5px;font-weight:600;padding:8px 16px;border-radius:9px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;display:flex;align-items:center;gap:6px;transition:.15s}
 .an-export button:hover{color:var(--txt);border-color:var(--orp)}
 
+/* bookmarks */
+.bm-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.bm-cat-btn{display:flex;align-items:center;gap:7px;font-family:'Inter';font-size:12px;font-weight:600;padding:8px 14px;border-radius:10px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
+.bm-cat-btn:hover{border-color:var(--dim);color:var(--txt)}
+.bm-cat-btn.active{background:var(--or);border-color:var(--or);color:var(--on)}
+.bm-cat-btn .cnt{font-family:'Rubik';font-size:10px;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:5px}
+.bm-cat-btn.active .cnt{background:rgba(0,0,0,.25)}
+.bm-search-wrap{position:relative;margin-bottom:20px}
+.bm-search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--dim)}
+.bm-search-inp{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 14px 12px 40px;outline:none;transition:.2s}
+.bm-search-inp:focus{border-color:var(--orp)}
+.bm-search-inp::placeholder{color:var(--dim2)}
+.bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.bm-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.bm-grid{grid-template-columns:1fr}}
+.bm-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;transition:.2s;text-decoration:none;cursor:pointer;position:relative}
+.bm-card:hover{border-color:var(--or);transform:translateY(-2px);box-shadow:0 16px 40px -16px rgba(255,90,31,.3)}
+.bm-card-head{padding:16px 18px 10px;display:flex;align-items:center;gap:12px}
+.bm-favicon{width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--ln2);display:grid;place-items:center;font-size:18px;flex:none;overflow:hidden}
+.bm-favicon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.bm-title{font-family:'Inter';font-weight:700;font-size:14px;line-height:1.2;flex:1;min-width:0}
+.bm-ext{font-family:'Inter';font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bm-desc{font-family:'Inter';font-size:11.5px;color:var(--dim);line-height:1.55;padding:0 18px 10px;flex:1}
+.bm-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 12px}
+.bm-cat-tag{font-family:'Inter';font-size:9.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--bg2);border:1px solid var(--ln2);color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+.bm-open{font-family:'Inter';font-size:10px;font-weight:600;color:var(--or);display:flex;align-items:center;gap:4px}
+.bm-open svg{width:11px;height:11px}
+.bm-section-title{font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;margin-top:6px;display:flex;align-items:center;gap:8px}
+.bm-section-title::after{content:'';flex:1;height:1px;background:var(--ln)}
+.bm-empty{grid-column:1/-1;text-align:center;padding:60px 20px;font-family:'Inter';font-size:13px;color:var(--dim2)}
+
 /* custom datepicker */
 .dp-wrap{position:relative}
 .dp-inp{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--bg2);border:1px solid var(--ln2);border-radius:11px;padding:13px 15px;outline:none;transition:.18s;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
@@ -772,6 +803,7 @@ input[type=number]{-moz-appearance:textfield}
   <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>Финансы</button>
   <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>Счёт</button>
   <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Контакты</button>
+  <button data-view="bookmarks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Закладки</button>
 </nav>
 
 <!-- DASH -->
@@ -982,6 +1014,19 @@ input[type=number]{-moz-appearance:textfield}
     <div class="chips" id="contactCatChips"></div>
   </div>
   <div class="contacts-grid" id="contactsGrid"></div>
+</section>
+
+<!-- BOOKMARKS -->
+<section class="view" id="view-bookmarks">
+  <div class="sec-head"><div><span class="eye">Коллекции</span><h2>Закладки</h2></div>
+    <button class="btn-add" onclick="openAddBookmarkForm()">+ Добавить</button>
+  </div>
+  <div class="bm-search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+    <input class="bm-search-inp" id="bmSearch" placeholder="Поиск по закладкам…">
+  </div>
+  <div class="bm-cats" id="bmCats"></div>
+  <div class="bm-grid" id="bmGrid"></div>
 </section>
 
 <div class="footer">Данные синхронизируются через Firebase · <b>CRM ДИЗАЙНЕРА</b> · онлайн версия</div>
@@ -2297,8 +2342,140 @@ function removeAIMsg(id){
 }
 
 /* ================================================================
-   CUSTOM DATEPICKER
+   BOOKMARKS
    ================================================================ */
+const BM_DATA = [
+  // AI
+  {id:'bm1',name:'Weavi',url:'https://weave.figma.com/?ref=curatifyai',desc:'Площадка комбинирующая различные ИИ',cat:'AI',icon:'🤖'},
+  {id:'bm2',name:'Hautech',url:'https://www.hautech.ai/',desc:'Fashion photos using AI models',cat:'AI',icon:'👗'},
+  {id:'bm3',name:'Krea',url:'https://www.krea.ai/',desc:'AI visuals & image generation',cat:'AI',icon:'🎨'},
+  {id:'bm4',name:'Elevenlabs',url:'https://elevenlabs.io/',desc:'Voice generator, text to speech',cat:'AI',icon:'🎙'},
+  {id:'bm5',name:'Heygen',url:'https://www.heygen.com/',desc:'AI video generator',cat:'AI',icon:'🎬'},
+  {id:'bm6',name:'Openmagic',url:'https://omagic.ai/',desc:'Marketing visuals with AI',cat:'AI',icon:'✨'},
+  {id:'bm7',name:'Bolt',url:'https://bolt.new/',desc:'Генератор сайтов с импортом дизайна из Figma',cat:'AI',icon:'⚡'},
+  {id:'bm8',name:'Omnicontrol',url:'https://huggingface.co/spaces/Yuanshi/OminiControl',desc:'Image generator (HuggingFace)',cat:'AI',icon:'🖼'},
+  // Дизайн
+  {id:'bm9',name:'Morflax',url:'https://morflax.com/',desc:'3D мокапы онлайн',cat:'Дизайн',icon:'📦'},
+  {id:'bm10',name:'Vecto3D',url:'https://www.vecto3d.xyz/',desc:'Конвертация логотипа в 3D',cat:'Дизайн',icon:'🔺'},
+  {id:'bm11',name:'MockupDesigns',url:'https://mockups-design.com/',desc:'Качественные бесплатные мокапы',cat:'Дизайн',icon:'📱'},
+  {id:'bm12',name:'Mediamodifier',url:'https://mediamodifier.com/mockups/all',desc:'Мокапы онлайн',cat:'Дизайн',icon:'🖥'},
+  {id:'bm13',name:'QRBTF',url:'https://qrbtf.com/en',desc:'Кастомные QR-коды',cat:'Дизайн',icon:'◼'},
+  {id:'bm14',name:'Dark',url:'https://www.dark.design/',desc:'Вдохновение — тёмный дизайн',cat:'Дизайн',icon:'🌑'},
+  {id:'bm15',name:'Footer',url:'https://www.footer.design/',desc:'Вдохновение — дизайн футеров',cat:'Дизайн',icon:'🔲'},
+  {id:'bm16',name:'Soot',url:'https://play.soot.com/',desc:'Аналог Pinterest для дизайнеров',cat:'Дизайн',icon:'🗂'},
+  // Создание сайтов
+  {id:'bm17',name:'Rive',url:'https://rive.app/',desc:'Production-ready UI & interactive graphics',cat:'Создание сайтов',icon:'🎮'},
+  {id:'bm18',name:'Replit',url:'https://replit.com/',desc:'Web and app builder',cat:'Создание сайтов',icon:'💻'},
+  {id:'bm19',name:'Unicorn Studio',url:'https://www.unicorn.studio/',desc:'WebGL effects, motion & interactivity',cat:'Создание сайтов',icon:'🦄'},
+  {id:'bm20',name:'Relume',url:'https://www.relume.io/',desc:'AI website design & component library',cat:'Создание сайтов',icon:'🌐'},
+  // Бизнес
+  {id:'bm21',name:'Notion',url:'https://www.notion.so',desc:'Project management and note-taking',cat:'Бизнес',icon:'📋'},
+  {id:'bm22',name:'Integromat',url:'https://integromat.com',desc:'Connect apps and automate workflows',cat:'Бизнес',icon:'🔗'},
+  // Прикольные штуки
+  {id:'bm23',name:'SEC Insider',url:'http://openinsider.com/',desc:'Which stocks CEOs buy — insider trades',cat:'Прикольные штуки',icon:'📈'},
+  {id:'bm24',name:'PLACE TO READ',url:'https://www.placestoread.xyz/',desc:'Локации для чтения по всему миру',cat:'Прикольные штуки',icon:'📚'},
+  // Еда
+  {id:'bm25',name:'Breadbakebeyond',url:'https://www.breadbakebeyond.com/recipes',desc:'Рецепты хлеба и выпечки',cat:'Еда',icon:'🍞'},
+];
+
+const CAT_ICONS = {
+  'AI':'🤖','Дизайн':'🎨','Создание сайтов':'🌐',
+  'Бизнес':'💼','Прикольные штуки':'💡','Еда':'🍽',
+  'Поставщики':'🏭','Магазины':'🛍','Типография и печать':'🖨'
+};
+
+let bmFlt = {cat:'all', q:''};
+
+function renderBookmarks(){
+  // merge saved bookmarks from S
+  const allBm = [...BM_DATA, ...(S.bookmarks||[])];
+  const cats = ['all',...[...new Set(allBm.map(b=>b.cat))]];
+
+  // category chips
+  document.getElementById('bmCats').innerHTML =
+    cats.map(c => {
+      const cnt = c==='all'?allBm.length:allBm.filter(b=>b.cat===c).length;
+      return `<button class="bm-cat-btn${bmFlt.cat===c?' active':''}" onclick="bmSetCat('${c}')">
+        ${c==='all'?'🔖 Все':((CAT_ICONS[c]||'📁')+' '+c)}
+        <span class="cnt">${cnt}</span>
+      </button>`;
+    }).join('');
+
+  const q = bmFlt.q.toLowerCase();
+  let filtered = allBm.filter(b => {
+    if(bmFlt.cat!=='all' && b.cat!==bmFlt.cat) return false;
+    if(q && !(b.name.toLowerCase().includes(q)||(b.desc||'').toLowerCase().includes(q)||(b.url||'').toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  if(!filtered.length){
+    document.getElementById('bmGrid').innerHTML='<div class="bm-empty">Ничего не найдено</div>';
+    return;
+  }
+
+  // group by category if showing all
+  let html='';
+  if(bmFlt.cat==='all' && !q){
+    const byCat={};
+    filtered.forEach(b=>{ if(!byCat[b.cat]) byCat[b.cat]=[]; byCat[b.cat].push(b); });
+    Object.entries(byCat).forEach(([cat,items])=>{
+      html+=`<div class="bm-grid" style="margin-bottom:24px">`;
+      html+=`<div class="bm-section-title" style="grid-column:1/-1">${CAT_ICONS[cat]||'📁'} ${cat}</div>`;
+      html+=items.map(b=>bmCard(b)).join('');
+      html+='</div>';
+    });
+    document.getElementById('bmGrid').innerHTML=html;
+  } else {
+    document.getElementById('bmGrid').innerHTML=filtered.map(b=>bmCard(b)).join('');
+  }
+}
+
+function bmCard(b){
+  const domain = b.url?b.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]:'';
+  const faviconUrl = b.url?`https://www.google.com/s2/favicons?domain=${domain}&sz=64`:'';
+  return `<a class="bm-card" href="${esc(b.url||'#')}" target="_blank" rel="noopener">
+    <div class="bm-card-head">
+      <div class="bm-favicon">
+        <img src="${faviconUrl}" onerror="this.style.display='none';this.nextSibling.style.display='block'" alt="">
+        <span style="display:none;font-size:18px">${b.icon||'🔖'}</span>
+      </div>
+      <div><div class="bm-title">${esc(b.name)}</div><div class="bm-ext">${domain}</div></div>
+    </div>
+    ${b.desc?`<div class="bm-desc">${esc(b.desc)}</div>`:''}
+    <div class="bm-foot">
+      <span class="bm-cat-tag">${CAT_ICONS[b.cat]||'📁'} ${b.cat||'—'}</span>
+      <span class="bm-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Открыть</span>
+    </div>
+  </a>`;
+}
+
+function bmSetCat(cat){
+  bmFlt.cat=cat;
+  renderBookmarks();
+}
+
+function openAddBookmarkForm(){
+  const cats=[...new Set([...BM_DATA,...(S.bookmarks||[])].map(b=>b.cat))];
+  openModal('Новая закладка',`<div class="fg">
+    ${fld('Название *',inp('bm_nm','text','','true'),'full')}
+    ${fld('URL *',inp('bm_url','url','','true'),'full')}
+    ${fld('Описание',inp('bm_desc','text',''),'full')}
+    ${fld('Иконка',inp('bm_ic','text','🔖'))}
+    ${fld('Категория',`<input class="tx" id="bm_cat" list="bmCatList" placeholder="AI, Дизайн…">
+      <datalist id="bmCatList">${cats.map(c=>`<option value="${esc(c)}">`).join('')}</datalist>`)}
+  </div>`,()=>{
+    const nm=gv('bm_nm'),url=gv('bm_url');
+    if(!nm.trim()||!url.trim()){toast('Введите название и URL');return;}
+    if(!S.bookmarks) S.bookmarks=[];
+    S.bookmarks.push({id:uid(),name:nm,url,desc:gv('bm_desc'),icon:gv('bm_ic')||'🔖',cat:gv('bm_cat')||'Другое'});
+    save();closeModal();renderBookmarks();toast('Закладка добавлена');
+  });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const bs=document.getElementById('bmSearch');
+  if(bs) bs.oninput=e=>{bmFlt.q=e.target.value.toLowerCase().trim();renderBookmarks()};
+});
 let dpActive=null;
 const MONTHS_RU=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const DOW_RU=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
@@ -2409,12 +2586,14 @@ function switchView(name){
     if(name==='finance')renderFinance();
     if(name==='invoice')setupInvoice();
     if(name==='contacts')renderContacts();
+    if(name==='bookmarks')renderBookmarks();
   } else {
     if(name==='planner')renderPlanner();
     if(name==='tracker')renderTracker();
     if(name==='orders')renderOrders();
     if(name==='clients')renderClients();
     if(name==='contacts')renderContacts();
+    if(name==='bookmarks')renderBookmarks();
   }
   setTimeout(animateDash,60);
   window.scrollTo({top:0,behavior:'smooth'});
