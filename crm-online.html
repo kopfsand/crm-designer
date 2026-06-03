@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRM Дизайнера</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23ff5a1f'/><polyline points='5,22 11,10 17,16 23,6 27,12' fill='none' stroke='%23140a04' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -357,7 +358,7 @@ nav.tabs button.active svg{opacity:1}
 .timer-card .timer-body{padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px}
 .timer-clock{font-family:'Rubik';font-weight:700;font-size:50px;letter-spacing:-.03em;color:var(--or)}
 .tm-btns{display:flex;gap:8px;width:100%}
-.tm-btn{flex:1;font-family:'Inter';font-weight:700;font-size:12.5px;padding:12px;border-radius:11px;border:none;cursor:pointer;transition:.18s;letter-spacing:.02em}
+.tm-btn{flex:1;font-family:'Inter';font-weight:700;font-size:13px;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:.18s;letter-spacing:.02em}
 .tm-btn.go{background:var(--or);color:var(--on)}.tm-btn.go:hover{background:var(--ord)}
 .tm-btn.ghost{background:transparent;color:var(--dim);border:1px solid var(--ln2)}.tm-btn.ghost:hover{color:var(--txt)}
 .tm-btn.full{width:100%;margin-top:4px}
@@ -459,10 +460,11 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .modal-hd .t{font-family:'Inter';font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
 .modal-hd .x{font-family:'Inter';font-size:17px;color:var(--dim);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:7px;transition:.13s}
 .modal-hd .x:hover{background:var(--bg2);color:var(--txt)}
-.modal-body{padding:18px 20px}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-body{padding:22px 24px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .fg .full{grid-column:1/-1}
-.tx{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:11px 13px;outline:none;transition:.18s;resize:vertical}
+label.fld{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:500;color:var(--dim)}
+.tx{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--bg2);border:1px solid var(--ln2);border-radius:11px;padding:13px 15px;outline:none;transition:.18s;resize:vertical}
 .tx:focus{border-color:var(--orp);box-shadow:0 0 0 3px rgba(255,90,31,.1)}
 .tx::placeholder{color:var(--dim2)}
 .tx option{background:var(--card);color:var(--txt)}
@@ -477,7 +479,7 @@ textarea.tx{min-height:70px}
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 input[type=number]{-moz-appearance:textfield}
-.form-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;padding-top:13px;border-top:1px solid var(--ln)}
+.form-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--ln)}
 .ibt{font-size:11.5px;padding:5px 9px;border:1px solid var(--ln2);border-radius:7px;background:transparent;color:var(--dim);cursor:pointer;transition:.13s;font-family:'Inter';font-weight:600}
 .ibt:hover{color:var(--txt);border-color:var(--ln2)}
 .ibt.del:hover{color:var(--or);border-color:var(--orp)}
@@ -1137,7 +1139,6 @@ function buildDial(pct,bigTxt,smallTxt) {
     ticks+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${on?'var(--or)':'var(--ln2)'}" stroke-width="${on?2.8:2}" stroke-linecap="round" class="tk" style="opacity:0;transition:opacity .45s" data-i="${i}"/>`}
   const r=54,C=2*Math.PI*r;
   return `<svg width="${S2}" height="${S2}" viewBox="0 0 ${S2} ${S2}">${ticks}
-    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--ln)" stroke-width="8"/>
     <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--or)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 ${cx} ${cy})" class="arc" data-off="${C*(1-pct)}" style="transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)"/></svg>
     <div class="dc"><div class="pct">${bigTxt}</div><div class="cl">${smallTxt}</div></div>`;
 }
