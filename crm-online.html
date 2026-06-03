@@ -444,16 +444,69 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 /* analytics */
 .area-wrap{padding:12px 8px 8px}
 .funnel{padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+.fn{display:flex;flex-direction:column;gap:4px}
+.fn .conv{font-family:'Inter';font-size:9.5px;color:var(--dim);font-weight:600;padding-left:2px}
 .fn .bar{height:40px;border-radius:8px;display:flex;align-items:center;padding:0 14px;justify-content:space-between;background:var(--or);transition:width 1s cubic-bezier(.2,.8,.2,1);overflow:hidden;white-space:nowrap}
 .fn .bar .nm{font-weight:700;font-size:12.5px;color:var(--on)}
 .fn .bar .vv{font-family:'Inter';font-size:11.5px;font-weight:700;color:var(--on)}
 .radar-wrap{padding:12px;display:grid;place-items:center}
 .insights{padding:8px 14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+@media(max-width:700px){.insights{grid-template-columns:1fr}}
 .ins{display:flex;gap:12px;align-items:stretch;padding:14px;border:1px solid var(--ln);border-radius:var(--rs);background:var(--card2)}
 .ins .ic{width:36px;height:36px;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--bg2);font-size:16px;align-self:center}
 .ins.warn .ic{background:var(--or);color:var(--on)}
 .ins .tx b{font-size:12.5px;display:block;margin-bottom:3px}
 .ins .tx span{font-size:11px;color:var(--dim);line-height:1.55}
+
+/* period filter */
+.an-period{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.per-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
+.per-btn:hover{color:var(--txt);border-color:var(--dim)}
+.per-btn.active{background:var(--or);color:var(--on);border-color:var(--or)}
+
+/* comparison bars */
+.cmp-bars{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.cmp-bar{display:flex;flex-direction:column;gap:5px}
+.cmp-bar .lbl{display:flex;justify-content:space-between;font-family:'Inter';font-size:10.5px;font-weight:600;color:var(--dim)}
+.cmp-bar .lbl .am{color:var(--txt)}
+.cmp-tracks{display:flex;flex-direction:column;gap:4px}
+.cmp-track{height:7px;border-radius:4px;background:var(--ln);overflow:hidden}
+.cmp-fill{height:100%;border-radius:4px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.cmp-fill.rev{background:var(--or)}
+.cmp-fill.paid{background:#7bbf6a}
+
+/* heatmap */
+.heatmap-wrap{padding:16px 20px 20px;overflow-x:auto}
+.heatmap{display:flex;gap:3px}
+.hm-col{display:flex;flex-direction:column;gap:3px}
+.hm-cell{width:13px;height:13px;border-radius:3px;background:var(--ln);transition:.2s;cursor:default;position:relative}
+.hm-cell[data-v='0']{background:var(--ln)}
+.hm-cell[data-v='1']{background:rgba(255,90,31,.25)}
+.hm-cell[data-v='2']{background:rgba(255,90,31,.5)}
+.hm-cell[data-v='3']{background:rgba(255,90,31,.75)}
+.hm-cell[data-v='4']{background:var(--or)}
+.hm-months{display:flex;gap:0;padding-left:0;margin-bottom:4px;font-family:'Inter';font-size:9px;color:var(--dim);font-weight:600}
+.hm-month{flex:1;min-width:0}
+.hm-legend{display:flex;align-items:center;gap:6px;margin-top:10px;font-family:'Inter';font-size:9px;color:var(--dim)}
+.hm-legend .hm-cell{cursor:default;width:11px;height:11px}
+
+/* avg check trend */
+.trend-svg-wrap{padding:8px 8px 0;position:relative}
+.an-tooltip{position:fixed;background:var(--card2);border:1px solid var(--ln2);border-radius:8px;padding:7px 11px;font-family:'Inter';font-size:11px;pointer-events:none;z-index:300;display:none;white-space:nowrap;box-shadow:0 8px 24px -8px #000}
+.an-tooltip b{display:block;font-size:12px;color:var(--or)}
+
+/* metric cards */
+.an-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:0}
+@media(max-width:700px){.an-metrics{grid-template-columns:1fr 1fr}}
+.am-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
+.am-card .k{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.am-card .v{font-family:'Rubik';font-weight:700;font-size:22px;letter-spacing:-.03em}
+.am-card .s{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:4px}
+
+/* export btn */
+.an-export{display:flex;justify-content:flex-end;margin-bottom:8px}
+.an-export button{font-family:'Inter';font-size:11.5px;font-weight:600;padding:8px 16px;border-radius:9px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;display:flex;align-items:center;gap:6px;transition:.15s}
+.an-export button:hover{color:var(--txt);border-color:var(--orp)}
 
 /* modal */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);padding:20px}
@@ -732,18 +785,41 @@ input[type=number]{-moz-appearance:textfield}
 
 <!-- ANALYTICS -->
 <section class="view" id="view-analytics">
-  <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div></div>
+  <div class="sec-head"><div><span class="eye">Глубокая</span><h2>Аналитика</h2></div>
+    <div class="an-export"><button onclick="exportAnalyticsPDF()">⬇ PDF отчёт</button></div>
+  </div>
+  <!-- Period filter -->
+  <div class="an-period" id="anPeriod">
+    <button class="per-btn" data-p="30">30 дней</button>
+    <button class="per-btn" data-p="90">3 месяца</button>
+    <button class="per-btn" data-p="180">Полгода</button>
+    <button class="per-btn active" data-p="all">Всё время</button>
+  </div>
+  <!-- KPIs -->
   <div class="g4" id="anKpis"></div>
+  <!-- Extra metrics: LTV, cycle, repeat -->
+  <div class="an-metrics" id="anMetrics"></div>
+  <!-- Charts row 1 -->
   <div class="g2">
     <div class="panel"><div class="ph"><span class="t">Накопленная выручка</span></div><div class="area-wrap"><svg id="cumArea" width="100%" height="200" preserveAspectRatio="none"></svg></div></div>
+    <div class="panel"><div class="ph"><span class="t">Средний чек по месяцам</span></div><div class="area-wrap"><svg id="avgArea" width="100%" height="200" preserveAspectRatio="none"></svg></div></div>
+  </div>
+  <!-- Charts row 2 -->
+  <div class="g2">
+    <div class="panel"><div class="ph"><span class="t">Выручка vs Оплачено</span><span class="n">по месяцам</span></div><div class="cmp-bars" id="cmpBars"></div></div>
     <div class="panel"><div class="ph"><span class="t">Радар по типам</span></div><div class="radar-wrap" id="radar"></div></div>
   </div>
+  <!-- Heatmap -->
+  <div class="panel"><div class="ph"><span class="t">Тепловая карта активности</span><span class="n">заказы по неделям</span></div><div class="heatmap-wrap" id="heatmapWrap"></div></div>
+  <!-- Charts row 3 -->
   <div class="g2">
     <div class="panel"><div class="ph"><span class="t">Воронка</span></div><div class="funnel" id="funnel"></div></div>
     <div class="panel"><div class="ph"><span class="t">Источники клиентов</span></div><div class="hbars" id="srcBars"></div></div>
   </div>
+  <!-- Insights -->
   <div class="panel"><div class="ph"><span class="t">Инсайты</span></div><div class="insights" id="insights"></div></div>
 </section>
+<div class="an-tooltip" id="anTooltip"></div>
 
 <!-- PLANNER -->
 <section class="view" id="view-planner">
@@ -1450,51 +1526,228 @@ function renderOrders(){
 document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase().trim();renderOrders()};
 
 /* -- ANALYTICS -- */
+/* ── Analytics period state ── */
+let anPeriod='all';
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.per-btn').forEach(b=>b.addEventListener('click',()=>{
+    anPeriod=b.dataset.p;
+    document.querySelectorAll('.per-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    renderAnalytics();
+  }));
+});
+
+function anFilterOrders(){
+  if(anPeriod==='all') return S.orders;
+  const days=+anPeriod;
+  const cutoff=new Date(Date.now()-days*86400000);
+  return S.orders.filter(o=>o.start&&new Date(o.start)>=cutoff);
+}
+
+function buildSvgLine(container,dataPoints,color,fillColor,H=180){
+  const W=500,pad=16;
+  if(dataPoints.length<2){container.innerHTML='<text x="50%" y="50%" fill="var(--dim)" font-size="11" font-family="Inter" text-anchor="middle" dominant-baseline="middle">Недостаточно данных</text>';return;}
+  const maxV=Math.max(...dataPoints.map(d=>d.v),1);
+  const pts=dataPoints.map((d,i)=>[pad+i/(dataPoints.length-1)*(W-pad*2), H-pad-(d.v/maxV)*(H-pad*2-10)]);
+  const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const gradId='g'+Math.random().toString(36).slice(2,6);
+  container.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  container.innerHTML=`<defs><linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${fillColor}"/><stop offset="1" stop-color="rgba(255,90,31,0)"/></linearGradient></defs>
+    <path d="${line} L${pts[pts.length-1][0]} ${H-pad} L${pts[0][0]} ${H-pad} Z" fill="url(#${gradId})"/>
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    ${pts.map((p,i)=>`
+      <circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${color}" class="an-dot" style="cursor:pointer"
+        data-label="${dataPoints[i].l}" data-val="${dataPoints[i].v}"/>
+      <text x="${p[0]}" y="${H-3}" fill="var(--dim)" font-size="9" font-family="Inter" text-anchor="middle">${dataPoints[i].l}</text>`).join('')}`;
+  // tooltip
+  container.querySelectorAll('.an-dot').forEach(dot=>{
+    dot.addEventListener('mouseenter',e=>{
+      const tt=document.getElementById('anTooltip');
+      tt.innerHTML=`<b>${dot.dataset.val.includes('.')?dot.dataset.val:fmt(+dot.dataset.val)+' ₽'}</b>${dot.dataset.label}`;
+      tt.style.display='block';
+    });
+    dot.addEventListener('mousemove',e=>{
+      const tt=document.getElementById('anTooltip');
+      tt.style.left=(e.clientX+14)+'px';tt.style.top=(e.clientY-10)+'px';
+    });
+    dot.addEventListener('mouseleave',()=>{ document.getElementById('anTooltip').style.display='none'; });
+  });
+}
+
+function buildHeatmap(orders){
+  const wrap=document.getElementById('heatmapWrap');
+  if(!wrap) return;
+  // count orders per day over last 52 weeks
+  const now=new Date(); now.setHours(0,0,0,0);
+  const start=new Date(now); start.setDate(start.getDate()-364);
+  // align to Monday
+  start.setDate(start.getDate()-start.getDay()+1);
+  const counts={};
+  orders.forEach(o=>{
+    if(!o.start) return;
+    const d=o.start.slice(0,10);
+    counts[d]=(counts[d]||0)+1;
+  });
+  const maxC=Math.max(...Object.values(counts),1);
+  // build 52 columns x 7 rows
+  const cols=[];
+  let cur=new Date(start);
+  const months=[];
+  let prevMonth=-1;
+  for(let w=0;w<53;w++){
+    const cells=[];
+    for(let d=0;d<7;d++){
+      const key=cur.toISOString().slice(0,10);
+      const v=counts[key]||0;
+      const level=v===0?0:Math.min(4,Math.ceil(v/maxC*4));
+      const mo=cur.getMonth();
+      if(d===0&&mo!==prevMonth){months.push({w,name:cur.toLocaleDateString('ru-RU',{month:'short'})});prevMonth=mo;}
+      cells.push(`<div class="hm-cell" data-v="${level}" title="${key}: ${v} заказов"></div>`);
+      cur.setDate(cur.getDate()+1);
+    }
+    cols.push(`<div class="hm-col">${cells.join('')}</div>`);
+  }
+  // month labels
+  const mlabels=`<div class="hm-months">${months.map((m,i)=>{
+    const next=months[i+1]?.w||53;
+    const span=next-m.w;
+    return `<div style="width:${span*16}px;flex:none">${m.name}</div>`;
+  }).join('')}</div>`;
+  wrap.innerHTML=mlabels+`<div class="heatmap">${cols.join('')}</div>
+    <div class="hm-legend"><span>меньше</span>
+      <div class="hm-cell" data-v="0"></div><div class="hm-cell" data-v="1"></div>
+      <div class="hm-cell" data-v="2"></div><div class="hm-cell" data-v="3"></div>
+      <div class="hm-cell" data-v="4"></div><span>больше</span></div>`;
+}
+
 function renderAnalytics(){
-  const {totalCost,totalPaid,typeArr,clAgg,monthArr,srcArr}=agg();
-  const paid=S.orders.filter(o=>(o.paid||0)>=(o.cost||0)).length;
-  const conv=S.orders.length?Math.round(paid/S.orders.length*100):0;
+  const orders=anFilterOrders();
+  const clients=S.clients;
+  // aggregate for filtered orders
+  const totalCost=orders.reduce((s,o)=>s+(o.cost||0),0);
+  const totalPaid=orders.reduce((s,o)=>s+(o.paid||0),0);
+  const totalDebt=totalCost-totalPaid;
+  const paid=orders.filter(o=>(o.paid||0)>=(o.cost||0)).length;
+  const conv=orders.length?Math.round(paid/orders.length*100):0;
+  // months
+  const mMap={};
+  orders.forEach(o=>{
+    if(!o.start) return;
+    const d=new Date(o.start);
+    const k=d.toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});
+    if(!mMap[k]) mMap[k]={v:0,p:0,cnt:0,costs:[]};
+    mMap[k].v+=o.cost||0; mMap[k].p+=o.paid||0; mMap[k].cnt++; mMap[k].costs.push(o.cost||0);
+  });
+  const monthArr=Object.entries(mMap).map(([l,m])=>({l,v:m.v,p:m.p,cnt:m.cnt,avg:m.cnt?Math.round(m.v/m.cnt):0}));
   const busiest=monthArr.reduce((a,b)=>b.v>a.v?b:a,{v:0,l:'—'});
+  // type aggregation
+  const tMap={};
+  orders.forEach(o=>(o.types||[]).forEach(t=>{if(!tMap[t])tMap[t]={k:t,cost:0,cnt:0};tMap[t].cost+=o.cost||0;tMap[t].cnt++;}));
+  const typeArr=Object.values(tMap).sort((a,b)=>b.cost-a.cost);
+  // source aggregation
+  const sMap={};
+  clients.forEach(c=>{const os=orders.filter(o=>o.clientId===c.id);if(!os.length)return;if(!sMap[c.source])sMap[c.source]={k:c.source,cost:0,cnt:0};sMap[c.source].cost+=os.reduce((s,o)=>s+(o.cost||0),0);sMap[c.source].cnt++;});
+  const srcArr=Object.values(sMap).sort((a,b)=>b.cost-a.cost);
+  // clAgg
+  const clAgg=clients.map(c=>{const os=orders.filter(o=>o.clientId===c.id);return{...c,cost:os.reduce((s,o)=>s+(o.cost||0),0),paid:os.reduce((s,o)=>s+(o.paid||0),0),debt:os.reduce((s,o)=>s+(o.cost||0)-(o.paid||0),0),cnt:os.length};}).sort((a,b)=>b.cost-a.cost);
+
+  // ── LTV, cycle time, repeat rate ──
+  const clientsWithOrders=clAgg.filter(c=>c.cnt>0);
+  const ltv=clientsWithOrders.length?Math.round(clientsWithOrders.reduce((s,c)=>s+c.cost,0)/clientsWithOrders.length):0;
+  const repeatClients=clAgg.filter(c=>c.cnt>1).length;
+  const repeatRate=clients.length?Math.round(repeatClients/clients.length*100):0;
+  const cycleTimes=orders.filter(o=>o.start&&o.deadline).map(o=>{
+    const diff=(new Date(o.deadline)-new Date(o.start))/86400000;
+    return diff>0?diff:null;
+  }).filter(Boolean);
+  const avgCycle=cycleTimes.length?Math.round(cycleTimes.reduce((s,v)=>s+v,0)/cycleTimes.length):0;
+
+  // ── KPIs ──
   document.getElementById('anKpis').innerHTML=`
-    <div class="ks hot"><div class="k">Конверсия в оплату</div><div class="v">${conv}<span class="u">%</span></div><div class="s">${paid}/${S.orders.length} оплачены</div></div>
-    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(totalCost?Math.round(totalCost/S.orders.length):0)}<span class="u">₽</span></div></div>
-    <div class="ks"><div class="k">Пиковый месяц</div><div class="v">${busiest.l}</div><div class="s">${rub(busiest.v)}</div></div>
-    <div class="ks"><div class="k">Клиентов</div><div class="v">${S.clients.length}</div><div class="s">${S.orders.length} заказов</div></div>`;
-  // cumulative
-  let acc=0;const cum=monthArr.map(m=>{acc+=m.v;return{l:m.l,v:acc}});
-  if(cum.length>1){const W=500,H=180,maxC=acc;const pts=cum.map((c,i)=>[16+i/(cum.length-1)*(W-32),H-16-(c.v/maxC)*(H-40)]);
-    const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
-    const svg=document.getElementById('cumArea');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
-    svg.innerHTML=`<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,90,31,.35)"/><stop offset="1" stop-color="rgba(255,90,31,0)"/></linearGradient></defs>
-      <path d="${line} L${pts[pts.length-1][0]} ${H-16} L${pts[0][0]} ${H-16} Z" fill="url(#ag)"/>
-      <path d="${line}" fill="none" stroke="var(--or)" stroke-width="2.5" stroke-linejoin="round"/>
-      ${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="var(--or)"/><text x="${p[0]}" y="${H-3}" fill="var(--dim)" font-size="9.5" font-family="Rubik" text-anchor="middle">${cum[i].l}</text>`).join('')}`;}
-  // radar
-  if(typeArr.length>2){const data=typeArr.slice(0,6);const maxR=Math.max(...data.map(d=>d.cost),1);const sz=200,cx=sz/2,cy=sz/2,R=80,N=data.length;let gr='',ax='',lb='';
+    <div class="ks hot"><div class="k">Конверсия</div><div class="v">${conv}<span class="u">%</span></div><div class="s">${paid}/${orders.length} оплачены</div></div>
+    <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
+    <div class="ks"><div class="k">Пиковый месяц</div><div class="v" style="font-size:18px">${busiest.l}</div><div class="s">${rub(busiest.v)}</div></div>
+    <div class="ks"><div class="k">Заказов</div><div class="v">${orders.length}</div><div class="s">${clients.length} клиентов</div></div>`;
+
+  // ── Extra metrics ──
+  document.getElementById('anMetrics').innerHTML=`
+    <div class="am-card"><div class="k">LTV клиента</div><div class="v">${fmt(ltv)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="s">средняя выручка на клиента</div></div>
+    <div class="am-card"><div class="k">Повторные клиенты</div><div class="v">${repeatRate}<span style="font-size:14px;color:var(--or)">%</span></div><div class="s">${repeatClients} из ${clients.length} вернулись</div></div>
+    <div class="am-card"><div class="k">Цикл сделки</div><div class="v">${avgCycle}<span style="font-size:14px;color:var(--or)"> дн</span></div><div class="s">среднее время выполнения</div></div>`;
+
+  // ── Cumulative revenue ──
+  let acc=0;
+  const cum=monthArr.map(m=>{acc+=m.v;return{l:m.l,v:acc}});
+  buildSvgLine(document.getElementById('cumArea'),cum,'var(--or)','rgba(255,90,31,.3)');
+
+  // ── Avg check trend ──
+  buildSvgLine(document.getElementById('avgArea'),monthArr.map(m=>({l:m.l,v:m.avg})),'#7bbf6a','rgba(123,191,106,.2)');
+
+  // ── Comparison bars ──
+  const mxCmp=Math.max(...monthArr.map(m=>m.v),1);
+  document.getElementById('cmpBars').innerHTML=monthArr.slice(-6).map(m=>`
+    <div class="cmp-bar">
+      <div class="lbl"><span>${m.l}</span><span class="am">${fmt(m.v)} ₽</span></div>
+      <div class="cmp-tracks">
+        <div class="cmp-track"><div class="cmp-fill rev" data-w="${m.v/mxCmp*100}" style="width:0"></div></div>
+        <div class="cmp-track"><div class="cmp-fill paid" data-w="${m.p/mxCmp*100}" style="width:0"></div></div>
+      </div>
+    </div>`).join('')+`<div style="display:flex;gap:14px;margin-top:8px;font-family:'Inter';font-size:10px;color:var(--dim)">
+      <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:3px;background:var(--or);display:inline-block"></span>Выручка</span>
+      <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:3px;background:#7bbf6a;display:inline-block"></span>Оплачено</span>
+    </div>`;
+  setTimeout(()=>document.querySelectorAll('#cmpBars .cmp-fill').forEach(f=>f.style.width=f.dataset.w+'%'),80);
+
+  // ── Radar ──
+  if(typeArr.length>2){
+    const data=typeArr.slice(0,6);const maxR=Math.max(...data.map(d=>d.cost),1);
+    const sz=220,cx=sz/2,cy=sz/2,R=85,N=data.length;let gr='',ax='',lb='';
     for(let g=1;g<=3;g++){const r=R*g/3;let pp='';for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;pp+=`${cx+Math.cos(a)*r},${cy+Math.sin(a)*r} `}gr+=`<polygon points="${pp}" fill="none" stroke="var(--ln)" stroke-width="1"/>`}
-    for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;ax+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="var(--ln)" stroke-width="1"/>`;lb+=`<text x="${(cx+Math.cos(a)*(R+14)).toFixed(1)}" y="${(cy+Math.sin(a)*(R+14)).toFixed(1)}" fill="var(--dim)" font-size="9" font-family="Rubik" text-anchor="middle" dominant-baseline="middle">${data[i].k}</text>`}
+    for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;ax+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="var(--ln)" stroke-width="1"/>`;lb+=`<text x="${(cx+Math.cos(a)*(R+16)).toFixed(1)}" y="${(cy+Math.sin(a)*(R+16)).toFixed(1)}" fill="var(--dim)" font-size="9" font-family="Inter" text-anchor="middle" dominant-baseline="middle">${data[i].k}</text>`}
     let poly='';data.forEach((d,i)=>{const a=i/N*2*Math.PI-Math.PI/2;const r=R*d.cost/maxR;poly+=`${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)} `});
-    document.getElementById('radar').innerHTML=`<svg width="${sz+40}" height="${sz}" viewBox="-20 0 ${sz+40} ${sz}">${gr}${ax}<polygon points="${poly}" fill="rgba(255,90,31,.2)" stroke="var(--or)" stroke-width="2"/>${lb}</svg>`;}
-  // funnel
-  const mxF=Math.max(S.orders.length,1);
-  document.getElementById('funnel').innerHTML=[
-    {n:'Получено заказов',v:S.orders.length,raw:S.orders.length},
-    {n:'Выполнено',v:S.orders.filter(o=>o.status==='Выполнен').length},
+    document.getElementById('radar').innerHTML=`<svg width="${sz+40}" height="${sz}" viewBox="-20 0 ${sz+40} ${sz}">${gr}${ax}<polygon points="${poly}" fill="rgba(255,90,31,.15)" stroke="var(--or)" stroke-width="2.5" stroke-linejoin="round"/>${lb}</svg>`;
+  }
+
+  // ── Heatmap ──
+  buildHeatmap(orders);
+
+  // ── Funnel with conversion % ──
+  const steps=[
+    {n:'Получено заказов',v:orders.length},
+    {n:'В работе / Выполнено',v:orders.filter(o=>['В работе','На проверке','Выполнен'].includes(o.status)).length},
+    {n:'Выполнено',v:orders.filter(o=>o.status==='Выполнен').length},
     {n:'Оплачено полностью',v:paid},
-    {n:'Клиентов без долга',v:clAgg.filter(c=>c.debt===0).length}
-  ].map(s=>`<div class="fn"><div class="bar" data-w="${Math.max((s.v/mxF)*100,14)}" style="width:0"><span class="nm">${s.n}</span><span class="vv">${s.v}</span></div></div>`).join('');
+  ];
+  const mxF=Math.max(orders.length,1);
+  document.getElementById('funnel').innerHTML=steps.map((s,i)=>{
+    const prevV=i>0?steps[i-1].v:s.v;
+    const convPct=prevV>0?Math.round(s.v/prevV*100):0;
+    const convStr=i>0?`<div class="conv">↓ ${convPct}% от предыдущего</div>`:'';
+    return `<div class="fn">${convStr}<div class="bar" data-w="${Math.max((s.v/mxF)*100,8)}" style="width:0"><span class="nm">${s.n}</span><span class="vv">${s.v}</span></div></div>`;
+  }).join('');
   setTimeout(()=>document.querySelectorAll('#funnel .bar').forEach(b=>b.style.width=b.dataset.w+'%'),80);
-  // sources
+
+  // ── Sources ──
   const mxS=Math.max(...srcArr.map(s=>s.cost),1);
   document.getElementById('srcBars').innerHTML=srcArr.map(s=>`<div class="hb"><div class="top"><span class="nm"><span style="color:${SRCCOL[s.k]||'#888'}">●</span> ${s.k}</span><span class="am">${rub(s.cost)} · ${s.cnt} кл.</span></div><div class="tk"><div class="fl" data-w="${s.cost/mxS*100}" style="width:0"></div></div></div>`).join('');
   setTimeout(()=>document.querySelectorAll('#view-analytics .fl').forEach(f=>f.style.width=f.dataset.w+'%'),100);
-  // insights
-  const debtor=clAgg.find(c=>c.debt>0);const topT=typeArr[0]||{k:'—',cost:0};
+
+  // ── Insights ──
+  const debtor=clAgg.find(c=>c.debt>0);
+  const topT=typeArr[0]||{k:'—',cost:0,cnt:0};
+  const growthMonths=monthArr.slice(-2);
+  const growth=growthMonths.length===2&&growthMonths[0].v>0?Math.round((growthMonths[1].v-growthMonths[0].v)/growthMonths[0].v*100):null;
   document.getElementById('insights').innerHTML=`
-    <div class="ins ${debtor?'warn':''}"><div class="ic">${debtor?'⚠':'✅'}</div><div class="tx"><b>Дебиторская задолженность</b><span>${debtor?`${fmt(totalCost-totalPaid)} ₽ — на клиенте ${debtor.name}. Выставьте счёт.`:'Все клиенты рассчитались полностью!'}</span></div></div>
-    <div class="ins"><div class="ic">🏆</div><div class="tx"><b>${clAgg[0]?clAgg[0].name:'—'}</b><span>${clAgg[0]?`${rub(clAgg[0].cost)} — ${Math.round(clAgg[0].cost/(totalCost||1)*100)}% выручки за ${clAgg[0].cnt} заказов`:''}</span></div></div>
-    <div class="ins"><div class="ic">🎯</div><div class="tx"><b>${topT.k}</b><span>Основной тип работ: ${topT.cnt||0} заказов, ${Math.round(topT.cost/(totalCost||1)*100)}% выручки</span></div></div>
-    <div class="ins"><div class="ic">📈</div><div class="tx"><b>Конверсия ${conv}%</b><span>${paid} из ${S.orders.length} заказов оплачены полностью. Пиковый месяц — ${busiest.l}.</span></div></div>`;
+    <div class="ins ${debtor?'warn':''}"><div class="ic">${debtor?'⚠':'✅'}</div><div class="tx"><b>Дебиторка</b><span>${debtor?`${fmt(totalDebt)} ₽ — ${debtor.name}. Выставьте счёт.`:'Все клиенты рассчитались!'}</span></div></div>
+    <div class="ins"><div class="ic">🏆</div><div class="tx"><b>${clAgg[0]?.name||'—'}</b><span>${clAgg[0]?`${rub(clAgg[0].cost)} — ${Math.round(clAgg[0].cost/(totalCost||1)*100)}% выручки, ${clAgg[0].cnt} заказов`:''}</span></div></div>
+    <div class="ins"><div class="ic">🎯</div><div class="tx"><b>${topT.k}</b><span>Основной тип: ${topT.cnt} заказов, ${Math.round(topT.cost/(totalCost||1)*100)}% выручки</span></div></div>
+    <div class="ins"><div class="ic">📈</div><div class="tx"><b>${growth!==null?(growth>=0?`Рост +${growth}%`:`Спад ${growth}%`):'Динамика'}</b><span>${growth!==null?`Выручка ${growthMonths[1].l} vs ${growthMonths[0].l}`:'Добавьте заказы за 2+ месяца'}</span></div></div>
+    <div class="ins"><div class="ic">🔁</div><div class="tx"><b>Повторные клиенты ${repeatRate}%</b><span>${repeatClients} клиентов вернулись — хороший показатель удержания</span></div></div>
+    <div class="ins"><div class="ic">⏱</div><div class="tx"><b>Цикл сделки ${avgCycle} дн.</b><span>${avgCycle?`Среднее время от старта до дедлайна по ${cycleTimes.length} заказам`:'Добавьте даты начала и дедлайны'}</span></div></div>`;
+}
+
+function exportAnalyticsPDF(){
+  window.print();
 }
 
 /* -- PLANNER -- */
