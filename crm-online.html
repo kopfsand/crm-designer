@@ -556,120 +556,6 @@ nav.tabs button.active svg{opacity:1}
 .archive-task .at-meta{font-family:'Inter';font-size:10px;color:var(--dim2)}
 /* finance extras */
 .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.exp-list{padding:10px 16px 16px;display:flex;flex-direction:column;gap:8px}
-.exp-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:10px;background:var(--bg2);border:1px solid var(--ln);border-radius:10px}
-.exp-row .e-dot{width:8px;height:8px;border-radius:50%;flex:none}
-.exp-row .e-nm{font-size:12.5px;font-weight:600}
-.exp-row .e-cat{font-family:'Inter';font-size:9.5px;color:var(--dim);margin-top:2px}
-.exp-row .e-am{font-family:'Rubik';font-weight:700;font-size:14px;color:var(--txt);white-space:nowrap}
-.exp-row .e-acts{display:flex;gap:4px}
-
-/* expense category editor */
-.ecat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
-.ecat-row{display:grid;grid-template-columns:32px 1fr 90px 32px;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:8px 10px}
-.ecat-swatch{width:24px;height:24px;border-radius:6px;border:2px solid rgba(255,255,255,.15);cursor:pointer;flex:none;transition:.15s}
-.ecat-swatch:hover{transform:scale(1.12)}
-.ecat-nm-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Inter';font-size:13px;font-weight:600;padding:3px 0;outline:none;width:100%}
-.ecat-nm-inp:focus{border-color:var(--or)}
-.ecat-color-inp{width:100%;height:28px;border-radius:6px;border:1px solid var(--ln2);cursor:pointer;padding:2px;background:var(--bg2)}
-.ecat-del{width:28px;height:28px;border-radius:7px;background:none;border:none;cursor:pointer;color:var(--dim2);font-size:15px;display:grid;place-items:center;transition:.13s}
-.ecat-del:hover{color:#cf5a4a;background:rgba(207,90,74,.12)}
-.ecat-add-btn{width:100%;padding:9px;background:none;border:1px dashed var(--ln2);border-radius:9px;color:var(--dim);font-family:'Inter';font-size:12px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.03em}
-.ecat-add-btn:hover{border-color:var(--or);color:var(--or)}
-
-/* expense budget indicator in category editor */
-.ecat-row{display:grid;grid-template-columns:32px 1fr 90px 80px 32px;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:8px 10px}
-.ecat-budget-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Inter';font-size:12px;padding:3px 0;outline:none;width:100%;text-align:right}
-.ecat-budget-inp:focus{border-color:var(--or)}
-.ecat-budget-inp::placeholder{color:var(--dim2)}
-
-/* ══════════════════════════════════════════════
-   EXPENSE BLOCK — UI/UX Pro Max redesign
-   8dp rhythm · semantic tokens · bento grid
-   ══════════════════════════════════════════════ */
-
-/* Bento header */
-.exp-panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--ln)}
-.exp-panel-title{font-family:'Inter';font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.exp-panel-total{font-family:'Rubik';font-weight:700;font-size:20px;letter-spacing:-.03em;color:var(--txt)}
-.exp-panel-total span{font-size:11px;color:var(--or);margin-left:2px}
-
-/* Bento top row: donut + categories */
-.exp-bento{display:grid;grid-template-columns:136px 1fr;border-bottom:1px solid var(--ln)}
-.exp-bento-left{display:flex;align-items:center;justify-content:center;padding:20px 8px 20px 20px;border-right:1px solid var(--ln)}
-
-/* Donut */
-.exp-donut-wrap{position:relative;width:96px;height:96px;flex:none}
-.exp-donut-wrap svg{position:absolute;inset:0}
-.exp-donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}
-.exp-donut-center .dv{font-family:'Rubik';font-weight:700;font-size:15px;letter-spacing:-.03em;line-height:1}
-.exp-donut-center .dl{font-family:'Inter';font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim2);margin-top:3px}
-
-/* Category list */
-.exp-bento-right{padding:12px 16px;display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:0}
-.exp-cat-row{display:grid;grid-template-columns:10px 1fr 38px 76px;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;cursor:pointer;transition:background .13s;min-width:0}
-.exp-cat-row:hover{background:rgba(255,255,255,.04)}
-.exp-cat-row.dim{opacity:.28}
-.exp-cat-pip{width:10px;height:10px;border-radius:3px;flex:none}
-.exp-cat-name{font-family:'Inter';font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.exp-cat-pct{font-family:'Inter';font-size:10.5px;color:var(--dim2);text-align:right}
-.exp-cat-amt{font-family:'Rubik';font-weight:700;font-size:13.5px;text-align:right;white-space:nowrap}
-.exp-cat-prog{height:2px;border-radius:1px;background:var(--ln);overflow:hidden;grid-column:2/-1;margin-top:-3px}
-.exp-cat-prog-fill{height:100%;border-radius:1px;transition:width .5s}
-.exp-cat-over{animation:exp-pulse .9s infinite alternate}
-@keyframes exp-pulse{from{opacity:1}to{opacity:.35}}
-
-/* Toolbar: search | chips */
-.exp-toolbar{display:flex;align-items:stretch;border-bottom:1px solid var(--ln);min-height:40px}
-.exp-search-wrap{display:flex;align-items:center;gap:8px;padding:0 14px;flex:1;border-right:1px solid var(--ln)}
-.exp-search-wrap svg{width:13px;height:13px;color:var(--dim2);flex:none}
-.exp-search-inp{flex:1;background:transparent;border:none;color:var(--txt);font-family:'Inter';font-size:12.5px;padding:10px 0;outline:none}
-.exp-search-inp::placeholder{color:var(--dim2)}
-.exp-chips-wrap{display:flex;gap:5px;padding:7px 12px;overflow-x:auto;scrollbar-width:none;align-items:center}
-.exp-chips-wrap::-webkit-scrollbar{display:none}
-.exp-chip{font-family:'Inter';font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:20px;border:1.5px solid var(--ln2);background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:.15s;line-height:1.4}
-.exp-chip:hover{color:var(--txt);border-color:var(--dim)}
-.exp-chip.on{border-color:transparent;color:var(--on)}
-
-/* Quick-add: labeled fields side-by-side */
-.exp-qa{display:grid;grid-template-columns:1fr 96px 140px 48px;border-bottom:1px solid var(--ln)}
-.exp-qa-cell{position:relative;border-right:1px solid var(--ln)}
-.exp-qa-cell:last-child{border-right:none}
-.exp-qa-label{position:absolute;top:8px;left:13px;font-family:'Inter';font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);pointer-events:none;z-index:1}
-.exp-qa-inp{width:100%;background:transparent;border:none;color:var(--txt);font-family:'Inter';font-size:13px;font-weight:500;padding:25px 13px 8px;outline:none;transition:background .15s;box-sizing:border-box}
-.exp-qa-inp:focus{background:rgba(255,255,255,.03)}
-.exp-qa-inp::placeholder{color:var(--dim2)}
-.exp-qa-num{width:100%;background:transparent;border:none;color:var(--txt);font-family:'Rubik';font-weight:700;font-size:14px;padding:25px 12px 8px;outline:none;text-align:right;transition:background .15s;box-sizing:border-box}
-.exp-qa-num:focus{background:rgba(255,255,255,.03)}
-.exp-qa-num::placeholder{color:var(--dim2)}
-.exp-qa-sel{width:100%;background:transparent;border:none;color:var(--dim);font-family:'Inter';font-size:12px;padding:25px 10px 8px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;transition:background .15s;box-sizing:border-box}
-.exp-qa-sel:focus{background:rgba(255,255,255,.03);color:var(--txt)}
-.exp-qa-submit{background:var(--or);color:var(--on);border:none;cursor:pointer;transition:background .15s;display:grid;place-items:center;width:100%;height:100%}
-.exp-qa-submit:hover{background:var(--ord)}
-.exp-qa-submit svg{width:18px;height:18px;stroke-width:2.5}
-
-/* Expense rows */
-.exp-row{display:grid;grid-template-columns:3px 1fr auto auto;align-items:stretch;padding:0;transition:background .13s;border-bottom:1px solid var(--ln)}
-.exp-row:last-child{border-bottom:none}
-.exp-row:hover{background:rgba(255,255,255,.025)}
-.exp-row-bar{width:3px;align-self:stretch;flex:none;border-radius:0}
-.exp-row-body{padding:12px 16px;min-width:0}
-.exp-row-name{font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;line-height:1.4}
-.exp-row-meta{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:3px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.exp-row-sep{width:2px;height:2px;border-radius:50%;background:var(--ln2);flex:none}
-.exp-row-amt{font-family:'Rubik';font-weight:700;font-size:15px;padding:12px 14px;white-space:nowrap;align-self:center;text-align:right}
-.exp-row-acts{display:flex;gap:2px;padding:8px 10px 8px 4px;align-items:center;opacity:0;transition:opacity .13s}
-.exp-row:hover .exp-row-acts{opacity:1}
-
-/* Badges */
-.exp-badge{font-family:'Inter';font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;border-radius:4px;line-height:1.6}
-.exp-badge-recur{background:rgba(127,166,201,.18);color:#7fa6c9;border:1px solid rgba(127,166,201,.28)}
-.exp-badge-auto{background:rgba(214,189,106,.14);color:#d6bd6a;border:1px solid rgba(214,189,106,.2)}
-.exp-badge-sub{background:rgba(255,255,255,.06);color:var(--dim);border:1px solid var(--ln2)}
-
-/* Empty state */
-.exp-empty{padding:40px 20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2);display:flex;flex-direction:column;align-items:center;gap:10px}
-.exp-empty svg{width:32px;height:32px;color:var(--ln2)}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -684,7 +570,6 @@ nav.tabs button.active svg{opacity:1}
 .tax-rate-btn{font-family:'Inter';font-size:11px;font-weight:600;padding:5px 11px;border-radius:7px;border:1px solid var(--ln2);background:var(--bg2);color:var(--dim);cursor:pointer;transition:.13s}
 .tax-rate-btn.active{background:var(--or);color:var(--on);border-color:var(--or)}
 .fin-period{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.exp-cat-colors{'Подписки':'#7fa6c9','Налоги':'#d6bd6a','Материалы':'#a795c9','Оборудование':'#7bbf6a','Другое':'#8f867a'}
 
 /* tracker */
 .timer-card .timer-body{padding:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
@@ -1386,10 +1271,6 @@ input[type=number]{-moz-appearance:textfield}
 <!-- FINANCE -->
 <section class="view" id="view-finance">
   <div class="sec-head"><div><span class="eye">Аналитика</span><h2>Финансы</h2></div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button class="ibt" onclick="openExpCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600" title="Редактор категорий">⚙ Категории</button>
-      <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
-    </div>
   </div>
   <!-- Period filter -->
   <div class="fin-period" id="finPeriod">
@@ -1411,18 +1292,6 @@ input[type=number]{-moz-appearance:textfield}
   <div class="fin-grid">
     <div class="panel"><div class="ph"><span class="t">По типам работ</span></div><div class="pad"><table class="matrix" id="tyTable"></table></div></div>
     <div class="panel"><div class="ph"><span class="t">По клиентам</span></div><div class="pad"><table class="matrix" id="clTable"></table></div></div>
-  </div>
-
-  <!-- Expenses -->
-  <div class="panel" style="padding:0;overflow:hidden">
-    <div class="exp-panel-head">
-      <span class="exp-panel-title">Расходы</span>
-      <span class="exp-panel-total" id="expTotal"></span>
-    </div>
-    <div id="expChartsRow"></div>
-    <div id="expFilterBar"></div>
-    <div id="expQuickAdd"></div>
-    <div id="expList"></div>
   </div>
 
 </section>
@@ -2715,191 +2584,16 @@ function finFilterOrders(){
   const cut=new Date(Date.now()-finPeriodDays*86400000);
   return S.orders.filter(o=>o.start&&new Date(o.start)>=cut);
 }
-function finFilterExpenses(){
-  if(!finPeriodDays)return S.expenses||[];
-  const cut=new Date(Date.now()-finPeriodDays*86400000);
-  return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=cut);
-}
-
-/* ── Expense categories (dynamic) ── */
-const DEFAULT_EXP_CATS=[
-  {name:'Подписки', color:'#7fa6c9'},
-  {name:'Налоги',   color:'#d6bd6a'},
-  {name:'Материалы',color:'#a795c9'},
-  {name:'Оборудование',color:'#7bbf6a'},
-  {name:'Реклама',  color:'#cf8a5a'},
-  {name:'Другое',   color:'#8f867a'},
-];
-function getExpCats(){ return S.expCats && S.expCats.length ? S.expCats : DEFAULT_EXP_CATS; }
-function expCatColor(name){ const c=getExpCats().find(c=>c.name===name); return c?c.color:'#8f867a'; }
-function expCatNames(){ return getExpCats().map(c=>c.name); }
-
-/* ── Category editor ── */
-function openExpCatEditor(){
-  const cats=getExpCats();
-  const rowsHtml=cats.map((c,i)=>`
-    <div class="ecat-row" id="ecat_${i}">
-      <div class="ecat-swatch" style="background:${c.color}" onclick="document.getElementById('ecc_${i}').click()"></div>
-      <input class="ecat-nm-inp" id="ecn_${i}" value="${esc(c.name)}" placeholder="Название">
-      <input class="ecat-color-inp" id="ecc_${i}" type="color" value="${c.color}"
-        oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
-      <input class="ecat-budget-inp" id="ecb_${i}" type="number" min="0" value="${c.budget||''}" placeholder="Бюджет ₽">
-      <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>
-    </div>`).join('');
-  openModalRaw('Категории расходов',`
-    <div style="margin-bottom:10px;font-family:'Inter';font-size:11px;color:var(--dim)">
-      Задайте цвет, название и месячный бюджет для каждой категории.
-    </div>
-    <div style="display:grid;grid-template-columns:32px 1fr 90px 80px 32px;gap:8px;padding:0 10px;margin-bottom:6px">
-      <span></span>
-      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)">Название</span>
-      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)">Цвет</span>
-      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:right">Бюджет/мес</span>
-      <span></span>
-    </div>
-    <div class="ecat-list" id="ecatList">${rowsHtml}</div>
-    <button class="ecat-add-btn" onclick="addExpCatRow()">+ Добавить категорию</button>
-    <div class="form-acts">
-      <button class="tm-btn ghost" onclick="closeModal()">Отмена</button>
-      <button class="tm-btn go" onclick="saveExpCats()">Сохранить</button>
-    </div>`);
-}
-
-function addExpCatRow(){
-  const list=document.getElementById('ecatList');
-  const i='new_'+Date.now();
-  const div=document.createElement('div');
-  div.className='ecat-row';
-  div.id='ecat_'+i;
-  div.innerHTML=`
-    <div class="ecat-swatch" style="background:#888" onclick="document.getElementById('ecc_${i}').click()"></div>
-    <input class="ecat-nm-inp" id="ecn_${i}" placeholder="Название категории">
-    <input class="ecat-color-inp" id="ecc_${i}" type="color" value="#888888"
-      oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
-    <input class="ecat-budget-inp" id="ecb_${i}" type="number" min="0" placeholder="Бюджет ₽">
-    <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>`;
-  list.appendChild(div);
-  div.querySelector('.ecat-nm-inp').focus();
-}
-
-function saveExpCats(){
-  const rows=[...document.querySelectorAll('#ecatList .ecat-row')];
-  const cats=rows.map(row=>{
-    const nm=row.querySelector('.ecat-nm-inp')?.value.trim();
-    const col=row.querySelector('.ecat-color-inp')?.value||'#8f867a';
-    const bud=parseFloat(row.querySelector('.ecat-budget-inp')?.value)||0;
-    return nm?{name:nm,color:col,budget:bud||0}:null;
-  }).filter(Boolean);
-  if(!cats.length){toast('Нужна хотя бы одна категория');return;}
-  S.expCats=cats;
-  save();closeModal();renderFinance();toast('Категории сохранены');
-}
-
-/* ── Expense CRUD ── */
-const RECUR_OPTS=[{v:'',l:'Разово'},{v:'monthly',l:'Ежемесячно'},{v:'yearly',l:'Ежегодно'}];
-function openExpenseForm(id=null){
-  const e=id?(S.expenses||[]).find(x=>x.id===id):{};
-  const cats=expCatNames();
-  openModal(id?'Редактировать расход':'Новый расход',`<div class="fg">
-    ${fld('Название *',inp('f_enm','text',e.name||'','true'),'full')}
-    ${fld('Сумма, ₽',inp('f_eam','number',e.amount||0))}
-    ${fld('Категория',selOpts('f_ecat',cats,e.cat||cats[cats.length-1]||'Другое'))}
-    ${fld('Подкатегория',inp('f_esub','text',e.sub||'','false','Уточнение (напр. Figma, Adobe…)'))}
-    ${fld('Повторение',selOpts('f_erecur',RECUR_OPTS,e.recurring||''))}
-    ${fld('Дата',dpCreate('f_edt',e.date||new Date().toISOString().slice(0,10)),'full')}
-    ${fld('Заметка',inp('f_enote','text',e.note||''),'full')}
-  </div>`,()=>{
-    const name=gv('f_enm');if(!name.trim()){toast('Введите название');return;}
-    if(!S.expenses)S.expenses=[];
-    const data={name,amount:+gv('f_eam')||0,cat:gv('f_ecat'),sub:gv('f_esub').trim(),recurring:gv('f_erecur'),date:document.getElementById('f_edt').value||new Date().toISOString().slice(0,10),note:gv('f_enote')};
-    if(id){const i=S.expenses.findIndex(x=>x.id===id);S.expenses[i]={...S.expenses[i],...data};}
-    else S.expenses.push({...data,id:uid()});
-    save();closeModal();renderFinance();toast(id?'Расход обновлён':'Расход добавлен');
-  });
-}
-function deleteExpense(id){
-  if(!confirm('Удалить расход?'))return;
-  S.expenses=(S.expenses||[]).filter(e=>e.id!==id);save();renderFinance();toast('Удалено');
-}
 
 let taxRate=6;
-let expFlt={cat:'all',q:''};
 
-/* helpers */
-function finPrevPeriodExpenses(){
-  if(!finPeriodDays) return [];
-  const now=Date.now();
-  const from=new Date(now-finPeriodDays*2*86400000);
-  const to=new Date(now-finPeriodDays*86400000);
-  return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=from&&new Date(e.date)<to);
-}
-
-/* expand recurring expenses into current period */
-function expandRecurring(baseExpenses, periodDays){
-  const now=new Date(); const cutFrom=periodDays?new Date(Date.now()-periodDays*86400000):null;
-  const extra=[];
-  (S.expenses||[]).filter(e=>e.recurring).forEach(e=>{
-    if(!e.date) return;
-    const orig=new Date(e.date);
-    const step=e.recurring==='yearly'?365:30;
-    let d=new Date(orig);
-    d.setDate(d.getDate()+step);
-    for(let i=0;i<60;i++){
-      if(d>now) break;
-      const iso=d.toISOString().slice(0,10);
-      if(!cutFrom||d>=cutFrom){
-        if(!baseExpenses.find(x=>x.id===e.id+'_r'+iso))
-          extra.push({...e,id:e.id+'_r'+iso,date:iso,_synthetic:true});
-      }
-      d=new Date(d);
-      d.setDate(d.getDate()+step);
-    }
-  });
-  return extra;
-}
-
-function buildDonut(catArr,totalExp){
-  if(!catArr.length) return '';
-  const R=36,cx=48,cy=48,stroke=13;
-  const circ=2*Math.PI*R;
-  let offset=0;
-  const segs=catArr.map(c=>{
-    const pct=totalExp?c.v/totalExp:0;
-    const dash=pct*circ;
-    const seg=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${expCatColor(c.k)}" stroke-width="${stroke}" stroke-dasharray="${dash.toFixed(2)} ${(circ-dash).toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})" stroke-linecap="butt"/>`;
-    offset+=dash;
-    return seg;
-  }).join('');
-  return `<div class="exp-donut-wrap">
-    <svg viewBox="0 0 96 96" width="96" height="96">
-      <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--ln)" stroke-width="${stroke}"/>
-      ${segs}
-    </svg>
-    <div class="exp-donut-center">
-      <div class="dv">${fmt(totalExp)}<span style="font-size:8px;color:var(--or)"> ₽</span></div>
-      <div class="dl">итого</div>
-    </div>
-  </div>`;
-}
 
 function renderFinance(){
   const orders=finFilterOrders();
-  const baseExpenses=finFilterExpenses();
-  const recurExtra=expandRecurring(baseExpenses,finPeriodDays);
-  const expenses=[...baseExpenses,...recurExtra];
 
   const totalCost=orders.reduce((s,o)=>s+(o.cost||0),0);
   const totalPaid=orders.reduce((s,o)=>s+(o.paid||0),0);
   const totalDebt=totalCost-totalPaid;
-  const totalExp=expenses.reduce((s,e)=>s+(e.amount||0),0);
-  const profit=totalPaid-totalExp;
-
-  // prev period comparison
-  const prevExp=finPrevPeriodExpenses();
-  const prevTotal=prevExp.reduce((s,e)=>s+(e.amount||0),0);
-  const expDelta=prevTotal>0?Math.round((totalExp-prevTotal)/prevTotal*100):null;
-  const expDeltaStr=expDelta!==null?(expDelta>0?`+${expDelta}%`:`${expDelta}%`):'';
-  const expDeltaColor=expDelta===null?'var(--dim)':expDelta>0?'#cf5a4a':'#7bbf6a';
 
   // type & client agg
   const tMap={};
@@ -2910,8 +2604,7 @@ function renderFinance(){
   // Profit cards
   document.getElementById('finProfit').innerHTML=`
     <div class="profit-card"><div class="pk">Выручка</div><div class="pv">${fmt(totalCost)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="ps">Оплачено ${fmt(totalPaid)} ₽</div></div>
-    <div class="profit-card"><div class="pk">Расходы ${expDeltaStr?`<span style="font-weight:600;color:${expDeltaColor};font-size:10px;margin-left:4px">${expDeltaStr} vs пред. период</span>`:''}</div><div class="pv" style="color:#cf5a4a">${fmt(totalExp)} <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">${expenses.length} статей${recurExtra.length?` · ${recurExtra.length} повтор.`:''}</div></div>
-    <div class="profit-card" style="border-color:${profit>=0?'rgba(123,191,106,.3)':'rgba(207,90,74,.3)'}"><div class="pk">Прибыль</div><div class="pv" style="color:${profit>=0?'#7bbf6a':'#cf5a4a'}">${profit>=0?'+':''}${fmt(profit)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено − Расходы</div></div>`;
+    <div class="profit-card" style="border-color:rgba(123,191,106,.3)"><div class="pk">Чистый доход</div><div class="pv" style="color:#7bbf6a">${fmt(totalPaid)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено клиентами</div></div>`;
 
   // KPIs
   document.getElementById('finKpis').innerHTML=`
@@ -2920,30 +2613,16 @@ function renderFinance(){
     <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
     <div class="ks"><div class="k">Конверсия</div><div class="v">${orders.length?Math.round(orders.filter(o=>(o.paid||0)>=(o.cost||0)).length/orders.length*100):0}<span class="u">%</span></div></div>`;
 
-  // Income+expense chart (dual lines)
+  // Income chart
   const mMap={};
-  orders.forEach(o=>{if(!o.start)return;const k=new Date(o.start).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].v+=o.cost||0;});
-  expenses.forEach(e=>{if(!e.date)return;const k=new Date(e.date).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].e+=e.amount||0;});
-  const months=Object.entries(mMap).map(([l,d])=>({l,v:d.v,e:d.e}));
+  orders.forEach(o=>{if(!o.start)return;const k=new Date(o.start).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0};mMap[k].v+=o.cost||0;});
+  const months=Object.entries(mMap).map(([l,d])=>({l,v:d.v}));
   const svgEl=document.getElementById('finArea');
   buildSvgLine(svgEl,months.map(m=>({l:m.l,v:m.v})),'var(--or)','rgba(255,90,31,.25)');
-  // overlay expense line
-  if(months.length>=2 && svgEl){
-    const W=svgEl.getBoundingClientRect().width||560,H=180,pad=40;
-    const vals=months.map(m=>m.e);
-    const maxV=Math.max(...vals,...months.map(m=>m.v),1);
-    const pts=vals.map((v,i)=>[pad+i/(months.length-1)*(W-2*pad),H-pad-(v/maxV)*(H-2*pad)]);
-    const existing=svgEl.querySelector('.exp-line');if(existing)existing.remove();
-    const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline');
-    pl.setAttribute('points',pts.map(p=>p.map(x=>x.toFixed(1)).join(',')).join(' '));
-    pl.setAttribute('fill','none');pl.setAttribute('stroke','#cf5a4a');pl.setAttribute('stroke-width','2');
-    pl.setAttribute('stroke-dasharray','5 3');pl.setAttribute('class','exp-line');
-    svgEl.appendChild(pl);
-  }
 
   // Tax calculator
   const taxAmt=Math.round(totalPaid*taxRate/100);
-  const taxLeft=totalPaid-taxAmt-totalExp;
+  const taxLeft=totalPaid-taxAmt;
   document.getElementById('taxCalc').innerHTML=`
     <div class="tax-row"><span class="tax-label">Режим налогообложения</span>
       <div class="tax-rate-btns">
@@ -2954,7 +2633,7 @@ function renderFinance(){
     </div>
     <div class="tax-row"><span class="tax-label">Налог (${taxRate}% от оплаченного)</span><span class="tax-value">${fmt(taxAmt)} ₽</span></div>
     <div class="tax-row"><span class="tax-label">Отложить на налог</span><span class="tax-value" style="color:#d6bd6a">${fmt(Math.round(totalPaid*taxRate/100))} ₽</span></div>
-    <div class="tax-row"><span class="tax-label">Остаток после налогов и расходов</span><span class="tax-value" style="color:${taxLeft>=0?'#7bbf6a':'#cf5a4a'}">${fmt(taxLeft)} ₽</span></div>
+    <div class="tax-row"><span class="tax-label">Остаток после налогов</span><span class="tax-value" style="color:${taxLeft>=0?'#7bbf6a':'#cf5a4a'}">${fmt(taxLeft)} ₽</span></div>
     <div class="tax-note">Расчёт на основе оплаченных сумм за выбранный период</div>`;
 
   // Tables
@@ -2964,138 +2643,8 @@ function renderFinance(){
   document.getElementById('clTable').innerHTML=`<thead><tr><th>Клиент</th><th class="r">Кол</th><th class="r">Выручка</th><th class="r">Долг</th></tr></thead><tbody>`+
     clAgg.map(c=>`<tr><td>${c.icon} ${esc(c.name)}</td><td class="r">${c.cnt}</td><td class="r">${fmt(c.cost)}</td><td class="r" style="color:${c.debt>0?'var(--or)':'#7bbf6a'}">${c.debt>0?fmt(c.debt):'—'}</td></tr>`).join('')+
     `<tr class="tot"><td>Итого</td><td class="r">${orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">${fmt(totalDebt)}</td></tr></tbody>`;
-
-  // ── EXPENSES BLOCK ──
-  const expTot=document.getElementById('expTotal');
-  if(expTot){
-    if(expenses.length){
-      expTot.innerHTML=`${fmt(totalExp)}<span> ₽</span>`;
-    } else {
-      expTot.textContent='';
-    }
-  }
-
-  const catMap={};
-  expenses.forEach(e=>{const c=e.cat||'Другое';if(!catMap[c])catMap[c]=0;catMap[c]+=e.amount||0;});
-  const catArr=Object.entries(catMap).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
-  const allCatDefs=getExpCats();
-
-  // ── Bento: donut left + category rows right ──
-  const chartsEl=document.getElementById('expChartsRow');
-  if(chartsEl){
-    if(catArr.length){
-      const catRows=catArr.map(c=>{
-        const catDef=allCatDefs.find(x=>x.name===c.k);
-        const budget=catDef?.budget||0;
-        const overBudget=budget>0&&c.v>budget;
-        const budgetPct=budget>0?Math.min(c.v/budget*100,100):0;
-        const isActive=expFlt.cat==='all'||expFlt.cat===c.k;
-        return `<div class="exp-cat-row${isActive?'':' dim'}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()" role="button" tabindex="0" aria-label="Фильтр: ${esc(c.k)}">
-          <span class="exp-cat-pip" style="background:${expCatColor(c.k)}"></span>
-          <span class="exp-cat-name">${esc(c.k)}${budget>0?`<span style="font-size:9px;color:${overBudget?'#cf5a4a':'var(--dim2)'};margin-left:4px">${overBudget?'⚠':''}${fmt(budget)} ₽ лим.</span>`:''}</span>
-          <span class="exp-cat-pct">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
-          <span class="exp-cat-amt" style="color:${overBudget?'#cf5a4a':'var(--txt)'}">${fmt(c.v)} ₽</span>
-          ${budget>0?`<div class="exp-cat-prog"><div class="exp-cat-prog-fill${overBudget?' exp-cat-over':''}" style="width:${budgetPct}%;background:${overBudget?'#cf5a4a':expCatColor(c.k)}"></div></div>`:''}
-        </div>`;
-      }).join('');
-      chartsEl.innerHTML=`<div class="exp-bento">
-        <div class="exp-bento-left">${buildDonut(catArr,totalExp)}</div>
-        <div class="exp-bento-right">${catRows}</div>
-      </div>`;
-    } else {
-      chartsEl.innerHTML='';
-    }
-  }
-
-  // ── Toolbar: search | chips ──
-  const filterEl=document.getElementById('expFilterBar');
-  if(filterEl){
-    const chips=catArr.map(c=>{
-      const on=expFlt.cat===c.k;
-      return `<button class="exp-chip${on?' on':''}" style="${on?`background:${expCatColor(c.k)};`:''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()" aria-pressed="${on}">${esc(c.k)}</button>`;
-    }).join('');
-    const allOn=expFlt.cat==='all';
-    filterEl.innerHTML=`<div class="exp-toolbar">
-      <div class="exp-search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-        <input class="exp-search-inp" id="expSearchInp" placeholder="Поиск по расходам…" value="${esc(expFlt.q)}" oninput="expFlt.q=this.value.toLowerCase().trim();renderFinance()" aria-label="Поиск расходов">
-      </div>
-      <div class="exp-chips-wrap">
-        <button class="exp-chip${allOn?' on':''}" style="${allOn?'background:var(--or);':''}" onclick="expFlt.cat='all';renderFinance()" aria-pressed="${allOn}">Все</button>
-        ${chips}
-      </div>
-    </div>`;
-  }
-
-  // ── Quick-add: labeled fields ──
-  const qaEl=document.getElementById('expQuickAdd');
-  if(qaEl){
-    const catOpts=expCatNames().map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
-    qaEl.innerHTML=`<div class="exp-qa">
-      <div class="exp-qa-cell">
-        <span class="exp-qa-label">Название</span>
-        <input class="exp-qa-inp" id="qaExpName" placeholder="Укажите расход…" onkeydown="if(event.key==='Enter')quickAddExpense()" aria-label="Название расхода">
-      </div>
-      <div class="exp-qa-cell">
-        <span class="exp-qa-label">Сумма ₽</span>
-        <input class="exp-qa-num" id="qaExpAmt" type="number" min="0" placeholder="0" onkeydown="if(event.key==='Enter')quickAddExpense()" aria-label="Сумма расхода">
-      </div>
-      <div class="exp-qa-cell">
-        <span class="exp-qa-label">Категория</span>
-        <select class="exp-qa-sel" id="qaExpCat" aria-label="Категория расхода">${catOpts}</select>
-      </div>
-      <div class="exp-qa-cell">
-        <button class="exp-qa-submit" onclick="quickAddExpense()" title="Добавить расход (Enter)" aria-label="Добавить расход">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-      </div>
-    </div>`;
-  }
-
-  // ── Expense list ──
-  const expEl=document.getElementById('expList');
-  const filtered=expenses.filter(e=>{
-    if(expFlt.cat!=='all'&&(e.cat||'Другое')!==expFlt.cat) return false;
-    if(expFlt.q&&!(e.name||'').toLowerCase().includes(expFlt.q)&&!(e.sub||'').toLowerCase().includes(expFlt.q)&&!(e.cat||'').toLowerCase().includes(expFlt.q)) return false;
-    return true;
-  }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-
-  if(expEl) expEl.innerHTML=filtered.length?`<div>${filtered.map(e=>{
-    const col=expCatColor(e.cat);
-    const metaParts=[];
-    if(e.cat) metaParts.push(`<span>${esc(e.cat)}</span>`);
-    if(e.date) metaParts.push(`<span class="exp-row-sep"></span><span>${fmtD(e.date)}</span>`);
-    if(e.note) metaParts.push(`<span class="exp-row-sep"></span><span>${esc(e.note)}</span>`);
-    const badges=[];
-    if(e.sub) badges.push(`<span class="exp-badge exp-badge-sub">${esc(e.sub)}</span>`);
-    if(e.recurring) badges.push(`<span class="exp-badge exp-badge-recur">${e.recurring==='yearly'?'ежегодно':'ежемесячно'}</span>`);
-    if(e._synthetic) badges.push(`<span class="exp-badge exp-badge-auto">авто</span>`);
-    return `<div class="exp-row" style="${e._synthetic?'opacity:.65':''}">
-      <div class="exp-row-bar" style="background:${col}"></div>
-      <div class="exp-row-body">
-        <div class="exp-row-name">${esc(e.name)}${badges.join('')}</div>
-        ${metaParts.length?`<div class="exp-row-meta">${metaParts.join('')}</div>`:''}
-      </div>
-      <div class="exp-row-amt">${fmt(e.amount)} ₽</div>
-      <div class="exp-row-acts">${!e._synthetic?`<button class="ibt" onclick="openExpenseForm('${e.id}')" aria-label="Редактировать">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')" aria-label="Удалить">✕</button>`:''}</div>
-    </div>`;
-  }).join('')}</div>`:
-  `<div class="exp-empty">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4m0 4h.01M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0z"/></svg>
-    ${expenses.length?'Нет расходов по фильтру':'Расходов пока нет — добавьте первый выше'}
-  </div>`;
 }
 
-function quickAddExpense(){
-  const name=document.getElementById('qaExpName')?.value.trim();
-  const amt=parseFloat(document.getElementById('qaExpAmt')?.value)||0;
-  const cat=document.getElementById('qaExpCat')?.value||expCatNames()[0]||'Другое';
-  if(!name){toast('Введите название');document.getElementById('qaExpName')?.focus();return;}
-  if(!amt){toast('Введите сумму');document.getElementById('qaExpAmt')?.focus();return;}
-  if(!S.expenses)S.expenses=[];
-  S.expenses.push({id:uid(),name,amount:amt,cat,sub:'',recurring:'',date:new Date().toISOString().slice(0,10),note:''});
-  save();renderFinance();toast(`${name} — ${fmt(amt)} ₽`);
-}
 
 /* -- INVOICE -- */
 /* ================================================================
