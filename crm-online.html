@@ -583,53 +583,73 @@ nav.tabs button.active svg{opacity:1}
 .ecat-budget-inp:focus{border-color:var(--or)}
 .ecat-budget-inp::placeholder{color:var(--dim2)}
 
-/* expense donut */
-.exp-charts-row{display:grid;grid-template-columns:200px 1fr;gap:0;align-items:center;padding:16px 20px 12px;border-bottom:1px solid var(--ln)}
-.exp-donut-wrap{position:relative;width:160px;height:160px;flex:none}
-.exp-donut-wrap svg{position:absolute;inset:0}
-.exp-donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}
-.exp-donut-center .dv{font-family:'Rubik';font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1}
-.exp-donut-center .dl{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:3px}
-.exp-legend{display:flex;flex-direction:column;gap:7px;padding-left:18px}
-.exp-legend-item{display:flex;align-items:center;gap:8px;cursor:pointer;border-radius:7px;padding:4px 6px;transition:.13s}
+/* ── EXPENSE BLOCK REDESIGN ── */
+
+/* donut — compact horizontal layout */
+.exp-charts-row{display:grid;grid-template-columns:120px 1fr;gap:0;border-bottom:1px solid var(--ln)}
+.exp-donut-wrap{position:relative;width:120px;height:120px;flex:none;padding:16px}
+.exp-donut-wrap svg{position:absolute;inset:16px}
+.exp-donut-center{position:absolute;inset:16px;display:grid;place-content:center;text-align:center;pointer-events:none}
+.exp-donut-center .dv{font-family:'Rubik';font-weight:700;font-size:14px;letter-spacing:-.02em;line-height:1}
+.exp-donut-center .dl{font-family:'Inter';font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin-top:2px}
+
+/* legend as horizontal bars — much denser */
+.exp-legend{display:flex;flex-direction:column;justify-content:center;gap:0;padding:12px 16px 12px 4px;overflow:hidden}
+.exp-legend-item{display:grid;grid-template-columns:6px 1fr 36px 80px;align-items:center;gap:8px;padding:5px 8px;border-radius:7px;cursor:pointer;transition:.13s;min-width:0}
 .exp-legend-item:hover{background:var(--bg2)}
-.exp-legend-item.dimmed{opacity:.35}
-.exp-legend-dot{width:10px;height:10px;border-radius:3px;flex:none}
-.exp-legend-name{font-family:'Inter';font-size:11.5px;font-weight:600;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.exp-legend-pct{font-family:'Inter';font-size:10px;color:var(--dim);min-width:28px;text-align:right}
-.exp-legend-val{font-family:'Rubik';font-weight:700;font-size:12px;min-width:58px;text-align:right}
+.exp-legend-item.dimmed{opacity:.3}
+.exp-legend-dot{width:6px;height:6px;border-radius:50%;flex:none}
+.exp-legend-name{font-family:'Inter';font-size:11.5px;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exp-legend-pct{font-family:'Inter';font-size:10px;color:var(--dim);text-align:right}
+.exp-legend-val{font-family:'Rubik';font-weight:700;font-size:12px;text-align:right;white-space:nowrap}
+.exp-legend-budget{height:2px;border-radius:2px;background:var(--ln);margin-top:2px;overflow:hidden;grid-column:2/-1}
+.exp-legend-budget-fill{height:100%;border-radius:2px;transition:width .5s}
 
-/* budget bar in breakdown */
-.exp-budget-bar{height:4px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--ln)}
-.exp-budget-fill{height:100%;border-radius:3px;transition:width .6s}
-.exp-budget-over{animation:pulse-red .9s infinite alternate}
-@keyframes pulse-red{from{opacity:1}to{opacity:.5}}
-
-/* inline quick-add */
-.exp-quick-add{display:grid;grid-template-columns:1fr 100px auto auto auto;gap:8px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--ln);background:var(--bg2)}
-.exp-quick-inp{background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12.5px;padding:8px 10px;outline:none;transition:.15s;width:100%}
-.exp-quick-inp:focus{border-color:var(--orp)}
-.exp-quick-inp::placeholder{color:var(--dim2)}
-.exp-quick-select{background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12px;padding:7px 8px;outline:none;cursor:pointer;width:100%}
-.exp-quick-btn{padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter';font-size:12px;font-weight:700;transition:.15s}
-.exp-quick-btn.add{background:var(--or);color:var(--on)}.exp-quick-btn.add:hover{background:var(--ord)}
-
-/* expense filter bar */
-.exp-filter-bar{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0;align-items:center}
-.exp-search{position:relative;flex:1;min-width:140px}
-.exp-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:13px;height:13px;color:var(--dim)}
-.exp-search-inp{width:100%;background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12px;padding:7px 10px 7px 28px;outline:none;transition:.15s}
-.exp-search-inp:focus{border-color:var(--orp)}
+/* filter + search — single row */
+.exp-toolbar{display:flex;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--ln);flex-wrap:wrap}
+.exp-search{position:relative;flex:1;min-width:120px}
+.exp-search svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:12px;height:12px;color:var(--dim2);pointer-events:none}
+.exp-search-inp{width:100%;background:transparent;border:none;color:var(--txt);font-family:'Inter';font-size:12px;padding:6px 8px 6px 26px;outline:none}
 .exp-search-inp::placeholder{color:var(--dim2)}
-.exp-cat-chip{font-family:'Inter';font-size:10.5px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
-.exp-cat-chip:hover{color:var(--txt)}
+.exp-cat-chips{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.exp-cat-chips::-webkit-scrollbar{display:none}
+.exp-cat-chip{font-family:'Inter';font-size:10.5px;font-weight:600;padding:5px 10px;border-radius:7px;border:1px solid var(--ln2);background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:.13s}
+.exp-cat-chip:hover{color:var(--txt);border-color:var(--dim)}
 .exp-cat-chip.active{color:var(--on);border-color:transparent}
 
-/* recurring badge */
-.exp-recur-badge{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:rgba(127,166,201,.2);color:#7fa6c9;border:1px solid rgba(127,166,201,.3);margin-left:4px;white-space:nowrap}
+/* quick-add — clean single row */
+.exp-quick-add{display:grid;grid-template-columns:1fr 88px 140px auto;gap:0;border-bottom:1px solid var(--ln);background:var(--bg2)}
+.exp-qa-inp{background:transparent;border:none;border-right:1px solid var(--ln);color:var(--txt);font-family:'Inter';font-size:12.5px;padding:11px 14px;outline:none;width:100%;min-width:0}
+.exp-qa-inp::placeholder{color:var(--dim2)}
+.exp-qa-inp:focus{background:var(--card2)}
+.exp-qa-num{background:transparent;border:none;border-right:1px solid var(--ln);color:var(--txt);font-family:'Rubik';font-weight:600;font-size:13px;padding:11px 12px;outline:none;width:100%;min-width:0;text-align:right}
+.exp-qa-num::placeholder{color:var(--dim2)}
+.exp-qa-num:focus{background:var(--card2)}
+.exp-qa-sel{background:transparent;border:none;border-right:1px solid var(--ln);color:var(--dim);font-family:'Inter';font-size:11.5px;padding:11px 12px;outline:none;cursor:pointer;width:100%;appearance:none;-webkit-appearance:none}
+.exp-qa-sel:focus{background:var(--card2);color:var(--txt)}
+.exp-qa-add{background:var(--or);color:var(--on);border:none;font-family:'Inter';font-weight:700;font-size:12px;padding:0 18px;cursor:pointer;white-space:nowrap;transition:.15s;height:100%}
+.exp-qa-add:hover{background:var(--ord)}
 
-/* month trend chart */
-.exp-trend-wrap{padding:8px 8px 0}
+/* expense list rows */
+.exp-row{display:grid;grid-template-columns:3px 1fr auto auto;gap:12px;align-items:center;padding:11px 16px;transition:.15s;border-bottom:1px solid var(--ln)}
+.exp-row:last-child{border-bottom:none}
+.exp-row:hover{background:var(--card2)}
+.exp-row .e-dot{width:3px;align-self:stretch;border-radius:2px;margin:-11px 0;flex:none}
+.exp-row .e-nm{font-weight:600;font-size:13px;line-height:1.3}
+.exp-row .e-sub{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:1px}
+.exp-row .e-cat{font-family:'Inter';font-size:10px;color:var(--dim2);margin-top:2px}
+.exp-row .e-am{font-family:'Rubik';font-weight:700;font-size:14px;text-align:right;white-space:nowrap}
+.exp-row .e-acts{display:flex;gap:3px;opacity:0;transition:.13s}
+.exp-row:hover .e-acts{opacity:1}
+
+/* recurring badge */
+.exp-recur-badge{font-family:'Inter';font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 5px;border-radius:4px;background:rgba(127,166,201,.18);color:#7fa6c9;border:1px solid rgba(127,166,201,.25);margin-left:5px}
+
+/* budget */
+.exp-budget-bar{height:2px;border-radius:2px;overflow:hidden;background:var(--ln)}
+.exp-budget-fill{height:100%;border-radius:2px;transition:width .5s}
+.exp-budget-over{animation:pulse-red .9s infinite alternate}
+@keyframes pulse-red{from{opacity:1}to{opacity:.4}}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -2819,20 +2839,20 @@ function expandRecurring(baseExpenses, periodDays){
 }
 
 function buildDonut(catArr,totalExp){
-  if(!catArr.length) return '<div style="width:160px;height:160px;display:grid;place-items:center;font-family:Inter;font-size:11px;color:var(--dim2)">Нет данных</div>';
-  const R=70,cx=80,cy=80,stroke=22;
+  if(!catArr.length) return '';
+  const R=36,cx=44,cy=44,stroke=12;
   const circ=2*Math.PI*R;
   let offset=0;
   const segs=catArr.map(c=>{
     const pct=totalExp?c.v/totalExp:0;
     const dash=pct*circ;
-    const seg=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${expCatColor(c.k)}" stroke-width="${stroke}" stroke-dasharray="${dash.toFixed(2)} ${(circ-dash).toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" style="transition:stroke-dashoffset .6s,stroke-dasharray .6s" transform="rotate(-90 ${cx} ${cy})"/>`;
+    const seg=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${expCatColor(c.k)}" stroke-width="${stroke}" stroke-dasharray="${dash.toFixed(2)} ${(circ-dash).toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})"/>`;
     offset+=dash;
     return seg;
   }).join('');
   return `<div class="exp-donut-wrap">
-    <svg viewBox="0 0 160 160" width="160" height="160"><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--ln)" stroke-width="${stroke}"/>${segs}</svg>
-    <div class="exp-donut-center"><div class="dv">${fmt(totalExp)}<span style="font-size:11px;color:var(--or)"> ₽</span></div><div class="dl">расходы</div></div>
+    <svg viewBox="0 0 88 88" width="88" height="88"><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--ln)" stroke-width="${stroke}"/>${segs}</svg>
+    <div class="exp-donut-center"><div class="dv">${fmt(totalExp)}<span style="font-size:8px;color:var(--or)">₽</span></div><div class="dl">расходы</div></div>
   </div>`;
 }
 
@@ -2923,61 +2943,70 @@ function renderFinance(){
   const expTot=document.getElementById('expTotal');
   if(expTot) expTot.textContent=expenses.length?`${fmt(totalExp)} ₽`:'';
 
-  // category aggregation with budget
   const catMap={};
   expenses.forEach(e=>{const c=e.cat||'Другое';if(!catMap[c])catMap[c]=0;catMap[c]+=e.amount||0;});
   const catArr=Object.entries(catMap).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
   const allCatDefs=getExpCats();
 
-  // Donut + legend
+  // ── Donut (compact) + legend ──
   const chartsEl=document.getElementById('expChartsRow');
-  if(chartsEl && catArr.length){
-    const legendHtml=catArr.map(c=>{
-      const catDef=allCatDefs.find(x=>x.name===c.k);
-      const budget=catDef?.budget||0;
-      const overBudget=budget>0&&c.v>budget;
-      const budgetPct=budget>0?Math.min(c.v/budget*100,100):0;
-      return `<div class="exp-legend-item ${expFlt.cat!=='all'&&expFlt.cat!==c.k?'dimmed':''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">
-        <span class="exp-legend-dot" style="background:${expCatColor(c.k)}"></span>
-        <span class="exp-legend-name">${esc(c.k)}</span>
-        <span class="exp-legend-pct">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
-        <div style="min-width:80px;text-align:right">
-          <div class="exp-legend-val">${fmt(c.v)} ₽</div>
-          ${budget>0?`<div class="exp-budget-bar"><div class="exp-budget-fill ${overBudget?'exp-budget-over':''}" style="width:${budgetPct}%;background:${overBudget?'#cf5a4a':expCatColor(c.k)}"></div></div>
-          <div style="font-family:'Inter';font-size:9px;color:${overBudget?'#cf5a4a':'var(--dim)'};">${overBudget?'⚠ ':''} ${fmt(budget)} ₽/мес</div>`:''}
-        </div>
-      </div>`;
-    }).join('');
-    chartsEl.innerHTML=`<div class="exp-charts-row">${buildDonut(catArr,totalExp)}<div class="exp-legend">${legendHtml}</div></div>`;
-  } else if(chartsEl) {
-    chartsEl.innerHTML='';
+  if(chartsEl){
+    if(catArr.length){
+      const legendHtml=catArr.map(c=>{
+        const catDef=allCatDefs.find(x=>x.name===c.k);
+        const budget=catDef?.budget||0;
+        const overBudget=budget>0&&c.v>budget;
+        const budgetPct=budget>0?Math.min(c.v/budget*100,100):0;
+        const isActive=expFlt.cat==='all'||expFlt.cat===c.k;
+        return `<div class="exp-legend-item${isActive?'':' dimmed'}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">
+          <span class="exp-legend-dot" style="background:${expCatColor(c.k)}"></span>
+          <span class="exp-legend-name">${esc(c.k)}</span>
+          <span class="exp-legend-pct">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
+          <span class="exp-legend-val" style="color:${overBudget?'#cf5a4a':'var(--txt)'}">
+            ${fmt(c.v)} ₽${budget>0?`<span style="font-size:9px;color:${overBudget?'#cf5a4a':'var(--dim2)'};display:block;text-align:right">${overBudget?'⚠ ':''}/ ${fmt(budget)}</span>`:''}
+          </span>
+          ${budget>0?`<div class="exp-budget-bar" style="grid-column:2/-1"><div class="exp-budget-fill${overBudget?' exp-budget-over':''}" style="width:${budgetPct}%;background:${overBudget?'#cf5a4a':expCatColor(c.k)}"></div></div>`:''}
+        </div>`;
+      }).join('');
+      chartsEl.innerHTML=buildDonut(catArr,totalExp)+`<div class="exp-legend">${legendHtml}</div>`;
+    } else {
+      chartsEl.innerHTML='';
+    }
   }
 
-  // Filter bar
+  // ── Toolbar: search + category chips ──
   const filterEl=document.getElementById('expFilterBar');
   if(filterEl){
-    const catChips=catArr.map(c=>`<button class="exp-cat-chip ${expFlt.cat===c.k?'active':''}" style="${expFlt.cat===c.k?`background:${expCatColor(c.k)};`:''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">${esc(c.k)}</button>`).join('');
-    filterEl.innerHTML=`<div class="exp-filter-bar">
-      <div class="exp-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="exp-search-inp" id="expSearchInp" placeholder="Поиск по расходам…" value="${esc(expFlt.q)}" oninput="expFlt.q=this.value.toLowerCase().trim();renderFinance()"></div>
-      <button class="exp-cat-chip ${expFlt.cat==='all'?'active':''}" onclick="expFlt.cat='all';renderFinance()">Все</button>
-      ${catChips}
+    const chips=catArr.map(c=>{
+      const isA=expFlt.cat===c.k;
+      return `<button class="exp-cat-chip${isA?' active':''}" style="${isA?`background:${expCatColor(c.k)};`:''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">${esc(c.k)}</button>`;
+    }).join('');
+    filterEl.innerHTML=`<div class="exp-toolbar">
+      <div class="exp-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input class="exp-search-inp" id="expSearchInp" placeholder="Поиск…" value="${esc(expFlt.q)}" oninput="expFlt.q=this.value.toLowerCase().trim();renderFinance()">
+      </div>
+      <div class="exp-cat-chips">
+        <button class="exp-cat-chip${expFlt.cat==='all'?' active':''}" style="${expFlt.cat==='all'?'background:var(--or);':''}" onclick="expFlt.cat='all';renderFinance()">Все</button>
+        ${chips}
+      </div>
     </div>`;
   }
 
-  // Quick add inline
+  // ── Quick-add — seamless single row ──
   const qaEl=document.getElementById('expQuickAdd');
   if(qaEl){
     const catOpts=expCatNames().map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
     qaEl.innerHTML=`<div class="exp-quick-add">
-      <input class="exp-quick-inp" id="qaExpName" placeholder="Название расхода…" onkeydown="if(event.key==='Enter')quickAddExpense()">
-      <input class="exp-quick-inp" id="qaExpAmt" type="number" min="0" placeholder="₽" style="max-width:90px" onkeydown="if(event.key==='Enter')quickAddExpense()">
-      <select class="exp-quick-select" id="qaExpCat" style="max-width:130px">${catOpts}</select>
-      <button class="exp-quick-btn add" onclick="quickAddExpense()">+ Добавить</button>
-      <button class="ibt" onclick="openExpenseForm()" title="Расширенная форма" style="padding:8px 10px">⋯</button>
+      <input class="exp-qa-inp" id="qaExpName" placeholder="Название расхода…" onkeydown="if(event.key==='Enter')quickAddExpense()">
+      <input class="exp-qa-num" id="qaExpAmt" type="number" min="0" placeholder="₽" onkeydown="if(event.key==='Enter')quickAddExpense()">
+      <select class="exp-qa-sel" id="qaExpCat">${catOpts}</select>
+      <button class="exp-qa-add" onclick="quickAddExpense()">+ Добавить</button>
     </div>`;
   }
 
-  // Filtered expense list
+
+  // ── Expense list ──
   const expEl=document.getElementById('expList');
   const filtered=expenses.filter(e=>{
     if(expFlt.cat!=='all'&&(e.cat||'Другое')!==expFlt.cat) return false;
@@ -2985,19 +3014,22 @@ function renderFinance(){
     return true;
   }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
 
-  if(expEl) expEl.innerHTML=filtered.length?filtered.map(e=>`
-    <div class="exp-row" style="${e._synthetic?'opacity:.75':''}">
-      <span class="e-dot" style="background:${expCatColor(e.cat)}"></span>
+  if(expEl) expEl.innerHTML=filtered.length?filtered.map(e=>{
+    const col=expCatColor(e.cat);
+    const dateStr=e.date?fmtD(e.date):'';
+    const subLine=[e.cat||'Другое',dateStr,e.note].filter(Boolean).join(' · ');
+    return `<div class="exp-row" style="${e._synthetic?'opacity:.65':''}">
+      <span class="e-dot" style="background:${col}"></span>
       <div>
-        <div class="e-nm">${esc(e.name)}${e.sub?`<span style="font-weight:400;color:var(--dim)"> · ${esc(e.sub)}</span>`:''}${e.recurring?`<span class="exp-recur-badge">${e.recurring==='yearly'?'год':'мес'}</span>`:''}${e._synthetic?`<span class="exp-recur-badge" style="background:rgba(214,189,106,.2);color:#d6bd6a;border-color:rgba(214,189,106,.3)">авто</span>`:''}</div>
-        <div class="e-cat">${e.cat||'—'}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div>
+        <div class="e-nm">${esc(e.name)}${e.recurring?`<span class="exp-recur-badge">${e.recurring==='yearly'?'год':'мес'}</span>`:''}${e._synthetic?`<span class="exp-recur-badge" style="background:rgba(214,189,106,.15);color:#d6bd6a;border-color:rgba(214,189,106,.2)">авто</span>`:''}</div>
+        ${e.sub?`<div class="e-sub">${esc(e.sub)}</div>`:''}
+        <div class="e-cat">${subLine}</div>
       </div>
       <span class="e-am">${fmt(e.amount)} ₽</span>
-      <div class="e-acts">
-        ${!e._synthetic?`<button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button>`:'<span style="font-size:10px;color:var(--dim2)">авто</span>'}
-      </div>
-    </div>`).join(''):
-    `<div style="padding:20px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">${expenses.length?'Ничего не найдено по фильтру':'Нет расходов — добавьте первый'}</div>`;
+      <div class="e-acts">${!e._synthetic?`<button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button>`:''}</div>
+    </div>`;
+  }).join(''):
+  `<div style="padding:28px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">${expenses.length?'Ничего не найдено':'Нет расходов — введите первый выше'}</div>`;
 }
 
 function quickAddExpense(){
