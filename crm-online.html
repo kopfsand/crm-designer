@@ -576,6 +576,60 @@ nav.tabs button.active svg{opacity:1}
 .ecat-del:hover{color:#cf5a4a;background:rgba(207,90,74,.12)}
 .ecat-add-btn{width:100%;padding:9px;background:none;border:1px dashed var(--ln2);border-radius:9px;color:var(--dim);font-family:'Inter';font-size:12px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.03em}
 .ecat-add-btn:hover{border-color:var(--or);color:var(--or)}
+
+/* expense budget indicator in category editor */
+.ecat-row{display:grid;grid-template-columns:32px 1fr 90px 80px 32px;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:8px 10px}
+.ecat-budget-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Inter';font-size:12px;padding:3px 0;outline:none;width:100%;text-align:right}
+.ecat-budget-inp:focus{border-color:var(--or)}
+.ecat-budget-inp::placeholder{color:var(--dim2)}
+
+/* expense donut */
+.exp-charts-row{display:grid;grid-template-columns:200px 1fr;gap:0;align-items:center;padding:16px 20px 12px;border-bottom:1px solid var(--ln)}
+.exp-donut-wrap{position:relative;width:160px;height:160px;flex:none}
+.exp-donut-wrap svg{position:absolute;inset:0}
+.exp-donut-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}
+.exp-donut-center .dv{font-family:'Rubik';font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1}
+.exp-donut-center .dl{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:3px}
+.exp-legend{display:flex;flex-direction:column;gap:7px;padding-left:18px}
+.exp-legend-item{display:flex;align-items:center;gap:8px;cursor:pointer;border-radius:7px;padding:4px 6px;transition:.13s}
+.exp-legend-item:hover{background:var(--bg2)}
+.exp-legend-item.dimmed{opacity:.35}
+.exp-legend-dot{width:10px;height:10px;border-radius:3px;flex:none}
+.exp-legend-name{font-family:'Inter';font-size:11.5px;font-weight:600;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exp-legend-pct{font-family:'Inter';font-size:10px;color:var(--dim);min-width:28px;text-align:right}
+.exp-legend-val{font-family:'Rubik';font-weight:700;font-size:12px;min-width:58px;text-align:right}
+
+/* budget bar in breakdown */
+.exp-budget-bar{height:4px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--ln)}
+.exp-budget-fill{height:100%;border-radius:3px;transition:width .6s}
+.exp-budget-over{animation:pulse-red .9s infinite alternate}
+@keyframes pulse-red{from{opacity:1}to{opacity:.5}}
+
+/* inline quick-add */
+.exp-quick-add{display:grid;grid-template-columns:1fr 100px auto auto auto;gap:8px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--ln);background:var(--bg2)}
+.exp-quick-inp{background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12.5px;padding:8px 10px;outline:none;transition:.15s;width:100%}
+.exp-quick-inp:focus{border-color:var(--orp)}
+.exp-quick-inp::placeholder{color:var(--dim2)}
+.exp-quick-select{background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12px;padding:7px 8px;outline:none;cursor:pointer;width:100%}
+.exp-quick-btn{padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Inter';font-size:12px;font-weight:700;transition:.15s}
+.exp-quick-btn.add{background:var(--or);color:var(--on)}.exp-quick-btn.add:hover{background:var(--ord)}
+
+/* expense filter bar */
+.exp-filter-bar{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0;align-items:center}
+.exp-search{position:relative;flex:1;min-width:140px}
+.exp-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:13px;height:13px;color:var(--dim)}
+.exp-search-inp{width:100%;background:var(--card);border:1px solid var(--ln2);border-radius:8px;color:var(--txt);font-family:'Inter';font-size:12px;padding:7px 10px 7px 28px;outline:none;transition:.15s}
+.exp-search-inp:focus{border-color:var(--orp)}
+.exp-search-inp::placeholder{color:var(--dim2)}
+.exp-cat-chip{font-family:'Inter';font-size:10.5px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
+.exp-cat-chip:hover{color:var(--txt)}
+.exp-cat-chip.active{color:var(--on);border-color:transparent}
+
+/* recurring badge */
+.exp-recur-badge{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:rgba(127,166,201,.2);color:#7fa6c9;border:1px solid rgba(127,166,201,.3);margin-left:4px;white-space:nowrap}
+
+/* month trend chart */
+.exp-trend-wrap{padding:8px 8px 0}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -1319,7 +1373,16 @@ input[type=number]{-moz-appearance:textfield}
     <div class="panel"><div class="ph"><span class="t">По клиентам</span></div><div class="pad"><table class="matrix" id="clTable"></table></div></div>
   </div>
   <!-- Expenses -->
-  <div class="panel"><div class="ph"><span class="t">Расходы</span><span class="n" id="expTotal"></span></div><div class="exp-list" id="expList"></div></div>
+  <div class="panel">
+    <div class="ph">
+      <span class="t">Расходы</span>
+      <span class="n" id="expTotal"></span>
+    </div>
+    <div id="expChartsRow"></div>
+    <div id="expFilterBar"></div>
+    <div id="expQuickAdd"></div>
+    <div class="exp-list" id="expList"></div>
+  </div>
 </section>
 
 <!-- INVOICE -->
@@ -2638,11 +2701,19 @@ function openExpCatEditor(){
       <input class="ecat-nm-inp" id="ecn_${i}" value="${esc(c.name)}" placeholder="Название">
       <input class="ecat-color-inp" id="ecc_${i}" type="color" value="${c.color}"
         oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+      <input class="ecat-budget-inp" id="ecb_${i}" type="number" min="0" value="${c.budget||''}" placeholder="Бюджет ₽">
       <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>
     </div>`).join('');
   openModalRaw('Категории расходов',`
     <div style="margin-bottom:10px;font-family:'Inter';font-size:11px;color:var(--dim)">
-      Категории используются при добавлении расходов. Цвет отображается в диаграммах.
+      Задайте цвет, название и месячный бюджет для каждой категории.
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr 90px 80px 32px;gap:8px;padding:0 10px;margin-bottom:6px">
+      <span></span>
+      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)">Название</span>
+      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)">Цвет</span>
+      <span style="font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:right">Бюджет/мес</span>
+      <span></span>
     </div>
     <div class="ecat-list" id="ecatList">${rowsHtml}</div>
     <button class="ecat-add-btn" onclick="addExpCatRow()">+ Добавить категорию</button>
@@ -2663,6 +2734,7 @@ function addExpCatRow(){
     <input class="ecat-nm-inp" id="ecn_${i}" placeholder="Название категории">
     <input class="ecat-color-inp" id="ecc_${i}" type="color" value="#888888"
       oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+    <input class="ecat-budget-inp" id="ecb_${i}" type="number" min="0" placeholder="Бюджет ₽">
     <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>`;
   list.appendChild(div);
   div.querySelector('.ecat-nm-inp').focus();
@@ -2673,7 +2745,8 @@ function saveExpCats(){
   const cats=rows.map(row=>{
     const nm=row.querySelector('.ecat-nm-inp')?.value.trim();
     const col=row.querySelector('.ecat-color-inp')?.value||'#8f867a';
-    return nm?{name:nm,color:col}:null;
+    const bud=parseFloat(row.querySelector('.ecat-budget-inp')?.value)||0;
+    return nm?{name:nm,color:col,budget:bud||0}:null;
   }).filter(Boolean);
   if(!cats.length){toast('Нужна хотя бы одна категория');return;}
   S.expCats=cats;
@@ -2681,6 +2754,7 @@ function saveExpCats(){
 }
 
 /* ── Expense CRUD ── */
+const RECUR_OPTS=[{v:'',l:'Разово'},{v:'monthly',l:'Ежемесячно'},{v:'yearly',l:'Ежегодно'}];
 function openExpenseForm(id=null){
   const e=id?(S.expenses||[]).find(x=>x.id===id):{};
   const cats=expCatNames();
@@ -2688,12 +2762,14 @@ function openExpenseForm(id=null){
     ${fld('Название *',inp('f_enm','text',e.name||'','true'),'full')}
     ${fld('Сумма, ₽',inp('f_eam','number',e.amount||0))}
     ${fld('Категория',selOpts('f_ecat',cats,e.cat||cats[cats.length-1]||'Другое'))}
+    ${fld('Подкатегория',inp('f_esub','text',e.sub||'','false','Уточнение (напр. Figma, Adobe…)'))}
+    ${fld('Повторение',selOpts('f_erecur',RECUR_OPTS,e.recurring||''))}
     ${fld('Дата',dpCreate('f_edt',e.date||new Date().toISOString().slice(0,10)),'full')}
     ${fld('Заметка',inp('f_enote','text',e.note||''),'full')}
   </div>`,()=>{
     const name=gv('f_enm');if(!name.trim()){toast('Введите название');return;}
     if(!S.expenses)S.expenses=[];
-    const data={name,amount:+gv('f_eam')||0,cat:gv('f_ecat'),date:document.getElementById('f_edt').value||new Date().toISOString().slice(0,10),note:gv('f_enote')};
+    const data={name,amount:+gv('f_eam')||0,cat:gv('f_ecat'),sub:gv('f_esub').trim(),recurring:gv('f_erecur'),date:document.getElementById('f_edt').value||new Date().toISOString().slice(0,10),note:gv('f_enote')};
     if(id){const i=S.expenses.findIndex(x=>x.id===id);S.expenses[i]={...S.expenses[i],...data};}
     else S.expenses.push({...data,id:uid()});
     save();closeModal();renderFinance();toast(id?'Расход обновлён':'Расход добавлен');
@@ -2705,16 +2781,79 @@ function deleteExpense(id){
 }
 
 let taxRate=6;
+let expFlt={cat:'all',q:''};
+
+/* helpers */
+function finPrevPeriodExpenses(){
+  if(!finPeriodDays) return [];
+  const now=Date.now();
+  const from=new Date(now-finPeriodDays*2*86400000);
+  const to=new Date(now-finPeriodDays*86400000);
+  return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=from&&new Date(e.date)<to);
+}
+
+/* expand recurring expenses into current period */
+function expandRecurring(baseExpenses, periodDays){
+  const now=new Date(); const cutFrom=periodDays?new Date(Date.now()-periodDays*86400000):null;
+  const extra=[];
+  (S.expenses||[]).filter(e=>e.recurring).forEach(e=>{
+    if(!e.date) return;
+    const orig=new Date(e.date);
+    const step=e.recurring==='yearly'?365:30;
+    let d=new Date(orig);
+    d.setDate(d.getDate()+step);
+    for(let i=0;i<60;i++){
+      if(d>now) break;
+      const iso=d.toISOString().slice(0,10);
+      if(!cutFrom||d>=cutFrom){
+        if(!baseExpenses.find(x=>x.id===e.id+'_r'+iso))
+          extra.push({...e,id:e.id+'_r'+iso,date:iso,_synthetic:true});
+      }
+      d=new Date(d);
+      d.setDate(d.getDate()+step);
+    }
+  });
+  return extra;
+}
+
+function buildDonut(catArr,totalExp){
+  if(!catArr.length) return '<div style="width:160px;height:160px;display:grid;place-items:center;font-family:Inter;font-size:11px;color:var(--dim2)">Нет данных</div>';
+  const R=70,cx=80,cy=80,stroke=22;
+  const circ=2*Math.PI*R;
+  let offset=0;
+  const segs=catArr.map(c=>{
+    const pct=totalExp?c.v/totalExp:0;
+    const dash=pct*circ;
+    const seg=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${expCatColor(c.k)}" stroke-width="${stroke}" stroke-dasharray="${dash.toFixed(2)} ${(circ-dash).toFixed(2)}" stroke-dashoffset="${(-offset).toFixed(2)}" style="transition:stroke-dashoffset .6s,stroke-dasharray .6s" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset+=dash;
+    return seg;
+  }).join('');
+  return `<div class="exp-donut-wrap">
+    <svg viewBox="0 0 160 160" width="160" height="160"><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--ln)" stroke-width="${stroke}"/>${segs}</svg>
+    <div class="exp-donut-center"><div class="dv">${fmt(totalExp)}<span style="font-size:11px;color:var(--or)"> ₽</span></div><div class="dl">расходы</div></div>
+  </div>`;
+}
+
 function renderFinance(){
   const orders=finFilterOrders();
-  const expenses=finFilterExpenses();
+  const baseExpenses=finFilterExpenses();
+  const recurExtra=expandRecurring(baseExpenses,finPeriodDays);
+  const expenses=[...baseExpenses,...recurExtra];
+
   const totalCost=orders.reduce((s,o)=>s+(o.cost||0),0);
   const totalPaid=orders.reduce((s,o)=>s+(o.paid||0),0);
   const totalDebt=totalCost-totalPaid;
   const totalExp=expenses.reduce((s,e)=>s+(e.amount||0),0);
   const profit=totalPaid-totalExp;
 
-  // type & client agg from filtered orders
+  // prev period comparison
+  const prevExp=finPrevPeriodExpenses();
+  const prevTotal=prevExp.reduce((s,e)=>s+(e.amount||0),0);
+  const expDelta=prevTotal>0?Math.round((totalExp-prevTotal)/prevTotal*100):null;
+  const expDeltaStr=expDelta!==null?(expDelta>0?`+${expDelta}%`:`${expDelta}%`):'';
+  const expDeltaColor=expDelta===null?'var(--dim)':expDelta>0?'#cf5a4a':'#7bbf6a';
+
+  // type & client agg
   const tMap={};
   orders.forEach(o=>(o.types||[]).forEach(t=>{if(!tMap[t])tMap[t]={k:t,cost:0,cnt:0};tMap[t].cost+=o.cost||0;tMap[t].cnt++;}));
   const typeArr=Object.values(tMap).sort((a,b)=>b.cost-a.cost);
@@ -2723,7 +2862,7 @@ function renderFinance(){
   // Profit cards
   document.getElementById('finProfit').innerHTML=`
     <div class="profit-card"><div class="pk">Выручка</div><div class="pv">${fmt(totalCost)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="ps">Оплачено ${fmt(totalPaid)} ₽</div></div>
-    <div class="profit-card"><div class="pk">Расходы</div><div class="pv" style="color:#cf5a4a">${fmt(totalExp)} <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">${expenses.length} статей</div></div>
+    <div class="profit-card"><div class="pk">Расходы ${expDeltaStr?`<span style="font-weight:600;color:${expDeltaColor};font-size:10px;margin-left:4px">${expDeltaStr} vs пред. период</span>`:''}</div><div class="pv" style="color:#cf5a4a">${fmt(totalExp)} <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">${expenses.length} статей${recurExtra.length?` · ${recurExtra.length} повтор.`:''}</div></div>
     <div class="profit-card" style="border-color:${profit>=0?'rgba(123,191,106,.3)':'rgba(207,90,74,.3)'}"><div class="pk">Прибыль</div><div class="pv" style="color:${profit>=0?'#7bbf6a':'#cf5a4a'}">${profit>=0?'+':''}${fmt(profit)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено − Расходы</div></div>`;
 
   // KPIs
@@ -2733,12 +2872,26 @@ function renderFinance(){
     <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(orders.length?Math.round(totalCost/orders.length):0)}<span class="u">₽</span></div></div>
     <div class="ks"><div class="k">Конверсия</div><div class="v">${orders.length?Math.round(orders.filter(o=>(o.paid||0)>=(o.cost||0)).length/orders.length*100):0}<span class="u">%</span></div></div>`;
 
-  // Income chart
+  // Income+expense chart (dual lines)
   const mMap={};
   orders.forEach(o=>{if(!o.start)return;const k=new Date(o.start).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].v+=o.cost||0;});
   expenses.forEach(e=>{if(!e.date)return;const k=new Date(e.date).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});if(!mMap[k])mMap[k]={v:0,e:0};mMap[k].e+=e.amount||0;});
   const months=Object.entries(mMap).map(([l,d])=>({l,v:d.v,e:d.e}));
-  buildSvgLine(document.getElementById('finArea'),months.map(m=>({l:m.l,v:m.v})),'var(--or)','rgba(255,90,31,.25)');
+  const svgEl=document.getElementById('finArea');
+  buildSvgLine(svgEl,months.map(m=>({l:m.l,v:m.v})),'var(--or)','rgba(255,90,31,.25)');
+  // overlay expense line
+  if(months.length>=2 && svgEl){
+    const W=svgEl.getBoundingClientRect().width||560,H=180,pad=40;
+    const vals=months.map(m=>m.e);
+    const maxV=Math.max(...vals,...months.map(m=>m.v),1);
+    const pts=vals.map((v,i)=>[pad+i/(months.length-1)*(W-2*pad),H-pad-(v/maxV)*(H-2*pad)]);
+    const existing=svgEl.querySelector('.exp-line');if(existing)existing.remove();
+    const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+    pl.setAttribute('points',pts.map(p=>p.map(x=>x.toFixed(1)).join(',')).join(' '));
+    pl.setAttribute('fill','none');pl.setAttribute('stroke','#cf5a4a');pl.setAttribute('stroke-width','2');
+    pl.setAttribute('stroke-dasharray','5 3');pl.setAttribute('class','exp-line');
+    svgEl.appendChild(pl);
+  }
 
   // Tax calculator
   const taxAmt=Math.round(totalPaid*taxRate/100);
@@ -2747,7 +2900,7 @@ function renderFinance(){
     <div class="tax-row"><span class="tax-label">Режим налогообложения</span>
       <div class="tax-rate-btns">
         <button class="tax-rate-btn${taxRate===6?' active':''}" onclick="taxRate=6;renderFinance()">СЗ 6%</button>
-        <button class="tax-rate-btn${taxRate===6&&false?' active':''}" onclick="taxRate=4;renderFinance()">НПД 4%</button>
+        <button class="tax-rate-btn${taxRate===4?' active':''}" onclick="taxRate=4;renderFinance()">НПД 4%</button>
         <button class="tax-rate-btn${taxRate===15?' active':''}" onclick="taxRate=15;renderFinance()">УСН 15%</button>
       </div>
     </div>
@@ -2764,36 +2917,96 @@ function renderFinance(){
     clAgg.map(c=>`<tr><td>${c.icon} ${esc(c.name)}</td><td class="r">${c.cnt}</td><td class="r">${fmt(c.cost)}</td><td class="r" style="color:${c.debt>0?'var(--or)':'#7bbf6a'}">${c.debt>0?fmt(c.debt):'—'}</td></tr>`).join('')+
     `<tr class="tot"><td>Итого</td><td class="r">${orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">${fmt(totalDebt)}</td></tr></tbody>`;
 
-  // Expenses list
-  const expEl=document.getElementById('expList');
+  // ── EXPENSES BLOCK ──
   const expTot=document.getElementById('expTotal');
   if(expTot) expTot.textContent=expenses.length?`${fmt(totalExp)} ₽`:'';
 
-  // category breakdown
+  // category aggregation with budget
   const catMap={};
   expenses.forEach(e=>{const c=e.cat||'Другое';if(!catMap[c])catMap[c]=0;catMap[c]+=e.amount||0;});
   const catArr=Object.entries(catMap).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
-  const mxCat=Math.max(...catArr.map(c=>c.v),1);
-  const catBreakdown=catArr.length>1?`<div style="padding:12px 16px 4px;border-bottom:1px solid var(--ln)">
-    ${catArr.map(c=>`<div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
-      <span style="width:8px;height:8px;border-radius:50%;background:${expCatColor(c.k)};flex:none"></span>
-      <span style="font-family:'Inter';font-size:12px;font-weight:600;flex:1">${esc(c.k)}</span>
-      <span style="font-family:'Inter';font-size:11px;color:var(--dim)">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
-      <span style="font-family:'Rubik';font-weight:700;font-size:13px;min-width:72px;text-align:right">${fmt(c.v)} ₽</span>
-    </div>
-    <div style="height:4px;background:var(--ln);border-radius:3px;overflow:hidden;margin-bottom:10px">
-      <div style="height:100%;width:${c.v/mxCat*100}%;background:${expCatColor(c.k)};border-radius:3px;transition:width .6s"></div>
-    </div>`).join('')}
-  </div>`:'';
+  const allCatDefs=getExpCats();
 
-  if(expEl) expEl.innerHTML=(catBreakdown||'')+(expenses.length?[...expenses].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(e=>`
-    <div class="exp-row">
+  // Donut + legend
+  const chartsEl=document.getElementById('expChartsRow');
+  if(chartsEl && catArr.length){
+    const legendHtml=catArr.map(c=>{
+      const catDef=allCatDefs.find(x=>x.name===c.k);
+      const budget=catDef?.budget||0;
+      const overBudget=budget>0&&c.v>budget;
+      const budgetPct=budget>0?Math.min(c.v/budget*100,100):0;
+      return `<div class="exp-legend-item ${expFlt.cat!=='all'&&expFlt.cat!==c.k?'dimmed':''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">
+        <span class="exp-legend-dot" style="background:${expCatColor(c.k)}"></span>
+        <span class="exp-legend-name">${esc(c.k)}</span>
+        <span class="exp-legend-pct">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
+        <div style="min-width:80px;text-align:right">
+          <div class="exp-legend-val">${fmt(c.v)} ₽</div>
+          ${budget>0?`<div class="exp-budget-bar"><div class="exp-budget-fill ${overBudget?'exp-budget-over':''}" style="width:${budgetPct}%;background:${overBudget?'#cf5a4a':expCatColor(c.k)}"></div></div>
+          <div style="font-family:'Inter';font-size:9px;color:${overBudget?'#cf5a4a':'var(--dim)'};">${overBudget?'⚠ ':''} ${fmt(budget)} ₽/мес</div>`:''}
+        </div>
+      </div>`;
+    }).join('');
+    chartsEl.innerHTML=`<div class="exp-charts-row">${buildDonut(catArr,totalExp)}<div class="exp-legend">${legendHtml}</div></div>`;
+  } else if(chartsEl) {
+    chartsEl.innerHTML='';
+  }
+
+  // Filter bar
+  const filterEl=document.getElementById('expFilterBar');
+  if(filterEl){
+    const catChips=catArr.map(c=>`<button class="exp-cat-chip ${expFlt.cat===c.k?'active':''}" style="${expFlt.cat===c.k?`background:${expCatColor(c.k)};`:''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderFinance()">${esc(c.k)}</button>`).join('');
+    filterEl.innerHTML=`<div class="exp-filter-bar">
+      <div class="exp-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="exp-search-inp" id="expSearchInp" placeholder="Поиск по расходам…" value="${esc(expFlt.q)}" oninput="expFlt.q=this.value.toLowerCase().trim();renderFinance()"></div>
+      <button class="exp-cat-chip ${expFlt.cat==='all'?'active':''}" onclick="expFlt.cat='all';renderFinance()">Все</button>
+      ${catChips}
+    </div>`;
+  }
+
+  // Quick add inline
+  const qaEl=document.getElementById('expQuickAdd');
+  if(qaEl){
+    const catOpts=expCatNames().map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+    qaEl.innerHTML=`<div class="exp-quick-add">
+      <input class="exp-quick-inp" id="qaExpName" placeholder="Название расхода…" onkeydown="if(event.key==='Enter')quickAddExpense()">
+      <input class="exp-quick-inp" id="qaExpAmt" type="number" min="0" placeholder="₽" style="max-width:90px" onkeydown="if(event.key==='Enter')quickAddExpense()">
+      <select class="exp-quick-select" id="qaExpCat" style="max-width:130px">${catOpts}</select>
+      <button class="exp-quick-btn add" onclick="quickAddExpense()">+ Добавить</button>
+      <button class="ibt" onclick="openExpenseForm()" title="Расширенная форма" style="padding:8px 10px">⋯</button>
+    </div>`;
+  }
+
+  // Filtered expense list
+  const expEl=document.getElementById('expList');
+  const filtered=expenses.filter(e=>{
+    if(expFlt.cat!=='all'&&(e.cat||'Другое')!==expFlt.cat) return false;
+    if(expFlt.q&&!(e.name||'').toLowerCase().includes(expFlt.q)&&!(e.sub||'').toLowerCase().includes(expFlt.q)&&!(e.cat||'').toLowerCase().includes(expFlt.q)) return false;
+    return true;
+  }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+
+  if(expEl) expEl.innerHTML=filtered.length?filtered.map(e=>`
+    <div class="exp-row" style="${e._synthetic?'opacity:.75':''}">
       <span class="e-dot" style="background:${expCatColor(e.cat)}"></span>
-      <div><div class="e-nm">${esc(e.name)}</div><div class="e-cat">${e.cat||'—'}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div></div>
+      <div>
+        <div class="e-nm">${esc(e.name)}${e.sub?`<span style="font-weight:400;color:var(--dim)"> · ${esc(e.sub)}</span>`:''}${e.recurring?`<span class="exp-recur-badge">${e.recurring==='yearly'?'год':'мес'}</span>`:''}${e._synthetic?`<span class="exp-recur-badge" style="background:rgba(214,189,106,.2);color:#d6bd6a;border-color:rgba(214,189,106,.3)">авто</span>`:''}</div>
+        <div class="e-cat">${e.cat||'—'}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div>
+      </div>
       <span class="e-am">${fmt(e.amount)} ₽</span>
-      <div class="e-acts"><button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button></div>
+      <div class="e-acts">
+        ${!e._synthetic?`<button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button>`:'<span style="font-size:10px;color:var(--dim2)">авто</span>'}
+      </div>
     </div>`).join(''):
-    '<div style="padding:14px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">Нет расходов — добавьте первый</div>');
+    `<div style="padding:20px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">${expenses.length?'Ничего не найдено по фильтру':'Нет расходов — добавьте первый'}</div>`;
+}
+
+function quickAddExpense(){
+  const name=document.getElementById('qaExpName')?.value.trim();
+  const amt=parseFloat(document.getElementById('qaExpAmt')?.value)||0;
+  const cat=document.getElementById('qaExpCat')?.value||expCatNames()[0]||'Другое';
+  if(!name){toast('Введите название');document.getElementById('qaExpName')?.focus();return;}
+  if(!amt){toast('Введите сумму');document.getElementById('qaExpAmt')?.focus();return;}
+  if(!S.expenses)S.expenses=[];
+  S.expenses.push({id:uid(),name,amount:amt,cat,sub:'',recurring:'',date:new Date().toISOString().slice(0,10),note:''});
+  save();renderFinance();toast(`${name} — ${fmt(amt)} ₽`);
 }
 
 /* -- INVOICE -- */
