@@ -263,7 +263,7 @@ function showApp(user) {
 </script>
 <style>
 :root{--bg:#0c0b0a;--bg2:#131110;--card:#17150f;--card2:#1c1a15;--ln:#262219;--ln2:#322c20;--txt:#f4f0e8;--dim:#8f867a;--dim2:#5f594f;--or:#ff5a1f;--ord:#e8470f;--orp:#c33a0a;--on:#140a04;--r:20px;--rs:13px}
-[data-theme="light"]{--bg:#f5f2ec;--bg2:#ede9e0;--card:#ffffff;--card2:#f8f5ef;--ln:#ddd8ce;--ln2:#ccc5b7;--txt:#1a1714;--dim:#7a7268;--dim2:#a09890;--on:#140a04;}
+[data-theme="light"]{--bg:#f5f2ec;--bg2:#ede9e0;--card:#ffffff;--card2:#f8f5ef;--ln:#ddd8ce;--ln2:#ccc5b7;--txt:#1a1714;--dim:#7a7268;--dim2:#a09890;--on:#140a04;--nav-bg:rgba(240,236,228,.92);}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;background-image:radial-gradient(1100px 600px at 92% -10%,rgba(255,90,31,.1),transparent 55%)}
 ::selection{background:var(--or);color:var(--on)}
@@ -286,7 +286,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .pill.act{cursor:pointer;transition:.2s}.pill.act:hover{color:var(--txt)}
 
 /* nav */
-nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:rgba(20,18,14,.8);backdrop-filter:blur(10px);margin-bottom:24px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;max-width:100%}
+nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:var(--nav-bg,rgba(20,18,14,.8));backdrop-filter:blur(10px);margin-bottom:24px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;max-width:100%}
 nav.tabs button{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:10px 16px;border-radius:13px;display:flex;align-items:center;gap:7px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
 @media(max-width:1100px){nav.tabs button[data-view="bookmarks"] .tab-label{display:none}}
 nav.tabs button svg{width:15px;height:15px;opacity:.7}
@@ -301,8 +301,8 @@ nav.tabs button.active svg{opacity:1}
 .sec-head h2{font-family:'Inter';font-weight:800;font-size:28px;letter-spacing:.02em;text-transform:uppercase;line-height:.95}
 .sec-head .eye{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--or);font-weight:700;display:block;margin-bottom:7px}
 .sec-head .hint{font-size:12px;color:var(--dim);font-family:'Inter'}
-.sec-head .btn-add{font-family:'Inter';font-weight:700;font-size:12.5px;padding:10px 18px;border-radius:12px;background:var(--or);color:var(--on);border:none;cursor:pointer;transition:.2s;text-transform:uppercase;letter-spacing:.04em}
-.sec-head .btn-add:hover{background:var(--ord)}
+.sec-head .btn-add,.btn-add{font-family:'Inter';font-weight:700;font-size:12.5px;padding:10px 18px;border-radius:12px;background:var(--or);color:var(--on);border:none;cursor:pointer;transition:.2s;text-transform:uppercase;letter-spacing:.04em}
+.sec-head .btn-add:hover,.btn-add:hover{background:var(--ord)}
 
 /* layout primitives */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
@@ -556,6 +556,155 @@ nav.tabs button.active svg{opacity:1}
 .archive-task .at-meta{font-family:'Inter';font-size:10px;color:var(--dim2)}
 /* finance extras */
 .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+
+/* ── Seasonality ── */
+.season-ph{display:flex;align-items:flex-start;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid var(--ln);gap:16px}
+.season-ph-left{display:flex;flex-direction:column;gap:6px}
+.season-ph-title{font-family:'Inter';font-size:9.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.season-ph-note{font-family:'Inter';font-size:11px;font-weight:600;color:var(--txt)}
+.season-toggle{display:flex;gap:4px}
+.season-toggle-btn{font-family:'Inter';font-size:10.5px;font-weight:700;padding:6px 13px;border-radius:8px;border:1px solid var(--ln2);background:transparent;color:var(--dim);cursor:pointer;transition:.13s;white-space:nowrap}
+.season-toggle-btn.on{background:var(--or);color:var(--on);border-color:var(--or)}
+.season-wrap{padding:14px 20px 18px;overflow-x:auto}
+.season-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;min-width:580px}
+.season-cell{border-radius:10px;padding:10px 6px 8px;display:flex;flex-direction:column;align-items:center;gap:5px;transition:transform .15s,box-shadow .15s;cursor:default}
+.season-cell:hover{transform:translateY(-2px);box-shadow:0 8px 22px -8px rgba(0,0,0,.4)}
+.season-mo{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.season-val{font-family:'Rubik';font-weight:700;font-size:14px;letter-spacing:-.02em;line-height:1}
+.season-bar{width:100%;height:3px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.season-bar-fill{height:100%;border-radius:2px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.season-legend{display:flex;align-items:center;gap:14px;padding:0 20px 14px;flex-wrap:wrap}
+.season-legend-item{display:flex;align-items:center;gap:6px;font-family:'Inter';font-size:10px;font-weight:600;color:var(--dim)}
+.season-legend-dot{width:8px;height:8px;border-radius:3px}
+
+/* ══════════════════════════════════════════════
+   EXPENSE BLOCK — bento card style (ref: Workouts app)
+   ══════════════════════════════════════════════ */
+.fin-exp-panel{padding:0;overflow:hidden;margin-bottom:0;background:transparent;border:none;box-shadow:none}
+
+/* Top toolbar row */
+.fin-exp-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.fin-exp-toolbar-title{font-family:'Inter';font-weight:800;font-size:17px;letter-spacing:-.01em;color:var(--txt)}
+.fin-exp-toolbar-right{display:flex;gap:8px;align-items:center}
+
+/* Bento grid */
+/* Bento grid — padding so outlines aren't clipped */
+.fin-exp-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;padding:2px}
+@media(max-width:900px){.fin-exp-bento{grid-template-columns:1fr 1fr}}
+
+/* Individual bento card */
+.feb-card{background:var(--card2);border-radius:16px;padding:18px 16px 14px;display:flex;flex-direction:column;justify-content:space-between;min-height:110px;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s;position:relative;overflow:hidden;border:1px solid var(--ln)}
+.feb-card:hover{background:var(--card);transform:translateY(-2px);box-shadow:0 10px 28px -10px rgba(0,0,0,.35)}
+.feb-card-selected{box-shadow:0 0 0 2px var(--or)!important;background:var(--card)!important}
+.feb-card-icon{font-size:18px;margin-bottom:6px;line-height:1}
+.feb-card-label{font-family:'Inter';font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+.feb-card-val{font-family:'Rubik';font-weight:700;font-size:26px;letter-spacing:-.04em;color:var(--txt);line-height:1}
+.feb-card-val .feb-unit{font-size:14px;font-weight:500;color:var(--dim);margin-left:2px}
+.feb-card-sub{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:5px}
+.feb-card-dot{position:absolute;top:14px;right:14px;width:8px;height:8px;border-radius:50%}
+.feb-card-bar{position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0}
+.feb-card-bar-fill{height:100%;border-radius:0;transition:width .8s}
+
+/* Quick-add row */
+.fin-exp-qarow{display:flex;gap:0;align-items:center;background:var(--card2);border:1px solid var(--ln);border-radius:14px;padding:0 0 0 16px;margin-bottom:14px;height:48px;overflow:hidden}
+.fin-exp-qarow input{background:transparent;border:none;color:var(--txt);font-family:'Inter';font-size:13px;outline:none;height:100%}
+.fin-exp-qarow input::placeholder{color:var(--dim2)}
+.fin-exp-qa-divider{width:1px;height:22px;background:var(--ln2);flex:none;margin:0 2px}
+.fin-exp-qa-nameip{flex:1;font-weight:500;padding:0 4px}
+.fin-exp-qa-numip{width:80px;font-family:'Rubik';font-weight:700;font-size:14px;text-align:right;padding:0 8px}
+.fin-exp-qa-addbt{background:var(--or);color:var(--on);border:none;border-radius:0 13px 13px 0;width:44px;height:100%;cursor:pointer;display:grid;place-items:center;flex:none;transition:background .15s;margin-left:auto}
+.fin-exp-qa-addbt:hover{background:var(--ord)}
+.fin-exp-qa-addbt svg{width:15px;height:15px;stroke-width:2.8}
+
+/* Custom select — replaces native <select> in quick-add */
+.qa-cat-wrap{position:relative;display:flex;align-items:center;padding:0 10px;cursor:pointer;height:100%}
+.qa-cat-label{font-family:'Inter';font-size:12px;font-weight:600;color:var(--dim);white-space:nowrap;user-select:none;display:flex;align-items:center;gap:5px}
+.qa-cat-label svg{width:10px;height:10px;opacity:.5}
+.qa-cat-drop{position:absolute;top:calc(100% + 6px);right:0;min-width:160px;background:var(--card);border:1px solid var(--ln2);border-radius:12px;box-shadow:0 12px 32px -8px rgba(0,0,0,.55);z-index:200;overflow:hidden;display:none}
+.qa-cat-drop.open{display:block}
+.qa-cat-opt{font-family:'Inter';font-size:12.5px;font-weight:600;padding:10px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .1s;color:var(--txt)}
+.qa-cat-opt:hover{background:var(--bg2)}
+.qa-cat-opt.chosen{color:var(--or)}
+.qa-cat-opt-dot{width:7px;height:7px;border-radius:50%;flex:none}
+
+/* Expense card list (bento cards per item) */
+.fin-exp-list{display:flex;flex-direction:column;gap:8px}
+.fin-exp-item{display:flex;align-items:stretch;gap:12px;background:var(--card2);border:1px solid var(--ln);border-radius:14px;padding:14px 16px;transition:background .13s,transform .13s;position:relative;overflow:hidden}
+.fin-exp-item:hover{background:var(--card);transform:translateX(2px)}
+.fin-exp-item-accent{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:14px 0 0 14px}
+.fin-exp-item-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:16px;flex:none;align-self:center}
+.fin-exp-item-body{flex:1;min-width:0;align-self:center}
+.fin-exp-item-body{flex:1;min-width:0}
+.fin-exp-item-name{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:7px}
+.fin-exp-item-meta{font-family:'Inter';font-size:10.5px;color:var(--dim);margin-top:2px;display:flex;align-items:center;gap:5px}
+.fin-exp-sep{width:2px;height:2px;border-radius:50%;background:var(--dim2);flex:none}
+.fin-exp-item-right{display:flex;align-items:center;gap:8px;flex:none}
+.fin-exp-item-amt{font-family:'Rubik';font-weight:700;font-size:17px;letter-spacing:-.02em;white-space:nowrap}
+.fin-exp-item-acts{display:flex;gap:3px;opacity:0;transition:opacity .12s}
+.fin-exp-item:hover .fin-exp-item-acts{opacity:1}
+.fin-exp-badge{font-family:'Inter';font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;border-radius:4px;line-height:1.6;background:rgba(255,255,255,.07);color:var(--dim);border:1px solid var(--ln2)}
+.fin-exp-badge-recur{background:rgba(127,166,201,.15);color:#7fa6c9;border-color:rgba(127,166,201,.25)}
+.fin-exp-empty{padding:44px 20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2);display:flex;flex-direction:column;align-items:center;gap:10px}
+.fin-exp-empty svg{width:34px;height:34px;color:var(--ln2)}
+
+/* filter chips row */
+.fin-exp-chips{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;flex-wrap:wrap}
+.fin-exp-chips::-webkit-scrollbar{display:none}
+.fin-exp-chip{font-family:'Inter';font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:20px;border:1.5px solid var(--ln2);background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:.14s;display:flex;align-items:center;gap:5px}
+.fin-exp-chip:hover{color:var(--txt);border-color:var(--dim)}
+.fin-exp-chip.on{border-color:transparent;color:var(--on)}
+.fin-exp-chip-dot{width:6px;height:6px;border-radius:50%;flex:none}
+
+/* ── Insights row ── */
+.exp-insights{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:900px){.exp-insights{grid-template-columns:1fr 1fr}}
+.exp-insight-card{background:var(--card2);border:1px solid var(--ln);border-radius:13px;padding:13px 15px;display:flex;flex-direction:column;gap:4px}
+.exp-insight-label{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.exp-insight-val{font-family:'Rubik';font-weight:700;font-size:19px;letter-spacing:-.03em;color:var(--txt);line-height:1.1}
+.exp-insight-sub{font-family:'Inter';font-size:10px;color:var(--dim);margin-top:1px}
+.exp-insight-delta{font-family:'Inter';font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;display:inline-flex;align-items:center;gap:3px;margin-top:3px;width:fit-content}
+.exp-insight-delta.up{background:rgba(207,90,74,.14);color:#cf5a4a}
+.exp-insight-delta.dn{background:rgba(123,191,106,.14);color:#7bbf6a}
+.exp-insight-delta.neu{background:rgba(255,255,255,.06);color:var(--dim)}
+
+/* ── Budget bars ── */
+.exp-budget-wrap{margin-bottom:14px}
+.exp-budget-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.exp-budget-title{font-family:'Inter';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.exp-budget-rows{display:flex;flex-direction:column;gap:8px}
+.exp-budget-row{background:var(--card2);border:1px solid var(--ln);border-radius:12px;padding:12px 15px}
+.exp-budget-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px}
+.exp-budget-name{font-family:'Inter';font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:7px}
+.exp-budget-amounts{font-family:'Rubik';font-weight:700;font-size:13px;white-space:nowrap}
+.exp-budget-bar-track{height:6px;background:var(--ln);border-radius:3px;overflow:hidden}
+.exp-budget-bar-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.exp-budget-warn{font-family:'Inter';font-size:10px;color:#cf5a4a;margin-top:5px;display:flex;align-items:center;gap:4px}
+.exp-budget-pct{font-family:'Inter';font-size:10px;color:var(--dim);margin-top:4px;text-align:right}
+
+/* ── Recurring subscriptions block ── */
+.exp-recur-wrap{margin-bottom:14px}
+.exp-recur-title{font-family:'Inter';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:10px}
+.exp-recur-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:900px){.exp-recur-grid{grid-template-columns:1fr 1fr}}
+.exp-recur-card{background:var(--card2);border:1px solid var(--ln);border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden}
+.exp-recur-card-accent{position:absolute;top:0;left:0;right:0;height:3px}
+.exp-recur-name{font-family:'Inter';font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exp-recur-amt{font-family:'Rubik';font-weight:700;font-size:17px;letter-spacing:-.02em}
+.exp-recur-meta{font-family:'Inter';font-size:10px;color:var(--dim);display:flex;align-items:center;gap:5px}
+.exp-recur-next{font-family:'Inter';font-size:9.5px;font-weight:600;color:var(--or);background:rgba(255,90,31,.1);border-radius:5px;padding:2px 7px;width:fit-content}
+
+/* category editor */
+.ecat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.ecat-row{display:grid;grid-template-columns:28px 1fr 80px 32px;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:8px 10px}
+.ecat-swatch{width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,255,255,.12);cursor:pointer;flex:none;transition:.14s}
+.ecat-swatch:hover{transform:scale(1.12)}
+.ecat-nm-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Inter';font-size:13px;font-weight:600;padding:3px 0;outline:none;width:100%}
+.ecat-nm-inp:focus{border-color:var(--or)}
+.ecat-color-inp{width:100%;height:26px;border-radius:6px;border:1px solid var(--ln2);cursor:pointer;padding:2px;background:var(--bg2)}
+.ecat-del{width:26px;height:26px;border-radius:7px;background:none;border:none;cursor:pointer;color:var(--dim2);font-size:14px;display:grid;place-items:center;transition:.13s}
+.ecat-del:hover{color:#cf5a4a;background:rgba(207,90,74,.12)}
+.ecat-add-btn{width:100%;padding:9px;background:none;border:1px dashed var(--ln2);border-radius:9px;color:var(--dim);font-family:'Inter';font-size:12px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.03em}
+.ecat-add-btn:hover{border-color:var(--or);color:var(--or)}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -1271,6 +1420,10 @@ input[type=number]{-moz-appearance:textfield}
 <!-- FINANCE -->
 <section class="view" id="view-finance">
   <div class="sec-head"><div><span class="eye">Аналитика</span><h2>Финансы</h2></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="ibt" onclick="openExpCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600" title="Категории расходов">⚙ Категории</button>
+      <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
+    </div>
   </div>
   <!-- Period filter -->
   <div class="fin-period" id="finPeriod">
@@ -1285,15 +1438,48 @@ input[type=number]{-moz-appearance:textfield}
   <div class="g4" id="finKpis"></div>
   <!-- Chart + Tax -->
   <div class="g2">
-    <div class="panel"><div class="ph"><span class="t">Доходы по месяцам</span></div><div class="area-wrap"><svg id="finArea" width="100%" height="180" preserveAspectRatio="none"></svg></div></div>
+    <div class="panel"><div class="ph"><span class="t">Доходы и расходы</span></div><div class="area-wrap"><svg id="finArea" width="100%" height="180" preserveAspectRatio="none"></svg></div></div>
     <div class="panel"><div class="ph"><span class="t">Налоговый калькулятор</span></div><div class="tax-calc" id="taxCalc"></div></div>
+  </div>
+  <!-- Seasonality -->
+  <div class="panel" style="margin-bottom:16px;padding:0;overflow:hidden">
+    <div id="finSeason"></div>
   </div>
   <!-- Tables -->
   <div class="fin-grid">
     <div class="panel"><div class="ph"><span class="t">По типам работ</span></div><div class="pad"><table class="matrix" id="tyTable"></table></div></div>
     <div class="panel"><div class="ph"><span class="t">По клиентам</span></div><div class="pad"><table class="matrix" id="clTable"></table></div></div>
   </div>
-
+  <!-- Expenses -->
+  <div class="fin-exp-panel">
+    <!-- Toolbar -->
+    <div class="fin-exp-toolbar">
+      <div class="fin-exp-toolbar-title">Расходы</div>
+      <div class="fin-exp-toolbar-right">
+        <button class="ibt" onclick="openExpCatEditor()" style="padding:8px 13px;font-size:11.5px;font-weight:700">⚙ Категории</button>
+        <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
+      </div>
+    </div>
+    <!-- Bento summary cards -->
+    <div class="fin-exp-bento" id="expBento"></div>
+    <!-- Insights row: trend + daily avg + income ratio + anomalies -->
+    <div class="exp-insights" id="expInsights"></div>
+    <!-- Chart -->
+    <div class="panel" style="margin-bottom:14px;padding:0;overflow:hidden" id="expChartWrap">
+      <div class="ph" style="padding:14px 18px 10px"><span class="t">Динамика расходов</span><span class="n" id="expChartNote"></span></div>
+      <div class="area-wrap"><svg id="expArea" width="100%" height="140" preserveAspectRatio="none"></svg></div>
+    </div>
+    <!-- Recurring subscriptions -->
+    <div id="expRecurWrap"></div>
+    <!-- Budget bars -->
+    <div id="expBudgetWrap"></div>
+    <!-- Filter chips -->
+    <div class="fin-exp-chips" id="expChips"></div>
+    <!-- Quick add -->
+    <div class="fin-exp-qarow" id="expQa"></div>
+    <!-- List -->
+    <div class="fin-exp-list" id="expList"></div>
+  </div>
 </section>
 
 <!-- INVOICE -->
@@ -2601,10 +2787,11 @@ function renderFinance(){
   const typeArr=Object.values(tMap).sort((a,b)=>b.cost-a.cost);
   const clAgg=S.clients.map(c=>{const os=orders.filter(o=>o.clientId===c.id);return{...c,cost:os.reduce((s,o)=>s+(o.cost||0),0),paid:os.reduce((s,o)=>s+(o.paid||0),0),debt:os.reduce((s,o)=>s+(o.cost||0)-(o.paid||0),0),cnt:os.length};}).filter(c=>c.cnt>0).sort((a,b)=>b.cost-a.cost);
 
-  // Profit cards
+  // Profit cards (will be updated by renderExpenses with expense data)
   document.getElementById('finProfit').innerHTML=`
     <div class="profit-card"><div class="pk">Выручка</div><div class="pv">${fmt(totalCost)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="ps">Оплачено ${fmt(totalPaid)} ₽</div></div>
-    <div class="profit-card" style="border-color:rgba(123,191,106,.3)"><div class="pk">Чистый доход</div><div class="pv" style="color:#7bbf6a">${fmt(totalPaid)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено клиентами</div></div>`;
+    <div class="profit-card"><div class="pk">Расходы</div><div class="pv" style="color:#cf5a4a">— <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">загрузка…</div></div>
+    <div class="profit-card"><div class="pk">Прибыль</div><div class="pv">— <span style="font-size:14px">₽</span></div><div class="ps">Оплачено − Расходы</div></div>`;
 
   // KPIs
   document.getElementById('finKpis').innerHTML=`
@@ -2643,8 +2830,539 @@ function renderFinance(){
   document.getElementById('clTable').innerHTML=`<thead><tr><th>Клиент</th><th class="r">Кол</th><th class="r">Выручка</th><th class="r">Долг</th></tr></thead><tbody>`+
     clAgg.map(c=>`<tr><td>${c.icon} ${esc(c.name)}</td><td class="r">${c.cnt}</td><td class="r">${fmt(c.cost)}</td><td class="r" style="color:${c.debt>0?'var(--or)':'#7bbf6a'}">${c.debt>0?fmt(c.debt):'—'}</td></tr>`).join('')+
     `<tr class="tot"><td>Итого</td><td class="r">${orders.length}</td><td class="r">${fmt(totalCost)}</td><td class="r">${fmt(totalDebt)}</td></tr></tbody>`;
+
+  // Seasonality + Expenses
+  renderSeasonality();
+  renderExpenses();
 }
 
+/* ══════════════════════════════════════════════
+   SEASONALITY
+   ══════════════════════════════════════════════ */
+let seasonMode='income';
+function renderSeasonality(){
+  const MO=['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+  const byMo=Array(12).fill(0).map(()=>({v:0,cnt:0}));
+  S.orders.forEach(o=>{
+    if(!o.start) return;
+    const m=new Date(o.start).getMonth();
+    byMo[m].v+=o.cost||0;
+    byMo[m].cnt++;
+  });
+  const vals=seasonMode==='income'?byMo.map(m=>m.v):byMo.map(m=>m.cnt);
+  const maxVal=Math.max(...vals,1);
+  const curMonth=new Date().getMonth();
+  const bestIdx=vals.indexOf(Math.max(...vals));
+  const noteText=maxVal>0?`Лучший — ${MO[bestIdx]}`:'Нет данных';
+  const el=document.getElementById('finSeason');
+  if(!el) return;
+
+  function cellBg(v,max){
+    if(!v||!max) return 'var(--bg2)';
+    return `rgba(255,90,31,${(0.12+v/max*0.72).toFixed(2)})`;
+  }
+  function txtColor(v,max){
+    if(!v||!max) return 'var(--dim2)';
+    return v/max>0.5?'var(--on)':'var(--txt)';
+  }
+  const cells=MO.map((mo,i)=>{
+    const v=vals[i],raw=byMo[i],isCur=i===curMonth,isB=i===bestIdx&&maxVal>0;
+    const label=seasonMode==='income'?(v>0?`${Math.round(v/1000)}к`:'—'):(v>0?`${v}`:'—');
+    const tt=seasonMode==='income'?`${mo}: ${fmt(raw.v)} ₽ · ${raw.cnt} зак.`:`${mo}: ${raw.cnt} заказов · ${fmt(raw.v)} ₽`;
+    const pct=maxVal?v/maxVal:0;
+    return `<div class="season-cell" style="background:${cellBg(v,maxVal)};${isCur?'outline:2px solid var(--or);outline-offset:-2px':''}" title="${tt}">
+      <div class="season-mo" style="color:${txtColor(v,maxVal)};opacity:.7">${mo}${isB?' ★':''}</div>
+      <div class="season-val" style="color:${txtColor(v,maxVal)}">${label}</div>
+      <div class="season-bar"><div class="season-bar-fill" style="width:${pct*100}%;background:${pct>0.5?'rgba(255,255,255,.4)':'var(--or)'}"></div></div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML=`
+    <div class="season-ph">
+      <div class="season-ph-left">
+        <div class="season-ph-title">Сезонность</div>
+        <div class="season-ph-note">${noteText}</div>
+      </div>
+      <div class="season-toggle">
+        <button class="season-toggle-btn${seasonMode==='income'?' on':''}" onclick="seasonMode='income';renderSeasonality()">₽ Доход</button>
+        <button class="season-toggle-btn${seasonMode==='orders'?' on':''}" onclick="seasonMode='orders';renderSeasonality()">📋 Заказы</button>
+      </div>
+    </div>
+    <div class="season-wrap"><div class="season-grid">${cells}</div></div>
+    <div class="season-legend">
+      <div class="season-legend-item"><div class="season-legend-dot" style="background:rgba(255,90,31,.14)"></div>Низкий</div>
+      <div class="season-legend-item"><div class="season-legend-dot" style="background:rgba(255,90,31,.55)"></div>Средний</div>
+      <div class="season-legend-item"><div class="season-legend-dot" style="background:rgba(255,90,31,.84)"></div>Высокий</div>
+      <div class="season-legend-item" style="margin-left:auto"><div class="season-legend-dot" style="outline:2px solid var(--or);background:transparent;border-radius:3px;width:8px;height:8px"></div>Текущий</div>
+    </div>`;
+}
+
+/* ══════════════════════════════════════════════
+   EXPENSES — bento card redesign
+   ══════════════════════════════════════════════ */
+const DEFAULT_EXP_CATS=[
+  {name:'Подписки',    color:'#7fa6c9', icon:'📦'},
+  {name:'Налоги',      color:'#d6bd6a', icon:'🧾'},
+  {name:'Материалы',   color:'#a795c9', icon:'🎨'},
+  {name:'Оборудование',color:'#7bbf6a', icon:'💻'},
+  {name:'Реклама',     color:'#cf8a5a', icon:'📣'},
+  {name:'Другое',      color:'#8f867a', icon:'📌'},
+];
+function getExpCats(){ return (S.expCats&&S.expCats.length)?S.expCats:DEFAULT_EXP_CATS; }
+function expCatColor(name){ const c=getExpCats().find(c=>c.name===name); return c?c.color:'#8f867a'; }
+function expCatIcon(name){ const c=DEFAULT_EXP_CATS.find(c=>c.name===name); return c?c.icon:'📌'; }
+function expCatNames(){ return getExpCats().map(c=>c.name); }
+
+let expFlt={cat:'all'};
+
+function finFilterExpenses(){
+  if(!finPeriodDays) return S.expenses||[];
+  const cut=new Date(Date.now()-finPeriodDays*86400000);
+  return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=cut);
+}
+
+function expandRecurring(base,periodDays){
+  const now=new Date();
+  const cutFrom=periodDays?new Date(Date.now()-periodDays*86400000):null;
+  const extra=[];
+  (S.expenses||[]).filter(e=>e.recurring).forEach(e=>{
+    if(!e.date) return;
+    const step=e.recurring==='yearly'?365:30;
+    let d=new Date(e.date); d.setDate(d.getDate()+step);
+    for(let i=0;i<72;i++){
+      if(d>now) break;
+      const iso=d.toISOString().slice(0,10);
+      if(!cutFrom||d>=cutFrom){
+        if(!base.find(x=>x.id===e.id+'_r'+iso))
+          extra.push({...e,id:e.id+'_r'+iso,date:iso,_synthetic:true});
+      }
+      d=new Date(d); d.setDate(d.getDate()+step);
+    }
+  });
+  return extra;
+}
+
+function renderExpenses(){
+  if(!S.expenses) S.expenses=[];
+  const base=finFilterExpenses();
+  const recurExtra=expandRecurring(base,finPeriodDays);
+  const expenses=[...base,...recurExtra];
+  const totalExp=expenses.reduce((s,e)=>s+(e.amount||0),0);
+
+  // ── Update top profit cards ──
+  const profitEl=document.getElementById('finProfit');
+  if(profitEl){
+    const totalCost=finFilterOrders().reduce((s,o)=>s+(o.cost||0),0);
+    const totalPaid=finFilterOrders().reduce((s,o)=>s+(o.paid||0),0);
+    const profit=totalPaid-totalExp;
+    profitEl.innerHTML=`
+      <div class="profit-card"><div class="pk">Выручка</div><div class="pv">${fmt(totalCost)} <span style="font-size:14px;color:var(--or)">₽</span></div><div class="ps">Оплачено ${fmt(totalPaid)} ₽</div></div>
+      <div class="profit-card"><div class="pk">Расходы</div><div class="pv" style="color:#cf5a4a">${fmt(totalExp)} <span style="font-size:14px;color:#cf5a4a">₽</span></div><div class="ps">${expenses.length} статей${recurExtra.length?` · ${recurExtra.length} авто`:''}</div></div>
+      <div class="profit-card" style="border-color:${profit>=0?'rgba(123,191,106,.3)':'rgba(207,90,74,.3)'}"><div class="pk">Прибыль</div><div class="pv" style="color:${profit>=0?'#7bbf6a':'#cf5a4a'}">${profit>=0?'+':''}${fmt(profit)} <span style="font-size:14px">₽</span></div><div class="ps">Оплачено − Расходы</div></div>`;
+  }
+
+  // ── Bento summary cards ──
+  const catMap={};
+  expenses.forEach(e=>{const c=e.cat||'Другое';catMap[c]=(catMap[c]||0)+(e.amount||0);});
+  const catArr=Object.entries(catMap).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
+
+  const bentoEl=document.getElementById('expBento');
+  if(bentoEl){
+    const monthlyAvg=expenses.length?Math.round(totalExp/Math.max(1,new Set(expenses.map(e=>e.date?.slice(0,7))).size)):0;
+    const topCats=catArr.slice(0,2);
+
+    let cards=`
+      <div class="feb-card${expFlt.cat==='all'?' feb-card-selected':''}" onclick="expFlt.cat='all';renderExpenses()">
+        <div>
+          <div class="feb-card-label">Всего расходов</div>
+          <div class="feb-card-val">${fmt(totalExp)}<span class="feb-unit"> ₽</span></div>
+          <div class="feb-card-sub">${expenses.length} статей · ~${fmt(monthlyAvg)} ₽/мес</div>
+        </div>
+        <div class="feb-card-bar"><div class="feb-card-bar-fill" style="width:100%;background:var(--or)"></div></div>
+      </div>`;
+
+    topCats.forEach(c=>{
+      const pct=totalExp?Math.round(c.v/totalExp*100):0;
+      const isOn=expFlt.cat===c.k;
+      cards+=`
+      <div class="feb-card${isOn?' feb-card-selected':''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderExpenses()" style="${isOn?`border-color:${expCatColor(c.k)}33`:''}">
+        <div>
+          <div class="feb-card-icon">${expCatIcon(c.k)}</div>
+          <div class="feb-card-label">${esc(c.k)}</div>
+          <div class="feb-card-val">${fmt(c.v)}<span class="feb-unit"> ₽</span></div>
+          <div class="feb-card-sub">${pct}% от всех расходов</div>
+        </div>
+        <div class="feb-card-dot" style="background:${expCatColor(c.k)}"></div>
+        <div class="feb-card-bar"><div class="feb-card-bar-fill" style="width:${pct}%;background:${expCatColor(c.k)}"></div></div>
+      </div>`;
+    });
+
+    if(!catArr.length){
+      cards+=`<div class="feb-card" style="opacity:.3;cursor:default"><div class="feb-card-label">Нет данных</div><div class="feb-card-val" style="color:var(--dim)">—</div></div>
+              <div class="feb-card" style="opacity:.3;cursor:default"><div class="feb-card-label">Нет данных</div><div class="feb-card-val" style="color:var(--dim)">—</div></div>`;
+    } else if(catArr.length===1){
+      cards+=`<div class="feb-card" style="opacity:.3;cursor:default"><div class="feb-card-label">Нет данных</div><div class="feb-card-val" style="color:var(--dim)">—</div></div>`;
+    }
+
+    bentoEl.innerHTML=cards;
+  }
+
+  // ── Insights ──
+  const insEl=document.getElementById('expInsights');
+  if(insEl){
+    // Daily avg
+    const days=finPeriodDays||Math.max(1,Math.round((Date.now()-Math.min(...expenses.filter(e=>e.date).map(e=>new Date(e.date).getTime()),Date.now()))/86400000));
+    const dailyAvg=days>0?Math.round(totalExp/days):0;
+
+    // Income ratio
+    const totalPaidNow=finFilterOrders().reduce((s,o)=>s+(o.paid||0),0);
+    const ratioPct=totalPaidNow>0?Math.round(totalExp/totalPaidNow*100):0;
+
+    // Prev period delta
+    let delta=null,deltaDir='neu';
+    if(finPeriodDays){
+      const prevCut=new Date(Date.now()-finPeriodDays*2*86400000);
+      const prevTo=new Date(Date.now()-finPeriodDays*86400000);
+      const prevExp=(S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=prevCut&&new Date(e.date)<prevTo)
+        .reduce((s,e)=>s+(e.amount||0),0);
+      if(prevExp>0){
+        delta=Math.round((totalExp-prevExp)/prevExp*100);
+        deltaDir=delta>0?'up':'dn';
+      }
+    }
+
+    // Top single expense
+    const topOne=expenses.length?[...expenses].sort((a,b)=>(b.amount||0)-(a.amount||0))[0]:null;
+
+    // Anomalies: expenses > 2x category average
+    const catAvg={};
+    catArr.forEach(c=>{
+      const items=expenses.filter(e=>(e.cat||'Другое')===c.k&&!e._synthetic);
+      catAvg[c.k]=items.length?c.v/items.length:0;
+    });
+    const anomalies=expenses.filter(e=>!e._synthetic&&catAvg[e.cat||'Другое']>0&&(e.amount||0)>catAvg[e.cat||'Другое']*2);
+
+    insEl.innerHTML=`
+      <div class="exp-insight-card">
+        <div class="exp-insight-label">В день</div>
+        <div class="exp-insight-val">${fmt(dailyAvg)} <span style="font-size:12px;color:var(--or)">₽</span></div>
+        <div class="exp-insight-sub">средний расход</div>
+        ${delta!==null?`<div class="exp-insight-delta ${deltaDir}">${delta>0?'↑':'↓'} ${Math.abs(delta)}% vs пред. период</div>`:''}
+      </div>
+      <div class="exp-insight-card">
+        <div class="exp-insight-label">От дохода</div>
+        <div class="exp-insight-val" style="color:${ratioPct>70?'#cf5a4a':ratioPct>40?'#d6bd6a':'#7bbf6a'}">${ratioPct}<span style="font-size:13px"> %</span></div>
+        <div class="exp-insight-sub">${fmt(totalExp)} из ${fmt(totalPaidNow)} ₽</div>
+      </div>
+      <div class="exp-insight-card">
+        <div class="exp-insight-label">Крупнейший</div>
+        <div class="exp-insight-val">${topOne?fmt(topOne.amount):'—'} <span style="font-size:12px;color:var(--or)">${topOne?'₽':''}</span></div>
+        <div class="exp-insight-sub">${topOne?esc(topOne.name):'нет данных'}</div>
+      </div>
+      <div class="exp-insight-card" style="${anomalies.length?'border-color:rgba(207,90,74,.35)':''}">
+        <div class="exp-insight-label">⚠ Аномалии</div>
+        <div class="exp-insight-val" style="color:${anomalies.length?'#cf5a4a':'var(--dim)'}">${anomalies.length}</div>
+        <div class="exp-insight-sub">${anomalies.length?anomalies.slice(0,2).map(e=>esc(e.name)).join(', '):'всё в норме'}</div>
+      </div>`;
+  }
+
+  // ── Chart ──
+  const expSvg=document.getElementById('expArea');
+  const expChartNote=document.getElementById('expChartNote');
+  if(expSvg){
+    const mMap={};
+    expenses.forEach(e=>{
+      if(!e.date) return;
+      const k=new Date(e.date).toLocaleDateString('ru-RU',{month:'short',year:'2-digit'});
+      mMap[k]=(mMap[k]||0)+(e.amount||0);
+    });
+    const mArr=Object.entries(mMap).map(([l,v])=>({l,v}));
+    if(mArr.length>=2){
+      buildSvgLine(expSvg,mArr,'#cf5a4a','rgba(207,90,74,.2)');
+      if(expChartNote) expChartNote.textContent=`${mArr.length} мес.`;
+      document.getElementById('expChartWrap').style.display='';
+    } else {
+      document.getElementById('expChartWrap').style.display='none';
+    }
+  }
+
+  // ── Recurring subscriptions ──
+  const recurWrap=document.getElementById('expRecurWrap');
+  if(recurWrap){
+    const recItems=(S.expenses||[]).filter(e=>e.recurring&&!e._synthetic);
+    if(recItems.length){
+      const today=new Date();
+      const cards=recItems.map(e=>{
+        const col=expCatColor(e.cat||'Другое');
+        // Calc next payment date
+        let next=null;
+        if(e.date){
+          const step=e.recurring==='yearly'?365:30;
+          let d=new Date(e.date);
+          while(d<=today) d.setDate(d.getDate()+step);
+          next=d;
+        }
+        const daysLeft=next?Math.ceil((next-today)/86400000):null;
+        const urgentColor=daysLeft!==null?(daysLeft<=3?'#cf5a4a':daysLeft<=7?'#d6bd6a':'var(--or)'):'var(--or)';
+        return `<div class="exp-recur-card">
+          <div class="exp-recur-card-accent" style="background:${col}"></div>
+          <div class="exp-recur-name">${esc(e.name)}</div>
+          <div class="exp-recur-amt" style="color:${col}">${fmt(e.amount)} ₽</div>
+          <div class="exp-recur-meta">${expCatIcon(e.cat||'Другое')} ${e.recurring==='yearly'?'ежегодно':'ежемесячно'}</div>
+          ${daysLeft!==null?`<div class="exp-recur-next" style="color:${urgentColor};background:${urgentColor}18">через ${daysLeft} дн.</div>`:''}
+        </div>`;
+      }).join('');
+      recurWrap.innerHTML=`<div class="exp-recur-wrap">
+        <div class="exp-recur-title">🔁 Регулярные платежи · ${fmt(recItems.reduce((s,e)=>s+(e.amount||0),0))} ₽/мес</div>
+        <div class="exp-recur-grid">${cards}</div>
+      </div>`;
+    } else {
+      recurWrap.innerHTML='';
+    }
+  }
+
+  // ── Budget bars ──
+  const budgetWrap=document.getElementById('expBudgetWrap');
+  if(budgetWrap){
+    const cats=getExpCats().filter(c=>c.budget>0);
+    if(cats.length){
+      const rows=cats.map(c=>{
+        const spent=catMap[c.name]||0;
+        const pct=Math.min(spent/c.budget*100,100);
+        const over=spent>c.budget;
+        const col=over?'#cf5a4a':expCatColor(c.name);
+        return `<div class="exp-budget-row">
+          <div class="exp-budget-top">
+            <div class="exp-budget-name">
+              <span style="width:8px;height:8px;border-radius:3px;background:${col};display:inline-block;flex:none"></span>
+              ${esc(c.name)}
+            </div>
+            <div class="exp-budget-amounts" style="color:${col}">${fmt(spent)} <span style="font-weight:400;color:var(--dim);font-size:11px">/ ${fmt(c.budget)} ₽</span></div>
+          </div>
+          <div class="exp-budget-bar-track">
+            <div class="exp-budget-bar-fill" style="width:${pct}%;background:${col}${over?'':''};"></div>
+          </div>
+          ${over?`<div class="exp-budget-warn">⚠ Превышен на ${fmt(spent-c.budget)} ₽</div>`:
+            `<div class="exp-budget-pct">${Math.round(pct)}% использовано · осталось ${fmt(c.budget-spent)} ₽</div>`}
+        </div>`;
+      }).join('');
+      budgetWrap.innerHTML=`<div class="exp-budget-wrap">
+        <div class="exp-budget-head"><div class="exp-budget-title">📊 Бюджеты по категориям</div>
+        <button class="ibt" onclick="openExpCatEditor()" style="padding:5px 10px;font-size:11px">Настроить</button></div>
+        <div class="exp-budget-rows">${rows}</div>
+      </div>`;
+    } else {
+      budgetWrap.innerHTML=`<div style="margin-bottom:14px;padding:13px 16px;background:var(--card2);border:1px dashed var(--ln2);border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div style="font-family:'Inter';font-size:12px;font-weight:700;color:var(--dim)">📊 Бюджеты по категориям</div>
+          <div style="font-family:'Inter';font-size:10.5px;color:var(--dim2);margin-top:3px">Задайте лимиты чтобы контролировать расходы</div>
+        </div>
+        <button class="ibt" onclick="openExpCatEditor()" style="padding:7px 13px;font-size:11.5px;font-weight:700;white-space:nowrap">+ Задать лимиты</button>
+      </div>`;
+    }
+  }
+  const chipsEl=document.getElementById('expChips');
+  if(chipsEl){
+    const allOn=expFlt.cat==='all';
+    chipsEl.innerHTML=`<button class="fin-exp-chip${allOn?' on':''}" style="${allOn?'background:var(--or);border-color:var(--or)':''}" onclick="expFlt.cat='all';renderExpenses()">Все</button>`+
+      catArr.map(c=>{
+        const on=expFlt.cat===c.k;
+        return `<button class="fin-exp-chip${on?' on':''}" style="${on?`background:${expCatColor(c.k)};border-color:${expCatColor(c.k)}`:''}" onclick="expFlt.cat=expFlt.cat==='${c.k}'?'all':'${c.k}';renderExpenses()">
+          <span class="fin-exp-chip-dot" style="background:${on?'rgba(255,255,255,.7)':expCatColor(c.k)}"></span>${esc(c.k)} <span style="opacity:.5">${fmt(c.v)}</span>
+        </button>`;
+      }).join('');
+  }
+
+  // ── Quick-add ──
+  const qaEl=document.getElementById('expQa');
+  if(qaEl){
+    const cats=expCatNames();
+    const curCat=qaEl.dataset.cat||cats[0]||'Другое';
+    // store chosen cat on element
+    if(!qaEl.dataset.cat) qaEl.dataset.cat=curCat;
+    const opts=cats.map(n=>`
+      <div class="qa-cat-opt${n===curCat?' chosen':''}" onclick="qaSetCat(this,'${esc(n)}')">
+        <span class="qa-cat-opt-dot" style="background:${expCatColor(n)}"></span>${esc(n)}
+      </div>`).join('');
+    qaEl.innerHTML=`
+      <input class="fin-exp-qa-nameip" id="qaExpName" placeholder="Название расхода…" onkeydown="if(event.key==='Enter')qaAddExpense()">
+      <div class="fin-exp-qa-divider"></div>
+      <input class="fin-exp-qa-numip" id="qaExpAmt" type="number" min="0" placeholder="0 ₽" onkeydown="if(event.key==='Enter')qaAddExpense()">
+      <div class="fin-exp-qa-divider"></div>
+      <div class="qa-cat-wrap" onclick="qaToggleDrop(event)" id="qaCatWrap">
+        <div class="qa-cat-label" id="qaCatLabel">
+          <span class="qa-cat-opt-dot" style="background:${expCatColor(curCat)};width:7px;height:7px;border-radius:50%;display:inline-block"></span>
+          ${esc(curCat)}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="qa-cat-drop" id="qaCatDrop">${opts}</div>
+      </div>
+      <button class="fin-exp-qa-addbt" onclick="qaAddExpense()" title="Добавить (Enter)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>`;
+  }
+
+  // ── List ──
+  const listEl=document.getElementById('expList');
+  if(!listEl) return;
+  const filtered=expenses.filter(e=>{
+    if(expFlt.cat!=='all'&&(e.cat||'Другое')!==expFlt.cat) return false;
+    return true;
+  }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+
+  if(!filtered.length){
+    listEl.innerHTML=`<div class="fin-exp-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4m0 4h.01M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0z"/></svg>
+      ${expenses.length?'Нет расходов по фильтру':'Добавьте первый расход выше'}
+    </div>`;
+    return;
+  }
+
+  listEl.innerHTML=filtered.map(e=>{
+    const col=expCatColor(e.cat||'Другое');
+    const icon=expCatIcon(e.cat||'Другое');
+    const meta=[];
+    if(e.cat) meta.push(esc(e.cat));
+    if(e.date) meta.push(fmtD(e.date));
+    if(e.note) meta.push(esc(e.note));
+    const badges=[];
+    if(e.recurring) badges.push(`<span class="fin-exp-badge fin-exp-badge-recur">${e.recurring==='yearly'?'ежегодно':'ежемесячно'}</span>`);
+    if(e._synthetic) badges.push(`<span class="fin-exp-badge" style="opacity:.6">авто</span>`);
+    return `<div class="fin-exp-item" style="${e._synthetic?'opacity:.65':''}">
+      <div class="fin-exp-item-accent" style="background:${col}"></div>
+      <div class="fin-exp-item-icon" style="background:${col}22">${icon}</div>
+      <div class="fin-exp-item-body">
+        <div class="fin-exp-item-name">${esc(e.name)}${badges.join('')}</div>
+        ${meta.length?`<div class="fin-exp-item-meta">${meta.map((m,i)=>i?`<span class="fin-exp-sep"></span><span>${m}</span>`:`<span>${m}</span>`).join('')}</div>`:''}
+      </div>
+      <div class="fin-exp-item-right">
+        <div class="fin-exp-item-acts">${!e._synthetic?`<button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button>`:''}</div>
+        <div class="fin-exp-item-amt" style="color:${col}">${fmt(e.amount)} ₽</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── Expense CRUD ── */
+const RECUR_OPTS=[{v:'',l:'Разово'},{v:'monthly',l:'Ежемесячно'},{v:'yearly',l:'Ежегодно'}];
+
+function openExpenseForm(id=null){
+  if(!S.expenses) S.expenses=[];
+  const e=id?S.expenses.find(x=>x.id===id):{};
+  const cats=expCatNames();
+  openModal(id?'Редактировать расход':'Новый расход',`<div class="fg">
+    ${fld('Название *',inp('f_enm','text',e.name||'','true'),'full')}
+    ${fld('Сумма, ₽',inp('f_eam','number',e.amount||0))}
+    ${fld('Категория',selOpts('f_ecat',cats,e.cat||cats[0]||'Другое'))}
+    ${fld('Повторение',selOpts('f_erecur',RECUR_OPTS,e.recurring||''))}
+    ${fld('Дата',dpCreate('f_edt',e.date||new Date().toISOString().slice(0,10)),'full')}
+    ${fld('Заметка',inp('f_enote','text',e.note||''),'full')}
+  </div>`,()=>{
+    const name=gv('f_enm');if(!name.trim()){toast('Введите название');return;}
+    const data={name,amount:+gv('f_eam')||0,cat:gv('f_ecat'),recurring:gv('f_erecur'),date:document.getElementById('f_edt').value||new Date().toISOString().slice(0,10),note:gv('f_enote')};
+    if(id){const i=S.expenses.findIndex(x=>x.id===id);if(i>-1)S.expenses[i]={...S.expenses[i],...data};}
+    else S.expenses.push({...data,id:uid()});
+    save();closeModal();renderExpenses();renderSeasonality();toast(id?'Расход обновлён':'Расход добавлен');
+  });
+}
+
+function deleteExpense(id){
+  if(!confirm('Удалить расход?')) return;
+  S.expenses=(S.expenses||[]).filter(e=>e.id!==id);
+  save();renderExpenses();toast('Удалено');
+}
+
+function qaAddExpense(){
+  const name=document.getElementById('qaExpName')?.value.trim();
+  const amt=parseFloat(document.getElementById('qaExpAmt')?.value)||0;
+  const qaEl=document.getElementById('expQa');
+  const cat=(qaEl?.dataset.cat)||expCatNames()[0]||'Другое';
+  if(!name){toast('Введите название');document.getElementById('qaExpName')?.focus();return;}
+  if(!amt){toast('Введите сумму');document.getElementById('qaExpAmt')?.focus();return;}
+  if(!S.expenses) S.expenses=[];
+  S.expenses.push({id:uid(),name,amount:amt,cat,recurring:'',date:new Date().toISOString().slice(0,10),note:''});
+  save();renderExpenses();
+  document.getElementById('qaExpName').value='';
+  document.getElementById('qaExpAmt').value='';
+  toast(`${name} — ${fmt(amt)} ₽`);
+}
+
+function qaToggleDrop(e){
+  e.stopPropagation();
+  const drop=document.getElementById('qaCatDrop');
+  if(drop) drop.classList.toggle('open');
+}
+function qaSetCat(el,name){
+  const qaEl=document.getElementById('expQa');
+  if(qaEl) qaEl.dataset.cat=name;
+  const drop=document.getElementById('qaCatDrop');
+  if(drop){
+    drop.classList.remove('open');
+    drop.querySelectorAll('.qa-cat-opt').forEach(o=>o.classList.remove('chosen'));
+    el.classList.add('chosen');
+  }
+  const lbl=document.getElementById('qaCatLabel');
+  if(lbl) lbl.innerHTML=`<span style="background:${expCatColor(name)};width:7px;height:7px;border-radius:50%;display:inline-block;flex:none"></span>${esc(name)}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:10px;height:10px;opacity:.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+}
+// Close dropdown on outside click
+document.addEventListener('click',()=>{
+  document.getElementById('qaCatDrop')?.classList.remove('open');
+});
+
+/* ── Category editor ── */
+function openExpCatEditor(){
+  const cats=getExpCats();
+  const rows=cats.map((c,i)=>`
+    <div class="ecat-row" id="ecat_${i}" style="grid-template-columns:28px 1fr 90px 80px 32px">
+      <div class="ecat-swatch" style="background:${c.color}" onclick="document.getElementById('ecc_${i}').click()"></div>
+      <input class="ecat-nm-inp" id="ecn_${i}" value="${esc(c.name)}" placeholder="Название">
+      <input class="ecat-color-inp" id="ecc_${i}" type="color" value="${c.color}" oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+      <input class="ecat-nm-inp" id="ecb_${i}" type="number" min="0" value="${c.budget||''}" placeholder="Лимит ₽" style="text-align:right">
+      <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>
+    </div>`).join('');
+  openModalRaw('Категории расходов',`
+    <div style="margin-bottom:10px;font-family:'Inter';font-size:11px;color:var(--dim)">Настройте категории, цвета и месячные лимиты.</div>
+    <div style="display:grid;grid-template-columns:28px 1fr 90px 80px 32px;gap:8px;padding:0 10px;margin-bottom:6px">
+      <span></span>
+      <span style="font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2)">Название</span>
+      <span style="font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2)">Цвет</span>
+      <span style="font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);text-align:right">Лимит/мес</span>
+      <span></span>
+    </div>
+    <div class="ecat-list" id="ecatList">${rows}</div>
+    <button class="ecat-add-btn" onclick="addExpCatRow()">+ Добавить категорию</button>
+    <div class="form-acts">
+      <button class="tm-btn ghost" onclick="closeModal()">Отмена</button>
+      <button class="tm-btn go" onclick="saveExpCats()">Сохранить</button>
+    </div>`);
+}
+
+function addExpCatRow(){
+  const list=document.getElementById('ecatList');
+  const i='n'+Date.now();
+  const div=document.createElement('div');
+  div.className='ecat-row';div.id='ecat_'+i;
+  div.innerHTML=`
+    <div class="ecat-swatch" style="background:#888" onclick="document.getElementById('ecc_${i}').click()"></div>
+    <input class="ecat-nm-inp" id="ecn_${i}" placeholder="Название категории">
+    <input class="ecat-color-inp" id="ecc_${i}" type="color" value="#888888" oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+    <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>`;
+  list.appendChild(div);
+  div.querySelector('.ecat-nm-inp').focus();
+}
+
+function saveExpCats(){
+  const cats=[...document.querySelectorAll('#ecatList .ecat-row')].map((row,i)=>{
+    const nm=row.querySelector('.ecat-nm-inp')?.value.trim();
+    const col=row.querySelector('.ecat-color-inp')?.value||'#8f867a';
+    const budEl=[...row.querySelectorAll('input[type=number]')][0];
+    const budget=parseFloat(budEl?.value)||0;
+    return nm?{name:nm,color:col,budget}:null;
+  }).filter(Boolean);
+  if(!cats.length){toast('Нужна хотя бы одна категория');return;}
+  S.expCats=cats;
+  save();closeModal();renderExpenses();toast('Категории сохранены');
+}
 
 /* -- INVOICE -- */
 /* ================================================================
