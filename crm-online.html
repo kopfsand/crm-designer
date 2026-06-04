@@ -563,6 +563,19 @@ nav.tabs button.active svg{opacity:1}
 .exp-row .e-cat{font-family:'Inter';font-size:9.5px;color:var(--dim);margin-top:2px}
 .exp-row .e-am{font-family:'Rubik';font-weight:700;font-size:14px;color:var(--txt);white-space:nowrap}
 .exp-row .e-acts{display:flex;gap:4px}
+
+/* expense category editor */
+.ecat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.ecat-row{display:grid;grid-template-columns:32px 1fr 90px 32px;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:8px 10px}
+.ecat-swatch{width:24px;height:24px;border-radius:6px;border:2px solid rgba(255,255,255,.15);cursor:pointer;flex:none;transition:.15s}
+.ecat-swatch:hover{transform:scale(1.12)}
+.ecat-nm-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Inter';font-size:13px;font-weight:600;padding:3px 0;outline:none;width:100%}
+.ecat-nm-inp:focus{border-color:var(--or)}
+.ecat-color-inp{width:100%;height:28px;border-radius:6px;border:1px solid var(--ln2);cursor:pointer;padding:2px;background:var(--bg2)}
+.ecat-del{width:28px;height:28px;border-radius:7px;background:none;border:none;cursor:pointer;color:var(--dim2);font-size:15px;display:grid;place-items:center;transition:.13s}
+.ecat-del:hover{color:#cf5a4a;background:rgba(207,90,74,.12)}
+.ecat-add-btn{width:100%;padding:9px;background:none;border:1px dashed var(--ln2);border-radius:9px;color:var(--dim);font-family:'Inter';font-size:12px;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.03em}
+.ecat-add-btn:hover{border-color:var(--or);color:var(--or)}
 .fin-profit{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .profit-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--rs);padding:16px 18px}
 .profit-card .pk{font-family:'Inter';font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
@@ -1279,7 +1292,10 @@ input[type=number]{-moz-appearance:textfield}
 <!-- FINANCE -->
 <section class="view" id="view-finance">
   <div class="sec-head"><div><span class="eye">Аналитика</span><h2>Финансы</h2></div>
-    <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="ibt" onclick="openExpCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600" title="Редактор категорий">⚙ Категории</button>
+      <button class="btn-add" onclick="openExpenseForm()">+ Расход</button>
+    </div>
   </div>
   <!-- Period filter -->
   <div class="fin-period" id="finPeriod">
@@ -1702,6 +1718,12 @@ function openModal(title, html, onSubmit) {
   document.getElementById('m-title').textContent=title;
   document.getElementById('m-body').innerHTML=html+`<div class="form-acts"><button class="tm-btn ghost" onclick="closeModal()">Отмена</button><button class="tm-btn go" onclick="pendingSubmit()">Сохранить</button></div>`;
   pendingSubmit=onSubmit;
+  document.getElementById('modal').style.display='flex';
+}
+function openModalRaw(title, html) {
+  document.getElementById('m-title').textContent=title;
+  document.getElementById('m-body').innerHTML=html;
+  pendingSubmit=null;
   document.getElementById('modal').style.display='flex';
 }
 function closeModal() { document.getElementById('modal').style.display='none'; pendingSubmit=null; }
@@ -2594,15 +2616,78 @@ function finFilterExpenses(){
   return (S.expenses||[]).filter(e=>e.date&&new Date(e.date)>=cut);
 }
 
+/* ── Expense categories (dynamic) ── */
+const DEFAULT_EXP_CATS=[
+  {name:'Подписки', color:'#7fa6c9'},
+  {name:'Налоги',   color:'#d6bd6a'},
+  {name:'Материалы',color:'#a795c9'},
+  {name:'Оборудование',color:'#7bbf6a'},
+  {name:'Реклама',  color:'#cf8a5a'},
+  {name:'Другое',   color:'#8f867a'},
+];
+function getExpCats(){ return S.expCats && S.expCats.length ? S.expCats : DEFAULT_EXP_CATS; }
+function expCatColor(name){ const c=getExpCats().find(c=>c.name===name); return c?c.color:'#8f867a'; }
+function expCatNames(){ return getExpCats().map(c=>c.name); }
+
+/* ── Category editor ── */
+function openExpCatEditor(){
+  const cats=getExpCats();
+  const rowsHtml=cats.map((c,i)=>`
+    <div class="ecat-row" id="ecat_${i}">
+      <div class="ecat-swatch" style="background:${c.color}" onclick="document.getElementById('ecc_${i}').click()"></div>
+      <input class="ecat-nm-inp" id="ecn_${i}" value="${esc(c.name)}" placeholder="Название">
+      <input class="ecat-color-inp" id="ecc_${i}" type="color" value="${c.color}"
+        oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+      <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>
+    </div>`).join('');
+  openModalRaw('Категории расходов',`
+    <div style="margin-bottom:10px;font-family:'Inter';font-size:11px;color:var(--dim)">
+      Категории используются при добавлении расходов. Цвет отображается в диаграммах.
+    </div>
+    <div class="ecat-list" id="ecatList">${rowsHtml}</div>
+    <button class="ecat-add-btn" onclick="addExpCatRow()">+ Добавить категорию</button>
+    <div class="form-acts">
+      <button class="tm-btn ghost" onclick="closeModal()">Отмена</button>
+      <button class="tm-btn go" onclick="saveExpCats()">Сохранить</button>
+    </div>`);
+}
+
+function addExpCatRow(){
+  const list=document.getElementById('ecatList');
+  const i='new_'+Date.now();
+  const div=document.createElement('div');
+  div.className='ecat-row';
+  div.id='ecat_'+i;
+  div.innerHTML=`
+    <div class="ecat-swatch" style="background:#888" onclick="document.getElementById('ecc_${i}').click()"></div>
+    <input class="ecat-nm-inp" id="ecn_${i}" placeholder="Название категории">
+    <input class="ecat-color-inp" id="ecc_${i}" type="color" value="#888888"
+      oninput="document.getElementById('ecat_${i}').querySelector('.ecat-swatch').style.background=this.value">
+    <button class="ecat-del" onclick="this.closest('.ecat-row').remove()" title="Удалить">✕</button>`;
+  list.appendChild(div);
+  div.querySelector('.ecat-nm-inp').focus();
+}
+
+function saveExpCats(){
+  const rows=[...document.querySelectorAll('#ecatList .ecat-row')];
+  const cats=rows.map(row=>{
+    const nm=row.querySelector('.ecat-nm-inp')?.value.trim();
+    const col=row.querySelector('.ecat-color-inp')?.value||'#8f867a';
+    return nm?{name:nm,color:col}:null;
+  }).filter(Boolean);
+  if(!cats.length){toast('Нужна хотя бы одна категория');return;}
+  S.expCats=cats;
+  save();closeModal();renderFinance();toast('Категории сохранены');
+}
+
 /* ── Expense CRUD ── */
-const EXP_CATS=['Подписки','Налоги','Материалы','Оборудование','Реклама','Другое'];
-const EXP_COLS={Подписки:'#7fa6c9',Налоги:'#d6bd6a',Материалы:'#a795c9',Оборудование:'#7bbf6a',Реклама:'#cf8a5a',Другое:'#8f867a'};
 function openExpenseForm(id=null){
   const e=id?(S.expenses||[]).find(x=>x.id===id):{};
+  const cats=expCatNames();
   openModal(id?'Редактировать расход':'Новый расход',`<div class="fg">
     ${fld('Название *',inp('f_enm','text',e.name||'','true'),'full')}
     ${fld('Сумма, ₽',inp('f_eam','number',e.amount||0))}
-    ${fld('Категория',selOpts('f_ecat',EXP_CATS,e.cat||'Другое'))}
+    ${fld('Категория',selOpts('f_ecat',cats,e.cat||cats[cats.length-1]||'Другое'))}
     ${fld('Дата',dpCreate('f_edt',e.date||new Date().toISOString().slice(0,10)),'full')}
     ${fld('Заметка',inp('f_enote','text',e.note||''),'full')}
   </div>`,()=>{
@@ -2683,14 +2768,32 @@ function renderFinance(){
   const expEl=document.getElementById('expList');
   const expTot=document.getElementById('expTotal');
   if(expTot) expTot.textContent=expenses.length?`${fmt(totalExp)} ₽`:'';
-  if(expEl) expEl.innerHTML=expenses.length?[...expenses].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(e=>`
+
+  // category breakdown
+  const catMap={};
+  expenses.forEach(e=>{const c=e.cat||'Другое';if(!catMap[c])catMap[c]=0;catMap[c]+=e.amount||0;});
+  const catArr=Object.entries(catMap).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
+  const mxCat=Math.max(...catArr.map(c=>c.v),1);
+  const catBreakdown=catArr.length>1?`<div style="padding:12px 16px 4px;border-bottom:1px solid var(--ln)">
+    ${catArr.map(c=>`<div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+      <span style="width:8px;height:8px;border-radius:50%;background:${expCatColor(c.k)};flex:none"></span>
+      <span style="font-family:'Inter';font-size:12px;font-weight:600;flex:1">${esc(c.k)}</span>
+      <span style="font-family:'Inter';font-size:11px;color:var(--dim)">${totalExp?Math.round(c.v/totalExp*100):0}%</span>
+      <span style="font-family:'Rubik';font-weight:700;font-size:13px;min-width:72px;text-align:right">${fmt(c.v)} ₽</span>
+    </div>
+    <div style="height:4px;background:var(--ln);border-radius:3px;overflow:hidden;margin-bottom:10px">
+      <div style="height:100%;width:${c.v/mxCat*100}%;background:${expCatColor(c.k)};border-radius:3px;transition:width .6s"></div>
+    </div>`).join('')}
+  </div>`:'';
+
+  if(expEl) expEl.innerHTML=(catBreakdown||'')+(expenses.length?[...expenses].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(e=>`
     <div class="exp-row">
-      <span class="e-dot" style="background:${EXP_COLS[e.cat]||'#888'}"></span>
-      <div><div class="e-nm">${esc(e.name)}</div><div class="e-cat">${e.cat}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div></div>
+      <span class="e-dot" style="background:${expCatColor(e.cat)}"></span>
+      <div><div class="e-nm">${esc(e.name)}</div><div class="e-cat">${e.cat||'—'}${e.date?' · '+fmtD(e.date):''}${e.note?' · '+esc(e.note):''}</div></div>
       <span class="e-am">${fmt(e.amount)} ₽</span>
       <div class="e-acts"><button class="ibt" onclick="openExpenseForm('${e.id}')">✏</button><button class="ibt del" onclick="deleteExpense('${e.id}')">✕</button></div>
     </div>`).join(''):
-    '<div style="padding:14px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">Нет расходов — добавьте первый</div>';
+    '<div style="padding:14px;font-family:Inter;font-size:12px;color:var(--dim2);text-align:center">Нет расходов — добавьте первый</div>');
 }
 
 /* -- INVOICE -- */
