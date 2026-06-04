@@ -978,6 +978,11 @@ input[type=number]{-moz-appearance:textfield}
         <div class="timer-clock" id="tmClock">00:00:00</div>
         <div class="fld" style="width:100%"><span>Заказ</span><select id="tmOrd" class="tx"></select></div>
         <div class="fld" style="width:100%"><span>Тип работы</span><select id="tmAct" class="tx"><option>Дизайн</option><option>Правки</option><option>Общение с клиентом</option><option>Подготовка</option><option>Исследование</option></select></div>
+        <div class="fld" style="width:100%"><span>Ставка, ₽/час</span><input id="tmRate" type="number" class="tx" placeholder="0" min="0" step="100" style="width:100%"></div>
+        <div id="tmEarned" style="display:none;width:100%;background:rgba(255,90,31,.1);border:1px solid rgba(255,90,31,.3);border-radius:10px;padding:11px 15px;font-family:'Inter';font-size:12px;color:var(--dim);text-align:center">
+          <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:3px;font-weight:700">Заработано</span>
+          <span id="tmEarnedVal" style="font-family:'Rubik';font-size:26px;font-weight:700;color:var(--txt);letter-spacing:-.03em">0 ₽</span>
+        </div>
         <div class="tm-btns"><button id="tmToggle" class="tm-btn go">▶ Старт</button><button id="tmSave" class="tm-btn ghost">Записать</button></div>
       </div>
     </div>
@@ -2105,7 +2110,10 @@ function renderTracker(){
   const totalH=S.timelog.reduce((s,l)=>s+(l.h||0),0);
   const planH=Math.max(totalH*1.4,60);const pct=Math.min(totalH/planH,1);
   document.getElementById('hoursDial').innerHTML=buildDial(pct,totalH+'ч','записано');
-  document.getElementById('hoursFoot').innerHTML=`<span class="pill2">всего <b>${totalH.toFixed(1)} ч</b></span><span class="pill2">${S.timelog.length?rub(Math.round(S.orders.reduce((s,o)=>s+(o.cost||0),0)/totalH))+'&nbsp;₽/ч':''}</span>`;
+  const logsWithRate=S.timelog.filter(l=>l.rate>0);
+  const avgRate=logsWithRate.length?Math.round(logsWithRate.reduce((s,l)=>s+(l.rate||0),0)/logsWithRate.length):0;
+  const totalEarned=S.timelog.reduce((s,l)=>s+(l.rate>0?(l.rate||0)*(l.h||0):0),0);
+  document.getElementById('hoursFoot').innerHTML=`<span class="pill2">всего <b>${totalH.toFixed(1)} ч</b></span>${avgRate>0?`<span class="pill2">ставка <b>${fmt(avgRate)} ₽/ч</b></span><span class="pill2">заработано <b>${fmt(Math.round(totalEarned))} ₽</b></span>`:S.timelog.length?`<span class="pill2">${rub(Math.round(S.orders.reduce((s,o)=>s+(o.cost||0),0)/totalH))} ₽/ч</span>`:''}`;
   // by order
   const byO={};S.timelog.forEach(l=>byO[l.orderName||'—']=(byO[l.orderName||'—']||0)+(l.h||0));
   const oArr=Object.entries(byO).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v).slice(0,7);
@@ -2123,8 +2131,8 @@ function renderTracker(){
   document.getElementById('logCnt').textContent=`${S.timelog.length} записей · ${totalH.toFixed(1)} ч`;
   document.getElementById('logList').innerHTML=[...S.timelog].sort((a,b)=>a.date<b.date?1:-1).map(l=>`<div class="log">
     <span class="dot" style="background:${ACOL[l.act]||'#888'}"></span>
-    <div><div class="nm">${esc(l.task)}</div><div class="sb">${l.act||''} · ${esc(l.orderName||'—')}</div></div>
-    <div class="dd">${fmtD(l.date)}</div>
+    <div><div class="nm">${esc(l.task)}</div><div class="sb">${l.act||''} · ${esc(l.orderName||'—')}${l.rate>0?` · <span style="color:var(--or)">${fmt(Math.round((l.rate||0)*l.h))} ₽</span>`:''}${l.note&&!l.rate?` · <span style="color:var(--dim2)">${esc(l.note)}</span>`:''}</div></div>
+    <div class="dd">${fmtD(l.date)}${l.rate>0?`<div style="font-size:9px;color:var(--dim2);margin-top:2px">${l.rate} ₽/ч</div>`:''}</div>
     <div class="hh">${l.h}<span class="u"> ч</span></div>
     <div style="display:flex;gap:4px">
       <button class="ibt" onclick="openLogForm('${l.id}')">✏</button>
@@ -2135,18 +2143,46 @@ function renderTracker(){
   const sel=document.getElementById('tmOrd');if(sel){const old=sel.value;sel.innerHTML=S.orders.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('');if(old)sel.value=old;}
 }
 function setupTimer(){
+  function updateTimerTick(){
+    const ms=tmAcc+(tmRun?Date.now()-tmStart:0);
+    document.getElementById('tmClock').textContent=fmtHMS(ms);
+    const rate=parseFloat(document.getElementById('tmRate').value)||0;
+    const earnedEl=document.getElementById('tmEarned');
+    const earnedVal=document.getElementById('tmEarnedVal');
+    if(rate>0){
+      const earned=rate*(ms/3600000);
+      earnedEl.style.display='block';
+      earnedVal.textContent=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(Math.round(earned))+' ₽';
+    } else {
+      earnedEl.style.display='none';
+    }
+  }
+  document.getElementById('tmRate').addEventListener('input',updateTimerTick);
   document.getElementById('tmToggle').onclick=function(){
-    tmRun=!tmRun;if(tmRun){tmStart=Date.now();tmInt=setInterval(()=>{document.getElementById('tmClock').textContent=fmtHMS(tmAcc+Date.now()-tmStart)},1000);this.textContent='⏸ Пауза';this.classList.remove('go');this.classList.add('ghost');document.getElementById('tmState').textContent='идёт запись';}
-    else{tmAcc+=Date.now()-tmStart;clearInterval(tmInt);tmInt=null;this.textContent='▶ Старт';this.classList.add('go');this.classList.remove('ghost');document.getElementById('tmState').textContent='пауза';}
+    tmRun=!tmRun;
+    if(tmRun){
+      tmStart=Date.now();
+      tmInt=setInterval(updateTimerTick,1000);
+      this.textContent='⏸ Пауза';this.classList.remove('go');this.classList.add('ghost');
+      document.getElementById('tmState').textContent='идёт запись';
+    } else {
+      tmAcc+=Date.now()-tmStart;clearInterval(tmInt);tmInt=null;
+      this.textContent='▶ Старт';this.classList.add('go');this.classList.remove('ghost');
+      document.getElementById('tmState').textContent='пауза';
+      updateTimerTick();
+    }
   };
   document.getElementById('tmSave').onclick=function(){
     const ms=tmAcc+(tmRun?Date.now()-tmStart:0);const h=Math.max(Math.round(ms/360000)/10,.1);
+    const rate=parseFloat(document.getElementById('tmRate').value)||0;
     const ordEl=document.getElementById('tmOrd');const ord=ordEl?S.orders.find(o=>o.id===ordEl.value):null;
-    S.timelog.push({id:uid(),task:'Сессия таймера',orderId:ord?ord.id:'',orderName:ord?ord.name:'',act:gv('tmAct')||'Дизайн',h,date:new Date().toISOString().slice(0,10),note:''});
+    const note=rate>0?`Ставка ${rate} ₽/ч · Заработано ${Math.round(rate*h)} ₽`:'';
+    S.timelog.push({id:uid(),task:'Сессия таймера',orderId:ord?ord.id:'',orderName:ord?ord.name:'',act:gv('tmAct')||'Дизайн',h,date:new Date().toISOString().slice(0,10),note,rate:rate||0});
     tmRun=false;tmAcc=0;clearInterval(tmInt);tmInt=null;
     document.getElementById('tmToggle').textContent='▶ Старт';document.getElementById('tmToggle').classList.add('go');document.getElementById('tmToggle').classList.remove('ghost');
     document.getElementById('tmState').textContent='записано';document.getElementById('tmClock').textContent='00:00:00';
-    save();renderTracker();toast('Время записано: '+h+' ч');
+    document.getElementById('tmEarned').style.display='none';document.getElementById('tmEarnedVal').textContent='0 ₽';
+    save();renderTracker();toast('Время записано: '+h+' ч'+(rate>0?' · '+Math.round(rate*h)+' ₽':''));
   };
 }
 
