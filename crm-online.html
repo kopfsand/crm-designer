@@ -443,7 +443,56 @@ nav.tabs button.active svg{opacity:1}
 .sort-btn .arr{font-size:10px;opacity:.7;transition:transform .2s}
 .sort-btn.active .arr{opacity:1}
 .o-list{display:flex;flex-direction:column;gap:8px}
-.o{display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;border:1px solid var(--ln);border-radius:var(--rs);padding:14px 18px;background:var(--card);transition:.2s}
+
+/* view switcher */
+.view-switch{display:flex;gap:3px;padding:3px;background:var(--bg2);border:1px solid var(--ln);border-radius:10px}
+.vs-btn{width:32px;height:32px;display:grid;place-items:center;border:none;background:transparent;border-radius:7px;cursor:pointer;color:var(--dim);transition:.15s}
+.vs-btn:hover{color:var(--txt)}
+.vs-btn.active{background:var(--card);color:var(--or);box-shadow:0 1px 6px -2px rgba(0,0,0,.3)}
+.vs-btn svg{width:15px;height:15px}
+
+/* cards grid */
+.o-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.o-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.o-cards{grid-template-columns:1fr}}
+.o-card{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.o-card:hover{border-color:var(--ln2);transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+.o-card-top{padding:16px 18px 12px;flex:1}
+.o-card-bar{height:3px;width:100%}
+.o-card-name{font-weight:700;font-size:14px;line-height:1.3;margin-bottom:6px}
+.o-card-client{font-family:'Inter';font-size:10.5px;color:var(--or);font-weight:600;display:flex;align-items:center;gap:4px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.o-card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.o-card-money{display:flex;align-items:baseline;gap:4px;margin-bottom:2px}
+.o-card-money .v{font-family:'Rubik';font-weight:700;font-size:20px;letter-spacing:-.03em}
+.o-card-money .u{font-size:12px;color:var(--or);font-family:'Rubik';font-weight:700}
+.o-card-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-top:1px solid var(--ln);background:var(--bg2)}
+.o-card-status{font-family:'Inter';font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.o-card-dates{font-family:'Inter';font-size:9.5px;color:var(--dim)}
+.o-card-acts{display:flex;gap:4px}
+.o-card-paid{font-family:'Inter';font-size:10px;margin-top:3px}
+
+/* table view */
+.o-table-wrap{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r)}
+.o-table{width:100%;border-collapse:collapse;font-family:'Inter'}
+.o-table thead tr{border-bottom:1px solid var(--ln2)}
+.o-table th{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:11px 14px;text-align:left;white-space:nowrap;cursor:pointer;user-select:none;background:var(--bg2);transition:.15s}
+.o-table th:hover{color:var(--txt)}
+.o-table th.sort-active{color:var(--or)}
+.o-table td{padding:12px 14px;border-bottom:1px solid var(--ln);font-size:12.5px;vertical-align:middle}
+.o-table tr:last-child td{border-bottom:none}
+.o-table tr:hover td{background:var(--card2)}
+.o-table .tc-st{width:4px;padding:0;height:100%}
+.o-table .tc-st-bar{width:4px;height:32px;border-radius:2px;display:block}
+.o-table .tc-name{font-weight:700;max-width:200px}
+.o-table .tc-name .sub{font-size:10px;color:var(--dim);font-weight:400;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.o-table .tc-client{color:var(--or);font-weight:600;font-size:11px;white-space:nowrap}
+.o-table .tc-sum{font-family:'Rubik';font-weight:700;font-size:14px;white-space:nowrap;text-align:right}
+.o-table .tc-sum .paid-bar{height:3px;border-radius:2px;background:var(--ln);margin-top:4px;overflow:hidden}
+.o-table .tc-sum .paid-fill{height:100%;border-radius:2px;background:#7bbf6a;transition:width .6s}
+.o-table .tc-date{color:var(--dim);font-size:11px;white-space:nowrap}
+.o-table .tc-status{white-space:nowrap}
+.o-table .tc-acts{white-space:nowrap;text-align:right}
+.o-table tfoot td{padding:10px 14px;font-size:10.5px;color:var(--dim);font-weight:600;border-top:1px solid var(--ln2);background:var(--bg2)};grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;border:1px solid var(--ln);border-radius:var(--rs);padding:14px 18px;background:var(--card);transition:.2s}
 .o:hover{border-color:var(--ln2);transform:translateX(3px)}
 .o .st{width:7px;height:38px;border-radius:4px;flex:none}
 .o .nm{font-weight:700;font-size:14px}
@@ -1104,11 +1153,27 @@ input[type=number]{-moz-appearance:textfield}
 
 <!-- ORDERS -->
 <section class="view" id="view-orders">
-  <div class="sec-head"><div><span class="eye">Портфель</span><h2>Заказы</h2></div><div style="display:flex;gap:8px"><button class="ibt" onclick="openWtypesManager()" style="padding:10px 14px;font-size:12px;font-weight:600">⚙ Типы</button><button class="btn-add" onclick="openOrderForm()">+ Новый заказ</button></div></div>
+  <div class="sec-head"><div><span class="eye">Портфель</span><h2>Заказы</h2><span class="hint"></span></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="view-switch" id="orderViewSwitch">
+        <button class="vs-btn active" data-v="list" title="Список" onclick="setOrderView('list')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </button>
+        <button class="vs-btn" data-v="cards" title="Карточки" onclick="setOrderView('cards')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/><rect x="14" y="16" width="7" height="5" rx="2"/></svg>
+        </button>
+        <button class="vs-btn" data-v="table" title="Таблица" onclick="setOrderView('table')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+        </button>
+      </div>
+      <button class="ibt" onclick="openWtypesManager()" style="padding:10px 14px;font-size:12px;font-weight:600">⚙ Типы</button>
+      <button class="btn-add" onclick="openOrderForm()">+ Новый заказ</button>
+    </div>
+  </div>
   <div class="toolbar"><div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="oSearch" placeholder="ПОИСК…"></div><div class="chips" id="clChips"></div></div>
   <div class="chips" id="tyChips"></div>
   <div class="sort-bar" id="sortBar"></div>
-  <div class="o-list" id="oList"></div>
+  <div id="oList"></div>
 </section>
 
 <!-- ANALYTICS -->
@@ -1914,12 +1979,22 @@ function setSort(k){
   if(oFlt.sort===k) oFlt.dir*=-1; else {oFlt.sort=k; oFlt.dir=-1;}
   renderOrders();
 }
+
+let orderView='list';
+function setOrderView(v){
+  orderView=v;
+  document.querySelectorAll('#orderViewSwitch .vs-btn').forEach(b=>b.classList.toggle('active',b.dataset.v===v));
+  // hide sort bar in table view (table has its own column headers)
+  document.getElementById('sortBar').style.display=v==='table'?'none':'';
+  renderOrders();
+}
+
 function renderOrders(){
   const {clAgg}=agg();
   const allTy=[...new Set(S.orders.flatMap(o=>o.types||[]))];
   document.getElementById('clChips').innerHTML=`<button class="chip ${oFlt.cl==='all'?'active':''}" onclick="oFlt.cl='all';renderOrders()">Все</button>`+clAgg.map(c=>`<button class="chip ${oFlt.cl===c.id?'active':''}" onclick="oFlt.cl='${c.id}';renderOrders()">${c.icon} ${esc(c.name)}</button>`).join('');
   document.getElementById('tyChips').innerHTML=`<button class="chip ${oFlt.ty==='all'?'active':''}" onclick="oFlt.ty='all';renderOrders()">Все типы</button>`+allTy.map(t=>`<button class="chip ${oFlt.ty===t?'active':''}" onclick="oFlt.ty='${t}';renderOrders()">${t}</button>`).join('');
-  // ── sort bar ──────────────────────────────────────────────────────
+  // sort bar (hidden in table mode)
   const upArr='↑', dnArr='↓';
   document.getElementById('sortBar').innerHTML=
     `<span class="sl">Сортировка:</span>`+
@@ -1928,13 +2003,26 @@ function renderOrders(){
       const arrow=active?(oFlt.dir>0?upArr:dnArr):'';
       return `<button class="sort-btn${active?' active':''}" onclick="setSort('${s.k}')">${s.l}${active?` <span class="arr">${arrow}</span>`:''}</button>`;
     }).join('');
-  // ── filter + sort ─────────────────────────────────────────────────
+  if(orderView==='table') document.getElementById('sortBar').style.display='none';
+  // filter + sort
   const sortFn=SORTS.find(s=>s.k===oFlt.sort)?.fn||SORTS[0].fn;
   let list=S.orders
     .filter(o=>(oFlt.cl==='all'||o.clientId===oFlt.cl)&&(oFlt.ty==='all'||(o.types||[]).includes(oFlt.ty))&&(oFlt.q===''||((o.name+' '+o.desc+(clientById(o.clientId).name||'')).toLowerCase().includes(oFlt.q))))
     .sort((a,b)=>sortFn(a,b)*oFlt.dir);
   const cl2=list.reduce((s,o)=>s+(o.cost||0),0);
-  document.getElementById('oList').innerHTML=list.length?list.map(o=>{const cl=clientById(o.clientId);const full=(o.paid||0)>=(o.cost||0);
+  const el=document.getElementById('oList');
+
+  if(orderView==='list') el.innerHTML=renderOrdersList(list);
+  else if(orderView==='cards') el.innerHTML=renderOrdersCards(list);
+  else el.innerHTML=renderOrdersTable(list,cl2);
+
+  const h=document.querySelector('#view-orders .sec-head .hint');if(h)h.textContent=`${list.length}/${S.orders.length} · ${rub(cl2)}`;
+}
+
+function renderOrdersList(list){
+  if(!list.length) return '<div class="empty">Ничего не найдено</div>';
+  return '<div class="o-list">'+list.map(o=>{
+    const cl=clientById(o.clientId);const full=(o.paid||0)>=(o.cost||0);
     const linksHtml=(o.links||[]).length?`<div class="order-links">${o.links.map(l=>`<a class="order-link" href="${esc(l)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>${esc(l.replace(/^https?:\/\/(www\.)?/,'').substring(0,28))}</a>`).join('')}</div>`:'';
     const stagesHtml=(o.payStages||[]).length?`<div class="pay-stages">${o.payStages.map(ps=>`<div class="pay-stage"><span class="ps-dot" style="background:${ps.date&&new Date(ps.date)<new Date()?'#7bbf6a':'var(--dim2)'}"></span><span class="ps-nm">${esc(ps.name)}</span><span class="ps-am">${fmt(ps.amount)} ₽</span>${ps.date?`<span class="ps-date">${fmtD(ps.date)}</span>`:''}</div>`).join('')}</div>`:'';
     return `<div class="o">
@@ -1950,8 +2038,91 @@ function renderOrders(){
         <button class="ibt" onclick="openOrderForm('${o.id}')">✏</button>
         <button class="ibt del" onclick="deleteOrder('${o.id}')">✕</button>
       </div>
-    </div></div>`}).join(''):`<div class="empty">Ничего не найдено</div>`;
-  const h=document.querySelector('#view-orders .sec-head .hint');if(h)h.textContent=`${list.length}/${S.orders.length} · ${rub(cl2)}`;
+    </div></div>`;
+  }).join('')+'</div>';
+}
+
+function renderOrdersCards(list){
+  if(!list.length) return '<div class="empty">Ничего не найдено</div>';
+  return '<div class="o-cards">'+list.map(o=>{
+    const cl=clientById(o.clientId);
+    const full=(o.paid||0)>=(o.cost||0);
+    const pct=o.cost>0?Math.min((o.paid||0)/o.cost*100,100):0;
+    const debt=Math.max((o.cost||0)-(o.paid||0),0);
+    const daysLeft=o.deadline?Math.round((new Date(o.deadline)-new Date())/86400000):null;
+    const urgentDeadline=daysLeft!==null&&daysLeft<=3&&o.status!=='Выполнен'&&o.status!=='Отменён';
+    return `<div class="o-card">
+      <div class="o-card-bar" style="background:${SCOL[o.status]||'#888'}"></div>
+      <div class="o-card-top">
+        <div class="o-card-client">${cl.icon||'👤'} ${esc(cl.name)}</div>
+        <div class="o-card-name">${esc(o.name)}</div>
+        <div class="o-card-tags">${(o.types||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="o-card-money"><span class="v">${fmt(o.cost)}</span><span class="u">₽</span></div>
+        <div style="height:4px;background:var(--ln);border-radius:3px;overflow:hidden;margin-top:7px"><div style="height:100%;width:${pct}%;background:${full?'#7bbf6a':'var(--or)'};border-radius:3px;transition:width .5s"></div></div>
+        <div class="o-card-paid" style="color:${full?'#7bbf6a':'var(--dim)'}">
+          ${full?'✓ Оплачен полностью':`${fmt(o.paid||0)} ₽ из ${fmt(o.cost)} ₽`}
+          ${debt>0?`<span style="color:var(--or)"> · долг ${fmt(debt)} ₽</span>`:''}
+        </div>
+        ${urgentDeadline?`<div style="margin-top:8px;font-family:'Inter';font-size:10px;color:#cf5a4a;font-weight:600">⚠ Дедлайн: ${daysLeft===0?'сегодня':daysLeft<0?'просрочен':`${daysLeft} дн.`}</div>`:''}
+      </div>
+      <div class="o-card-foot">
+        <div>
+          <div class="o-card-status" style="color:${SCOL[o.status]||'#888'}">${o.status}</div>
+          <div class="o-card-dates">${fmtD(o.start)}${o.deadline?` → ${fmtD(o.deadline)}`:''}</div>
+        </div>
+        <div class="o-card-acts">
+          <button class="ibt" onclick="openOrderForm('${o.id}')">✏</button>
+          <button class="ibt del" onclick="deleteOrder('${o.id}')">✕</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('')+'</div>';
+}
+
+function renderOrdersTable(list,totalCost){
+  if(!list.length) return '<div class="empty">Ничего не найдено</div>';
+  const totalPaid=list.reduce((s,o)=>s+(o.paid||0),0);
+  const cols=[
+    {k:'name',   l:'Название'},
+    {k:'client', l:'Клиент'},
+    {k:'status', l:'Статус'},
+    {k:'date',   l:'Дата'},
+    {k:'cost',   l:'Сумма',   cls:'tc-sum'},
+  ];
+  const thHtml=cols.map(c=>{
+    const active=oFlt.sort===c.k;
+    const arrow=active?(oFlt.dir>0?' ↑':' ↓'):'';
+    return `<th class="${active?'sort-active':''}" onclick="setSort('${c.k}')">${c.l}${arrow}</th>`;
+  }).join('');
+  const rows=list.map(o=>{
+    const cl=clientById(o.clientId);
+    const full=(o.paid||0)>=(o.cost||0);
+    const pct=o.cost>0?Math.min((o.paid||0)/o.cost*100,100):0;
+    return `<tr>
+      <td style="padding:0;width:4px"><span class="tc-st-bar" style="background:${SCOL[o.status]||'#888'}"></span></td>
+      <td class="tc-name">${esc(o.name)}<div class="sub">${(o.types||[]).join(', ')||'—'}</div></td>
+      <td class="tc-client">${cl.icon||''} ${esc(cl.name)}</td>
+      <td class="tc-status"><span class="tag" style="background:${SCOL[o.status]+'22'||'rgba(136,136,136,.13)'};color:${SCOL[o.status]||'#888'};border-color:${SCOL[o.status]+'44'||'transparent'}">${o.status}</span></td>
+      <td class="tc-date">${fmtD(o.start)}${o.deadline?`<br>${fmtD(o.deadline)}`:''}</td>
+      <td class="tc-sum">
+        ${fmt(o.cost)} ₽
+        <div class="paid-bar"><div class="paid-fill" style="width:${pct}%;background:${full?'#7bbf6a':'var(--or)'}"></div></div>
+      </td>
+      <td class="tc-acts">
+        <button class="ibt" onclick="openOrderForm('${o.id}')">✏</button>
+        <button class="ibt del" onclick="deleteOrder('${o.id}')">✕</button>
+      </td>
+    </tr>`;
+  }).join('');
+  return `<div class="o-table-wrap"><table class="o-table">
+    <thead><tr><th style="width:4px;padding:0"></th>${thHtml}<th></th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr>
+      <td colspan="5" style="text-align:right">Итого ${list.length} заказов:</td>
+      <td class="tc-sum">${fmt(totalCost)} ₽<div class="paid-bar"><div class="paid-fill" style="width:${totalCost?Math.min(totalPaid/totalCost*100,100):0}%"></div></div></td>
+      <td></td>
+    </tr></tfoot>
+  </table></div>`;
 }
 document.getElementById('oSearch').oninput=e=>{oFlt.q=e.target.value.toLowerCase().trim();renderOrders()};
 
