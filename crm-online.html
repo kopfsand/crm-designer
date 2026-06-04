@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRM Дизайнера</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23ff5a1f'/><polyline points='5,22 11,10 17,16 23,6 27,12' fill='none' stroke='%23140a04' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<title>БЮ—РО</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 101.02 84.39'><path d='M37.08,26.85V.64l37.72,26.21V0l26.22,18.99-.02,59.95c-.05,1.09-5.65,5.45-6.06,5.45h-20.14v-12.15c-2.97.46-15.9,12.15-16.94,12.15h-19.82l-.96-.96v-11.19l-16.94,12.15H0V0l37.08,26.85Z' fill='%23ff5a1f'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -272,7 +272,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webki
 .shell{max-width:1200px;margin:0 auto;padding:0 22px 100px}
 
 /* header */
-header.top{display:flex;align-items:center;justify-content:space-between;padding:26px 4px 20px;gap:16px;flex-wrap:wrap}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:26px 0 20px;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:14px}
 .logo{width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--or);box-shadow:0 8px 26px -8px rgba(255,90,31,.7)}
 .logo svg{width:24px;height:24px}
@@ -286,9 +286,12 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .pill.act{cursor:pointer;transition:.2s}.pill.act:hover{color:var(--txt)}
 
 /* nav */
-nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:var(--nav-bg,rgba(20,18,14,.8));backdrop-filter:blur(10px);margin-bottom:24px;width:fit-content;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;max-width:100%}
-nav.tabs button{font-family:'Inter';font-size:12.5px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:10px 16px;border-radius:13px;display:flex;align-items:center;gap:7px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:var(--nav-bg,rgba(20,18,14,.8));backdrop-filter:blur(10px);margin-bottom:24px;width:100%;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;box-sizing:border-box}
+nav.tabs button{font-family:'Inter';font-size:11px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:9px 10px;border-radius:13px;display:flex;align-items:center;gap:5px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;flex:1;justify-content:center}
+nav.tabs button svg{width:14px;height:14px;flex:none}
 @media(max-width:1100px){nav.tabs button[data-view="bookmarks"] .tab-label{display:none}}
+@media(max-width:1300px){nav.tabs button .tab-label{display:none}}
+nav.tabs button .tab-label{}
 nav.tabs button svg{width:15px;height:15px;opacity:.7}
 nav.tabs button:hover{color:var(--txt)}
 nav.tabs button.active{background:var(--or);color:var(--on);box-shadow:0 8px 20px -8px rgba(255,90,31,.55)}
@@ -840,20 +843,76 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .cmp-fill.paid{background:#7bbf6a}
 
 /* heatmap */
-.heatmap-wrap{padding:16px 20px 20px;overflow-x:auto}
-.heatmap{display:flex;gap:3px}
-.hm-col{display:flex;flex-direction:column;gap:3px}
-.hm-cell{width:13px;height:13px;border-radius:3px;background:var(--ln);transition:.2s;cursor:default;position:relative}
+.heatmap-wrap{padding:14px 20px 18px;overflow-x:auto}
+.heatmap{display:flex;gap:2px;width:100%}
+.hm-col{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.hm-cell{aspect-ratio:1;border-radius:2px;background:var(--ln);transition:.2s;cursor:default;position:relative;min-width:0;width:100%}
 .hm-cell[data-v='0']{background:var(--ln)}
 .hm-cell[data-v='1']{background:rgba(255,90,31,.25)}
 .hm-cell[data-v='2']{background:rgba(255,90,31,.5)}
 .hm-cell[data-v='3']{background:rgba(255,90,31,.75)}
 .hm-cell[data-v='4']{background:var(--or)}
-.hm-months{display:flex;gap:0;padding-left:0;margin-bottom:4px;font-family:'Inter';font-size:9px;color:var(--dim);font-weight:600}
-.hm-month{flex:1;min-width:0}
+.hm-months{display:flex;gap:0;padding-left:0;margin-bottom:4px;font-family:'Inter';font-size:11px;color:var(--dim);font-weight:600;width:100%}
+.hm-month{flex:1;min-width:0;overflow:hidden}
 .hm-legend{display:flex;align-items:center;gap:6px;margin-top:10px;font-family:'Inter';font-size:9px;color:var(--dim)}
-.hm-legend .hm-cell{cursor:default;width:11px;height:11px}
+.hm-legend .hm-cell{cursor:default;width:11px;height:11px;aspect-ratio:unset;flex:none}
 
+/* ── Dash quick actions ── */
+.dash-qa{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.dash-qa-btn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:13px;border:1px solid var(--ln2);background:var(--card2);color:var(--txt);font-family:'Inter';font-size:12.5px;font-weight:700;cursor:pointer;transition:.15s;flex:1;min-width:120px;justify-content:center}
+.dash-qa-btn:hover{background:var(--card);border-color:var(--or);color:var(--or)}
+.dash-qa-btn svg{width:15px;height:15px;flex:none}
+.dash-qa-btn.primary{background:var(--or);border-color:var(--or);color:var(--on)}
+.dash-qa-btn.primary:hover{background:var(--ord)}
+.dash-goal{padding:18px 20px}
+.dash-goal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px}
+.dash-goal-title{font-family:'Inter';font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--dim)}
+.dash-goal-inp{background:transparent;border:none;border-bottom:1px solid var(--ln2);color:var(--txt);font-family:'Rubik';font-weight:700;font-size:14px;width:90px;text-align:right;outline:none;padding:2px 4px}
+.dash-goal-inp:focus{border-color:var(--or)}
+.dash-goal-nums{display:flex;align-items:baseline;gap:6px;margin-bottom:12px}
+.dash-goal-cur{font-family:'Rubik';font-weight:700;font-size:28px;letter-spacing:-.04em;color:var(--txt)}
+.dash-goal-sep{color:var(--dim2);font-size:18px}
+.dash-goal-max{font-family:'Rubik';font-weight:600;font-size:18px;color:var(--dim)}
+.dash-goal-track{height:10px;background:var(--ln);border-radius:5px;overflow:hidden;margin-bottom:8px}
+.dash-goal-fill{height:100%;border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,var(--or),#ffaa00)}
+.dash-goal-sub{font-family:'Inter';font-size:10.5px;color:var(--dim);display:flex;justify-content:space-between}
+.dash-fin{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.dash-fin-title{font-family:'Inter';font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:4px}
+.dash-fin-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card2);border:1px solid var(--ln);border-radius:11px}
+.dash-fin-label{font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);display:flex;align-items:center;gap:6px}
+.dash-fin-val{font-family:'Rubik';font-weight:700;font-size:15px;letter-spacing:-.02em}
+.dash-order-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--ln);transition:background .12s;cursor:pointer}
+.dash-order-row:last-child{border-bottom:none}
+.dash-order-row:hover{background:rgba(255,255,255,.02)}
+.dash-order-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.dash-order-body{flex:1;min-width:0}
+.dash-order-name{font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dash-order-meta{font-family:'Inter';font-size:10px;color:var(--dim);margin-top:2px}
+.dash-order-amt{font-family:'Rubik';font-weight:700;font-size:13px;white-space:nowrap;color:var(--or)}
+.dash-deadline-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--ln)}
+.dash-deadline-row:last-child{border-bottom:none}
+.dash-dl-icon{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:14px;flex:none}
+.dash-dl-body{flex:1;min-width:0}
+.dash-dl-name{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dash-dl-meta{font-family:'Inter';font-size:10px;color:var(--dim);margin-top:2px}
+.dash-dl-days{font-family:'Rubik';font-weight:700;font-size:11px;padding:3px 8px;border-radius:7px;white-space:nowrap}
+.dash-unpaid-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--ln)}
+.dash-unpaid-row:last-child{border-bottom:none}
+.dash-unpaid-ava{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:16px;background:var(--bg2);flex:none}
+.dash-unpaid-body{flex:1;min-width:0}
+.dash-unpaid-name{font-size:12.5px;font-weight:700}
+.dash-unpaid-meta{font-family:'Inter';font-size:10px;color:var(--dim);margin-top:1px}
+.dash-unpaid-amt{font-family:'Rubik';font-weight:700;font-size:14px;color:#cf5a4a;white-space:nowrap}
+.dash-remind-btn{font-family:'Inter';font-size:9px;font-weight:700;padding:3px 8px;border-radius:6px;border:1px solid var(--ln2);background:transparent;color:var(--dim);cursor:pointer;transition:.12s;white-space:nowrap}
+.dash-remind-btn:hover{border-color:var(--or);color:var(--or)}
+.dash-mini-heat{display:flex;gap:3px;width:100%}
+.dash-mh-col{display:flex;flex-direction:column;gap:3px;flex:1}
+.dash-mh-cell{width:100%;aspect-ratio:1;border-radius:3px;background:var(--ln)}
+.dash-mh-cell[data-v="1"]{background:rgba(255,90,31,.28)}
+.dash-mh-cell[data-v="2"]{background:rgba(255,90,31,.58)}
+.dash-mh-cell[data-v="3"]{background:var(--or)}
+.dash-mh-labels{display:flex;gap:3px;margin-top:5px;width:100%}
+.dash-mh-label{font-family:'Inter';font-size:11px;color:var(--dim);text-align:center;flex:1;overflow:hidden}
 /* avg check trend */
 .trend-svg-wrap{padding:8px 8px 0;position:relative}
 .an-tooltip{position:fixed;background:var(--card2);border:1px solid var(--ln2);border-radius:8px;padding:7px 11px;font-family:'Inter';font-size:11px;pointer-events:none;z-index:300;display:none;white-space:nowrap;box-shadow:0 8px 24px -8px #000}
@@ -1161,10 +1220,17 @@ input[type=number]{-moz-appearance:textfield}
 <!-- LOGIN SCREEN -->
 <div id="loginScreen" style="display:flex">
   <div class="login-card">
-    <div class="login-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#140a04" stroke-width="2.4" stroke-linecap="round"><path d="M4 18l4-7 4 4 4-9 4 5"/></svg>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px">
+      <svg viewBox="0 0 406.7 84.39" height="36" style="display:block" xmlns="http://www.w3.org/2000/svg">
+        <path d="M37.08,26.85V.64l37.72,26.21V0l26.22,18.99-.02,59.95c-.05,1.09-5.65,5.45-6.06,5.45h-20.14v-12.15c-2.97.46-15.9,12.15-16.94,12.15h-19.82l-.96-.96v-11.19l-16.94,12.15H0V0l37.08,26.85Z" fill="var(--or)"/>
+        <path d="M161.06,70.98h-24.82V27.15h36.12v8.95h-25.85v4.46h14.55c2.79,0,5.34.68,7.64,2.05,2.3,1.37,4.14,3.2,5.5,5.5,1.36,2.3,2.05,4.85,2.05,7.64,0,2.1-.39,4.07-1.18,5.91-.78,1.84-1.87,3.46-3.25,4.84-1.41,1.39-3.03,2.48-4.86,3.27s-3.8,1.19-5.9,1.19ZM159.77,62.02c1.71,0,3.18-.61,4.4-1.83,1.22-1.22,1.83-2.69,1.83-4.4s-.61-3.2-1.83-4.42c-1.22-1.21-2.69-1.82-4.4-1.82h-13.26v12.47h13.26Z" fill="var(--txt)"/>
+        <path d="M227.38,71.74c-4.38,0-8.33-.89-11.84-2.66s-6.3-4.35-8.36-7.73c-1.65-2.75-2.59-5.36-2.81-7.82h-10.42v17.45h-10.27V27.12h10.27v17.45h10.48c.12-1.43.63-3.17,1.53-5.23,1.24-2.91,2.96-5.33,5.15-7.26s4.68-3.36,7.47-4.31,5.72-1.42,8.77-1.42c4.34,0,8.27.89,11.8,2.67,3.52,1.78,6.33,4.38,8.4,7.79,2.08,3.41,3.12,7.5,3.12,12.27,0,3.63-.61,6.86-1.82,9.69-1.21,2.83-2.9,5.22-5.06,7.15s-4.64,3.39-7.44,4.35-5.79,1.45-8.97,1.45ZM228.2,62.66c3.69-.28,6.62-1.71,8.8-4.26,2.18-2.56,3.27-5.67,3.27-9.34s-1.09-6.81-3.28-9.37c-2.19-2.56-5.13-3.98-8.82-4.26h-1.56c-3.69.29-6.63,1.71-8.82,4.26-2.19,2.56-3.29,5.68-3.29,9.37s1.09,6.78,3.29,9.34c2.19,2.56,5.14,3.98,8.85,4.26h1.56Z" fill="var(--txt)"/>
+        <path d="M305.52,53.37h-47.49v-8.65h47.49v8.65Z" fill="var(--txt)"/>
+        <path d="M323.38,70.98h-10.27V27.15h24.82c2.1,0,4.06.39,5.9,1.18,1.83.78,3.45,1.87,4.86,3.25,1.39,1.41,2.47,3.03,3.25,4.86.78,1.83,1.18,3.8,1.18,5.9,0,2.79-.68,5.34-2.05,7.64-1.37,2.3-3.2,4.14-5.5,5.5-2.3,1.37-4.85,2.05-7.64,2.05h-14.55v13.45ZM336.65,48.58c1.71,0,3.18-.61,4.4-1.83,1.22-1.22,1.83-2.69,1.83-4.4s-.61-3.18-1.83-4.4c-1.22-1.22-2.69-1.83-4.4-1.83h-13.26v12.47h13.26Z" fill="var(--txt)"/>
+        <path d="M383.41,71.74c-4.38,0-8.33-.89-11.84-2.66s-6.3-4.35-8.36-7.73c-2.06-3.38-3.09-7.41-3.09-12.07,0-3.77.62-7.09,1.86-9.98,1.24-2.88,2.96-5.29,5.15-7.21,2.19-1.93,4.68-3.36,7.47-4.31,2.79-.95,5.71-1.42,8.77-1.42,4.34,0,8.27.89,11.8,2.67,3.52,1.78,6.33,4.38,8.4,7.79,2.08,3.41,3.12,7.5,3.12,12.27,0,3.63-.61,6.86-1.82,9.69-1.21,2.83-2.9,5.22-5.06,7.15-2.16,1.94-4.64,3.39-7.44,4.35-2.8.97-5.79,1.45-8.97,1.45ZM384.21,62.66c3.69-.28,6.62-1.71,8.8-4.26,2.18-2.56,3.27-5.67,3.27-9.34s-1.09-6.81-3.28-9.37c-2.19-2.56-5.14-3.98-8.85-4.26h-1.5c-3.71.29-6.65,1.71-8.83,4.26-2.18,2.56-3.27,5.68-3.27,9.37s1.09,6.78,3.27,9.34c2.18,2.56,5.12,3.98,8.83,4.26h1.56Z" fill="var(--txt)"/>
+      </svg>
+      <div style="font-family:'Inter';font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)">Операционная система фрилансеров</div>
     </div>
-    <div class="login-title">CRM Дизайнера</div>
     <div class="login-sub">Онлайн · Синхронизация</div>
 
     <!-- Tabs -->
@@ -1239,14 +1305,24 @@ input[type=number]{-moz-appearance:textfield}
 </div>
 <header class="top">
   <div class="brand">
-    <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#140a04" stroke-width="2.4" stroke-linecap="round"><path d="M4 18l4-7 4 4 4-9 4 5"/></svg></div>
-    <div><h1>CRM Дизайнера</h1><div class="sub">Автономная система</div></div>
+    <a href="#" onclick="switchView('dash');return false" style="text-decoration:none;display:flex;align-items:center;gap:14px">
+      <svg viewBox="0 0 406.7 84.39" height="32" style="display:block;flex:none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M37.08,26.85V.64l37.72,26.21V0l26.22,18.99-.02,59.95c-.05,1.09-5.65,5.45-6.06,5.45h-20.14v-12.15c-2.97.46-15.9,12.15-16.94,12.15h-19.82l-.96-.96v-11.19l-16.94,12.15H0V0l37.08,26.85Z" fill="var(--or)"/>
+          <path d="M161.06,70.98h-24.82V27.15h36.12v8.95h-25.85v4.46h14.55c2.79,0,5.34.68,7.64,2.05,2.3,1.37,4.14,3.2,5.5,5.5,1.36,2.3,2.05,4.85,2.05,7.64,0,2.1-.39,4.07-1.18,5.91-.78,1.84-1.87,3.46-3.25,4.84-1.41,1.39-3.03,2.48-4.86,3.27s-3.8,1.19-5.9,1.19ZM159.77,62.02c1.71,0,3.18-.61,4.4-1.83,1.22-1.22,1.83-2.69,1.83-4.4s-.61-3.2-1.83-4.42c-1.22-1.21-2.69-1.82-4.4-1.82h-13.26v12.47h13.26Z" fill="var(--txt)"/>
+          <path d="M227.38,71.74c-4.38,0-8.33-.89-11.84-2.66s-6.3-4.35-8.36-7.73c-1.65-2.75-2.59-5.36-2.81-7.82h-10.42v17.45h-10.27V27.12h10.27v17.45h10.48c.12-1.43.63-3.17,1.53-5.23,1.24-2.91,2.96-5.33,5.15-7.26s4.68-3.36,7.47-4.31,5.72-1.42,8.77-1.42c4.34,0,8.27.89,11.8,2.67,3.52,1.78,6.33,4.38,8.4,7.79,2.08,3.41,3.12,7.5,3.12,12.27,0,3.63-.61,6.86-1.82,9.69-1.21,2.83-2.9,5.22-5.06,7.15s-4.64,3.39-7.44,4.35-5.79,1.45-8.97,1.45ZM228.2,62.66c3.69-.28,6.62-1.71,8.8-4.26,2.18-2.56,3.27-5.67,3.27-9.34s-1.09-6.81-3.28-9.37c-2.19-2.56-5.13-3.98-8.82-4.26h-1.56c-3.69.29-6.63,1.71-8.82,4.26-2.19,2.56-3.29,5.68-3.29,9.37s1.09,6.78,3.29,9.34c2.19,2.56,5.14,3.98,8.85,4.26h1.56Z" fill="var(--txt)"/>
+          <path d="M305.52,53.37h-47.49v-8.65h47.49v8.65Z" fill="var(--txt)"/>
+          <path d="M323.38,70.98h-10.27V27.15h24.82c2.1,0,4.06.39,5.9,1.18,1.83.78,3.45,1.87,4.86,3.25,1.39,1.41,2.47,3.03,3.25,4.86.78,1.83,1.18,3.8,1.18,5.9,0,2.79-.68,5.34-2.05,7.64-1.37,2.3-3.2,4.14-5.5,5.5-2.3,1.37-4.85,2.05-7.64,2.05h-14.55v13.45ZM336.65,48.58c1.71,0,3.18-.61,4.4-1.83,1.22-1.22,1.83-2.69,1.83-4.4s-.61-3.18-1.83-4.4c-1.22-1.22-2.69-1.83-4.4-1.83h-13.26v12.47h13.26Z" fill="var(--txt)"/>
+          <path d="M383.41,71.74c-4.38,0-8.33-.89-11.84-2.66s-6.3-4.35-8.36-7.73c-2.06-3.38-3.09-7.41-3.09-12.07,0-3.77.62-7.09,1.86-9.98,1.24-2.88,2.96-5.29,5.15-7.21,2.19-1.93,4.68-3.36,7.47-4.31,2.79-.95,5.71-1.42,8.77-1.42,4.34,0,8.27.89,11.8,2.67,3.52,1.78,6.33,4.38,8.4,7.79,2.08,3.41,3.12,7.5,3.12,12.27,0,3.63-.61,6.86-1.82,9.69-1.21,2.83-2.9,5.22-5.06,7.15-2.16,1.94-4.64,3.39-7.44,4.35-2.8.97-5.79,1.45-8.97,1.45ZM384.21,62.66c3.69-.28,6.62-1.71,8.8-4.26,2.18-2.56,3.27-5.67,3.27-9.34s-1.09-6.81-3.28-9.37c-2.19-2.56-5.14-3.98-8.85-4.26h-1.5c-3.71.29-6.65,1.71-8.83,4.26-2.18,2.56-3.27,5.68-3.27,9.37s1.09,6.78,3.27,9.34c2.18,2.56,5.12,3.98,8.83,4.26h1.56Z" fill="var(--txt)"/>
+      </svg>
+      <div style="width:1px;height:32px;background:var(--ln2);flex:none"></div>
+      <div style="font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);line-height:1.4;max-width:120px">Операционная система фрилансеров</div>
+    </a>
   </div>
   <div class="hpills">
     <span class="pill" id="today"></span>
+    <span class="pill" id="clockWidget" style="font-family:'Rubik';font-weight:600;font-size:12px;letter-spacing:.04em;min-width:52px;text-align:center"></span>
     <span class="sync-dot"><span id="syncStatus" style="color:var(--dim)">☁ Подключение…</span></span>
     <button class="theme-toggle" id="themeToggle" title="Переключить тему" onclick="toggleTheme()"></button>
-    <button class="pill act" onclick="openGlobalSearch()" title="Глобальный поиск (Ctrl+K)" style="width:36px;height:36px;padding:0;display:grid;place-items:center;border:none;cursor:pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
     <div class="user-badge" id="userBadge">
       <img id="userAvatar" src="" alt="" style="display:none">
       <span class="unm" id="userDisplayName"></span>
@@ -1255,25 +1331,47 @@ input[type=number]{-moz-appearance:textfield}
 </header>
 
 <nav class="tabs" id="tabs">
-  <button class="active" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Обзор</button>
-  <button data-view="clients"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg>Клиенты</button>
-  <button data-view="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>Заказы</button>
-  <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3M12 12l-3 4"/></svg>Аналитика</button>
-  <button data-view="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>Планер</button>
-  <button data-view="tracker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>Время</button>
-  <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>Финансы</button>
-  <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>Счёт</button>
-  <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Контакты</button>
-  <button data-view="bookmarks" title="Закладки" style="padding:10px 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+  <button class="active" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-label">Обзор</span></button>
+  <button data-view="clients"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg><span class="tab-label">Клиенты</span></button>
+  <button data-view="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span class="tab-label">Заказы</span></button>
+  <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3M12 12l-3 4"/></svg><span class="tab-label">Аналитика</span></button>
+  <button data-view="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span class="tab-label">Планер</span></button>
+  <button data-view="tracker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span class="tab-label">Время</span></button>
+  <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg><span class="tab-label">Финансы</span></button>
+  <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span class="tab-label">Счёт</span></button>
+  <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="tab-label">Контакты</span></button>
+  <div style="width:1px;background:var(--ln2);margin:6px 2px;border-radius:1px;flex:none"></div>
+  <button onclick="openGlobalSearch()" title="Поиск (Ctrl+K)" style="flex:none;padding:10px 13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+  <button data-view="bookmarks" title="Закладки" style="flex:none;padding:10px 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
 </nav>
 
 <!-- DASH -->
 <section class="view show" id="view-dash">
+  <!-- Quick actions -->
+  <div class="dash-qa" id="dashQa"></div>
+  <!-- KPIs -->
   <div class="g4" id="dashKpis"></div>
+  <!-- Active orders + Deadlines — ВВЕРХУ -->
+  <div class="g2">
+    <div class="panel"><div class="ph"><span class="t">В работе</span><span class="n" id="dashActiveNote"></span></div><div class="rows" id="dashActiveOrders"></div></div>
+    <div class="panel"><div class="ph"><span class="t">Дедлайны и задачи</span><span class="n">ближайшие</span></div><div class="rows" id="dashDeadlines"></div></div>
+  </div>
+  <!-- Goal (wide) + Finance widget -->
+  <div class="g2">
+    <div class="panel" id="dashGoalPanel"></div>
+    <div class="panel" id="dashFinWidget"></div>
+  </div>
+  <!-- Charts row -->
   <div class="g2">
     <div class="panel"><div class="ph"><span class="t">Выручка по месяцам</span><span class="n">по дате начала</span></div><div class="vbars" id="mBars"></div></div>
     <div class="panel dial-card"><div class="dial-wrap" id="collectDial"></div><div class="dial-foot" id="collectFoot"></div></div>
   </div>
+  <!-- Unpaid + Mini heatmap -->
+  <div class="g2">
+    <div class="panel"><div class="ph"><span class="t">Незакрытые платежи</span><span class="n" id="dashDebtNote"></span></div><div class="rows" id="dashUnpaid"></div></div>
+    <div class="panel"><div class="ph"><span class="t">Активность</span><span class="n">последние 12 нед.</span></div><div id="dashMiniHeat" style="padding:12px 16px 16px"></div></div>
+  </div>
+  <!-- Top rows -->
   <div class="g2">
     <div class="panel"><div class="ph"><span class="t">Топ клиентов</span><span class="n">выручка</span></div><div class="rows" id="topCl"></div></div>
     <div class="panel"><div class="ph"><span class="t">Типы работ</span><span class="n">объём</span></div><div class="rows" id="topTy"></div></div>
@@ -1365,7 +1463,7 @@ input[type=number]{-moz-appearance:textfield}
     <div class="panel"><div class="ph"><span class="t">Радар по типам</span></div><div class="radar-wrap" id="radar"></div></div>
   </div>
   <!-- Heatmap -->
-  <div class="panel"><div class="ph"><span class="t">Тепловая карта активности</span><span class="n">заказы по неделям</span></div><div class="heatmap-wrap" id="heatmapWrap"></div></div>
+  <div class="panel" style="margin-bottom:16px"><div class="ph"><span class="t">Тепловая карта активности</span><span class="n">заказы по неделям</span></div><div class="heatmap-wrap" id="heatmapWrap"></div></div>
   <!-- Charts row 3 -->
   <div class="g2">
     <div class="panel"><div class="ph"><span class="t">Воронка</span></div><div class="funnel" id="funnel"></div></div>
@@ -2070,15 +2168,211 @@ function deleteLog(id){
 function renderDash(){
   const {totalCost,totalPaid,totalDebt,avg,typeArr,clAgg,monthArr}=agg();
   const pct=totalCost?totalPaid/totalCost:0;
+
+  // ── Quick actions ──
+  document.getElementById('dashQa').innerHTML=`
+    <button class="dash-qa-btn primary" onclick="openOrderForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Новый заказ
+    </button>
+    <button class="dash-qa-btn" onclick="openClientForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/><path d="M19 8v6M22 11h-6"/></svg>Клиент
+    </button>
+    <button class="dash-qa-btn" onclick="openExpenseForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Расход
+    </button>
+    <button class="dash-qa-btn" onclick="openTaskForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>Задача
+    </button>
+    <button class="dash-qa-btn" onclick="switchView('finance')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>Финансы
+    </button>`;
+
+  // ── KPIs ──
   document.getElementById('dashKpis').innerHTML=`
     <div class="ks hot"><div class="k">Выручка</div><div class="v">${fmt(totalCost)}<span class="u"> ₽</span></div><div class="s">${S.orders.length} заказов</div></div>
     <div class="ks"><div class="k">Получено</div><div class="v">${fmt(totalPaid)}<span class="u"> ₽</span></div><div class="s">${Math.round(pct*100)}% от суммы</div></div>
     <div class="ks"><div class="k">Дебиторка</div><div class="v">${fmt(totalDebt)}<span class="u"> ₽</span></div><div class="s">ожидается</div></div>
     <div class="ks"><div class="k">Средний чек</div><div class="v">${fmt(avg)}<span class="u"> ₽</span></div><div class="s">${S.clients.length} клиентов</div></div>`;
+
+  // ── Goal widget ──
+  if(!S.monthGoal) S.monthGoal=0;
+  const now2=new Date();
+  const curMonth=now2.toISOString().slice(0,7);
+  const monthOrders=S.orders.filter(o=>o.start&&o.start.slice(0,7)===curMonth);
+  const monthPaid=monthOrders.reduce((s,o)=>s+(o.paid||0),0);
+  const monthCost=monthOrders.reduce((s,o)=>s+(o.cost||0),0);
+  const goalPct=S.monthGoal>0?Math.min(monthPaid/S.monthGoal*100,100):0;
+  const remaining=S.monthGoal>0?Math.max(S.monthGoal-monthPaid,0):0;
+  // days in month stats
+  const daysInMonth=new Date(now2.getFullYear(),now2.getMonth()+1,0).getDate();
+  const dayOfMonth=now2.getDate();
+  const daysLeft=daysInMonth-dayOfMonth;
+  const dailyAvgMonth=dayOfMonth>0?Math.round(monthPaid/dayOfMonth):0;
+  const projectedMonth=Math.round(dailyAvgMonth*daysInMonth);
+  // prev month
+  const prevMonthDate=new Date(now2.getFullYear(),now2.getMonth()-1,1);
+  const prevMonthKey=prevMonthDate.toISOString().slice(0,7);
+  const prevMonthPaid=S.orders.filter(o=>o.start&&o.start.slice(0,7)===prevMonthKey).reduce((s,o)=>s+(o.paid||0),0);
+  const vsLast=prevMonthPaid>0?Math.round((monthPaid-prevMonthPaid)/prevMonthPaid*100):null;
+  // motivation
+  const motivations=['Отличный темп! 🔥','Продолжай в том же духе 💪','Ты справишься 🚀','Каждый заказ приближает к цели ✦','Фокус — ключ к успеху 🎯'];
+  const motiv=goalPct>=100?'Цель достигнута! 🏆':motivations[dayOfMonth%motivations.length];
+
+  document.getElementById('dashGoalPanel').innerHTML=`<div class="dash-goal">
+    <div class="dash-goal-top">
+      <div>
+        <div class="dash-goal-title">🎯 Цель месяца</div>
+        <div style="font-family:'Inter';font-size:10px;color:var(--dim);margin-top:3px">${motiv}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+        <input class="dash-goal-inp" id="goalInp" type="number" min="0" value="${S.monthGoal||''}" placeholder="цель" onchange="S.monthGoal=+this.value||0;save();renderDash()">
+        <span style="font-family:'Inter';font-size:10px;color:var(--dim)">₽</span>
+      </div>
+    </div>
+    <div class="dash-goal-nums">
+      <span class="dash-goal-cur">${fmt(monthPaid)}</span>
+      <span class="dash-goal-sep">/</span>
+      <span class="dash-goal-max">${fmt(S.monthGoal||0)} ₽</span>
+      ${vsLast!==null?`<span style="font-family:'Inter';font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:4px;${vsLast>=0?'background:rgba(123,191,106,.14);color:#7bbf6a':'background:rgba(207,90,74,.14);color:#cf5a4a'}">${vsLast>=0?'+':''}${vsLast}% vs прош.</span>`:''}
+    </div>
+    <div class="dash-goal-track"><div class="dash-goal-fill" style="width:0" id="goalFill"></div></div>
+    <div class="dash-goal-sub" style="margin-bottom:14px">
+      <span style="color:${goalPct>=100?'#7bbf6a':'var(--dim)'}">${goalPct>=100?'✓ Цель выполнена!':S.monthGoal>0?`осталось ${fmt(remaining)} ₽`:'Задайте цель →'}</span>
+      <span style="color:${goalPct>=100?'#7bbf6a':'var(--or);font-weight:700'}">${Math.round(goalPct)}%</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:10px 12px">
+        <div style="font-family:'Inter';font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);margin-bottom:5px">Заказов</div>
+        <div style="font-family:'Rubik';font-weight:700;font-size:18px;letter-spacing:-.02em">${monthOrders.length}</div>
+        <div style="font-family:'Inter';font-size:9px;color:var(--dim);margin-top:2px">в этом месяце</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:10px 12px">
+        <div style="font-family:'Inter';font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);margin-bottom:5px">В день</div>
+        <div style="font-family:'Rubik';font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--or)">${fmt(dailyAvgMonth)}</div>
+        <div style="font-family:'Inter';font-size:9px;color:var(--dim);margin-top:2px">ср. доход ₽</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--ln);border-radius:10px;padding:10px 12px">
+        <div style="font-family:'Inter';font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--dim2);margin-bottom:5px">Прогноз</div>
+        <div style="font-family:'Rubik';font-weight:700;font-size:18px;letter-spacing:-.02em;color:${projectedMonth>=(S.monthGoal||0)&&S.monthGoal>0?'#7bbf6a':'var(--txt)'}">${fmt(projectedMonth)}</div>
+        <div style="font-family:'Inter';font-size:9px;color:var(--dim);margin-top:2px">${daysLeft} дн. до конца</div>
+      </div>
+    </div>
+  </div>`;
+  setTimeout(()=>{const f=document.getElementById('goalFill');if(f)f.style.width=goalPct+'%';},80);
+
+  // ── Finance widget ──
+  const totalExp=(S.expenses||[]).reduce((s,e)=>s+(e.amount||0),0);
+  const taxAmt=Math.round(totalPaid*6/100);
+  const debtOrders=S.orders.filter(o=>(o.cost||0)>(o.paid||0));
+  document.getElementById('dashFinWidget').innerHTML=`<div class="dash-fin">
+    <div class="dash-fin-title">💰 Финансовая сводка</div>
+    <div class="dash-fin-row">
+      <span class="dash-fin-label">📥 Оплачено</span>
+      <span class="dash-fin-val" style="color:#7bbf6a">${fmt(totalPaid)} ₽</span>
+    </div>
+    <div class="dash-fin-row">
+      <span class="dash-fin-label">📤 Расходы</span>
+      <span class="dash-fin-val" style="color:#cf5a4a">${fmt(totalExp)} ₽</span>
+    </div>
+    <div class="dash-fin-row">
+      <span class="dash-fin-label">🧾 Налог (~6%)</span>
+      <span class="dash-fin-val" style="color:#d6bd6a">${fmt(taxAmt)} ₽</span>
+    </div>
+    <div class="dash-fin-row" style="border-color:rgba(123,191,106,.3)">
+      <span class="dash-fin-label">✦ Прибыль</span>
+      <span class="dash-fin-val" style="color:${totalPaid-totalExp-taxAmt>=0?'#7bbf6a':'#cf5a4a'}">${fmt(totalPaid-totalExp-taxAmt)} ₽</span>
+    </div>
+  </div>`;
+
+  // ── Chart ──
   const mxM=Math.max(...monthArr.map(m=>m.v),1);
   document.getElementById('mBars').innerHTML=monthArr.map(m=>`<div class="vb"><div class="tr"><div class="fill" data-h="${m.v/mxM*100}" style="height:0"><span class="pv">${fmt(m.v)}</span></div></div><div class="xl">${m.l}</div></div>`).join('');
   document.getElementById('collectDial').innerHTML=buildDial(pct,Math.round(pct*100)+'%','собрано');
   document.getElementById('collectFoot').innerHTML=`<span class="pill2">получено <b>${fmt(totalPaid)} ₽</b></span><span class="pill2">долг <b>${fmt(totalDebt)} ₽</b></span>`;
+
+  // ── Active orders ──
+  const activeOrders=S.orders.filter(o=>o.status==='wip'||o.status==='review').sort((a,b)=>(a.end||'9')>(b.end||'9')?1:-1).slice(0,5);
+  document.getElementById('dashActiveNote').textContent=`${activeOrders.length} активных`;
+  document.getElementById('dashActiveOrders').innerHTML=activeOrders.length?activeOrders.map(o=>{
+    const cl=S.clients.find(c=>c.id===o.clientId);
+    const daysLeft=o.end?Math.ceil((new Date(o.end)-Date.now())/86400000):null;
+    const urgent=daysLeft!==null&&daysLeft<=3;
+    return `<div class="dash-order-row" onclick="switchView('orders')">
+      <div class="dash-order-dot" style="background:${SCOL[o.status]||'#888'}"></div>
+      <div class="dash-order-body">
+        <div class="dash-order-name">${esc(o.name)}</div>
+        <div class="dash-order-meta">${cl?esc(cl.name):'—'}${daysLeft!==null?` · <span style="color:${urgent?'#cf5a4a':'var(--dim)'}">${daysLeft<=0?'просрочен':daysLeft+'д.'}</span>`:''}
+        </div>
+      </div>
+      <div class="dash-order-amt">${fmt(o.cost)} ₽</div>
+    </div>`;
+  }).join(''):`<div style="padding:20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2)">Нет активных заказов</div>`;
+
+  // ── Deadlines (orders with end date + planner tasks) ──
+  const now=Date.now();
+  const soon=7*86400000;
+  const deadlineOrders=S.orders.filter(o=>o.end&&(new Date(o.end)-now)<soon&&(new Date(o.end)-now)>-86400000).map(o=>({name:o.name,date:o.end,type:'order',icon:'📋'}));
+  const deadlineTasks=(S.tasks||[]).filter(t=>t.due&&(new Date(t.due)-now)<soon&&(new Date(t.due)-now)>-86400000&&!t.done).map(t=>({name:t.task,date:t.due,type:'task',icon:'✅'}));
+  const allDeadlines=[...deadlineOrders,...deadlineTasks].sort((a,b)=>a.date>b.date?1:-1).slice(0,6);
+  document.getElementById('dashDeadlines').innerHTML=allDeadlines.length?allDeadlines.map(d=>{
+    const days=Math.ceil((new Date(d.date)-now)/86400000);
+    const col=days<=0?'#cf5a4a':days<=2?'#d6bd6a':'#7bbf6a';
+    const bg=days<=0?'rgba(207,90,74,.12)':days<=2?'rgba(214,189,106,.12)':'rgba(123,191,106,.12)';
+    return `<div class="dash-deadline-row">
+      <div class="dash-dl-icon" style="background:${bg}">${d.icon}</div>
+      <div class="dash-dl-body">
+        <div class="dash-dl-name">${esc(d.name)}</div>
+        <div class="dash-dl-meta">${fmtD(d.date)} · ${d.type==='order'?'заказ':'задача'}</div>
+      </div>
+      <div class="dash-dl-days" style="color:${col};background:${bg}">${days<=0?'просрочен':days===0?'сегодня':days+'д.'}</div>
+    </div>`;
+  }).join(''):`<div style="padding:20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2)">Дедлайнов на этой неделе нет 🎉</div>`;
+
+  // ── Unpaid debts ──
+  const unpaidClients=clAgg.filter(c=>c.debt>0).sort((a,b)=>b.debt-a.debt).slice(0,5);
+  document.getElementById('dashDebtNote').textContent=unpaidClients.length?`${fmt(unpaidClients.reduce((s,c)=>s+c.debt,0))} ₽`:'';
+  document.getElementById('dashUnpaid').innerHTML=unpaidClients.length?unpaidClients.map(c=>{
+    const lastOrder=ordersOf(c.id).sort((a,b)=>a.start<b.start?1:-1)[0];
+    const daysSince=lastOrder?.start?Math.floor((now-new Date(lastOrder.start))/86400000):null;
+    return `<div class="dash-unpaid-row">
+      <div class="dash-unpaid-ava">${c.icon}</div>
+      <div class="dash-unpaid-body">
+        <div class="dash-unpaid-name">${esc(c.name)}</div>
+        <div class="dash-unpaid-meta">${daysSince!==null?`${daysSince} дн. назад · `:''} ${c.cnt} заказов</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+        <div class="dash-unpaid-amt">${fmt(c.debt)} ₽</div>
+        <button class="dash-remind-btn" onclick="toast('Напоминание отправлено ${esc(c.name)}')">напомнить</button>
+      </div>
+    </div>`;
+  }).join(''):`<div style="padding:20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2)">Все долги закрыты ✓</div>`;
+
+  // ── Mini heatmap (12 weeks) ──
+  const miniHeat=document.getElementById('dashMiniHeat');
+  if(miniHeat){
+    const counts={};
+    S.orders.forEach(o=>{if(!o.start)return;counts[o.start.slice(0,10)]=(counts[o.start.slice(0,10)]||0)+1;});
+    const maxC=Math.max(...Object.values(counts),1);
+    const hStart=new Date(); hStart.setDate(hStart.getDate()-83); hStart.setDate(hStart.getDate()-hStart.getDay()+1);
+    const MO=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+    let cols='',labels='';let cur=new Date(hStart);
+    for(let w=0;w<12;w++){
+      let cells='';
+      const mo=cur.getMonth();
+      for(let d=0;d<7;d++){
+        const k=cur.toISOString().slice(0,10);
+        const v=counts[k]||0;
+        const lv=v===0?0:Math.min(3,Math.ceil(v/maxC*3));
+        cells+=`<div class="dash-mh-cell" data-v="${lv}" title="${k}: ${v}"></div>`;
+        cur.setDate(cur.getDate()+1);
+      }
+      cols+=`<div class="dash-mh-col">${cells}</div>`;
+      labels+=`<div class="dash-mh-label">${w%3===0?MO[mo]:''}</div>`;
+    }
+    miniHeat.innerHTML=`<div class="dash-mini-heat">${cols}</div><div class="dash-mh-labels">${labels}</div>`;
+  }
+
+  // ── Top clients & types ──
   const mxC=Math.max(...clAgg.map(c=>c.cost),1);
   document.getElementById('topCl').innerHTML=clAgg.slice(0,5).map((c,i)=>`<div class="row-item">
     <div class="badge-ic ${i===0?'hot':''}">${c.icon}</div>
@@ -2091,6 +2385,7 @@ function renderDash(){
     <div class="row-id"><div class="nm">${t.k}</div><div class="sb">${t.cnt} зак · ${Math.round(t.cost/totalCost*100)}%</div></div>
     <svg class="row-spark" viewBox="0 0 72 28"><rect x="0" y="${28-(t.cost/mxT*24)}" width="72" height="${t.cost/mxT*24}" rx="3" fill="${i===0?'var(--or)':'var(--ln2)'}"/></svg>
     <div class="row-val"><div class="v">${fmt(t.cost)}</div><div class="u">₽</div></div></div>`).join('');
+
   animateDash();
 }
 
@@ -2429,11 +2724,11 @@ function buildHeatmap(orders){
     }
     cols.push(`<div class="hm-col">${cells.join('')}</div>`);
   }
-  // month labels
+  // month labels — flex proportional, not fixed px
   const mlabels=`<div class="hm-months">${months.map((m,i)=>{
     const next=months[i+1]?.w||53;
     const span=next-m.w;
-    return `<div style="width:${span*16}px;flex:none">${m.name}</div>`;
+    return `<div class="hm-month" style="flex:${span}">${m.name}</div>`;
   }).join('')}</div>`;
   wrap.innerHTML=mlabels+`<div class="heatmap">${cols.join('')}</div>
     <div class="hm-legend"><span>меньше</span>
@@ -2525,7 +2820,7 @@ function renderAnalytics(){
     const data=typeArr.slice(0,6);const maxR=Math.max(...data.map(d=>d.cost),1);
     const sz=220,cx=sz/2,cy=sz/2,R=85,N=data.length;let gr='',ax='',lb='';
     for(let g=1;g<=3;g++){const r=R*g/3;let pp='';for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;pp+=`${cx+Math.cos(a)*r},${cy+Math.sin(a)*r} `}gr+=`<polygon points="${pp}" fill="none" stroke="var(--ln)" stroke-width="1"/>`}
-    for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;ax+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="var(--ln)" stroke-width="1"/>`;lb+=`<text x="${(cx+Math.cos(a)*(R+16)).toFixed(1)}" y="${(cy+Math.sin(a)*(R+16)).toFixed(1)}" fill="var(--dim)" font-size="9" font-family="Inter" text-anchor="middle" dominant-baseline="middle">${data[i].k}</text>`}
+    for(let i=0;i<N;i++){const a=i/N*2*Math.PI-Math.PI/2;ax+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*R}" y2="${cy+Math.sin(a)*R}" stroke="var(--ln)" stroke-width="1"/>`;lb+=`<text x="${(cx+Math.cos(a)*(R+18)).toFixed(1)}" y="${(cy+Math.sin(a)*(R+18)).toFixed(1)}" fill="var(--dim)" font-size="12" font-family="Inter" text-anchor="middle" dominant-baseline="middle">${data[i].k}</text>`}
     let poly='';data.forEach((d,i)=>{const a=i/N*2*Math.PI-Math.PI/2;const r=R*d.cost/maxR;poly+=`${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)} `});
     document.getElementById('radar').innerHTML=`<svg width="${sz+40}" height="${sz}" viewBox="-20 0 ${sz+40} ${sz}">${gr}${ax}<polygon points="${poly}" fill="rgba(255,90,31,.15)" stroke="var(--or)" stroke-width="2.5" stroke-linejoin="round"/>${lb}</svg>`;
   }
@@ -4173,6 +4468,11 @@ window.S = S; // expose for Firebase module
 window.refreshAll = refreshAll;
 loadWtypes();
 document.getElementById('today').textContent=new Date().toLocaleDateString('ru-RU',{day:'2-digit',month:'short'}).toUpperCase();
+(function updateClock(){
+  const el=document.getElementById('clockWidget');
+  if(el){const n=new Date();el.textContent=n.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+  setTimeout(updateClock,1000);
+})();
 document.getElementById('clSearch').oninput=e=>{clFlt.q=e.target.value.toLowerCase().trim();renderClients()};
 document.getElementById('contactSearch').oninput=e=>{contactFlt.q=e.target.value.toLowerCase().trim();renderContacts()};
 initialized.dash=true;
