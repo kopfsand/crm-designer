@@ -19,7 +19,7 @@ import {
   signInAnonymously, linkWithPopup,
   signOut, onAuthStateChanged, sendPasswordResetEmail
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getDatabase, ref, set, get, onValue, off }
+import { getDatabase, ref, set, onValue, off }
   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
 const firebaseConfig = {
@@ -167,20 +167,7 @@ function setAuthError(msg, isSuccess=false) {
 }
 
 /* ---------- ПЛАН ПОЛЬЗОВАТЕЛЯ ---------- */
-async function loadUserMeta(uid) {
-  try {
-    const snap = await get(ref(db, 'users/' + uid + '/meta'));
-    const meta = snap.val();
-    if(window.Plan) {
-      window.Plan.setFromFirebase(meta);
-      requestAnimationFrame(() => window.Plan._badge());
-    }
-  } catch(e) {
-    console.warn('Meta read error:', e);
-    if(window.Plan) window.Plan.setFromFirebase(null);
-  }
-}
-// Используется вебхуком Robokassa для активации тарифа
+// Загрузка через onValue в subscribeToData (реалтайм)
 window._fbWriteMeta = async function(uid, meta) {
   await set(ref(db, 'users/' + uid + '/meta'), meta);
 };
@@ -192,7 +179,6 @@ onAuthStateChanged(auth, user => {
   if(user) {
     showApp(user);
     subscribeToData(user.uid);
-    loadUserMeta(user.uid);
   } else {
     showLogin();
     setSyncStatus('loading');
@@ -201,6 +187,8 @@ onAuthStateChanged(auth, user => {
 });
 
 /* ---------- REALTIME SYNC ---------- */
+let metaRef = null;
+
 function subscribeToData(uid) {
   if(dbRef) off(dbRef);
   dbRef = ref(db, 'users/' + uid + '/data');
@@ -224,6 +212,13 @@ function subscribeToData(uid) {
   }, err => {
     console.error('Firebase read error:', err);
     setSyncStatus('error');
+  });
+
+  // Слушатель тарифного плана — обновляет бейдж в реальном времени
+  if(metaRef) off(metaRef);
+  metaRef = ref(db, 'users/' + uid + '/meta');
+  onValue(metaRef, snap => {
+    if(window.Plan) window.Plan.setFromFirebase(snap.val());
   });
 }
 
@@ -408,10 +403,8 @@ nav.tabs button.active svg{opacity:1}
 .cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .cl{border:1px solid var(--ln);border-radius:var(--r);background:var(--card);overflow:hidden;transition:.22s}
 .cl:hover{border-color:var(--ln2);box-shadow:0 20px 44px -24px #000;transform:translateY(-2px)}
-.cl.lead{border-color:var(--orp)}
 .cl-head{display:flex;gap:14px;padding:18px 20px 14px;align-items:center}
 .cl-ava{width:48px;height:48px;border-radius:13px;flex:none;display:grid;place-items:center;font-size:22px;background:var(--bg2);border:1px solid var(--ln2)}
-.cl.lead .cl-ava{background:var(--or);border-color:var(--or)}
 .cl-nm{flex:1;min-width:0}
 .cl-nm .nm{font-family:'Inter';font-weight:700;font-size:18px;line-height:1.05}
 .cl-nm .tg{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center}
@@ -2560,15 +2553,15 @@ function renderDash(){
   // ── Top clients & types ──
   const mxC=Math.max(...clAgg.map(c=>c.cost),1);
   document.getElementById('topCl').innerHTML=clAgg.slice(0,5).map((c,i)=>`<div class="row-item">
-    <div class="badge-ic ${i===0?'hot':''}">${c.icon}</div>
+    <div class="badge-ic">${c.icon}</div>
     <div class="row-id"><div class="nm">${c.name}</div><div class="sb">${c.cnt} заказов · ${c.type}</div></div>
-    <svg class="row-spark" viewBox="0 0 72 28">${spark(ordersOf(c.id).sort((a,b)=>a.start<b.start?-1:1).map(o=>o.cost),72,28,i===0?'var(--or)':'var(--dim)')}</svg>
+    <svg class="row-spark" viewBox="0 0 72 28">${spark(ordersOf(c.id).sort((a,b)=>a.start<b.start?-1:1).map(o=>o.cost),72,28,'var(--or)')}</svg>
     <div class="row-val"><div class="v">${fmt(c.cost)}</div><div class="u">₽</div></div></div>`).join('');
   const mxT=Math.max(...typeArr.map(t=>t.cost),1);
   document.getElementById('topTy').innerHTML=typeArr.slice(0,6).map((t,i)=>`<div class="row-item">
-    <div class="badge-ic ${i===0?'hot':''}" style="font-size:14px">${({Визуализация:'🖼',Иллюстрация:'✏️',Логотип:'✦',Упаковка:'📦',Баннер:'🚩',Другое:'◆'})[t.k]||'●'}</div>
+    <div class="badge-ic" style="font-size:14px">${({Визуализация:'🖼',Иллюстрация:'✏️',Логотип:'✦',Упаковка:'📦',Баннер:'🚩',Другое:'◆'})[t.k]||'●'}</div>
     <div class="row-id"><div class="nm">${t.k}</div><div class="sb">${t.cnt} зак · ${Math.round(t.cost/totalCost*100)}%</div></div>
-    <svg class="row-spark" viewBox="0 0 72 28"><rect x="0" y="${28-(t.cost/mxT*24)}" width="72" height="${t.cost/mxT*24}" rx="3" fill="${i===0?'var(--or)':'var(--ln2)'}"/></svg>
+    <svg class="row-spark" viewBox="0 0 72 28"><rect x="0" y="${28-(t.cost/mxT*24)}" width="72" height="${t.cost/mxT*24}" rx="3" fill="var(--or)" opacity="${Math.max(0.35,1-i*0.15).toFixed(2)}"/></svg>
     <div class="row-val"><div class="v">${fmt(t.cost)}</div><div class="u">₽</div></div></div>`).join('');
 
   animateDash();
@@ -2596,7 +2589,7 @@ function renderClients(){
   document.getElementById('clGrid').innerHTML=filtered.map((c,i)=>{
     const os=ordersOf(c.id).sort((a,b)=>a.start<b.start?1:-1);
     const rsInfo=REL_STATUS_MAP[c.relStatus||'active']||REL_STATUS_MAP.active;
-    return `<div class="cl ${i===0&&c.cost>0&&clFlt.status==='all'?'lead':''}" id="cl_${c.id}">
+    return `<div class="cl" id="cl_${c.id}">
       <div class="cl-head">
         <div class="cl-ava">${c.icon}</div>
         <div class="cl-nm"><div class="nm">${esc(c.name)}</div>
@@ -3241,7 +3234,7 @@ function renderTracker(){
   const byA={};S.timelog.forEach(l=>byA[l.act||'—']=(byA[l.act||'—']||0)+(l.h||0));
   const aArr=Object.entries(byA).map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v);
   document.getElementById('actRows').innerHTML=aArr.map((a,i)=>`<div class="row-item">
-    <div class="badge-ic ${i===0?'hot':''}" style="background:${i===0?'var(--or)':ACOL[a.k]||'var(--bg2)'};${i===0?'':'border-color:var(--ln2)'};border-color:${ACOL[a.k]||'var(--ln2)'}"><span style="width:11px;height:11px;border-radius:50%;background:${i===0?'var(--on)':ACOL[a.k]||'#888'};display:block"></span></div>
+    <div class="badge-ic" style="background:${ACOL[a.k]||'var(--bg2)'};border-color:${ACOL[a.k]||'var(--ln2)'}"><span style="width:11px;height:11px;border-radius:50%;background:${ACOL[a.k]||'#888'};display:block"></span></div>
     <div class="row-id"><div class="nm">${a.k}</div><div class="sb">${totalH?Math.round(a.v/totalH*100):0}%</div></div>
     <div class="row-val"><div class="v">${a.v}</div><div class="u">ч</div></div></div>`).join('');
   // log
