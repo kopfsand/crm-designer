@@ -171,7 +171,10 @@ async function loadUserMeta(uid) {
   try {
     const snap = await get(ref(db, 'users/' + uid + '/meta'));
     const meta = snap.val();
-    if(window.Plan) window.Plan.setFromFirebase(meta);
+    if(window.Plan) {
+      window.Plan.setFromFirebase(meta);
+      requestAnimationFrame(() => window.Plan._badge());
+    }
   } catch(e) {
     console.warn('Meta read error:', e);
     if(window.Plan) window.Plan.setFromFirebase(null);
