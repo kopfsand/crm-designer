@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MONAD™</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130.52 74.25'><polygon fill='%23A83C36' points='0 72.27 18.45 1.94 19.99 1.42 68.3 1.45 69.3 24.21 75.07 24.24 80.75 1.51 130.01 1.45 130.52 72.27 98.65 72.27 98.65 33.32 93.59 33.32 84.48 72.27 49.58 72.27 49.58 33.32 43.55 33.37 33.89 72.27 0 72.27'/></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130.52 74.25'><polygon fill='%23D54B43' points='0 72.27 18.45 1.94 19.99 1.42 68.3 1.45 69.3 24.21 75.07 24.24 80.75 1.51 130.01 1.45 130.52 72.27 98.65 72.27 98.65 33.32 93.59 33.32 84.48 72.27 49.58 72.27 49.58 33.32 43.55 33.37 33.89 72.27 0 72.27'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -254,7 +254,7 @@ function setSyncStatus(state) {
   if(!el) return;
   const icons = {
     ok:      { svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><polyline points="9 12 11 14 15 10"/>',  c: 'var(--ol)', t: 'Синхронизировано' },
-    saving:  { svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><polyline points="9 16 12 13 15 16"/><line x1="12" y1="13" x2="12" y2="19"/>', c: '#d6bd6a', t: 'Сохранение…' },
+    saving:  { svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><polyline points="9 16 12 13 15 16"/><line x1="12" y1="13" x2="12" y2="19"/>', c: '#ddbe59', t: 'Сохранение…' },
     loading: { svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><polyline points="9 13 12 16 15 13"/><line x1="12" y1="10" x2="12" y2="16"/>', c: '#ABA38F', t: 'Загрузка…' },
     error:   { svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><line x1="10" y1="13" x2="14" y2="17"/><line x1="14" y1="13" x2="10" y2="17"/>', c: '#cf5a4a', t: 'Ошибка синхронизации' },
   };
@@ -296,10 +296,10 @@ function showApp(user) {
 }
 </script>
 <style>
-:root{--bg:#1e1a17;--bg2:#191512;--card:#26201a;--card2:#2f2820;--ln:#3d342a;--ln2:#4e4237;--txt:#D9D4C8;--dim:#ABA38F;--dim2:#7a7060;--or:#A83C36;--ord:#8a2f2a;--orp:#6b2220;--on:#f0ebe0;--ol:#565538;--ol2:#444428;--r:20px;--rs:13px;--lock-overlay:rgba(12,11,10,.72)}
-[data-theme="light"]{--bg:#D9D4C8;--bg2:#ccc7bb;--card:#e8e3da;--card2:#f0ece4;--ln:#b8b2a4;--ln2:#a8a195;--txt:#24201D;--dim:#565538;--dim2:#8a8470;--on:#f0ebe0;--nav-bg:rgba(217,212,200,.92);--lock-overlay:rgba(190,184,174,.82)}
+:root{--bg:#1e1a17;--bg2:#191512;--card:#26201a;--card2:#2f2820;--ln:#3d342a;--ln2:#4e4237;--txt:#D9D4C8;--dim:#ABA38F;--dim2:#7a7060;--or:#d54b43;--ord:#8a2f2a;--orp:#6b2220;--on:#f0ebe0;--ol:#83b257;--ol2:#5a7d3a;--r:20px;--rs:13px;--lock-overlay:rgba(12,11,10,.72)}
+[data-theme="light"]{--bg:#D9D4C8;--bg2:#ccc7bb;--card:#e8e3da;--card2:#f0ece4;--ln:#b8b2a4;--ln2:#a8a195;--txt:#24201D;--dim:#6b6452;--dim2:#8a8470;--on:#f0ebe0;--ol:#5a8c38;--ol2:#4a7230;--nav-bg:rgba(217,212,200,.92);--lock-overlay:rgba(210,204,192,.88)}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;background-image:radial-gradient(1100px 600px at 92% -10%,rgba(168,60,54,.12),transparent 50%),radial-gradient(600px 400px at 5% 80%,rgba(86,85,56,.08),transparent 60%)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;background-image:radial-gradient(1100px 600px at 92% -10%,rgba(213,75,67,.12),transparent 50%),radial-gradient(600px 400px at 5% 80%,rgba(131,178,87,.08),transparent 60%)}
 ::selection{background:var(--or);color:var(--on)}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--ln2);border-radius:8px;border:2px solid var(--bg)}::-webkit-scrollbar-thumb:hover{background:var(--orp)}
@@ -320,8 +320,9 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .pill.act{cursor:pointer;transition:.2s}.pill.act:hover{color:var(--txt)}
 
 /* nav */
-nav.tabs{display:flex;gap:5px;padding:5px;border:1px solid var(--ln);border-radius:18px;background:var(--nav-bg,rgba(20,18,14,.8));backdrop-filter:blur(10px);margin-bottom:24px;width:100%;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;box-sizing:border-box}
-nav.tabs button{font-family:'Inter';font-size:11px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:9px 10px;border-radius:13px;display:flex;align-items:center;gap:5px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;flex:1;justify-content:center}
+nav.tabs{display:flex;gap:0;padding:5px;border:1px solid var(--ln);border-radius:18px;background:var(--nav-bg,rgba(20,18,14,.8));backdrop-filter:blur(10px);margin-bottom:24px;width:100%;position:sticky;top:12px;z-index:50;box-shadow:0 18px 40px -22px #000;overflow-x:auto;box-sizing:border-box;align-items:center}
+.tabs-main{display:flex;flex:1;justify-content:space-between;align-items:center;min-width:0}
+nav.tabs button{font-family:'Inter';font-size:11px;font-weight:700;color:var(--dim);background:transparent;border:none;cursor:pointer;padding:9px 14px;border-radius:13px;display:flex;align-items:center;gap:5px;transition:.2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;justify-content:center;flex:none}
 nav.tabs button svg{width:14px;height:14px;flex:none}
 @media(max-width:1100px){nav.tabs button[data-view="bookmarks"] .tab-label{display:none}}
 @media(max-width:1300px){nav.tabs button .tab-label{display:none}}
@@ -466,6 +467,21 @@ nav.tabs button.active svg{opacity:1}
 .search input:focus{border-color:var(--orp);box-shadow:0 0 0 3px rgba(168,60,54,.1)}
 .search input::placeholder{color:var(--dim2)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+/* orders client dropdown */
+.o-cl-drop-wrap{position:relative}
+.o-cl-trigger{font-family:'Inter';font-size:11px;font-weight:700;color:var(--dim);background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:.18s;white-space:nowrap;height:100%;box-sizing:border-box}
+.o-cl-trigger:hover{border-color:var(--ln2);color:var(--txt)}
+.o-cl-trigger.active{background:var(--or);color:var(--on);border-color:var(--or)}
+.o-cl-trigger.active svg{stroke:var(--on)}
+.o-cl-trigger svg:first-child{width:14px;height:14px;flex:none;opacity:.7}
+.o-cl-arr{width:10px;height:10px;flex:none;opacity:.5;transition:.15s}
+.o-cl-drop-wrap.open .o-cl-arr{transform:rotate(180deg)}
+.o-cl-drop{position:absolute;top:calc(100% + 6px);left:0;min-width:200px;max-width:280px;max-height:320px;overflow-y:auto;background:var(--card);border:1px solid var(--ln2);border-radius:14px;box-shadow:0 12px 32px -8px rgba(0,0,0,.55);z-index:300;display:none;padding:5px}
+.o-cl-drop-wrap.open .o-cl-drop{display:block}
+.o-cl-opt{font-family:'Inter';font-size:12px;font-weight:600;padding:8px 12px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--dim);transition:.12s}
+.o-cl-opt:hover{background:var(--card2);color:var(--txt)}
+.o-cl-opt.active{background:rgba(213,75,67,.12);color:var(--or)}
+.o-cl-opt-cnt{margin-left:auto;font-size:10px;font-weight:700;color:var(--dim2);background:var(--card2);border-radius:6px;padding:2px 6px}
 .chip{font-family:'Inter';font-size:10.5px;font-weight:600;color:var(--dim);background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:9px 12px;cursor:pointer;transition:.18s}
 .chip:hover{color:var(--txt);border-color:var(--ln2)}
 .chip.active{background:var(--or);color:var(--on);border-color:var(--or)}
@@ -535,13 +551,13 @@ nav.tabs button.active svg{opacity:1}
 .o .ds{font-size:11.5px;color:var(--dim);margin-top:3px}
 .o .tg{display:flex;gap:5px;align-items:center;margin-top:6px;flex-wrap:wrap}
 .o .who{font-family:'Inter';font-size:9.5px;color:var(--or);font-weight:600;display:flex;gap:4px;align-items:center;text-transform:uppercase}
-.o .when{text-align:right;min-width:80px}
+.o .when{text-align:center;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:4px}
 .o .when .dd{font-family:'Inter';font-size:10.5px;color:var(--dim)}
-.o .when .ss{font-size:9.5px;font-weight:700;margin-top:4px;font-family:'Inter';text-transform:uppercase}
-.o .money{text-align:right;min-width:90px}
+.o .when .ss{font-size:9.5px;font-weight:700;font-family:'Inter';text-transform:uppercase}
+.o .money{text-align:center;min-width:90px;display:flex;flex-direction:column;align-items:center;gap:3px}
 .o .money .c{font-family:'Rubik';font-weight:700;font-size:16px;letter-spacing:-.03em}
 .o .money .c .u{font-size:10px;color:var(--or)}
-.o .money .pd{font-family:'Rubik';font-size:9.5px;margin-top:3px;text-transform:uppercase}
+.o .money .pd{font-family:'Rubik';font-size:9.5px;text-transform:uppercase}
 .o .money .pd.full{color:var(--ol)}.o .money .pd.part{color:var(--or)}
 .empty{text-align:center;padding:50px;color:var(--dim);font-family:'Inter';font-size:12px}
 
@@ -581,9 +597,12 @@ nav.tabs button.active svg{opacity:1}
 .quick-add input:focus{border-color:var(--orp)}
 .quick-add input::placeholder{color:var(--dim2)}
 /* archive panel */
-.plan-archive{margin-top:0}
-.archive-toggle{font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);cursor:pointer;display:flex;align-items:center;gap:6px;padding:8px 0;border:none;background:none;transition:.15s}
-.archive-toggle:hover{color:var(--or)}
+.plan-archive{margin-top:8px}
+.archive-toggle{font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dim2);cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:7px 14px 7px 10px;border:1px solid var(--ln);border-radius:20px;background:var(--card);transition:.18s}
+.archive-toggle:hover{color:var(--txt);border-color:var(--ln2);background:var(--card2)}
+.archive-toggle svg{width:13px;height:13px;flex:none;transition:.25s;opacity:.6}
+.archive-toggle.open svg{transform:rotate(180deg);opacity:1}
+.archive-toggle .arc-cnt{font-family:'Rubik';font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:var(--card2);color:var(--dim);margin-left:2px}
 .archive-list{display:none;flex-direction:column;gap:6px;margin-top:8px}
 .archive-list.open{display:flex}
 .archive-task{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border:1px solid var(--ln);border-radius:10px;opacity:.65}
@@ -619,26 +638,46 @@ nav.tabs button.active svg{opacity:1}
 .pl-cal-task-ord{font-family:'Inter';font-size:10px;color:var(--dim2)}
 .pl-cal-add{font-family:'Inter';font-size:11px;font-weight:700;padding:8px 14px;border-radius:10px;border:1px dashed var(--ln2);background:transparent;color:var(--dim);cursor:pointer;transition:.12s;width:100%;margin-top:8px;text-align:center}
 .pl-cal-add:hover{border-color:var(--or);color:var(--or)}
+/* calendar view switcher */
+.pl-cal-vs{display:flex;gap:3px;background:var(--card2);border-radius:10px;padding:3px}
+.pl-cal-vs button{font-family:'Inter';font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:7px;border:none;background:transparent;color:var(--dim);cursor:pointer;transition:.15s}
+.pl-cal-vs button.active{background:var(--card);color:var(--txt);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+/* day hour view */
+.pl-day-wrap{display:flex;flex-direction:column;gap:0}
+.pl-day-hour{display:grid;grid-template-columns:44px 1fr;min-height:52px;border-bottom:1px solid var(--ln)}
+.pl-day-hour:last-child{border-bottom:none}
+.pl-day-hour-lbl{font-family:'Inter';font-size:10px;font-weight:600;color:var(--dim2);padding:7px 8px 0 0;text-align:right;line-height:1;flex:none}
+.pl-day-hour-slot{position:relative;padding:4px 6px;display:flex;flex-direction:column;gap:3px}
+.pl-day-hour-slot:hover{background:rgba(213,75,67,.04);border-radius:6px;cursor:pointer}
+.pl-day-now-line{position:absolute;left:0;right:0;height:2px;background:var(--or);border-radius:1px;z-index:2}
+.pl-day-now-line::before{content:'';position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--or)}
+.pl-day-task{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:7px;background:var(--card2);border-left:3px solid var(--or);cursor:pointer;transition:.12s}
+.pl-day-task:hover{background:var(--bg2)}
+.pl-day-task-name{font-family:'Inter';font-size:11px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl-day-task-time{font-family:'Inter';font-size:10px;color:var(--dim2);flex:none}
+.pl-day-add-slot{font-family:'Inter';font-size:10px;color:var(--dim2);opacity:0;transition:.12s;cursor:pointer;padding:2px 4px}
+.pl-day-hour-slot:hover .pl-day-add-slot{opacity:1}
 /* ── Planner toolbar ── */
 .pl-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--ln)}
-.pl-vs{display:flex;gap:3px;padding:4px;background:var(--card2);border-radius:12px;border:1px solid var(--ln2);flex:none}
-.pl-vs button{font-family:'Inter';font-size:10px;font-weight:700;padding:6px 10px;border-radius:8px;border:none;background:transparent;color:var(--dim);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.pl-vs{display:flex;gap:3px;padding:3px;background:var(--card2);border-radius:13px;border:1px solid var(--ln2);flex:none}
+.pl-vs button{font-family:'Inter';font-size:10px;font-weight:700;padding:8px 12px;border-radius:9px;border:none;background:transparent;color:var(--dim);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .pl-vs button.active{background:var(--card);color:var(--txt);box-shadow:0 2px 8px -4px #000}
 .pl-vs button svg{width:12px;height:12px;flex:none}
-.pl-flt{display:flex;gap:6px;flex-wrap:wrap;flex:1;align-items:center}
-.pl-flt-sel{font-family:'Inter';font-size:11px;font-weight:600;color:var(--dim);background:var(--card2);border:1px solid var(--ln2);border-radius:9px;padding:7px 10px;cursor:pointer;outline:none;transition:.15s;-webkit-appearance:none}
+.pl-flt{display:flex;gap:8px;flex-wrap:wrap;flex:1;align-items:center}
+.pl-flt-sel{font-family:'Inter';font-size:12px;font-weight:600;color:var(--dim);background:var(--card2);border:1px solid var(--ln2);border-radius:11px;padding:10px 14px;cursor:pointer;outline:none;transition:.15s;-webkit-appearance:none}
 .pl-flt-sel.on{border-color:var(--or);color:var(--or)}
-.pl-search-inp{font-family:'Inter';font-size:11.5px;color:var(--txt);background:var(--card2);border:1px solid var(--ln2);border-radius:9px;padding:7px 12px;outline:none;transition:.15s;min-width:130px}
+.pl-search-inp{font-family:'Inter';font-size:12px;color:var(--txt);background:var(--card2);border:1px solid var(--ln2);border-radius:11px;padding:10px 14px;outline:none;transition:.15s;min-width:160px;flex:1}
 .pl-search-inp:focus{border-color:var(--orp)}
-.pl-sort-btn{font-family:'Inter';font-size:10.5px;font-weight:600;color:var(--dim);background:var(--card2);border:1px solid var(--ln2);border-radius:9px;padding:7px 10px;cursor:pointer;transition:.15s;white-space:nowrap}
+.pl-sort-btn{font-family:'Inter';font-size:12px;font-weight:600;color:var(--dim);background:var(--card2);border:1px solid var(--ln2);border-radius:11px;padding:10px 14px;cursor:pointer;transition:.15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .pl-sort-btn.on{border-color:var(--or);color:var(--or)}
+.pl-flt-trigger{padding:10px 12px!important;background:var(--card2)!important;border-color:var(--ln2)!important;font-size:12px!important}
 .pl-tpl-btn{font-family:'Inter';font-size:10.5px;font-weight:600;color:var(--dim);background:var(--card2);border:1px solid var(--ln2);border-radius:9px;padding:7px 10px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .pl-tpl-btn:hover{border-color:var(--dim);color:var(--txt)}
 /* deadline badge */
 .task-dl{font-family:'Inter';font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;display:inline-flex;align-items:center;gap:3px;margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
 .task-dl.ok{background:rgba(123,191,106,.1);color:var(--ol)}
 .task-dl.soon{background:rgba(168,60,54,.1);color:var(--or)}
-.task-dl.today{background:rgba(214,189,106,.12);color:#d6bd6a}
+.task-dl.today{background:rgba(214,189,106,.12);color:#ddbe59}
 .task-dl.overdue{background:rgba(207,90,74,.14);color:#b85048}
 .task.overdue{border-color:rgba(207,90,74,.35)!important;background:rgba(207,90,74,.02)}
 /* ── List view ── */
@@ -1069,17 +1108,25 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .an-export button:hover{color:var(--txt);border-color:var(--orp)}
 
 /* bookmarks */
-.bm-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.bm-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .bm-cat-btn{display:flex;align-items:center;gap:7px;font-family:'Inter';font-size:12px;font-weight:600;padding:8px 14px;border-radius:10px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
 .bm-cat-btn:hover{border-color:var(--dim);color:var(--txt)}
 .bm-cat-btn.active{background:var(--or);border-color:var(--or);color:var(--on)}
 .bm-cat-btn .cnt{font-family:'Rubik';font-size:10px;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:5px}
 .bm-cat-btn.active .cnt{background:rgba(0,0,0,.25)}
-.bm-search-wrap{position:relative;margin-bottom:20px}
+/* bm toolbar: search + view switcher */
+.bm-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.bm-search-wrap{position:relative;flex:1;margin-bottom:20px}
 .bm-search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--dim)}
-.bm-search-inp{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 14px 12px 40px;outline:none;transition:.2s}
+.bm-search-inp{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 14px 12px 40px;outline:none;transition:.2s;box-sizing:border-box}
 .bm-search-inp:focus{border-color:var(--orp)}
 .bm-search-inp::placeholder{color:var(--dim2)}
+.bm-vs{display:flex;gap:2px;padding:3px;background:var(--card2);border-radius:11px;border:1px solid var(--ln2);flex-shrink:0}
+.bm-vs button{width:32px;height:32px;border-radius:8px;border:none;background:transparent;color:var(--dim);cursor:pointer;transition:.13s;display:grid;place-items:center}
+.bm-vs button svg{width:14px;height:14px;pointer-events:none}
+.bm-vs button.active{background:var(--card);color:var(--txt);box-shadow:0 2px 6px -3px rgba(0,0,0,.5)}
+.bm-vs button:hover:not(.active){color:var(--txt)}
+/* grid (default) */
 .bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:900px){.bm-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.bm-grid{grid-template-columns:1fr}}
@@ -1098,6 +1145,27 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 .bm-section-title{grid-column:1/-1;font-family:'Inter';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;display:flex;align-items:center;gap:8px}
 .bm-section-title::after{content:'';flex:1;height:1px;background:var(--ln)}
 .bm-empty{grid-column:1/-1;text-align:center;padding:60px 20px;font-family:'Inter';font-size:13px;color:var(--dim2)}
+/* list view */
+.bm-grid.bm-list{grid-template-columns:1fr;gap:4px}
+.bm-grid.bm-list .bm-card{flex-direction:row;align-items:center;border-radius:12px}
+.bm-grid.bm-list .bm-card:hover{transform:none;box-shadow:none}
+.bm-grid.bm-list .bm-card-head{padding:10px 14px;flex:1;min-width:0}
+.bm-grid.bm-list .bm-favicon{width:28px;height:28px;border-radius:7px;font-size:14px}
+.bm-grid.bm-list .bm-title{font-size:13px}
+.bm-grid.bm-list .bm-desc{display:none}
+.bm-grid.bm-list .bm-foot{padding:10px 14px;flex-shrink:0}
+.bm-grid.bm-list .bm-section-title{grid-column:unset}
+/* compact view */
+.bm-grid.bm-compact{grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:900px){.bm-grid.bm-compact{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.bm-grid.bm-compact{grid-template-columns:1fr 1fr}}
+.bm-grid.bm-compact .bm-card-head{padding:14px 14px 8px;flex-direction:column;align-items:flex-start;gap:8px}
+.bm-grid.bm-compact .bm-favicon{width:30px;height:30px;border-radius:8px}
+.bm-grid.bm-compact .bm-title{font-size:12px}
+.bm-grid.bm-compact .bm-ext{font-size:8px}
+.bm-grid.bm-compact .bm-desc{display:none}
+.bm-grid.bm-compact .bm-foot{padding:6px 14px 10px}
+.bm-grid.bm-compact .bm-section-title{grid-column:1/-1}
 
 /* custom datepicker */
 .dp-wrap{position:relative}
@@ -1137,7 +1205,8 @@ label.fld,div.fld{display:flex;flex-direction:column;gap:7px;font-size:13px;font
 .tx{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--bg2);border:1px solid var(--ln2);border-radius:11px;padding:13px 15px;outline:none;transition:.18s;resize:vertical}
 .tx:focus{border-color:var(--orp);box-shadow:0 0 0 3px rgba(168,60,54,.1)}
 .tx::placeholder{color:var(--dim2)}
-.tx option{background:var(--card);color:var(--txt)}
+select.tx{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ABA38F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:14px;padding-right:36px;cursor:pointer}
+.if select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ABA38F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:12px;padding-right:30px;cursor:pointer}
 textarea.tx{min-height:70px}
 .checks{display:flex;flex-wrap:wrap;gap:7px}
 .chk-item{display:flex;align-items:center;gap:0;cursor:pointer;font-size:12px;font-weight:600;transition:.15s;position:relative}
@@ -1157,9 +1226,26 @@ input[type=number]{-moz-appearance:textfield}
 /* toast */
 .toast{position:fixed;bottom:24px;right:24px;font-family:'Inter';font-size:12px;font-weight:600;padding:12px 18px;border-radius:12px;background:var(--or);color:var(--on);z-index:300;box-shadow:0 14px 30px -10px rgba(168,60,54,.6);animation:rise .35s both;pointer-events:none}
 
-/* footer */
-.footer{margin-top:36px;text-align:center;color:var(--dim2);font-size:10.5px;font-family:'Inter';letter-spacing:.04em}
-.footer b{color:var(--orp)}
+/* ── Legal docs ── */
+.legal-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px}
+.legal-modal-ov.open{display:flex}
+.legal-box{background:var(--card);border:1px solid var(--ln);border-radius:20px;width:100%;max-width:720px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden}
+.legal-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid var(--ln);flex:none}
+.legal-head h3{font-family:'Rubik';font-weight:700;font-size:17px;letter-spacing:-.02em}
+.legal-head button{font-size:18px;background:none;border:none;color:var(--dim);cursor:pointer;padding:4px 8px;border-radius:8px;transition:.12s}
+.legal-head button:hover{color:var(--txt);background:var(--card2)}
+.legal-body{overflow-y:auto;padding:24px;flex:1}
+.legal-body h2{font-family:'Rubik';font-weight:700;font-size:15px;margin:20px 0 8px;color:var(--txt)}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p{font-family:'Inter';font-size:13px;color:var(--dim);line-height:1.7;margin-bottom:10px}
+.legal-body ul{padding-left:18px;margin-bottom:10px}
+.legal-body ul li{font-family:'Inter';font-size:13px;color:var(--dim);line-height:1.7;margin-bottom:4px}
+.legal-body strong{color:var(--txt);font-weight:600}
+.legal-date{font-family:'Inter';font-size:11px;color:var(--dim2);margin-bottom:16px}
+/* footer links */
+.footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.footer-links a{font-family:'Inter';font-size:10.5px;color:var(--dim2);text-decoration:none;cursor:pointer;transition:.12s;letter-spacing:.02em}
+.footer-links a:hover{color:var(--or)}
 
 /* === LOGIN SCREEN === */
 #loginScreen{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;background-image:radial-gradient(900px 500px at 80% 20%,rgba(168,60,54,.13),transparent 60%)}
@@ -1224,7 +1310,7 @@ input[type=number]{-moz-appearance:textfield}
 .plan-badge{cursor:pointer;transition:.2s;user-select:none}
 .plan-badge:hover{color:var(--txt);border-color:var(--dim)}
 .plan-badge.plan-solo{background:rgba(168,60,54,.1);color:var(--or);border-color:var(--orp)}
-.plan-badge.plan-pro{background:rgba(86,85,56,.15);color:#8a8660;border-color:rgba(86,85,56,.4)}
+.plan-badge.plan-pro{background:rgba(131,178,87,.15);color:#83b257;border-color:rgba(131,178,87,.4)}
 
 /* === АПГРЕЙД МОДАЛ === */
 .upgrade-tier{border-radius:16px;padding:18px 20px;margin-bottom:10px}
@@ -1274,13 +1360,14 @@ input[type=number]{-moz-appearance:textfield}
 
 /* === CLIENT STATUS BADGES === */
 .rel-status{display:inline-flex;align-items:center;gap:5px;font-family:'Inter';font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
-.rel-status.active{background:rgba(123,191,106,.15);color:var(--ol);border:1px solid rgba(123,191,106,.3)}
-.rel-status.paused{background:rgba(214,189,106,.15);color:#d6bd6a;border:1px solid rgba(214,189,106,.3)}
+.rel-status.active{background:rgba(123,191,106,.15);color:#8fc97a;border:1px solid rgba(123,191,106,.3)}
+.rel-status.paused{background:rgba(214,189,106,.15);color:#ddbe59;border:1px solid rgba(214,189,106,.3)}
 .rel-status.potential{background:rgba(127,166,201,.15);color:#ABA38F;border:1px solid rgba(127,166,201,.3)}
 .rel-status.lost{background:rgba(207,90,74,.15);color:#b85048;border:1px solid rgba(207,90,74,.3)}
 
 /* === CLIENT FILTER BAR === */
 .cl-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.cl-filters .o-cl-trigger{padding:10px 14px}
 .cl-search-wrap{position:relative;flex:1;min-width:200px}
 .cl-search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--dim)}
 .cl-search-inp{width:100%;font-family:'Inter';font-size:13px;font-weight:500;color:var(--txt);background:var(--card);border:1px solid var(--ln);border-radius:11px;padding:10px 12px 10px 34px;outline:none;transition:.2s}
@@ -1320,8 +1407,8 @@ input[type=number]{-moz-appearance:textfield}
 .cc-note{font-size:11px;color:var(--dim);font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .contact-category{font-family:'Inter';font-size:8.5px;font-weight:600;padding:3px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.04em}
 .cat-partner{background:rgba(127,166,201,.15);color:#ABA38F;border:1px solid rgba(127,166,201,.3)}
-.cat-supplier{background:rgba(214,189,106,.15);color:#d6bd6a;border:1px solid rgba(214,189,106,.3)}
-.cat-contractor{background:rgba(167,149,201,.15);color:#8a8660;border:1px solid rgba(167,149,201,.3)}
+.cat-supplier{background:rgba(214,189,106,.15);color:#ddbe59;border:1px solid rgba(214,189,106,.3)}
+.cat-contractor{background:rgba(167,149,201,.15);color:#b09fce;border:1px solid rgba(167,149,201,.3)}
 .cat-other{background:var(--bg2);color:var(--dim);border:1px solid var(--ln2)}
 
 /* === AI ASSISTANT === */
@@ -1506,18 +1593,20 @@ input[type=number]{-moz-appearance:textfield}
 </header>
 
 <nav class="tabs" id="tabs">
-  <button class="active" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-label">Обзор</span></button>
-  <button data-view="clients"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg><span class="tab-label">Клиенты</span></button>
-  <button data-view="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span class="tab-label">Заказы</span></button>
-  <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3M12 12l-3 4"/></svg><span class="tab-label">Аналитика</span></button>
-  <button data-view="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span class="tab-label">Планер</span></button>
-  <button data-view="tracker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span class="tab-label">Время</span></button>
-  <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg><span class="tab-label">Финансы</span></button>
-  <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span class="tab-label">Счёт</span></button>
-  <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="tab-label">Контакты</span></button>
-  <div style="width:1px;background:var(--ln2);margin:6px 2px;border-radius:1px;flex:none"></div>
-  <button onclick="openGlobalSearch()" title="Поиск (Ctrl+K)" style="flex:none;padding:10px 13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
-  <button data-view="bookmarks" title="Закладки" style="flex:none;padding:10px 12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+  <div class="tabs-main">
+    <button class="active" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-label">Обзор</span></button>
+    <button data-view="clients"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg><span class="tab-label">Клиенты</span></button>
+    <button data-view="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span class="tab-label">Заказы</span></button>
+    <button data-view="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3M12 12l-3 4"/></svg><span class="tab-label">Аналитика</span></button>
+    <button data-view="planner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span class="tab-label">Планер</span></button>
+    <button data-view="tracker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span class="tab-label">Время</span></button>
+    <button data-view="finance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg><span class="tab-label">Финансы</span></button>
+    <button data-view="invoice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span class="tab-label">Счёт</span></button>
+    <button data-view="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="tab-label">Контакты</span></button>
+  </div>
+  <div style="width:1px;height:22px;background:var(--ln2);margin:0 4px;border-radius:1px;flex:none"></div>
+  <button onclick="openGlobalSearch()" title="Поиск (Ctrl+K)" style="flex:none;width:36px;padding:9px 0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+  <button data-view="bookmarks" title="Закладки" style="flex:none;width:36px;padding:9px 0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
 </nav>
 
 <!-- DASH -->
@@ -1586,7 +1675,17 @@ input[type=number]{-moz-appearance:textfield}
       <button class="btn-add" onclick="openOrderForm()">+ Новый заказ</button>
     </div>
   </div>
-  <div class="toolbar"><div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="oSearch" placeholder="ПОИСК…"></div><div class="chips" id="clChips"></div></div>
+  <div class="toolbar">
+    <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="oSearch" placeholder="ПОИСК…"></div>
+    <div class="o-cl-drop-wrap" id="oClDropWrap">
+      <button class="o-cl-trigger" id="oClTrigger" onclick="toggleOClDrop(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg>
+        <span id="oClLabel">Все клиенты</span>
+        <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="o-cl-drop" id="oClDrop"></div>
+    </div>
+  </div>
   <div class="chips" id="tyChips"></div>
   <div class="sort-bar" id="sortBar"></div>
   <div id="oList"></div>
@@ -1679,23 +1778,58 @@ input[type=number]{-moz-appearance:textfield}
     </div>
     <div class="pl-flt">
       <input class="pl-search-inp" id="plSearch" placeholder="Поиск задачи…" oninput="plFlt.q=this.value;renderPlanner()">
-      <select class="pl-flt-sel" id="plFltPri" onchange="plFlt.priority=this.value;this.classList.toggle('on',this.value!=='all');renderPlanner()">
-        <option value="all">Все приоритеты</option>
-        <option value="🔴 Срочно">🔴 Срочно</option>
-        <option value="🟡 Важно">🟡 Важно</option>
-        <option value="🟢 Обычное">🟢 Обычное</option>
-      </select>
-      <select class="pl-flt-sel" id="plFltOrd" onchange="plFlt.orderId=this.value;this.classList.toggle('on',this.value!=='all');renderPlanner()">
-        <option value="all">Все заказы</option>
-      </select>
-      <button class="pl-sort-btn" id="plSortBtn" onclick="cyclePlanSort()" title="Сортировка">⇅ Сортировка</button>
+      <!-- Priority dropdown -->
+      <div class="o-cl-drop-wrap" id="plPriWrap">
+        <button class="o-cl-trigger pl-flt-trigger" id="plPriTrigger" onclick="togglePlDrop('plPriWrap',event)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><path d="M3 6h18M3 12h12M3 18h7"/></svg>
+          <span id="plPriLabel">Все приоритеты</span>
+          <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="o-cl-drop" id="plPriDrop">
+          <div class="o-cl-opt active" onclick="plSetPri('all',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><path d="M3 6h18M3 12h12M3 18h7"/></svg>
+            Все приоритеты
+          </div>
+          <div class="o-cl-opt" onclick="plSetPri('🔴 Срочно',this)">
+            <span style="width:9px;height:9px;border-radius:50%;background:#d54b43;flex:none;display:inline-block"></span>
+            Срочно
+          </div>
+          <div class="o-cl-opt" onclick="plSetPri('🟡 Важно',this)">
+            <span style="width:9px;height:9px;border-radius:50%;background:#ddbe59;flex:none;display:inline-block"></span>
+            Важно
+          </div>
+          <div class="o-cl-opt" onclick="plSetPri('🟢 Обычное',this)">
+            <span style="width:9px;height:9px;border-radius:50%;background:#83b257;flex:none;display:inline-block"></span>
+            Обычное
+          </div>
+        </div>
+      </div>
+      <!-- Order dropdown -->
+      <div class="o-cl-drop-wrap" id="plOrdWrap">
+        <button class="o-cl-trigger pl-flt-trigger" id="plOrdTrigger" onclick="togglePlDrop('plOrdWrap',event)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          <span id="plOrdLabel">Все задачи</span>
+          <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="o-cl-drop" id="plOrdDrop"></div>
+      </div>
+      <button class="pl-sort-btn" id="plSortBtn" onclick="cyclePlanSort()" title="Сортировка">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="width:13px;height:13px"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+        Сортировка
+      </button>
     </div>
   </div>
   <div id="plBoard"></div>
   <div class="plan-archive" id="planArchive">
-    <button class="archive-toggle" onclick="document.getElementById('archiveList').classList.toggle('open');this.querySelector('span').textContent=document.getElementById('archiveList').classList.contains('open')?'▲ Архив завершённых':'▼ Архив завершённых'">
-      <span>▼ Архив завершённых</span>
-      <span id="archiveCnt" style="font-family:'Rubik';font-size:11px;color:var(--dim2)"></span>
+    <button class="archive-toggle" id="archiveToggleBtn" onclick="
+      const l=document.getElementById('archiveList');
+      l.classList.toggle('open');
+      this.classList.toggle('open');
+    ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      Архив завершённых
+      <span class="arc-cnt" id="archiveCnt"></span>
+    </button>
     </button>
     <div class="archive-list" id="archiveList"></div>
   </div>
@@ -1703,10 +1837,16 @@ input[type=number]{-moz-appearance:textfield}
   <div class="pl-cal-wrap" id="plCalWrap">
     <div class="pl-cal-head">
       <div class="pl-cal-title" id="plCalTitle"></div>
-      <div class="pl-cal-nav">
-        <button class="today-btn" onclick="plCalGoToday()">Сегодня</button>
-        <button onclick="plCalMove(-1)">‹</button>
-        <button onclick="plCalMove(1)">›</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div class="pl-cal-vs">
+          <button class="active" id="plCalVsMonth" onclick="plCalSetView('month',this)">Месяц</button>
+          <button id="plCalVsDay" onclick="plCalSetView('day',this)">День</button>
+        </div>
+        <div class="pl-cal-nav">
+          <button class="today-btn" onclick="plCalGoToday()">Сегодня</button>
+          <button onclick="plCalMove(-1)">‹</button>
+          <button onclick="plCalMove(1)">›</button>
+        </div>
       </div>
     </div>
     <div class="pl-cal-grid" id="plCalGrid"></div>
@@ -1722,8 +1862,29 @@ input[type=number]{-moz-appearance:textfield}
       <div class="ph"><span class="t">Активный таймер</span><span class="n" id="tmState">остановлен</span></div>
       <div class="timer-body">
         <div class="timer-clock" id="tmClock">00:00:00</div>
-        <div class="fld" style="width:100%"><span>Заказ</span><select id="tmOrd" class="tx"></select></div>
-        <div class="fld" style="width:100%"><span>Тип работы</span><select id="tmAct" class="tx"><option>Дизайн</option><option>Правки</option><option>Общение с клиентом</option><option>Подготовка</option><option>Исследование</option></select></div>
+        <div class="fld" style="width:100%"><span>Заказ</span>
+          <div class="o-cl-drop-wrap" id="tmOrdWrap" style="width:100%">
+            <button class="o-cl-trigger" id="tmOrdTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="togglePlDrop('tmOrdWrap',event)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.6"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+              <span id="tmOrdLabel" style="flex:1;text-align:left">— выбрать заказ —</span>
+              <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="o-cl-drop" id="tmOrdDrop" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="fld" style="width:100%"><span>Тип работы</span>
+          <div class="o-cl-drop-wrap" id="tmActWrap" style="width:100%">
+            <button class="o-cl-trigger" id="tmActTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="togglePlDrop('tmActWrap',event)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              <span id="tmActLabel" style="flex:1;text-align:left">Дизайн</span>
+              <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="o-cl-drop" id="tmActDrop" style="width:100%">
+              ${['Дизайн','Правки','Общение с клиентом','Подготовка','Исследование'].map(a=>`
+                <div class="o-cl-opt${a==='Дизайн'?' active':''}" onclick="tmSetAct('${a}',this)">${a}</div>`).join('')}
+            </div>
+          </div>
+        </div>
         <div class="fld" style="width:100%"><span>Ставка, ₽/час</span><input id="tmRate" type="number" class="tx" placeholder="0" min="0" step="100" style="width:100%"></div>
         <div id="tmEarned" style="display:none;width:100%;background:rgba(168,60,54,.1);border:1px solid rgba(168,60,54,.3);border-radius:10px;padding:11px 15px;font-family:'Inter';font-size:12px;color:var(--dim);text-align:center">
           <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:3px;font-weight:700">Заработано</span>
@@ -1839,7 +2000,17 @@ input[type=number]{-moz-appearance:textfield}
 
       <div class="inv-section">
         <div class="inv-section-lbl">Клиент</div>
-        <div class="if"><label>Из CRM (автозаполнение)</label><select id="iv-cl-select" onchange="invFillClient()"><option value="">— выбрать клиента —</option></select></div>
+        <div class="if">
+          <label>Из CRM (автозаполнение)</label>
+          <div class="o-cl-drop-wrap" id="ivClWrap" style="width:100%">
+            <button class="o-cl-trigger" id="ivClTrigger" style="width:100%;border-radius:5px;font-size:12.5px;padding:8px 10px;background:var(--bg2);border-color:var(--ln2)" onclick="togglePlDrop('ivClWrap',event)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/></svg>
+              <span id="ivClLabel" style="flex:1;text-align:left;color:var(--dim2)">— выбрать клиента —</span>
+              <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="o-cl-drop" id="ivClDrop" style="width:100%"></div>
+          </div>
+        </div>
         <div class="if"><label>Имя / Компания</label><input id="iv-to-name" placeholder="Имя клиента" oninput="renderInvoice()"></div>
         <div class="if-row">
           <div class="if"><label>Email</label><input id="iv-to-email" placeholder="client@email.com" oninput="renderInvoice()"></div>
@@ -1900,7 +2071,14 @@ input[type=number]{-moz-appearance:textfield}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
       <input class="cl-search-inp" id="contactSearch" placeholder="Поиск контактов…">
     </div>
-    <div class="chips" id="contactCatChips"></div>
+    <div class="o-cl-drop-wrap" id="conCatDropWrap">
+      <button class="o-cl-trigger" id="conCatTrigger" onclick="toggleConCatDrop(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l6.59-6.59a1 1 0 0 0 0-1.41L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+        <span id="conCatLabel">Все категории</span>
+        <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="o-cl-drop" id="conCatDrop"></div>
+    </div>
   </div>
   <div class="contacts-grid" id="contactsGrid"></div>
 </section>
@@ -1908,7 +2086,18 @@ input[type=number]{-moz-appearance:textfield}
 <!-- BOOKMARKS -->
 <section class="view" id="view-bookmarks">
   <div class="sec-head"><div><span class="eye">Коллекции</span><h2>Закладки</h2></div>
-    <div style="display:flex;gap:8px">
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="bm-vs" id="bmVs">
+        <button class="active" onclick="bmSetView('grid',this)" title="Сетка">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button onclick="bmSetView('compact',this)" title="Компактно">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="3" y="10" width="7" height="5" rx="1"/><rect x="14" y="10" width="7" height="5" rx="1"/><rect x="3" y="17" width="7" height="4" rx="1"/><rect x="14" y="17" width="7" height="4" rx="1"/></svg>
+        </button>
+        <button onclick="bmSetView('list',this)" title="Список">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>
+        </button>
+      </div>
       <button class="ibt" onclick="openCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l6.59-6.59a1 1 0 0 0 0-1.41L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
         Категории
@@ -1924,7 +2113,14 @@ input[type=number]{-moz-appearance:textfield}
   <div class="bm-grid" id="bmGrid"></div>
 </section>
 
-<div class="footer">Данные синхронизируются через Firebase · <b>CRM ДИЗАЙНЕРА</b> · онлайн версия</div>
+<div class="footer">
+  Данные синхронизируются через Firebase · <b>MONAD™ CRM</b> · онлайн версия
+  <div class="footer-links">
+    <a onclick="openLegal('privacy')">Политика конфиденциальности</a>
+    <a onclick="openLegal('terms')">Пользовательское соглашение</a>
+    <a onclick="openLegal('offer')">Публичная оферта</a>
+  </div>
+</div>
 </div><!-- /shell -->
 </div><!-- /appRoot -->
 
@@ -2126,11 +2322,11 @@ function commitWtypes(){
   toast('Типы сохранены');
 }
 const STATUSES=['Новый','В работе','На проверке','Выполнен','Отменён'];
-const SCOL={Новый:'#5b9bd5','В работе':'#d6bd6a','На проверке':'#A83C36',Выполнен:'var(--ol)',Отменён:'#8a5a50'};
+const SCOL={Новый:'#5b9bd5','В работе':'#ddbe59','На проверке':'#d54b43',Выполнен:'var(--ol)',Отменён:'#9e7060'};
 const PCOLS=['📥 Входящее','🔄 В работе','👀 На проверке','✅ Готово'];
-const PRCOL={'🔴 Срочно':'#cf5a4a','🟡 Важно':'#d6bd6a','🟢 Обычное':'var(--ol)'};
-const ACOL={Дизайн:'#8a8660',Правки:'#A83C36','Общение с клиентом':'#ABA38F',Подготовка:'#8f867a',Исследование:'var(--ol)'};
-const SRCCOL={'Личное знакомство':'#dd9355',Сарафанка:'#c0926a',Рекомендация:'var(--ol)',Instagram:'#d68fa8',ВКонтакте:'#ABA38F',Сайт:'#8f867a',Другое:'#8f867a'};
+const PRCOL={'🔴 Срочно':'#cf5a4a','🟡 Важно':'#ddbe59','🟢 Обычное':'var(--ol)'};
+const ACOL={Дизайн:'#a09060',Правки:'#d54b43','Общение с клиентом':'#ABA38F',Подготовка:'#9e8a7a',Исследование:'var(--ol)'};
+const SRCCOL={'Личное знакомство':'#dd9355',Сарафанка:'#c0926a',Рекомендация:'var(--ol)',Instagram:'#d68fa8',ВКонтакте:'#ABA38F',Сайт:'#9e8a7a',Другое:'#9e8a7a'};
 
 const fmt = n => (n||0).toLocaleString('ru-RU').replace(/,/g,' ');
 const rub = n => fmt(n)+' ₽';
@@ -2655,7 +2851,7 @@ function renderDash(){
     </div>
     <div class="dash-fin-row">
       <span class="dash-fin-label">🧾 Налог (~6%)</span>
-      <span class="dash-fin-val" style="color:#d6bd6a">${fmt(taxAmt)} ₽</span>
+      <span class="dash-fin-val" style="color:#ddbe59">${fmt(taxAmt)} ₽</span>
     </div>
     <div class="dash-fin-row" style="border-color:rgba(123,191,106,.3)">
       <span class="dash-fin-label">✦ Прибыль</span>
@@ -2695,7 +2891,7 @@ function renderDash(){
   const allDeadlines=[...deadlineOrders,...deadlineTasks].sort((a,b)=>a.date>b.date?1:-1).slice(0,6);
   document.getElementById('dashDeadlines').innerHTML=allDeadlines.length?allDeadlines.map(d=>{
     const days=Math.ceil((new Date(d.date)-now)/86400000);
-    const col=days<=0?'#cf5a4a':days<=2?'#d6bd6a':'var(--ol)';
+    const col=days<=0?'#cf5a4a':days<=2?'#ddbe59':'var(--ol)';
     const bg=days<=0?'rgba(207,90,74,.12)':days<=2?'rgba(214,189,106,.12)':'rgba(123,191,106,.12)';
     return `<div class="dash-deadline-row">
       <div class="dash-dl-icon" style="background:${bg}">${d.icon}</div>
@@ -2847,10 +3043,46 @@ function setOrderView(v){
   renderOrders();
 }
 
+function toggleOClDrop(e){
+  e.stopPropagation();
+  document.getElementById('oClDropWrap')?.classList.toggle('open');
+}
+function oSetCl(id){
+  oFlt.cl=id;
+  document.getElementById('oClDropWrap')?.classList.remove('open');
+  renderOrders();
+}
 function renderOrders(){
   const {clAgg}=agg();
   const allTy=[...new Set(S.orders.flatMap(o=>o.types||[]))];
-  document.getElementById('clChips').innerHTML=`<button class="chip ${oFlt.cl==='all'?'active':''}" onclick="oFlt.cl='all';renderOrders()">Все</button>`+clAgg.map(c=>`<button class="chip ${oFlt.cl===c.id?'active':''}" onclick="oFlt.cl='${c.id}';renderOrders()">${c.icon} ${esc(c.name)}</button>`).join('');
+  // client dropdown
+  const oClDrop = document.getElementById('oClDrop');
+  const oClTrigger = document.getElementById('oClTrigger');
+  const oClLabel = document.getElementById('oClLabel');
+  if(oClDrop){
+    const clWithOrders = clAgg.filter(c => c.cnt > 0);
+    oClDrop.innerHTML =
+      `<div class="o-cl-opt${oFlt.cl==='all'?' active':''}" onclick="oSetCl('all')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.5 20c0-2.6-1.3-4.4-3-5.2"/></svg>
+        Все клиенты
+        <span class="o-cl-opt-cnt">${clWithOrders.length}</span>
+      </div>` +
+      clWithOrders.map(c =>
+        `<div class="o-cl-opt${oFlt.cl===c.id?' active':''}" onclick="oSetCl('${c.id}')">
+          <span style="flex:none">${c.icon||'👤'}</span>
+          <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.name)}</span>
+          <span class="o-cl-opt-cnt">${c.cnt}</span>
+        </div>`
+      ).join('');
+    const active = oFlt.cl !== 'all';
+    oClTrigger?.classList.toggle('active', active);
+    if(active){
+      const sel = clAgg.find(c=>c.id===oFlt.cl);
+      if(oClLabel) oClLabel.textContent = sel ? (sel.icon ? sel.icon+' '+sel.name : sel.name) : 'Все клиенты';
+    } else {
+      if(oClLabel) oClLabel.textContent = 'Все клиенты';
+    }
+  }
   document.getElementById('tyChips').innerHTML=`<button class="chip ${oFlt.ty==='all'?'active':''}" onclick="oFlt.ty='all';renderOrders()">Все типы</button>`+allTy.map(t=>`<button class="chip ${oFlt.ty===t?'active':''}" onclick="oFlt.ty='${t}';renderOrders()">${t}</button>`).join('');
   // sort bar (hidden in table mode)
   const upArr='↑', dnArr='↓';
@@ -2892,7 +3124,7 @@ function renderOrdersList(list){
     <div class="money">
       <div class="c">${fmt(o.cost)}<span class="u"> ₽</span></div>
       <div class="pd ${full?'full':'part'}">${full?'оплачен':'оплач. '+fmt(o.paid)}</div>
-      <div style="display:flex;gap:4px;margin-top:5px">
+      <div style="display:flex;gap:4px">
         <button class="ibt" onclick="openOrderForm('${o.id}')">✏</button>
         <button class="ibt del" onclick="deleteOrder('${o.id}')">✕</button>
       </div>
@@ -3127,7 +3359,7 @@ function showSectionLock(viewId, eyeLabel, title, iconSvg, desc){
         <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:150px"></div>
         <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:150px"></div>
       </div>
-      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;background:rgba(12,11,10,.72);backdrop-filter:blur(2px)">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;background:var(--lock-overlay);backdrop-filter:blur(2px)">
         <div style="width:52px;height:52px;border-radius:16px;background:rgba(168,60,54,.12);border:1px solid rgba(168,60,54,.3);display:grid;place-items:center;margin-bottom:18px">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2">${iconSvg}</svg>
         </div>
@@ -3396,12 +3628,49 @@ function taskCardHtml(t,compact=false){
   </div>`;
 }
 
+function togglePlDrop(wrapId, e){
+  e.stopPropagation();
+  ['plPriWrap','plOrdWrap'].forEach(id=>{ if(id!==wrapId) document.getElementById(id)?.classList.remove('open'); });
+  document.getElementById(wrapId)?.classList.toggle('open');
+}
+function plSetPri(val, el){
+  plFlt.priority = val;
+  document.getElementById('plPriWrap')?.classList.remove('open');
+  document.querySelectorAll('#plPriDrop .o-cl-opt').forEach(o=>o.classList.remove('active'));
+  el?.classList.add('active');
+  const lbl = document.getElementById('plPriLabel');
+  const labels = {'all':'Все приоритеты','🔴 Срочно':'Срочно','🟡 Важно':'Важно','🟢 Обычное':'Обычное'};
+  if(lbl) lbl.textContent = labels[val]||'Все приоритеты';
+  const t = document.getElementById('plPriTrigger');
+  t?.classList.toggle('active', val!=='all');
+  renderPlanner();
+}
+function plSetOrd(val){
+  plFlt.orderId = val;
+  document.getElementById('plOrdWrap')?.classList.remove('open');
+  const lbl = document.getElementById('plOrdLabel');
+  if(lbl) lbl.textContent = val==='all' ? 'Все задачи' : (S.orders.find(o=>o.id===val)?.name||'Все задачи');
+  document.getElementById('plOrdTrigger')?.classList.toggle('active', val!=='all');
+  renderPlanner();
+}
 function renderPlanner(){
   // Update order filter options
-  const fltOrd=document.getElementById('plFltOrd');
+  const fltOrd=document.getElementById('plOrdDrop');
   if(fltOrd){
-    const cur=fltOrd.value;
-    fltOrd.innerHTML='<option value="all">Все заказы</option>'+S.orders.map(o=>`<option value="${o.id}"${cur===o.id?' selected':''}>${esc(o.name)}</option>`).join('');
+    const cur=plFlt.orderId;
+    fltOrd.innerHTML=
+      `<div class="o-cl-opt${cur==='all'?' active':''}" onclick="plSetOrd('all')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+        Все задачи
+        <span class="o-cl-opt-cnt">${(S.tasks||[]).length}</span>
+      </div>`+
+      S.orders.map(o=>{
+        const cnt=(S.tasks||[]).filter(t=>t.orderId===o.id).length;
+        return `<div class="o-cl-opt${cur===o.id?' active':''}" onclick="plSetOrd('${o.id}')">
+          <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.name)}</span>
+          <span class="o-cl-opt-cnt">${cnt}</span>
+        </div>`;
+      }).join('');
   }
   // KPIs
   const active=S.tasks.filter(t=>t.status!=='✅ Готово');
@@ -3454,7 +3723,7 @@ function renderPlanList(){
       <div class="pl-list-sh"><span class="nm">${col}</span><span class="ct">${tasks.length}</span></div>
       ${tasks.map(t=>{
         const cls=dlClass(t.deadline);
-        const dlColors={'overdue':'#cf5a4a','today':'#d6bd6a','soon':'var(--or)','ok':'var(--ol)','':'var(--dim2)'};
+        const dlColors={'overdue':'#cf5a4a','today':'#ddbe59','soon':'var(--or)','ok':'var(--ol)','':'var(--dim2)'};
         return `<div class="pl-list-row" onclick="openTaskForm('${t.id}')">
           <div class="pl-list-dot" style="background:${PRCOL[t.priority]||'#888'}"></div>
           <div class="pl-list-name">${esc(t.task)}</div>
@@ -3570,11 +3839,25 @@ function renderPlanArchive(){
 }
 
 // === Planner Calendar ===
-let plCalDate = new Date(); // current view month
-let plCalSelected = new Date().toISOString().slice(0,10); // selected day
+let plCalDate = new Date();
+let plCalSelected = new Date().toISOString().slice(0,10);
+let plCalView = 'month'; // 'month' | 'day'
 
+function plCalSetView(v, btn){
+  plCalView = v;
+  document.querySelectorAll('.pl-cal-vs button').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderPlanCalendar();
+}
 function plCalMove(dir){
-  plCalDate.setMonth(plCalDate.getMonth()+dir);
+  if(plCalView==='day'){
+    const d = new Date(plCalSelected+'T12:00:00');
+    d.setDate(d.getDate()+dir);
+    plCalSelected = d.toISOString().slice(0,10);
+    plCalDate = new Date(d);
+  } else {
+    plCalDate.setMonth(plCalDate.getMonth()+dir);
+  }
   renderPlanCalendar();
 }
 function plCalGoToday(){
@@ -3592,6 +3875,14 @@ function renderPlanCalendar(){
   const title = document.getElementById('plCalTitle');
   const sidebar = document.getElementById('plCalSidebar');
   if(!grid) return;
+
+  if(plCalView==='day'){
+    renderDayView(title, grid, sidebar);
+    return;
+  }
+  // reset grid to month layout
+  grid.className = 'pl-cal-grid';
+  grid.style.cssText = '';
 
   const year = plCalDate.getFullYear();
   const month = plCalDate.getMonth();
@@ -3688,12 +3979,255 @@ function calDayHtml(dayNum, ds, tasks, otherMonth, todayStr){
 }
 
 function openTaskFormWithDate(dateStr){
-  openTaskForm(); // open empty form
-  // pre-fill deadline after modal renders
+  openTaskForm();
   setTimeout(()=>{
     const dl = document.getElementById('tDeadline');
     if(dl) dl.value = dateStr;
   }, 80);
+}
+
+function openTaskFormWithDateTime(dateStr, hour){
+  openTaskForm();
+  setTimeout(()=>{
+    const dl = document.getElementById('tDeadline');
+    if(dl) dl.value = dateStr;
+    // if time field exists
+    const tm = document.getElementById('tTime');
+    if(tm) tm.value = String(hour).padStart(2,'0')+':00';
+  }, 80);
+}
+
+function renderDayView(title, grid, sidebar){
+  const selDate = new Date(plCalSelected+'T12:00:00');
+  const todayStr = new Date().toISOString().slice(0,10);
+  const isToday = plCalSelected === todayStr;
+
+  const dayNames = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+  const monthNamesG = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  title.innerHTML = `${selDate.getDate()} ${monthNamesG[selDate.getMonth()]}, <span style="color:var(--dim);font-weight:500">${dayNames[selDate.getDay()]}</span>`;
+
+  // Build tasks map by hour (use time field if present, else spread across morning)
+  const tasksByHour = {};
+  const tasksNoTime = [];
+  (S.tasks||[]).filter(t=>t.deadline===plCalSelected).forEach(t=>{
+    const h = t.time ? parseInt(t.time.split(':')[0]) : null;
+    if(h!==null && h>=0 && h<24){ if(!tasksByHour[h]) tasksByHour[h]=[]; tasksByHour[h].push(t); }
+    else tasksNoTime.push(t);
+  });
+
+  const nowH = new Date().getHours();
+  const nowM = new Date().getMinutes();
+  const hours = Array.from({length:24},(_,i)=>i);
+
+  let html = '<div class="pl-day-wrap">';
+  hours.forEach(h=>{
+    const tasks = tasksByHour[h]||[];
+    const lbl = h===0?'00:00':String(h).padStart(2,'0')+':00';
+    const showNow = isToday && h===nowH;
+    const nowPct = Math.round(nowM/60*100);
+    html += `<div class="pl-day-hour">
+      <div class="pl-day-hour-lbl">${lbl}</div>
+      <div class="pl-day-hour-slot" onclick="openTaskFormWithDateTime('${plCalSelected}',${h})">
+        ${showNow?`<div class="pl-day-now-line" style="top:${nowPct}%"></div>`:''}
+        ${tasks.map(t=>`
+          <div class="pl-day-task" onclick="event.stopPropagation();openTaskForm('${t.id}')" style="border-left-color:${PRCOL[t.priority]||'var(--or)'}">
+            <div class="pl-day-task-name">${esc(t.task)}</div>
+            ${t.time?`<div class="pl-day-task-time">${t.time}</div>`:''}
+          </div>`).join('')}
+        <div class="pl-day-add-slot">＋ задача</div>
+      </div>
+    </div>`;
+  });
+
+  // Unscheduled tasks at bottom
+  if(tasksNoTime.length){
+    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--ln)">
+      <div class="pl-cal-sel-head" style="margin-bottom:8px">Без времени</div>
+      ${tasksNoTime.map(t=>`
+        <div class="pl-cal-task-row" onclick="openTaskForm('${t.id}')">
+          <div class="pl-cal-task-dot" style="background:${PRCOL[t.priority]||'#888'}"></div>
+          <div class="pl-cal-task-name">${esc(t.task)}</div>
+          ${t.orderName?`<div class="pl-cal-task-ord">▸ ${esc(t.orderName)}</div>`:''}
+        </div>`).join('')}
+    </div>`;
+  }
+  html += '</div>';
+
+  // Remove grid classes, use full width
+  grid.className = '';
+  grid.style.cssText = 'max-height:520px;overflow-y:auto;border-radius:12px;border:1px solid var(--ln)';
+  grid.innerHTML = html;
+
+  sidebar.innerHTML = `<button class="pl-cal-add" onclick="openTaskFormWithDate('${plCalSelected}')">＋ Задача на этот день</button>`;
+}
+
+// Tracker custom dropdowns
+let tmOrdVal = '';
+let tmActVal = 'Дизайн';
+function tmSetAct(val, el){
+  tmActVal = val;
+  document.getElementById('tmActWrap')?.classList.remove('open');
+  document.querySelectorAll('#tmActDrop .o-cl-opt').forEach(o=>o.classList.remove('active'));
+  el?.classList.add('active');
+  const lbl = document.getElementById('tmActLabel');
+  if(lbl) lbl.textContent = val;
+}
+function tmSetOrd(val, name){
+  tmOrdVal = val;
+  document.getElementById('tmOrdWrap')?.classList.remove('open');
+  document.querySelectorAll('#tmOrdDrop .o-cl-opt').forEach(o=>o.classList.remove('active'));
+  document.querySelector(`#tmOrdDrop .o-cl-opt[data-id="${val}"]`)?.classList.add('active');
+  const lbl = document.getElementById('tmOrdLabel');
+  if(lbl){ lbl.textContent = name||'— выбрать заказ —'; lbl.style.color = val?'var(--txt)':'var(--dim2)'; }
+}
+// Invoice client dropdown
+let ivClVal = '';
+function ivSetClient(val, name){
+  ivClVal = val;
+  document.getElementById('ivClWrap')?.classList.remove('open');
+  document.querySelectorAll('#ivClDrop .o-cl-opt').forEach(o=>o.classList.remove('active'));
+  document.querySelector(`#ivClDrop .o-cl-opt[data-id="${val}"]`)?.classList.add('active');
+  const lbl = document.getElementById('ivClLabel');
+  if(lbl){ lbl.textContent = name||'— выбрать клиента —'; lbl.style.color = val?'var(--txt)':'var(--dim2)'; }
+  // trigger original fill logic
+  if(val) invFillClientById(val);
+}
+
+// === Правовые документы ===
+const LEGAL_DOCS = {
+  privacy: {
+    title: 'Политика конфиденциальности',
+    html: `
+      <div class="legal-date">Последнее обновление: 07 июня 2025 г.</div>
+      <h2>1. Общие положения</h2>
+      <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сервиса <strong>MONAD™ CRM</strong>, расположенного по адресу <strong>monadapp.ru</strong>.</p>
+      <p>Оператором персональных данных является <strong>Хасаннов Адам</strong>, самозанятый (далее — «Оператор»). Контактный email: <strong>axcophtex@yandex.ru</strong>.</p>
+      <p>Используя сервис, вы соглашаетесь с условиями настоящей Политики. Если вы не согласны — пожалуйста, прекратите использование сервиса.</p>
+      <h2>2. Какие данные мы собираем</h2>
+      <ul>
+        <li><strong>Данные аккаунта:</strong> адрес электронной почты, идентификатор учётной записи Apple ID (при входе через Apple).</li>
+        <li><strong>Данные, которые вы вносите сами:</strong> информация о клиентах, заказах, задачах, финансах и иных объектах в рамках CRM — хранится исключительно в вашей учётной записи.</li>
+        <li><strong>Технические данные:</strong> тип браузера, IP-адрес, данные сессии — собираются автоматически для обеспечения работы сервиса.</li>
+      </ul>
+      <h2>3. Цели обработки персональных данных</h2>
+      <ul>
+        <li>Идентификация пользователя и предоставление доступа к сервису.</li>
+        <li>Хранение и синхронизация данных, введённых пользователем.</li>
+        <li>Направление уведомлений, связанных с работой сервиса.</li>
+        <li>Обработка платежей и управление подпиской (тариф Pro).</li>
+      </ul>
+      <h2>4. Хранение данных</h2>
+      <p>Данные хранятся в облачной базе данных <strong>Firebase (Google LLC)</strong>, серверы которой расположены в соответствии с политикой Google. Хасаннов Адам не передаёт персональные данные третьим лицам, за исключением инфраструктурных провайдеров, обеспечивающих работу сервиса (Firebase/Google).</p>
+      <h2>5. Сроки хранения</h2>
+      <p>Данные хранятся в течение всего срока действия аккаунта. При удалении аккаунта данные удаляются в течение 30 календарных дней.</p>
+      <h2>6. Права пользователя</h2>
+      <p>В соответствии с Федеральным законом №152-ФЗ «О персональных данных» вы вправе:</p>
+      <ul>
+        <li>Запросить информацию об обрабатываемых персональных данных.</li>
+        <li>Потребовать исправления неточных данных.</li>
+        <li>Потребовать удаления данных (право на забвение).</li>
+        <li>Отозвать согласие на обработку персональных данных.</li>
+      </ul>
+      <p>Для реализации прав обращайтесь по адресу: <strong>axcophtex@yandex.ru</strong></p>
+      <h2>7. Файлы cookie</h2>
+      <p>Сервис использует технические cookie и localStorage для поддержания сессии и сохранения настроек. Отключение cookie в браузере может нарушить работу сервиса.</p>
+      <h2>8. Изменение Политики</h2>
+      <p>Оператор вправе в одностороннем порядке изменять настоящую Политику. Актуальная версия всегда доступна на сайте monadapp.ru. Продолжение использования сервиса после изменений означает согласие с новой редакцией.</p>
+      <h2>9. Контакты</h2>
+      <p>По всем вопросам, связанным с обработкой персональных данных: <strong>axcophtex@yandex.ru</strong></p>
+    `
+  },
+  terms: {
+    title: 'Пользовательское соглашение',
+    html: `
+      <div class="legal-date">Последнее обновление: 07 июня 2025 г.</div>
+      <h2>1. Предмет соглашения</h2>
+      <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между <strong>Хасанновым Адамом</strong>, самозанятым (далее — «Администрация»), и пользователем сервиса <strong>MONAD™ CRM</strong> (monadapp.ru) (далее — «Пользователь»).</p>
+      <p>Регистрируясь или используя сервис, вы подтверждаете, что ознакомились с настоящим Соглашением и принимаете его условия в полном объёме.</p>
+      <h2>2. Описание сервиса</h2>
+      <p>MONAD™ CRM — онлайн-инструмент для управления клиентами, заказами, задачами, финансами и временем, предназначенный для фрилансеров и малого бизнеса. Сервис предоставляется в режиме SaaS (программное обеспечение как услуга).</p>
+      <h2>3. Регистрация и аккаунт</h2>
+      <ul>
+        <li>Для использования сервиса необходима регистрация с помощью email или Apple ID.</li>
+        <li>Пользователь несёт ответственность за сохранность данных своего аккаунта.</li>
+        <li>Администрация вправе заблокировать аккаунт при нарушении условий Соглашения.</li>
+        <li>Один человек — один аккаунт. Передача аккаунта третьим лицам запрещена.</li>
+      </ul>
+      <h2>4. Тарифы и оплата</h2>
+      <p>Сервис доступен в бесплатном (Free) и платном (Pro) тарифах. Условия тарифов, стоимость и порядок оплаты определяются публичной офертой, размещённой на сайте. Администрация вправе изменять тарифы с уведомлением пользователей не менее чем за 7 дней.</p>
+      <h2>5. Права и обязанности пользователя</h2>
+      <p>Пользователь обязуется:</p>
+      <ul>
+        <li>Не использовать сервис в противоправных целях.</li>
+        <li>Не передавать доступ к аккаунту третьим лицам.</li>
+        <li>Не предпринимать попыток взлома, reverse engineering или иного несанкционированного доступа.</li>
+        <li>Самостоятельно обеспечивать резервное копирование важных данных.</li>
+      </ul>
+      <h2>6. Ответственность сторон</h2>
+      <p>Администрация не несёт ответственности за:</p>
+      <ul>
+        <li>Временную недоступность сервиса по техническим причинам.</li>
+        <li>Потерю данных вследствие действий самого пользователя.</li>
+        <li>Убытки, возникшие вследствие использования или невозможности использования сервиса.</li>
+      </ul>
+      <p>Администрация несёт ответственность за обработку персональных данных в соответствии с Политикой конфиденциальности и ФЗ-152.</p>
+      <h2>7. Интеллектуальная собственность</h2>
+      <p>Все права на программный код, дизайн, логотип и иные объекты интеллектуальной собственности сервиса MONAD™ CRM принадлежат Хасаннову Адаму. Данные, которые вводит пользователь, являются собственностью пользователя.</p>
+      <h2>8. Прекращение действия</h2>
+      <p>Пользователь вправе в любой момент удалить аккаунт. Администрация вправе прекратить предоставление сервиса, уведомив пользователей не менее чем за 30 дней.</p>
+      <h2>9. Применимое право</h2>
+      <p>Соглашение регулируется законодательством Российской Федерации. Споры разрешаются в досудебном порядке, а при невозможности — в суде по месту нахождения Администрации.</p>
+      <h2>10. Контакты</h2>
+      <p>Email: <strong>axcophtex@yandex.ru</strong> · Сайт: <strong>monadapp.ru</strong></p>
+    `
+  },
+  offer: {
+    title: 'Публичная оферта',
+    html: `
+      <div class="legal-date">Последнее обновление: 07 июня 2025 г.</div>
+      <h2>1. Общие положения</h2>
+      <p>Настоящий документ является публичной офертой <strong>Хасаннова Адама</strong>, самозанятого (далее — «Исполнитель»), адресованной любому физическому или юридическому лицу (далее — «Заказчик») о заключении договора на оказание услуг доступа к сервису <strong>MONAD™ CRM</strong> (monadapp.ru) на нижеследующих условиях.</p>
+      <p>Акцептом настоящей оферты является оплата выбранного тарифа. С момента оплаты договор считается заключённым.</p>
+      <h2>2. Предмет договора</h2>
+      <p>Исполнитель обязуется предоставить Заказчику доступ к функциям тарифа <strong>Pro</strong> сервиса MONAD™ CRM на условиях, указанных в настоящей оферте.</p>
+      <h2>3. Тарифы и стоимость</h2>
+      <ul>
+        <li><strong>Pro (ежемесячно):</strong> 390 ₽ / месяц.</li>
+        <li><strong>Pro Lifetime (разовый платёж):</strong> 4 990 ₽ — бессрочный доступ.</li>
+      </ul>
+      <p>Цены указаны в рублях РФ и включают все применимые налоги. Исполнитель применяет налоговый режим самозанятого (НПД), НДС не облагается.</p>
+      <h2>4. Порядок оплаты</h2>
+      <p>Оплата производится безналичным способом через платёжные системы, предоставленные на сайте. Доступ к тарифу Pro открывается в течение 24 часов после подтверждения оплаты.</p>
+      <h2>5. Срок действия</h2>
+      <p>При оплате ежемесячного тарифа доступ предоставляется на 30 календарных дней с момента оплаты. При оплате Lifetime — бессрочно, на весь период работы сервиса.</p>
+      <h2>6. Возврат средств</h2>
+      <p>Заказчик вправе запросить возврат денежных средств в течение <strong>14 календарных дней</strong> с момента оплаты при условии, что функции тарифа Pro не использовались. Для возврата необходимо направить запрос на <strong>axcophtex@yandex.ru</strong>. Возврат осуществляется тем же способом, которым была произведена оплата, в течение 10 рабочих дней.</p>
+      <h2>7. Ответственность</h2>
+      <p>Исполнитель гарантирует доступность сервиса не менее 95% времени в месяц. В случае недоступности по вине Исполнитора срок подписки продлевается на соответствующее время.</p>
+      <h2>8. Конфиденциальность</h2>
+      <p>Обработка персональных данных осуществляется в соответствии с Политикой конфиденциальности, опубликованной на сайте monadapp.ru.</p>
+      <h2>9. Изменение условий</h2>
+      <p>Исполнитель вправе изменять условия оферты. Изменения вступают в силу с момента публикации новой редакции на сайте. Действующие подписки сохраняют условия, действовавшие на момент оплаты.</p>
+      <h2>10. Реквизиты Исполнителя</h2>
+      <p>
+        <strong>Хасаннов Адам</strong><br>
+        Статус: самозанятый<br>
+        Email: <strong>axcophtex@yandex.ru</strong><br>
+        Сайт: <strong>monadapp.ru</strong>
+      </p>
+    `
+  }
+};
+
+function openLegal(doc){
+  const d = LEGAL_DOCS[doc];
+  if(!d) return;
+  document.getElementById('legalTitle').textContent = d.title;
+  document.getElementById('legalBody').innerHTML = d.html;
+  document.getElementById('legalModal').classList.add('open');
+}
+function closeLegal(){
+  document.getElementById('legalModal').classList.remove('open');
 }
 
 // === Шаблоны ===
@@ -3859,8 +4393,17 @@ function renderTracker(){
       <button class="ibt del" onclick="deleteLog('${l.id}')">✕</button>
     </div></div>`).join('');
   setTimeout(()=>{document.querySelectorAll('#view-tracker .fl').forEach(f=>f.style.width=f.dataset.w+'%');animateDial('view-tracker')},80);
-  // timer order select
-  const sel=document.getElementById('tmOrd');if(sel){const old=sel.value;sel.innerHTML=S.orders.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('');if(old)sel.value=old;}
+  // timer order dropdown
+  const tmDrop=document.getElementById('tmOrdDrop');
+  if(tmDrop){
+    tmDrop.innerHTML=
+      `<div class="o-cl-opt${!tmOrdVal?' active':''}" data-id="" onclick="tmSetOrd('','')">
+        <span style="color:var(--dim2)">— без заказа —</span>
+      </div>`+
+      S.orders.map(o=>`<div class="o-cl-opt${tmOrdVal===o.id?' active':''}" data-id="${o.id}" onclick="tmSetOrd('${o.id}','${esc(o.name).replace(/'/g,"\\'")}')">
+        ${esc(o.name)}
+      </div>`).join('');
+  }
 }
 function setupTimer(){
   if(Plan.type==='free') return; // трекер заблокирован на Free
@@ -3896,9 +4439,9 @@ function setupTimer(){
   document.getElementById('tmSave').onclick=function(){
     const ms=tmAcc+(tmRun?Date.now()-tmStart:0);const h=Math.max(Math.round(ms/360000)/10,.1);
     const rate=parseFloat(document.getElementById('tmRate').value)||0;
-    const ordEl=document.getElementById('tmOrd');const ord=ordEl?S.orders.find(o=>o.id===ordEl.value):null;
+    const ord=tmOrdVal?S.orders.find(o=>o.id===tmOrdVal):null;
     const note=rate>0?`Ставка ${rate} ₽/ч · Заработано ${Math.round(rate*h)} ₽`:'';
-    S.timelog.push({id:uid(),task:'Сессия таймера',orderId:ord?ord.id:'',orderName:ord?ord.name:'',act:gv('tmAct')||'Дизайн',h,date:new Date().toISOString().slice(0,10),note,rate:rate||0});
+    S.timelog.push({id:uid(),task:'Сессия таймера',orderId:ord?ord.id:'',orderName:ord?ord.name:'',act:tmActVal||'Дизайн',h,date:new Date().toISOString().slice(0,10),note,rate:rate||0});
     tmRun=false;tmAcc=0;clearInterval(tmInt);tmInt=null;
     document.getElementById('tmToggle').textContent='▶ Старт';document.getElementById('tmToggle').classList.add('go');document.getElementById('tmToggle').classList.remove('ghost');
     document.getElementById('tmState').textContent='записано';document.getElementById('tmClock').textContent='00:00:00';
@@ -3977,7 +4520,7 @@ function renderFinance(){
       </div>
     </div>
     <div class="tax-row"><span class="tax-label">Налог (${taxRate}% от оплаченного)</span><span class="tax-value">${fmt(taxAmt)} ₽</span></div>
-    <div class="tax-row"><span class="tax-label">Отложить на налог</span><span class="tax-value" style="color:#d6bd6a">${fmt(Math.round(totalPaid*taxRate/100))} ₽</span></div>
+    <div class="tax-row"><span class="tax-label">Отложить на налог</span><span class="tax-value" style="color:#ddbe59">${fmt(Math.round(totalPaid*taxRate/100))} ₽</span></div>
     <div class="tax-row"><span class="tax-label">Остаток после налогов</span><span class="tax-value" style="color:${taxLeft>=0?'var(--ol)':'#cf5a4a'}">${fmt(taxLeft)} ₽</span></div>
     <div class="tax-note">Расчёт на основе оплаченных сумм за выбранный период</div>`;
 
@@ -4060,14 +4603,14 @@ function renderSeasonality(){
    ══════════════════════════════════════════════ */
 const DEFAULT_EXP_CATS=[
   {name:'Подписки',    color:'#ABA38F', icon:'📦'},
-  {name:'Налоги',      color:'#d6bd6a', icon:'🧾'},
-  {name:'Материалы',   color:'#8a8660', icon:'🎨'},
+  {name:'Налоги',      color:'#ddbe59', icon:'🧾'},
+  {name:'Материалы',   color:'#a09060', icon:'🎨'},
   {name:'Оборудование',color:'var(--ol)', icon:'💻'},
   {name:'Реклама',     color:'#cf8a5a', icon:'📣'},
-  {name:'Другое',      color:'#8f867a', icon:'📌'},
+  {name:'Другое',      color:'#9e8a7a', icon:'📌'},
 ];
 function getExpCats(){ return (S.expCats&&S.expCats.length)?S.expCats:DEFAULT_EXP_CATS; }
-function expCatColor(name){ const c=getExpCats().find(c=>c.name===name); return c?c.color:'#8f867a'; }
+function expCatColor(name){ const c=getExpCats().find(c=>c.name===name); return c?c.color:'#9e8a7a'; }
 function expCatIcon(name){ const c=DEFAULT_EXP_CATS.find(c=>c.name===name); return c?c.icon:'📌'; }
 function expCatNames(){ return getExpCats().map(c=>c.name); }
 
@@ -4209,7 +4752,7 @@ function renderExpenses(){
       </div>
       <div class="exp-insight-card">
         <div class="exp-insight-label">От дохода</div>
-        <div class="exp-insight-val" style="color:${ratioPct>70?'#cf5a4a':ratioPct>40?'#d6bd6a':'var(--ol)'}">${ratioPct}<span style="font-size:13px"> %</span></div>
+        <div class="exp-insight-val" style="color:${ratioPct>70?'#cf5a4a':ratioPct>40?'#ddbe59':'var(--ol)'}">${ratioPct}<span style="font-size:13px"> %</span></div>
         <div class="exp-insight-sub">${fmt(totalExp)} из ${fmt(totalPaidNow)} ₽</div>
       </div>
       <div class="exp-insight-card">
@@ -4261,7 +4804,7 @@ function renderExpenses(){
           next=d;
         }
         const daysLeft=next?Math.ceil((next-today)/86400000):null;
-        const urgentColor=daysLeft!==null?(daysLeft<=3?'#cf5a4a':daysLeft<=7?'#d6bd6a':'var(--or)'):'var(--or)';
+        const urgentColor=daysLeft!==null?(daysLeft<=3?'#cf5a4a':daysLeft<=7?'#ddbe59':'var(--or)'):'var(--or)';
         return `<div class="exp-recur-card">
           <div class="exp-recur-card-accent" style="background:${col}"></div>
           <div class="exp-recur-name">${esc(e.name)}</div>
@@ -4465,6 +5008,13 @@ function qaSetCat(el,name){
 // Close dropdown on outside click
 document.addEventListener('click',()=>{
   document.getElementById('qaCatDrop')?.classList.remove('open');
+  document.getElementById('oClDropWrap')?.classList.remove('open');
+  document.getElementById('conCatDropWrap')?.classList.remove('open');
+  document.getElementById('plPriWrap')?.classList.remove('open');
+  document.getElementById('plOrdWrap')?.classList.remove('open');
+  document.getElementById('tmOrdWrap')?.classList.remove('open');
+  document.getElementById('tmActWrap')?.classList.remove('open');
+  document.getElementById('ivClWrap')?.classList.remove('open');
 });
 
 /* ── Category editor ── */
@@ -4512,7 +5062,7 @@ function addExpCatRow(){
 function saveExpCats(){
   const cats=[...document.querySelectorAll('#ecatList .ecat-row')].map((row,i)=>{
     const nm=row.querySelector('.ecat-nm-inp')?.value.trim();
-    const col=row.querySelector('.ecat-color-inp')?.value||'#8f867a';
+    const col=row.querySelector('.ecat-color-inp')?.value||'#9e8a7a';
     const budEl=[...row.querySelectorAll('input[type=number]')][0];
     const budget=parseFloat(budEl?.value)||0;
     return nm?{name:nm,color:col,budget}:null;
@@ -4536,9 +5086,20 @@ function setupInvoice(){
     return;
   }
   // Populate CRM client dropdown
-  const sel=document.getElementById('iv-cl-select');
-  sel.innerHTML='<option value="">— выбрать клиента —</option>'+
-    S.clients.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  ivClVal = '';
+  const ivDrop = document.getElementById('ivClDrop');
+  if(ivDrop){
+    ivDrop.innerHTML=
+      `<div class="o-cl-opt active" data-id="" onclick="ivSetClient('','')">
+        <span style="color:var(--dim2)">— выбрать клиента —</span>
+      </div>`+
+      S.clients.map(c=>`<div class="o-cl-opt" data-id="${c.id}" onclick="ivSetClient('${c.id}','${esc(c.name).replace(/'/g,"\\'")}')">
+        <span style="flex:none">${c.icon||'👤'}</span>
+        <span style="flex:1">${esc(c.name)}</span>
+      </div>`).join('');
+  }
+  const ivLbl = document.getElementById('ivClLabel');
+  if(ivLbl){ ivLbl.textContent='— выбрать клиента —'; ivLbl.style.color='var(--dim2)'; }
 
   // Restore saved vendor/bank details
   let saved={};
@@ -4565,13 +5126,14 @@ function setupInvoice(){
 }
 
 function invFillClient(){
-  const cid=document.getElementById('iv-cl-select').value;
+  invFillClientById(ivClVal);
+}
+function invFillClientById(cid){
   if(!cid) return;
   const cl=clientById(cid);
   document.getElementById('iv-to-name').value  = cl.name  || '';
   document.getElementById('iv-to-phone').value = cl.phone || '';
   document.getElementById('iv-to-email').value = cl.email || '';
-  // Prefill items from unpaid CRM orders
   const os=ordersOf(cid).filter(o=>(o.paid||0)<(o.cost||0));
   if(os.length){
     invItems=os.map(o=>({name:o.name,qty:1,price:(o.cost||0)-(o.paid||0)}));
@@ -4603,7 +5165,7 @@ function clearInvoice(){
   ['iv-to-name','iv-to-email','iv-to-phone','iv-note'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('iv-discount').value='0';
   document.getElementById('iv-tax').value='0';
-  document.getElementById('iv-cl-select').value='';
+  ivSetClient('','');
   renderInvItems();renderInvoice();
 }
 
@@ -4746,12 +5308,40 @@ function deleteContact(id){
   if(!confirm('Удалить контакт?'))return;
   S.contacts=(S.contacts||[]).filter(c=>c.id!==id);save();renderContacts();toast('Контакт удалён');
 }
+function toggleConCatDrop(e){
+  e.stopPropagation();
+  document.getElementById('conCatDropWrap')?.classList.toggle('open');
+}
+function conSetCat(v){
+  contactFlt.cat=v;
+  document.getElementById('conCatDropWrap')?.classList.remove('open');
+  renderContacts();
+}
 function renderContacts(){
   if(!S.contacts) S.contacts=[];
   const cats=[...new Set(S.contacts.map(c=>c.category).filter(Boolean))];
-  document.getElementById('contactCatChips').innerHTML=
-    `<button class="chip ${contactFlt.cat==='all'?'active':''}" onclick="contactFlt.cat='all';renderContacts()">Все</button>`+
-    CONTACT_CATS.filter(cc=>cats.includes(cc.v)).map(cc=>`<button class="chip ${contactFlt.cat===cc.v?'active':''}" onclick="contactFlt.cat='${cc.v}';renderContacts()">${cc.l}</button>`).join('');
+  const activeCats = CONTACT_CATS.filter(cc=>cats.includes(cc.v));
+  const conDrop = document.getElementById('conCatDrop');
+  const conTrigger = document.getElementById('conCatTrigger');
+  const conLabel = document.getElementById('conCatLabel');
+  if(conDrop){
+    conDrop.innerHTML =
+      `<div class="o-cl-opt${contactFlt.cat==='all'?' active':''}" onclick="conSetCat('all')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l6.59-6.59a1 1 0 0 0 0-1.41L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+        Все категории
+        <span class="o-cl-opt-cnt">${S.contacts.length}</span>
+      </div>` +
+      activeCats.map(cc=>{
+        const cnt = S.contacts.filter(c=>c.category===cc.v).length;
+        return `<div class="o-cl-opt${contactFlt.cat===cc.v?' active':''}" onclick="conSetCat('${cc.v}')">
+          <span style="flex:1">${cc.l}</span>
+          <span class="o-cl-opt-cnt">${cnt}</span>
+        </div>`;
+      }).join('');
+    const active = contactFlt.cat !== 'all';
+    conTrigger?.classList.toggle('active', active);
+    if(conLabel) conLabel.textContent = active ? (CONTACT_CATS.find(cc=>cc.v===contactFlt.cat)?.l||'Все категории') : 'Все категории';
+  }
   const q=contactFlt.q.toLowerCase();
   const filtered=(S.contacts||[]).filter(c=>{
     if(contactFlt.cat!=='all'&&c.category!==contactFlt.cat) return false;
@@ -4998,6 +5588,15 @@ const CAT_ICONS = {
 };
 
 let bmFlt = {cat:'all', q:''};
+let bmView = 'grid'; // 'grid' | 'compact' | 'list'
+
+function bmSetView(v, btn){
+  bmView = v;
+  document.querySelectorAll('#bmVs button').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const grid = document.getElementById('bmGrid');
+  if(grid){ grid.classList.remove('bm-list','bm-compact'); if(v==='list') grid.classList.add('bm-list'); else if(v==='compact') grid.classList.add('bm-compact'); }
+}
 
 function renderBookmarks(){
   // merge saved bookmarks from S
@@ -5022,7 +5621,9 @@ function renderBookmarks(){
   });
 
   if(!filtered.length){
-    document.getElementById('bmGrid').innerHTML='<div class="bm-empty">Ничего не найдено</div>';
+    const g=document.getElementById('bmGrid');
+    g.className='bm-grid'+(bmView==='list'?' bm-list':bmView==='compact'?' bm-compact':'');
+    g.innerHTML='<div class="bm-empty">Ничего не найдено</div>';
     return;
   }
 
@@ -5035,9 +5636,13 @@ function renderBookmarks(){
       html+=`<div class="bm-section-title">${getCatIcon(cat)} ${cat} <span style="font-family:'Rubik';font-size:11px;color:var(--dim2)">${items.length}</span></div>`;
       html+=items.map(b=>bmCard(b)).join('');
     });
-    document.getElementById('bmGrid').innerHTML=html;
+    const g=document.getElementById('bmGrid');
+    g.className='bm-grid'+(bmView==='list'?' bm-list':bmView==='compact'?' bm-compact':'');
+    g.innerHTML=html;
   } else {
-    document.getElementById('bmGrid').innerHTML=filtered.map(b=>bmCard(b)).join('');
+    const g=document.getElementById('bmGrid');
+    g.className='bm-grid'+(bmView==='list'?' bm-list':bmView==='compact'?' bm-compact':'');
+    g.innerHTML=filtered.map(b=>bmCard(b)).join('');
   }
 }
 
@@ -5370,5 +5975,16 @@ initialized.dash=true;
 renderDash();
 setTimeout(animateDash,280);
 </script>
+<!-- LEGAL DOCS MODAL -->
+<div class="legal-modal-ov" id="legalModal" onclick="if(event.target===this)closeLegal()">
+  <div class="legal-box">
+    <div class="legal-head">
+      <h3 id="legalTitle"></h3>
+      <button onclick="closeLegal()">✕</button>
+    </div>
+    <div class="legal-body" id="legalBody"></div>
+  </div>
+</div>
+
 </body>
 </html>
