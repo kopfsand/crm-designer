@@ -2906,6 +2906,31 @@ function buildHeatmap(orders){
       <div class="hm-cell" data-v="4"></div><span>больше</span></div>`;
 }
 
+function showSectionLock(viewId, eyeLabel, title, iconSvg, desc){
+  const el=document.getElementById('view-'+viewId);if(!el)return;
+  el.innerHTML=`
+    <div class="sec-head"><div><span class="eye">${eyeLabel}</span><h2>${title}</h2></div></div>
+    <div style="position:relative;border-radius:var(--r);overflow:hidden;min-height:420px;border:1px solid var(--ln);background:var(--card)">
+      <div style="filter:blur(5px);opacity:.3;pointer-events:none;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:120px"></div>
+        <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:120px"></div>
+        <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:150px"></div>
+        <div style="background:var(--card2);border:1px solid var(--ln);border-radius:14px;height:150px"></div>
+      </div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;background:rgba(12,11,10,.72);backdrop-filter:blur(2px)">
+        <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,90,31,.12);border:1px solid rgba(255,90,31,.3);display:grid;place-items:center;margin-bottom:18px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2">${iconSvg}</svg>
+        </div>
+        <div style="font-family:'Inter';font-weight:800;font-size:20px;text-align:center;margin-bottom:8px">${title} в тарифе Solo</div>
+        <div style="font-family:'Inter';font-size:13px;color:var(--dim);text-align:center;max-width:340px;line-height:1.6;margin-bottom:26px">${desc}</div>
+        <button onclick="openUpgradeModal()" style="font-family:'Inter';font-weight:700;font-size:13px;padding:13px 26px;border-radius:12px;background:var(--or);color:var(--on);border:none;cursor:pointer;transition:.15s" onmouseover="this.style.background='var(--ord)'" onmouseout="this.style.background='var(--or)'">
+          Обновить тариф →
+        </button>
+        <div style="margin-top:18px;font-family:'Inter';font-size:11px;color:var(--dim2)">Solo от 390 ₽/мес · Lifetime 4 990 ₽ разово</div>
+      </div>
+    </div>`;
+}
+
 function showAnalyticsLock(){
   const el=document.getElementById('view-analytics');
   if(!el) return;
@@ -3177,6 +3202,12 @@ function bindDnD(){
 let tmRun=false,tmStart=0,tmAcc=0,tmInt=null;
 function fmtHMS(ms){const s=Math.floor(ms/1000);return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}
 function renderTracker(){
+  if(Plan.type==='free'){
+    showSectionLock('tracker','Хронометраж','Трекер времени',
+      '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/>',
+      'Записывайте часы по заказам, считайте ставку и заработок за сессию — в платном тарифе.');
+    return;
+  }
   const totalH=S.timelog.reduce((s,l)=>s+(l.h||0),0);
   const planH=Math.max(totalH*1.4,60);const pct=Math.min(totalH/planH,1);
   document.getElementById('hoursDial').innerHTML=buildDial(pct,totalH+'ч','записано');
@@ -3213,6 +3244,7 @@ function renderTracker(){
   const sel=document.getElementById('tmOrd');if(sel){const old=sel.value;sel.innerHTML=S.orders.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('');if(old)sel.value=old;}
 }
 function setupTimer(){
+  if(Plan.type==='free') return; // трекер заблокирован на Free
   function updateTimerTick(){
     const ms=tmAcc+(tmRun?Date.now()-tmStart:0);
     document.getElementById('tmClock').textContent=fmtHMS(ms);
@@ -3276,6 +3308,12 @@ let taxRate=6;
 
 
 function renderFinance(){
+  if(Plan.type==='free'){
+    showSectionLock('finance','Финансы','Финансы и расходы',
+      '<path d="M4 19V5M4 19h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/>',
+      'Полная финансовая картина: доходы, расходы, прибыль, налоги и сравнение периодов — в платном тарифе.');
+    return;
+  }
   const orders=finFilterOrders();
 
   const totalCost=orders.reduce((s,o)=>s+(o.cost||0),0);
@@ -3872,6 +3910,12 @@ function saveExpCats(){
 let invItems=[];
 
 function setupInvoice(){
+  if(Plan.type==='free'){
+    showSectionLock('invoice','Документы','Генератор счетов',
+      '<path d="M6 2h9l3 3v17l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h3"/>',
+      'Создавайте красивые счета для клиентов с вашими реквизитами и выгружайте в PDF — в платном тарифе.');
+    return;
+  }
   // Populate CRM client dropdown
   const sel=document.getElementById('iv-cl-select');
   sel.innerHTML='<option value="">— выбрать клиента —</option>'+
@@ -4642,10 +4686,12 @@ function switchView(name){
     if(name==='bookmarks')renderBookmarks();
   } else {
     if(name==='planner')renderPlanner();
-    if(name==='tracker')renderTracker();
+    if(name==='tracker'){setupTimer();renderTracker();}
     if(name==='orders')renderOrders();
     if(name==='clients')renderClients();
     if(name==='analytics')renderAnalytics(); // всегда перерендер — для корректной блокировки/разблокировки
+    if(name==='finance')renderFinance();
+    if(name==='invoice')setupInvoice();
     if(name==='contacts')renderContacts();
     if(name==='bookmarks')renderBookmarks();
   }
