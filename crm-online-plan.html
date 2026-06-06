@@ -6037,20 +6037,19 @@ setTimeout(animateDash,280);
 </script>
 <!-- COOKIE BANNER -->
 <div id="cookieBanner" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:3000;width:calc(100% - 32px);max-width:560px">
-  <div style="background:var(--card);border:1px solid var(--ln2);border-radius:18px;padding:18px 20px;box-shadow:0 16px 48px -12px rgba(0,0,0,.6);display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px;flex:none;color:var(--or);opacity:.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
-    <div style="flex:1;min-width:200px">
-      <div style="font-family:'Inter';font-size:12.5px;font-weight:600;color:var(--txt);margin-bottom:3px">Мы используем файлы cookie</div>
-      <div style="font-family:'Inter';font-size:11px;color:var(--dim2);line-height:1.55">Для работы сервиса и авторизации. Продолжая использование, вы соглашаетесь с <a onclick="openLegal('privacy')" style="color:var(--dim);border-bottom:1px solid var(--ln2);cursor:pointer;text-decoration:none;transition:.12s">политикой конфиденциальности</a>.</div>
+  <div style="background:#26201a;border:1px solid #4e4237;border-radius:18px;padding:18px 20px;box-shadow:0 16px 48px -12px rgba(0,0,0,.7);display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#d54b43" stroke-width="1.8" style="width:22px;height:22px;flex:none;opacity:.9"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="#d54b43"/><circle cx="15" cy="9" r="1" fill="#d54b43"/></svg>
+    <div style="flex:1;min-width:180px">
+      <div style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;color:#D9D4C8;margin-bottom:4px">Мы используем файлы cookie</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;color:#7a7060;line-height:1.55">Для работы сервиса и авторизации. Продолжая использование, вы соглашаетесь с <span onclick="openLegal('privacy')" style="color:#ABA38F;border-bottom:1px solid #4e4237;cursor:pointer">политикой конфиденциальности</span>.</div>
     </div>
     <div style="display:flex;gap:8px;flex:none">
-      <button onclick="acceptCookies()" style="font-family:'Inter';font-size:12px;font-weight:700;padding:9px 18px;background:var(--or);color:var(--on);border:none;border-radius:11px;cursor:pointer;transition:.15s;white-space:nowrap">Принять</button>
-      <button onclick="declineCookies()" style="font-family:'Inter';font-size:12px;font-weight:600;padding:9px 14px;background:transparent;color:var(--dim2);border:1px solid var(--ln2);border-radius:11px;cursor:pointer;transition:.15s;white-space:nowrap">Только необходимые</button>
+      <button onclick="acceptCookies()" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;padding:9px 18px;background:#d54b43;color:#f0ebe0;border:none;border-radius:11px;cursor:pointer;white-space:nowrap">Принять</button>
+      <button onclick="declineCookies()" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:9px 14px;background:transparent;color:#7a7060;border:1px solid #4e4237;border-radius:11px;cursor:pointer;white-space:nowrap">Только необходимые</button>
     </div>
   </div>
-</div>
-
-</body>
+<!-- LEGAL DOCS MODAL -->
+<div class="legal-modal-ov" id="legalModal" onclick="if(event.target===this)closeLegal()">
   <div class="legal-box">
     <div class="legal-head">
       <h3 id="legalTitle"></h3>
