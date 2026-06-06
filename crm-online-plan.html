@@ -19,7 +19,7 @@ import {
   signInAnonymously, linkWithPopup,
   signOut, onAuthStateChanged, sendPasswordResetEmail
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-import { getDatabase, ref, set, onValue, off }
+import { getDatabase, ref, set, get, onValue, off }
   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
 const firebaseConfig = {
@@ -167,11 +167,23 @@ function setAuthError(msg, isSuccess=false) {
 }
 
 /* ---------- ПЛАН ПОЛЬЗОВАТЕЛЯ ---------- */
-// Загрузка через onValue в subscribeToData (реалтайм)
 window._fbWriteMeta = async function(uid, meta) {
   await set(ref(db, 'users/' + uid + '/meta'), meta);
 };
 window._fbGetUid = () => currentUser ? currentUser.uid : null;
+
+// Явное чтение плана — вызывается из refreshAll() после загрузки данных
+window._reloadPlan = async function() {
+  if(!currentUser) return;
+  try {
+    const snap = await get(ref(db, 'users/' + currentUser.uid + '/meta'));
+    const meta = snap.val();
+    console.log('[Plan] loaded:', meta);
+    if(window.Plan) window.Plan.setFromFirebase(meta);
+  } catch(e) {
+    console.warn('[Plan] read error:', e.message);
+  }
+};
 
 /* ---------- AUTH STATE ---------- */
 onAuthStateChanged(auth, user => {
@@ -4734,8 +4746,8 @@ function refreshAll(){
   initialized.dash=true;
   loadWtypes();
   renderDash();
-  // Обновить бейдж плана после рендера (meta может прийти позже чем данные)
-  setTimeout(()=>{ if(window.Plan) window.Plan._badge(); }, 200);
+  // Читаем план после того как DOM отрендерен и appRoot виден
+  setTimeout(()=>{ if(window._reloadPlan) window._reloadPlan(); }, 50);
 }
 
 function animateDash(){
