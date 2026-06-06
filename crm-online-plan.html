@@ -218,7 +218,11 @@ function subscribeToData(uid) {
   if(metaRef) off(metaRef);
   metaRef = ref(db, 'users/' + uid + '/meta');
   onValue(metaRef, snap => {
-    if(window.Plan) window.Plan.setFromFirebase(snap.val());
+    const meta = snap.val();
+    console.log('[Plan] meta received:', meta);
+    if(window.Plan) window.Plan.setFromFirebase(meta);
+  }, err => {
+    console.warn('[Plan] meta read error:', err);
   });
 }
 
@@ -4724,7 +4728,14 @@ document.getElementById('tabs').onclick=e=>{
   document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');switchView(b.dataset.view);
 };
-function refreshAll(){ Object.keys(initialized).forEach(k=>delete initialized[k]);initialized.dash=true;loadWtypes();renderDash(); }
+function refreshAll(){
+  Object.keys(initialized).forEach(k=>delete initialized[k]);
+  initialized.dash=true;
+  loadWtypes();
+  renderDash();
+  // Обновить бейдж плана после рендера (meta может прийти позже чем данные)
+  setTimeout(()=>{ if(window.Plan) window.Plan._badge(); }, 200);
+}
 
 function animateDash(){
   document.querySelectorAll('.vb .fill').forEach(b=>b.style.height=b.dataset.h+'%');
