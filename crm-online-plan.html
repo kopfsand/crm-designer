@@ -2079,7 +2079,7 @@ const PLAN_LIMITS={
   solo: {clients:Infinity, orders:Infinity, tasks:Infinity},
   pro:  {clients:Infinity, orders:Infinity, tasks:Infinity},
 };
-const PLAN_LABELS={free:'Free', solo:'Solo ✦', pro:'Pro ✦✦'};
+const PLAN_LABELS={free:'Free', solo:'Pro ✦', pro:'Lifetime ✦'};
 const FEATURE_NAMES={clients:'клиентов', orders:'заказов', tasks:'задач'};
 
 window.Plan={
@@ -2103,7 +2103,12 @@ window.Plan={
 
   setFromFirebase(meta){
     if(!meta){this.type='free';this.expiry=null;}
-    else{this.type=meta.plan||'free';this.expiry=meta.planExpiry||null;}
+    else{
+      // Очищаем случайные кавычки (Firebase Console иногда сохраняет как "\"solo\"")
+      const raw=String(meta.plan||'free').replace(/['"]/g,'').trim().toLowerCase();
+      this.type=['solo','pro'].includes(raw)?raw:'free';
+      this.expiry=meta.planExpiry||null;
+    }
     this._badge();
   },
 
@@ -2114,7 +2119,7 @@ window.Plan={
       solo:`<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M12 2l2.6 7.9H23l-6.8 4.9 2.6 7.9L12 18l-6.8 4.7 2.6-7.9L1 9.9h8.4z"/></svg>`,
       pro: `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M2 19V9l5 4 5-9 5 9 5-4v10H2z"/></svg>`,
     };
-    const labels={free:'Free',solo:'Solo',pro:'Pro'};
+    const labels={free:'Free',solo:'Pro',pro:'Lifetime'};
     el.innerHTML=`<span style="display:inline-flex;align-items:center;gap:4px">${icons[this.type]||icons.free}${labels[this.type]||'Free'}</span>`;
     el.className='pill plan-badge'+(this.type==='solo'?' plan-solo':this.type==='pro'?' plan-pro':'');
     if(this.expiry) el.title='Тариф '+labels[this.type]+' · до '+new Date(this.expiry).toLocaleDateString('ru-RU');
@@ -2149,7 +2154,7 @@ function openUpgradeModal(feature, current, limit){
       <div class="upgrade-tier hot">
         <div class="upgrade-tier-head">
           <div>
-            <div class="upgrade-tier-name">Solo ✦</div>
+            <div class="upgrade-tier-name">Pro ✦</div>
             <div class="upgrade-tier-sub">Для одного фрилансера</div>
           </div>
           <div style="text-align:right">
@@ -2162,7 +2167,7 @@ function openUpgradeModal(feature, current, limit){
           ✓ Финансовый блок и аналитика<br>
           ✓ Экспорт данных
         </div>
-        <a href="${SOLO_URL}" target="_blank" class="upgrade-btn hot" onclick="closeModal()">Оформить Solo →</a>
+        <a href="${SOLO_URL}" target="_blank" class="upgrade-btn hot" onclick="closeModal()">Оформить Pro →</a>
       </div>
 
       <div class="upgrade-tier cold">
@@ -2178,7 +2183,7 @@ function openUpgradeModal(feature, current, limit){
           </div>
         </div>
         <div class="upgrade-tier-features">
-          ✓ Всё из Solo — навсегда<br>
+          ✓ Всё из Pro — навсегда<br>
           ✓ Все будущие обновления<br>
           ✓ Приоритетная поддержка
         </div>
@@ -2947,12 +2952,12 @@ function showSectionLock(viewId, eyeLabel, title, iconSvg, desc){
         <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,90,31,.12);border:1px solid rgba(255,90,31,.3);display:grid;place-items:center;margin-bottom:18px">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2">${iconSvg}</svg>
         </div>
-        <div style="font-family:'Inter';font-weight:800;font-size:20px;text-align:center;margin-bottom:8px">${title} в тарифе Solo</div>
+        <div style="font-family:'Inter';font-weight:800;font-size:20px;text-align:center;margin-bottom:8px">${title} в тарифе Pro</div>
         <div style="font-family:'Inter';font-size:13px;color:var(--dim);text-align:center;max-width:340px;line-height:1.6;margin-bottom:26px">${desc}</div>
         <button onclick="openUpgradeModal()" style="font-family:'Inter';font-weight:700;font-size:13px;padding:13px 26px;border-radius:12px;background:var(--or);color:var(--on);border:none;cursor:pointer;transition:.15s" onmouseover="this.style.background='var(--ord)'" onmouseout="this.style.background='var(--or)'">
           Обновить тариф →
         </button>
-        <div style="margin-top:18px;font-family:'Inter';font-size:11px;color:var(--dim2)">Solo от 390 ₽/мес · Lifetime 4 990 ₽ разово</div>
+        <div style="margin-top:18px;font-family:'Inter';font-size:11px;color:var(--dim2)">Pro от 390 ₽/мес · Lifetime 4 990 ₽ разово</div>
       </div>
     </div>`;
 }
@@ -2979,7 +2984,7 @@ function showAnalyticsLock(){
         <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,90,31,.12);border:1px solid rgba(255,90,31,.3);display:grid;place-items:center;margin-bottom:18px">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <div style="font-family:'Inter';font-weight:800;font-size:20px;text-align:center;margin-bottom:8px">Аналитика в тарифе Solo</div>
+        <div style="font-family:'Inter';font-weight:800;font-size:20px;text-align:center;margin-bottom:8px">Аналитика в тарифе Pro</div>
         <div style="font-family:'Inter';font-size:13px;color:var(--dim);text-align:center;max-width:340px;line-height:1.6;margin-bottom:26px">
           Графики выручки, средний чек, воронка, тепловая карта активности, инсайты по клиентам — всё это доступно в платной версии.
         </div>
@@ -2988,7 +2993,7 @@ function showAnalyticsLock(){
             Обновить тариф →
           </button>
         </div>
-        <div style="margin-top:18px;font-family:'Inter';font-size:11px;color:var(--dim2)">Solo от 390 ₽/мес · Lifetime 4 990 ₽ разово</div>
+        <div style="margin-top:18px;font-family:'Inter';font-size:11px;color:var(--dim2)">Pro от 390 ₽/мес · Lifetime 4 990 ₽ разово</div>
       </div>
     </div>`;
 }
