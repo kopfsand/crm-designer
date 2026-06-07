@@ -6228,7 +6228,20 @@ function refreshAll(){
   if(activeBtn && activeBtn.dataset.view && activeBtn.dataset.view !== 'dash'){
     switchViewNamed(activeBtn.dataset.view);
   }
-  setTimeout(()=>{ if(window._reloadPlan) window._reloadPlan(); }, 50);
+  // Also refresh tracker dropdowns if on tracker tab
+  setTimeout(()=>{
+    if(document.getElementById('tmOrdDrop')){
+      const tmDrop=document.getElementById('tmOrdDrop');
+      if(tmDrop) tmDrop.innerHTML=
+        `<div class="o-cl-opt${!tmOrdVal?' active':''}" data-id="" onclick="tmSetOrd('','')">
+          <span style="color:var(--dim2)">— без заказа —</span>
+        </div>`+
+        S.orders.map(o=>`<div class="o-cl-opt${tmOrdVal===o.id?' active':''}" data-id="${o.id}" onclick="tmSetOrd('${o.id}','${esc(o.name).replace(/'/g,"\\'")}')">
+          ${esc(o.name)}
+        </div>`).join('');
+    }
+    if(window._reloadPlan) window._reloadPlan();
+  }, 150);
 }
 
 function animateDash(){
