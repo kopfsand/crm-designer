@@ -2011,7 +2011,7 @@ input[type=number]{-moz-appearance:textfield}
               <span id="tmOrdLabel" style="flex:1;text-align:left">— выбрать заказ —</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="o-cl-drop" id="tmOrdDrop" style="width:100%"></div>
+            <div class="o-cl-drop" id="tmOrdDrop"></div>
           </div>
         </div>
         <div class="fld" style="width:100%"><span>Тип работы</span>
@@ -2021,7 +2021,7 @@ input[type=number]{-moz-appearance:textfield}
               <span id="tmActLabel" style="flex:1;text-align:left">Дизайн</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="o-cl-drop" id="tmActDrop" style="width:100%"></div>
+            <div class="o-cl-drop" id="tmActDrop"></div>
           </div>
         </div>
         <div class="fld" style="width:100%"><span>Ставка, ₽/час</span><input id="tmRate" type="number" class="tx" placeholder="0" min="0" step="100" style="width:100%"></div>
@@ -4667,6 +4667,19 @@ function renderTracker(){
       'Записывайте часы по заказам, считайте ставку и заработок за сессию — в платном тарифе.');
     return;
   }
+  // populate dropdowns first — before any early returns
+  const tmADrop=document.getElementById('tmActDrop');
+  if(tmADrop){
+    tmADrop.innerHTML=getActTypes().map(a=>
+      `<div class="o-cl-opt${a===tmActVal?' active':''}" onclick="tmSetAct('${a.replace(/'/g,"\\'")}',this)">${esc(a)}</div>`
+    ).join('');
+  }
+  const tmDrop=document.getElementById('tmOrdDrop');
+  if(tmDrop){
+    tmDrop.innerHTML=
+      `<div class="o-cl-opt${!tmOrdVal?' active':''}" data-id="" onclick="tmSetOrd('','')"><span style="color:var(--dim2)">— без заказа —</span></div>`+
+      S.orders.map(o=>`<div class="o-cl-opt${tmOrdVal===o.id?' active':''}" data-id="${o.id}" onclick="tmSetOrd('${o.id}','${esc(o.name).replace(/'/g,"\\'")}')"> ${esc(o.name)}</div>`).join('');
+  }
   const totalH=S.timelog.reduce((s,l)=>s+(l.h||0),0);
   const planH=Math.max(totalH*1.4,60);const pct=Math.min(totalH/planH,1);
   document.getElementById('hoursDial').innerHTML=buildDial(pct,totalH+'ч','записано');
@@ -4699,26 +4712,6 @@ function renderTracker(){
       <button class="ibt del" onclick="deleteLog('${l.id}')">✕</button>
     </div></div>`).join('');
   setTimeout(()=>{document.querySelectorAll('#view-tracker .fl').forEach(f=>f.style.width=f.dataset.w+'%');animateDial('view-tracker')},80);
-  // timer act dropdown
-  const tmADrop=document.getElementById('tmActDrop');
-  if(tmADrop){
-    const actTypes = getActTypes();
-    tmADrop.innerHTML = actTypes.map(a=>{
-      const safe = a.replace(/'/g,"\\'");
-      return `<div class="o-cl-opt${a===tmActVal?' active':''}" onclick="tmSetAct('${safe}',this)">${esc(a)}</div>`;
-    }).join('');
-  }
-  // timer order dropdown
-  const tmDrop=document.getElementById('tmOrdDrop');
-  if(tmDrop){
-    tmDrop.innerHTML=
-      `<div class="o-cl-opt${!tmOrdVal?' active':''}" data-id="" onclick="tmSetOrd('','')">
-        <span style="color:var(--dim2)">— без заказа —</span>
-      </div>`+
-      S.orders.map(o=>`<div class="o-cl-opt${tmOrdVal===o.id?' active':''}" data-id="${o.id}" onclick="tmSetOrd('${o.id}','${esc(o.name).replace(/'/g,"\\'")}')">
-        ${esc(o.name)}
-      </div>`).join('');
-  }
 }
 function setupTimer(){
   if(Plan.type==='free') return; // трекер заблокирован на Free
