@@ -272,6 +272,8 @@ function showLogin() {
 function showApp(user) {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('appRoot').style.display     = 'block';
+  // Trigger full re-render after login
+  setTimeout(() => { if(window.refreshAll) window.refreshAll(); }, 100);
 
   const badge = document.getElementById('userBadge');
   const av    = document.getElementById('userAvatar');
@@ -346,7 +348,7 @@ nav.tabs button.active svg{opacity:1}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
-.panel{border:1px solid var(--ln);border-radius:var(--r);background:var(--card);overflow:hidden}
+.panel{border:1px solid var(--ln);border-radius:var(--r);background:var(--card);overflow:visible}
 .ph{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 0}
 .ph .t{font-family:'Inter';font-weight:700;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase}
 .ph .n{font-family:'Inter';font-size:10px;color:var(--dim)}
@@ -785,7 +787,7 @@ nav.tabs button.active svg{opacity:1}
 .feb-card-bar-fill{height:100%;border-radius:0;transition:width .8s}
 
 /* Quick-add row */
-.fin-exp-qarow{display:flex;gap:0;align-items:center;background:var(--card2);border:1px solid var(--ln);border-radius:14px;padding:0 0 0 16px;margin-bottom:14px;height:48px;overflow:hidden}
+.fin-exp-qarow{display:flex;gap:0;align-items:center;background:var(--card2);border:1px solid var(--ln);border-radius:14px;padding:0 0 0 16px;margin-bottom:14px;height:48px;overflow:visible}
 .fin-exp-qarow input{background:transparent;border:none;color:var(--txt);font-family:'Inter';font-size:13px;outline:none;height:100%}
 .fin-exp-qarow input::placeholder{color:var(--dim2)}
 .fin-exp-qa-divider{width:1px;height:22px;background:var(--ln2);flex:none;margin:0 2px}
@@ -1912,7 +1914,7 @@ input[type=number]{-moz-appearance:textfield}
       <input class="pl-search-inp" id="plSearch" placeholder="Поиск задачи…" oninput="plFlt.q=this.value;renderPlanner()">
       <!-- Priority dropdown -->
       <div class="o-cl-drop-wrap" id="plPriWrap">
-        <button class="o-cl-trigger pl-flt-trigger" id="plPriTrigger" onclick="togglePlDrop('plPriWrap',event)">
+        <button class="o-cl-trigger pl-flt-trigger" id="plPriTrigger" onclick="toggleDrop('plPriWrap',event)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><path d="M3 6h18M3 12h12M3 18h7"/></svg>
           <span id="plPriLabel">Все приоритеты</span>
           <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1938,7 +1940,7 @@ input[type=number]{-moz-appearance:textfield}
       </div>
       <!-- Order dropdown -->
       <div class="o-cl-drop-wrap" id="plOrdWrap">
-        <button class="o-cl-trigger pl-flt-trigger" id="plOrdTrigger" onclick="togglePlDrop('plOrdWrap',event)">
+        <button class="o-cl-trigger pl-flt-trigger" id="plOrdTrigger" onclick="toggleDrop('plOrdWrap',event)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
           <span id="plOrdLabel">Все задачи</span>
           <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1996,7 +1998,7 @@ input[type=number]{-moz-appearance:textfield}
         <div class="timer-clock" id="tmClock">00:00:00</div>
         <div class="fld" style="width:100%"><span>Заказ</span>
           <div class="o-cl-drop-wrap" id="tmOrdWrap" style="width:100%">
-            <button class="o-cl-trigger" id="tmOrdTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="togglePlDrop('tmOrdWrap',event)">
+            <button class="o-cl-trigger" id="tmOrdTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="toggleDrop('tmOrdWrap',event)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.6"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
               <span id="tmOrdLabel" style="flex:1;text-align:left">— выбрать заказ —</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2006,7 +2008,7 @@ input[type=number]{-moz-appearance:textfield}
         </div>
         <div class="fld" style="width:100%"><span>Тип работы</span>
           <div class="o-cl-drop-wrap" id="tmActWrap" style="width:100%">
-            <button class="o-cl-trigger" id="tmActTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="togglePlDrop('tmActWrap',event)">
+            <button class="o-cl-trigger" id="tmActTrigger" style="width:100%;border-radius:11px;font-size:13px;padding:12px 14px;background:var(--bg2)" onclick="toggleDrop('tmActWrap',event)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               <span id="tmActLabel" style="flex:1;text-align:left">Дизайн</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2132,7 +2134,7 @@ input[type=number]{-moz-appearance:textfield}
         <div class="if">
           <label>Из CRM (автозаполнение)</label>
           <div class="o-cl-drop-wrap" id="ivClWrap" style="width:100%">
-            <button class="o-cl-trigger" id="ivClTrigger" style="width:100%;border-radius:5px;font-size:12.5px;padding:8px 10px;background:var(--bg2);border-color:var(--ln2)" onclick="togglePlDrop('ivClWrap',event)">
+            <button class="o-cl-trigger" id="ivClTrigger" style="width:100%;border-radius:5px;font-size:12.5px;padding:8px 10px;background:var(--bg2);border-color:var(--ln2)" onclick="toggleDrop('ivClWrap',event)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex:none;opacity:.6"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/></svg>
               <span id="ivClLabel" style="flex:1;text-align:left;color:var(--dim2)">— выбрать клиента —</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2321,7 +2323,7 @@ const SK = 'crm_designer_v2';
 let S = loadLocal();
 
 // === Unified dropdown system (defined early so always available) ===
-const ALL_DROPS = ['oClDropWrap','oTyDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
+const ALL_DROPS = ['oClDropWrap','oTyDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatWrap'];
 function closeAllDrops(except){ ALL_DROPS.forEach(id=>{ if(id!==except) document.getElementById(id)?.classList.remove('open'); }); }
 function toggleDrop(id,e){ if(e) e.stopPropagation(); const el=document.getElementById(id); if(!el) return; const was=el.classList.contains('open'); closeAllDrops(id); el.classList.toggle('open',!was); }
 function toggleOClDrop(e){ toggleDrop('oClDropWrap',e); }
@@ -5137,17 +5139,28 @@ function renderExpenses(){
       <div class="fin-exp-qa-divider"></div>
       <input class="fin-exp-qa-numip" id="qaExpAmt" type="number" min="0" placeholder="0 ₽" onkeydown="if(event.key==='Enter')qaAddExpense()">
       <div class="fin-exp-qa-divider"></div>
-      <div class="qa-cat-wrap" onclick="qaToggleDrop(event)" id="qaCatWrap">
-        <div class="qa-cat-label" id="qaCatLabel">
-          <span class="qa-cat-opt-dot" style="background:${expCatColor(curCat)};width:7px;height:7px;border-radius:50%;display:inline-block"></span>
-          ${esc(curCat)}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="qa-cat-drop" id="qaCatDrop">${opts}</div>
+      <div class="o-cl-drop-wrap" id="qaCatWrap" style="flex:none;min-width:120px">
+        <button class="o-cl-trigger" id="qaCatTrigger" onclick="toggleDrop('qaCatWrap',event)" style="padding:10px 12px;font-size:12px;height:100%;box-sizing:border-box;background:var(--bg2);border-color:var(--ln2)">
+          <span class="qa-cat-opt-dot" id="qaCatDot" style="width:7px;height:7px;border-radius:50%;display:inline-block;flex:none"></span>
+          <span id="qaCatLabel" style="flex:1;text-align:left"></span>
+          <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="o-cl-drop" id="qaCatDrop"></div>
       </div>
       <button class="fin-exp-qa-addbt" onclick="qaAddExpense()" title="Добавить (Enter)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>`;
+    // populate category dropdown
+    const drop = document.getElementById('qaCatDrop');
+    if(drop) drop.innerHTML = cats.map(n=>
+      `<div class="o-cl-opt${n===curCat?' active':''}" onclick="qaSetCat(this,'${esc(n)}')">
+        <span style="width:9px;height:9px;border-radius:50%;background:${expCatColor(n)};flex:none;display:inline-block"></span>
+        <span style="flex:1">${esc(n)}</span>
+      </div>`).join('');
+    const dot = document.getElementById('qaCatDot');
+    const lbl = document.getElementById('qaCatLabel');
+    if(dot) dot.style.background = expCatColor(curCat);
+    if(lbl) lbl.textContent = curCat;
   }
 
   // ── List ──
@@ -5235,17 +5248,19 @@ function qaAddExpense(){
   toast(`${name} — ${fmt(amt)} ₽`);
 }
 
-function qaSetCat(el,name){
-  const qaEl=document.getElementById('expQa');
-  if(qaEl) qaEl.dataset.cat=name;
-  const drop=document.getElementById('qaCatDrop');
-  if(drop){
-    drop.classList.remove('open');
-    drop.querySelectorAll('.qa-cat-opt').forEach(o=>o.classList.remove('chosen'));
-    el.classList.add('chosen');
-  }
-  const lbl=document.getElementById('qaCatLabel');
-  if(lbl) lbl.innerHTML=`<span style="background:${expCatColor(name)};width:7px;height:7px;border-radius:50%;display:inline-block;flex:none"></span>${esc(name)}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:10px;height:10px;opacity:.5"><polyline points="6 9 12 15 18 9"/></svg>`;
+function qaSetCat(el, name){
+  const qaEl = document.getElementById('expQa');
+  if(qaEl) qaEl.dataset.cat = name;
+  // close dropdown
+  document.getElementById('qaCatWrap')?.classList.remove('open');
+  // update active state
+  document.querySelectorAll('#qaCatDrop .o-cl-opt').forEach(o=>o.classList.remove('active'));
+  if(el) el.classList.add('active');
+  // update label
+  const dot = document.getElementById('qaCatDot');
+  const lbl = document.getElementById('qaCatLabel');
+  if(dot) dot.style.background = expCatColor(name);
+  if(lbl) lbl.textContent = name;
 }
 /* ── Category editor ── */
 function openExpCatEditor(){
@@ -6200,7 +6215,11 @@ function refreshAll(){
   initialized.dash=true;
   loadWtypes();
   renderDash();
-  // Читаем план после того как DOM отрендерен и appRoot виден
+  // Re-render currently active view if not dash
+  const activeBtn = document.querySelector('nav.tabs button.active');
+  if(activeBtn && activeBtn.dataset.view && activeBtn.dataset.view !== 'dash'){
+    switchViewNamed(activeBtn.dataset.view);
+  }
   setTimeout(()=>{ if(window._reloadPlan) window._reloadPlan(); }, 50);
 }
 
