@@ -1819,7 +1819,14 @@ input[type=number]{-moz-appearance:textfield}
       <div class="o-cl-drop" id="oClDrop"></div>
     </div>
   </div>
-  <div class="chips" id="tyChips"></div>
+    <div class="o-cl-drop-wrap" id="oTyDropWrap">
+      <button class="o-cl-trigger" id="oTyTrigger" onclick="toggleDrop('oTyDropWrap',event)" style="height:100%;box-sizing:border-box;padding:12px 14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span id="oTyLabel">Все типы</span>
+        <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="o-cl-drop" id="oTyDrop"></div>
+    </div>
   <div class="sort-bar" id="sortBar"></div>
   <div id="oList"></div>
 </section>
@@ -2198,7 +2205,15 @@ input[type=number]{-moz-appearance:textfield}
 
 <!-- CONTACTS -->
 <section class="view" id="view-contacts">
-  <div class="sec-head"><div><span class="eye">Нетворкинг</span><h2>Контакты</h2></div><button class="btn-add" onclick="openContactForm()">+ Добавить контакт</button></div>
+  <div class="sec-head"><div><span class="eye">Нетворкинг</span><h2>Контакты</h2></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="ibt" onclick="openContactCatEditor()" style="padding:10px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l6.59-6.59a1 1 0 0 0 0-1.41L12 2z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+        Категории
+      </button>
+      <button class="btn-add" onclick="openContactForm()">+ Добавить контакт</button>
+    </div>
+  </div>
   <div class="cl-filters">
     <div class="cl-search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
@@ -2999,7 +3014,7 @@ function renderDash(){
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
         <div class="dash-unpaid-amt">${fmt(c.debt)} ₽</div>
-        <button class="dash-remind-btn" onclick="toast('Напоминание отправлено ${esc(c.name)}')">напомнить</button>
+        
       </div>
     </div>`;
   }).join(''):`<div style="padding:20px;text-align:center;font-family:'Inter';font-size:12px;color:var(--dim2)">Все долги закрыты ✓</div>`;
@@ -3131,7 +3146,7 @@ function setOrderView(v){
 }
 
 // === Unified dropdown system ===
-const ALL_DROPS = ['oClDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
+const ALL_DROPS = ['oClDropWrap','oTyDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
 
 function closeAllDrops(except){
   ALL_DROPS.forEach(id=>{
@@ -3158,6 +3173,11 @@ function togglePlDrop(wrapId, e){ toggleDrop(wrapId, e); }
 function oSetCl(id){
   oFlt.cl=id;
   document.getElementById('oClDropWrap')?.classList.remove('open');
+  renderOrders();
+}
+function oSetTy(ty){
+  oFlt.ty=ty;
+  document.getElementById('oTyDropWrap')?.classList.remove('open');
   renderOrders();
 }
 function renderOrders(){
@@ -3191,7 +3211,24 @@ function renderOrders(){
       if(oClLabel) oClLabel.textContent = 'Все клиенты';
     }
   }
-  document.getElementById('tyChips').innerHTML=`<button class="chip ${oFlt.ty==='all'?'active':''}" onclick="oFlt.ty='all';renderOrders()">Все типы</button>`+allTy.map(t=>`<button class="chip ${oFlt.ty===t?'active':''}" onclick="oFlt.ty='${t}';renderOrders()">${t}</button>`).join('');
+  const oTyDrop = document.getElementById('oTyDrop');
+  const oTyTrigger = document.getElementById('oTyTrigger');
+  const oTyLabel = document.getElementById('oTyLabel');
+  if(oTyDrop){
+    oTyDrop.innerHTML=
+      `<div class="o-cl-opt${oFlt.ty==='all'?' active':''}" onclick="oSetTy('all')">
+        Все типы<span class="o-cl-opt-cnt">${S.orders.length}</span>
+      </div>`+
+      allTy.map(t=>{
+        const cnt=S.orders.filter(o=>(o.types||[]).includes(t)).length;
+        return `<div class="o-cl-opt${oFlt.ty===t?' active':''}" onclick="oSetTy('${t}')">
+          <span style="flex:1">${t}</span><span class="o-cl-opt-cnt">${cnt}</span>
+        </div>`;
+      }).join('');
+    const active=oFlt.ty!=='all';
+    oTyTrigger?.classList.toggle('active',active);
+    if(oTyLabel) oTyLabel.textContent=active?oFlt.ty:'Все типы';
+  }
   // sort bar (hidden in table mode)
   const upArr='↑', dnArr='↓';
   document.getElementById('sortBar').innerHTML=
@@ -4511,10 +4548,9 @@ function deleteTemplate(id){
 function startTrackerFor(orderId,orderName){
   switchView('tracker');
   setTimeout(()=>{
-    const sel=document.getElementById('tmOrd');
-    if(sel){sel.value=orderId;sel.dispatchEvent(new Event('change'));}
+    tmSetOrd(orderId, orderName);
     toast(`Трекер: ${orderName}`);
-  },150);
+  },200);
 }
 
 // === Push-уведомления ===
@@ -5500,13 +5536,73 @@ function renderInvoice(){
    ================================================================ */
 let contactFlt={q:'',cat:'all'};
 const CONTACT_CATS=[{v:'partner',l:'Партнёр'},{v:'supplier',l:'Поставщик'},{v:'contractor',l:'Подрядчик'},{v:'other',l:'Другое'}];
+function getContactCats(){ return [...CONTACT_CATS,...(S.contactCats||[])]; }
+function openContactCatEditor(){
+  const cats = getContactCats();
+  const custom = S.contactCats||[];
+  const allCats = [...cats, ...custom];
+  const body = `
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px" id="ccatList">
+      ${cats.map(cc=>`
+        <div style="display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:10px 14px">
+          <div style="font-family:'Inter';font-size:13px;font-weight:600;flex:1">${cc.l}</div>
+          <div style="font-family:'Inter';font-size:10px;color:var(--dim2)">${(S.contacts||[]).filter(c=>c.category===cc.v).length} контактов</div>
+          <div style="font-family:'Inter';font-size:10px;color:var(--dim2);background:var(--card);border:1px solid var(--ln2);padding:3px 8px;border-radius:6px">Системная</div>
+        </div>`).join('')}
+      ${custom.map((cc,i)=>{
+        const cnt=(S.contacts||[]).filter(c=>c.category===cc.v).length;
+        return `<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:8px 12px">
+          <input class="tx" value="${esc(cc.l)}" id="ccn_${i}" style="font-size:13px;font-weight:600;padding:6px 10px">
+          <div style="font-family:'Inter';font-size:10px;color:var(--dim2)">${cnt}</div>
+          <div style="display:flex;gap:4px">
+            <button class="ibt" onclick="saveContactCat(${i})">✓</button>
+            ${cnt===0?`<button class="ibt del" onclick="deleteContactCat(${i})">✕</button>`:'<button class="ibt del" style="opacity:.3;cursor:not-allowed" disabled>✕</button>'}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="display:flex;gap:8px">
+      <input class="tx" id="newCCatName" placeholder="Название категории…" style="flex:1">
+      <button class="ibt" onclick="addContactCat()" style="padding:10px 14px;font-weight:700">+</button>
+    </div>`;
+  openModalRaw('Категории контактов', body);
+}
+function saveContactCat(i){
+  const name=document.getElementById('ccn_'+i)?.value.trim();
+  if(!name){toast('Введите название');return;}
+  if(!S.contactCats) S.contactCats=[];
+  const old=S.contactCats[i];
+  if(old&&old.v!==name.toLowerCase().replace(/\s/g,'_')){
+    const newV=name.toLowerCase().replace(/\s/g,'_');
+    if(S.contacts) S.contacts=S.contacts.map(c=>c.category===old.v?{...c,category:newV}:c);
+    S.contactCats[i]={v:newV,l:name};
+  } else {
+    S.contactCats[i].l=name;
+  }
+  save();renderContacts();toast('Сохранено');openContactCatEditor();
+}
+function deleteContactCat(i){
+  if(!S.contactCats) return;
+  if(!confirm(`Удалить категорию «${S.contactCats[i].l}»?`)) return;
+  S.contactCats.splice(i,1);
+  save();renderContacts();toast('Удалено');openContactCatEditor();
+}
+function addContactCat(){
+  const name=document.getElementById('newCCatName')?.value.trim();
+  if(!name){toast('Введите название');return;}
+  if(!S.contactCats) S.contactCats=[];
+  const v=name.toLowerCase().replace(/\s/g,'_')+'_'+Date.now().toString(36);
+  S.contactCats.push({v,l:name});
+  save();toast('Категория добавлена');openContactCatEditor();
+}
+
 function openContactForm(id=null){
   const c=id?( S.contacts||[]).find(x=>x.id===id):{};
   openModal(id?'Редактировать контакт':'Новый контакт',`<div class="fg">
     ${fld('Имя *',inp('f_cnm','text',c.name,'true'),'full')}
     ${fld('Иконка',inp('f_cic','text',c.icon||'👤'))}
     ${fld('Роль / Специализация',inp('f_crole','text',c.role),'full')}
-    ${fld('Категория',selOpts('f_ccat',CONTACT_CATS,c.category||'other'))}
+    ${fld('Категория',selOpts('f_ccat',getContactCats(),c.category||'other'))}
     ${fld('Телефон',inp('f_cph','tel',c.phone))}
     ${fld('Email',inp('f_cem','email',c.email))}
     ${fld('Telegram',inp('f_ctg','text',c.telegram))}
@@ -5535,7 +5631,7 @@ function conSetCat(v){
 function renderContacts(){
   if(!S.contacts) S.contacts=[];
   const cats=[...new Set(S.contacts.map(c=>c.category).filter(Boolean))];
-  const activeCats = CONTACT_CATS.filter(cc=>cats.includes(cc.v));
+  const activeCats = getContactCats().filter(cc=>cats.includes(cc.v));
   const conDrop = document.getElementById('conCatDrop');
   const conTrigger = document.getElementById('conCatTrigger');
   const conLabel = document.getElementById('conCatLabel');
@@ -5555,7 +5651,7 @@ function renderContacts(){
       }).join('');
     const active = contactFlt.cat !== 'all';
     conTrigger?.classList.toggle('active', active);
-    if(conLabel) conLabel.textContent = active ? (CONTACT_CATS.find(cc=>cc.v===contactFlt.cat)?.l||'Все категории') : 'Все категории';
+    if(conLabel) conLabel.textContent = active ? (getContactCats().find(cc=>cc.v===contactFlt.cat)?.l||'Все категории') : 'Все категории';
   }
   const q=contactFlt.q.toLowerCase();
   const filtered=(S.contacts||[]).filter(c=>{
@@ -5893,7 +5989,9 @@ function deleteBookmark(id){
 }
 
 function getAllCats(){
-  return [...new Set([...BM_DATA,...(S.bookmarks||[])].map(b=>b.cat).filter(Boolean))];
+  const fromBm=[...BM_DATA,...(S.bookmarks||[])].map(b=>b.cat).filter(Boolean);
+  const fromConfig=Object.keys(S.bmCats||{});
+  return [...new Set([...fromBm,...fromConfig])];
 }
 
 /* ── Category Editor ── */
@@ -5927,7 +6025,7 @@ function renderCatEditorModal(){
     <button class="ibt" onclick="addNewCat()" style="padding:10px 14px;font-weight:700">+</button>
   </div>`;
 
-  openModal('Редактор категорий', body, null, true);
+  openModalRaw('Редактор категорий', body);
 }
 
 function saveCat(oldName){
