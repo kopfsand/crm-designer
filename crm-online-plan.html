@@ -1819,14 +1819,6 @@ input[type=number]{-moz-appearance:textfield}
       <div class="o-cl-drop" id="oClDrop"></div>
     </div>
   </div>
-    <div class="o-cl-drop-wrap" id="oTyDropWrap">
-      <button class="o-cl-trigger" id="oTyTrigger" onclick="toggleDrop('oTyDropWrap',event)" style="height:100%;box-sizing:border-box;padding:12px 14px">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex:none;opacity:.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        <span id="oTyLabel">Все типы</span>
-        <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="o-cl-drop" id="oTyDrop"></div>
-    </div>
   <div class="sort-bar" id="sortBar"></div>
   <div id="oList"></div>
 </section>
@@ -2019,10 +2011,7 @@ input[type=number]{-moz-appearance:textfield}
               <span id="tmActLabel" style="flex:1;text-align:left">Дизайн</span>
               <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="o-cl-drop" id="tmActDrop" style="width:100%">
-              ${['Дизайн','Правки','Общение с клиентом','Подготовка','Исследование'].map(a=>`
-                <div class="o-cl-opt${a==='Дизайн'?' active':''}" onclick="tmSetAct('${a}',this)">${a}</div>`).join('')}
-            </div>
+            <div class="o-cl-drop" id="tmActDrop" style="width:100%"></div>
           </div>
         </div>
         <div class="fld" style="width:100%"><span>Ставка, ₽/час</span><input id="tmRate" type="number" class="tx" placeholder="0" min="0" step="100" style="width:100%"></div>
@@ -2330,6 +2319,15 @@ const DEFAULT_WTYPES=['Визуализация','Логотип','Фирмен�
 let WTYPES=[];
 const SK = 'crm_designer_v2';
 let S = loadLocal();
+
+// === Unified dropdown system (defined early so always available) ===
+const ALL_DROPS = ['oClDropWrap','oTyDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
+function closeAllDrops(except){ ALL_DROPS.forEach(id=>{ if(id!==except) document.getElementById(id)?.classList.remove('open'); }); }
+function toggleDrop(id,e){ if(e) e.stopPropagation(); const el=document.getElementById(id); if(!el) return; const was=el.classList.contains('open'); closeAllDrops(id); el.classList.toggle('open',!was); }
+function toggleOClDrop(e){ toggleDrop('oClDropWrap',e); }
+function toggleConCatDrop(e){ toggleDrop('conCatDropWrap',e); }
+function qaToggleDrop(e){ toggleDrop('qaCatDrop',e); }
+document.addEventListener('click',()=>closeAllDrops(null));
 
 function loadLocal() {
   try { const d = localStorage.getItem(SK); if(d) return JSON.parse(d); } catch(e){}
@@ -3145,31 +3143,6 @@ function setOrderView(v){
   renderOrders();
 }
 
-// === Unified dropdown system ===
-const ALL_DROPS = ['oClDropWrap','oTyDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
-
-function closeAllDrops(except){
-  ALL_DROPS.forEach(id=>{
-    if(id===except) return;
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.classList.remove('open');
-  });
-}
-
-function toggleDrop(id, e){
-  if(e) e.stopPropagation();
-  const el = document.getElementById(id);
-  if(!el) return;
-  const wasOpen = el.classList.contains('open');
-  closeAllDrops(id);
-  el.classList.toggle('open', !wasOpen);
-}
-
-function toggleOClDrop(e){ toggleDrop('oClDropWrap', e); }
-function toggleConCatDrop(e){ toggleDrop('conCatDropWrap', e); }
-function togglePlDrop(wrapId, e){ toggleDrop(wrapId, e); }
-
 function oSetCl(id){
   oFlt.cl=id;
   document.getElementById('oClDropWrap')?.classList.remove('open');
@@ -3211,27 +3184,18 @@ function renderOrders(){
       if(oClLabel) oClLabel.textContent = 'Все клиенты';
     }
   }
-  const oTyDrop = document.getElementById('oTyDrop');
-  const oTyTrigger = document.getElementById('oTyTrigger');
-  const oTyLabel = document.getElementById('oTyLabel');
-  if(oTyDrop){
-    oTyDrop.innerHTML=
-      `<div class="o-cl-opt${oFlt.ty==='all'?' active':''}" onclick="oSetTy('all')">
-        Все типы<span class="o-cl-opt-cnt">${S.orders.length}</span>
-      </div>`+
-      allTy.map(t=>{
-        const cnt=S.orders.filter(o=>(o.types||[]).includes(t)).length;
-        return `<div class="o-cl-opt${oFlt.ty===t?' active':''}" onclick="oSetTy('${t}')">
-          <span style="flex:1">${t}</span><span class="o-cl-opt-cnt">${cnt}</span>
-        </div>`;
-      }).join('');
-    const active=oFlt.ty!=='all';
-    oTyTrigger?.classList.toggle('active',active);
-    if(oTyLabel) oTyLabel.textContent=active?oFlt.ty:'Все типы';
-  }
+  // sort bar renders oTyDrop inline
   // sort bar (hidden in table mode)
   const upArr='↑', dnArr='↓';
   document.getElementById('sortBar').innerHTML=
+    `<div class="o-cl-drop-wrap" id="oTyDropWrap" style="flex:none">
+      <button class="sort-btn o-cl-trigger" id="oTyTrigger" onclick="toggleDrop('oTyDropWrap',event)" style="padding:7px 11px;font-size:11px;gap:5px;background:var(--card);border-color:var(--ln)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;flex:none;opacity:.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span id="oTyLabel">Все типы</span>
+        <svg class="o-cl-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:10px;height:10px"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="o-cl-drop" id="oTyDrop"></div>
+    </div>`+
     `<span class="sl">Сортировка:</span>`+
     SORTS.map(s=>{
       const active=oFlt.sort===s.k;
@@ -3239,6 +3203,18 @@ function renderOrders(){
       return `<button class="sort-btn${active?' active':''}" onclick="setSort('${s.k}')">${s.l}${active?` <span class="arr">${arrow}</span>`:''}</button>`;
     }).join('');
   if(orderView==='table') document.getElementById('sortBar').style.display='none';
+  // populate type dropdown (rendered inside sortBar)
+  const oTyDrop=document.getElementById('oTyDrop');
+  const oTyTrigger=document.getElementById('oTyTrigger');
+  const oTyLabel=document.getElementById('oTyLabel');
+  if(oTyDrop){
+    oTyDrop.innerHTML=
+      `<div class="o-cl-opt${oFlt.ty==='all'?' active':''}" onclick="oSetTy('all')">Все типы<span class="o-cl-opt-cnt">${S.orders.length}</span></div>`+
+      allTy.map(t=>`<div class="o-cl-opt${oFlt.ty===t?' active':''}" onclick="oSetTy('${t}')"><span style="flex:1">${t}</span><span class="o-cl-opt-cnt">${S.orders.filter(o=>(o.types||[]).includes(t)).length}</span></div>`).join('');
+    const active=oFlt.ty!=='all';
+    oTyTrigger?.classList.toggle('active',active);
+    if(oTyLabel) oTyLabel.textContent=active?oFlt.ty:'Все типы';
+  }
   // filter + sort
   const sortFn=SORTS.find(s=>s.k===oFlt.sort)?.fn||SORTS[0].fn;
   let list=S.orders
@@ -4657,6 +4633,13 @@ function renderTracker(){
       <button class="ibt del" onclick="deleteLog('${l.id}')">✕</button>
     </div></div>`).join('');
   setTimeout(()=>{document.querySelectorAll('#view-tracker .fl').forEach(f=>f.style.width=f.dataset.w+'%');animateDial('view-tracker')},80);
+  // timer act dropdown
+  const tmADrop=document.getElementById('tmActDrop');
+  if(tmADrop && !tmADrop.children.length){
+    tmADrop.innerHTML=['Дизайн','Правки','Общение с клиентом','Подготовка','Исследование'].map(a=>
+      `<div class="o-cl-opt${a===tmActVal?' active':''}" onclick="tmSetAct('${a}',this)">${a}</div>`
+    ).join('');
+  }
   // timer order dropdown
   const tmDrop=document.getElementById('tmOrdDrop');
   if(tmDrop){
@@ -5252,9 +5235,6 @@ function qaAddExpense(){
   toast(`${name} — ${fmt(amt)} ₽`);
 }
 
-function qaToggleDrop(e){
-  toggleDrop('qaCatDrop', e);
-}
 function qaSetCat(el,name){
   const qaEl=document.getElementById('expQa');
   if(qaEl) qaEl.dataset.cat=name;
@@ -5267,11 +5247,6 @@ function qaSetCat(el,name){
   const lbl=document.getElementById('qaCatLabel');
   if(lbl) lbl.innerHTML=`<span style="background:${expCatColor(name)};width:7px;height:7px;border-radius:50%;display:inline-block;flex:none"></span>${esc(name)}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="width:10px;height:10px;opacity:.5"><polyline points="6 9 12 15 18 9"/></svg>`;
 }
-// Close dropdown on outside click
-document.addEventListener('click',()=>{
-  closeAllDrops(null);
-});
-
 /* ── Category editor ── */
 function openExpCatEditor(){
   const cats=getExpCats();
