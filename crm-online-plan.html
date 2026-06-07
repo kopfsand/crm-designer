@@ -4637,7 +4637,7 @@ function renderTracker(){
   setTimeout(()=>{document.querySelectorAll('#view-tracker .fl').forEach(f=>f.style.width=f.dataset.w+'%');animateDial('view-tracker')},80);
   // timer act dropdown
   const tmADrop=document.getElementById('tmActDrop');
-  if(tmADrop && !tmADrop.children.length){
+  if(tmADrop){
     tmADrop.innerHTML=['Дизайн','Правки','Общение с клиентом','Подготовка','Исследование'].map(a=>
       `<div class="o-cl-opt${a===tmActVal?' active':''}" onclick="tmSetAct('${a}',this)">${a}</div>`
     ).join('');
@@ -5876,11 +5876,17 @@ function renderBookmarks(){
   document.getElementById('bmCats').innerHTML =
     cats.map(c => {
       const cnt = c==='all'?allBm.length:allBm.filter(b=>b.cat===c).length;
-      return `<button class="bm-cat-btn${bmFlt.cat===c?' active':''}" onclick="bmSetCat('${c}')">
+      return `<button class="bm-cat-btn${bmFlt.cat===c?' active':''}" data-cat="${esc(c)}">
         ${c==='all'?'🔖 Все':((getCatIcon(c))+' '+c)}
         <span class="cnt">${cnt}</span>
       </button>`;
     }).join('');
+  // event delegation for cat buttons
+  const bmCatsEl = document.getElementById('bmCats');
+  bmCatsEl.onclick = e => {
+    const btn = e.target.closest('.bm-cat-btn');
+    if(btn){ bmFlt.cat = btn.dataset.cat; renderBookmarks(); }
+  };
 
   const q = bmFlt.q.toLowerCase();
   let filtered = allBm.filter(b => {
@@ -5943,6 +5949,8 @@ function bmCard(b){
   </a>`;
 }
 
+function safeB64(s){ try{return btoa(encodeURIComponent(s)).replace(/=/g,'');}catch(e){return Math.random().toString(36).slice(2);} }
+
 function bmSetCat(cat){
   bmFlt.cat=cat;
   renderBookmarks();
@@ -5996,10 +6004,10 @@ function renderCatEditorModal(){
     ${allCats.map(cat=>{
       const icon=userCats[cat]?.icon||CAT_ICONS[cat]||'📁';
       const count=[...BM_DATA,...(S.bookmarks||[])].filter(b=>b.cat===cat).length;
-      return `<div style="display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:8px 12px" id="cated_${btoa(cat).replace(/=/g,'')}">
-        <input class="tx" style="font-size:18px;padding:6px;text-align:center;border-radius:8px;width:44px" value="${esc(icon)}" id="ci_${btoa(cat).replace(/=/g,'')}" title="Иконка категории">
+      return `<div style="display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--ln2);border-radius:10px;padding:8px 12px" id="cated_${safeB64(cat)}">
+        <input class="tx" style="font-size:18px;padding:6px;text-align:center;border-radius:8px;width:44px" value="${esc(icon)}" id="ci_${safeB64(cat)}" title="Иконка категории">
         <div>
-          <input class="tx" style="font-size:13px;font-weight:600;padding:6px 10px" value="${esc(cat)}" id="cn_${btoa(cat).replace(/=/g,'')}" title="Название категории">
+          <input class="tx" style="font-size:13px;font-weight:600;padding:6px 10px" value="${esc(cat)}" id="cn_${safeB64(cat)}" title="Название категории">
           <div style="font-family:'Inter';font-size:10px;color:var(--dim);margin-top:3px">${count} закладок</div>
         </div>
         <div style="display:flex;gap:5px">
@@ -6019,7 +6027,7 @@ function renderCatEditorModal(){
 }
 
 function saveCat(oldName){
-  const key=btoa(oldName).replace(/=/g,'');
+  const key=safeB64(oldName);
   const newName=document.getElementById('cn_'+key)?.value.trim();
   const newIcon=document.getElementById('ci_'+key)?.value.trim();
   if(!newName){toast('Введите название');return;}
