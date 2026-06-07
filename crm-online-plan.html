@@ -1109,11 +1109,11 @@ table.inv-tbl td:last-child{font-family:'Inter',monospace;font-size:12.5px}
 
 /* bookmarks */
 .bm-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.bm-cat-btn{display:flex;align-items:center;gap:7px;font-family:'Inter';font-size:12px;font-weight:600;padding:8px 14px;border-radius:10px;border:1px solid var(--ln2);background:var(--card);color:var(--dim);cursor:pointer;transition:.15s}
-.bm-cat-btn:hover{border-color:var(--dim);color:var(--txt)}
+.bm-cat-btn{display:flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter';font-size:11px;font-weight:600;padding:7px 12px;border-radius:9px;border:1px solid var(--ln2);background:var(--card2);color:var(--dim);cursor:pointer;transition:.15s}
+.bm-cat-btn:hover{border-color:var(--dim);color:var(--txt);background:var(--card)}
 .bm-cat-btn.active{background:var(--or);border-color:var(--or);color:var(--on)}
-.bm-cat-btn .cnt{font-family:'Rubik';font-size:10px;background:rgba(0,0,0,.2);padding:1px 6px;border-radius:5px}
-.bm-cat-btn.active .cnt{background:rgba(0,0,0,.25)}
+.bm-cat-btn .cnt{font-family:'Rubik';font-size:10px;background:rgba(0,0,0,.15);padding:1px 5px;border-radius:4px}
+.bm-cat-btn.active .cnt{background:rgba(0,0,0,.2)}
 /* bm toolbar: search + view switcher */
 .bm-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:20px}
 .bm-search-wrap{position:relative;flex:1;margin-bottom:20px}
@@ -3130,10 +3130,31 @@ function setOrderView(v){
   renderOrders();
 }
 
-function toggleOClDrop(e){
-  e.stopPropagation();
-  document.getElementById('oClDropWrap')?.classList.toggle('open');
+// === Unified dropdown system ===
+const ALL_DROPS = ['oClDropWrap','conCatDropWrap','plPriWrap','plOrdWrap','tmOrdWrap','tmActWrap','ivClWrap','qaCatDrop'];
+
+function closeAllDrops(except){
+  ALL_DROPS.forEach(id=>{
+    if(id===except) return;
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.remove('open');
+  });
 }
+
+function toggleDrop(id, e){
+  if(e) e.stopPropagation();
+  const el = document.getElementById(id);
+  if(!el) return;
+  const wasOpen = el.classList.contains('open');
+  closeAllDrops(id);
+  el.classList.toggle('open', !wasOpen);
+}
+
+function toggleOClDrop(e){ toggleDrop('oClDropWrap', e); }
+function toggleConCatDrop(e){ toggleDrop('conCatDropWrap', e); }
+function togglePlDrop(wrapId, e){ toggleDrop(wrapId, e); }
+
 function oSetCl(id){
   oFlt.cl=id;
   document.getElementById('oClDropWrap')?.classList.remove('open');
@@ -3722,11 +3743,6 @@ function taskCardHtml(t,compact=false){
   </div>`;
 }
 
-function togglePlDrop(wrapId, e){
-  e.stopPropagation();
-  ['plPriWrap','plOrdWrap'].forEach(id=>{ if(id!==wrapId) document.getElementById(id)?.classList.remove('open'); });
-  document.getElementById(wrapId)?.classList.toggle('open');
-}
 function plSetPri(val, el){
   plFlt.priority = val;
   document.getElementById('plPriWrap')?.classList.remove('open');
@@ -5201,9 +5217,7 @@ function qaAddExpense(){
 }
 
 function qaToggleDrop(e){
-  e.stopPropagation();
-  const drop=document.getElementById('qaCatDrop');
-  if(drop) drop.classList.toggle('open');
+  toggleDrop('qaCatDrop', e);
 }
 function qaSetCat(el,name){
   const qaEl=document.getElementById('expQa');
@@ -5219,14 +5233,7 @@ function qaSetCat(el,name){
 }
 // Close dropdown on outside click
 document.addEventListener('click',()=>{
-  document.getElementById('qaCatDrop')?.classList.remove('open');
-  document.getElementById('oClDropWrap')?.classList.remove('open');
-  document.getElementById('conCatDropWrap')?.classList.remove('open');
-  document.getElementById('plPriWrap')?.classList.remove('open');
-  document.getElementById('plOrdWrap')?.classList.remove('open');
-  document.getElementById('tmOrdWrap')?.classList.remove('open');
-  document.getElementById('tmActWrap')?.classList.remove('open');
-  document.getElementById('ivClWrap')?.classList.remove('open');
+  closeAllDrops(null);
 });
 
 /* ── Category editor ── */
@@ -5519,10 +5526,6 @@ function saveContact(editId){
 function deleteContact(id){
   if(!confirm('Удалить контакт?'))return;
   S.contacts=(S.contacts||[]).filter(c=>c.id!==id);save();renderContacts();toast('Контакт удалён');
-}
-function toggleConCatDrop(e){
-  e.stopPropagation();
-  document.getElementById('conCatDropWrap')?.classList.toggle('open');
 }
 function conSetCat(v){
   contactFlt.cat=v;
